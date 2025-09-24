@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - 頁面不存在</title>
+    <style>
+        /* --- CSS-Only Starfield by K.K. - https://codepen.io/kkick/pen/oWZMov (Adapted) --- */
+        /* 透過多層背景和不同的動畫速度，創造出有深度的星空效果 */
+        @keyframes move-stars-1 {
+            from {transform: translateY(0px);}
+            to {transform: translateY(-2000px);}
+        }
+        @keyframes move-stars-2 {
+            from {transform: translateY(0px);}
+            to {transform: translateY(-4000px);}
+        }
+        @keyframes move-stars-3 {
+            from {transform: translateY(0px);}
+            to {transform: translateY(-6000px);}
+        }
+        
+        .stars, .stars2, .stars3 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            background: transparent;
+            z-index: 0;
+        }
+
+        /* 每一層星星的大小、數量和移動速度都不同 */
+        .stars {
+            background-image: 
+                radial-gradient(1px, rgba(255, 255, 255, 0.8), transparent),
+                radial-gradient(2px, rgba(255, 255, 255, 0.6), transparent);
+            background-size: 320px 240px, 640px 480px;
+            animation: move-stars-1 200s linear infinite;
+        }
+
+        .stars2 {
+            background-image: 
+                radial-gradient(2px, rgba(255, 255, 255, 0.7), transparent),
+                radial-gradient(3px, rgba(255, 255, 255, 0.5), transparent);
+            background-size: 400px 300px, 800px 600px;
+            animation: move-stars-2 250s linear infinite;
+        }
+        
+        .stars3 {
+            background-image: 
+                radial-gradient(3px, rgba(255, 255, 255, 0.9), transparent);
+            background-size: 1000px 750px;
+            animation: move-stars-3 300s linear infinite;
+        }
+
+
+        /* --- 基本設定 --- */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            /* 使用跨平台都支援的繁體中文字型 */
+            font-family: 'PingFang TC', 'Microsoft JhengHei', 'Helvetica Neue', sans-serif;
+            background-color: #0c0f1a;
+            color: #f0f0f0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* --- 主要內容容器 --- */
+        .container {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+
+        /* --- 漂浮的太空人 --- */
+        .astronaut-svg {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 20px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-25px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* --- 文字樣式 --- */
+        h1 {
+            font-size: 8rem;
+            font-weight: 700;
+            margin: 0;
+            color: #4a90e2;
+            text-shadow: 0 0 15px rgba(74, 144, 226, 0.5);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 20px 0;
+            color: #b0b0b0;
+        }
+
+        /* --- 返回按鈕 --- */
+        .home-button {
+            display: inline-block;
+            padding: 12px 30px;
+            margin-top: 20px;
+            border: 2px solid #4a90e2;
+            border-radius: 50px;
+            color: #4a90e2;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .home-button:hover {
+            background-color: #4a90e2;
+            color: #fff;
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(74, 144, 226, 0.6);
+        }
+
+        /* --- 響應式設計：針對小螢幕（如手機）調整 --- */
+        @media (max-width: 600px) {
+            h1 { font-size: 5rem; }
+            h2 { font-size: 1.2rem; }
+            p { font-size: 0.9rem; }
+            .astronaut-svg {
+                width: 100px;
+                height: 100px;
+            }
+            .home-button { padding: 10px 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 純 CSS 動態星空背景 -->
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
+
+    <div class="container">
+        <!-- 一個簡單的 SVG 太空人圖示 -->
+        <svg class="astronaut-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
+            <g transform="translate(10, 10)">
+                <circle cx="80" cy="80" r="70" fill="#E0E0E0" stroke="#B0B0B0" stroke-width="4"/>
+                <rect x="45" y="60" width="70" height="50" rx="10" fill="#3498db" stroke="#2980b9" stroke-width="3"/>
+                <circle cx="110" cy="85" r="5" fill="rgba(255,255,255,0.5)"/>
+                <path d="M 80 150 Q 50 170 40 190 L 120 190 Q 110 170 80 150 Z" fill="#F0F0F0" stroke="#C0C0C0" stroke-width="3" transform="translate(0, -20)"/>
+                <path d="M 20 30 L 25 20 L 30 30 L 40 35 L 30 40 L 25 50 L 20 40 L 10 35 Z" fill="#FFD700" />
+                <circle cx="150" cy="40" r="5" fill="#FFFFFF"/>
+                <circle cx="160" cy="120" r="3" fill="#FFFFFF"/>
+            </g>
+        </svg>
+
+        <h1>404</h1>
+        <h2>糟糕！您似乎迷失在數位宇宙中了。</h2>
+        <p>您想找的頁面可能已經被黑洞吞噬，<br>或是從未在這個星系存在過。</p>
+        <a href="https://spectrepro.top" class="home-button">返回地球 (首頁)</a>
+    </div>
+
+</body>
+</html>
