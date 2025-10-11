@@ -73,3 +73,21 @@ params:
         - name: whatsapp
 
   enableEmoji: true
+
+  # Math Typesetting Support
+  math: true # global
+  mathEngine: mathJax # mathJax | katex
+
+markup:
+  defaultMarkdownHandler: goldmark
+  goldmark:
+    extensions:
+      passthrough:
+        enable: true
+        delimiters:
+          block:
+            - ["$$", "$$"]
+            - ["\\[", "\\]"]
+          inline:
+            - ["$", "$"]
+            - ["\\(", "\\)"]
