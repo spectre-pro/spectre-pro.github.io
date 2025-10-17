@@ -4,16 +4,20 @@
   <url>
     <loc>https://spectrepro.pro/about/</loc>
   </url><url>
-    <loc>https://spectrepro.pro/blog/</loc>
+    <loc>https://spectrepro.pro/docs/</loc>
+  </url><url>
+    <loc>https://spectrepro.pro/docs/phy/</loc>
+  </url><url>
+    <loc>https://spectrepro.pro/docs/tech/</loc>
   </url><url>
     <loc>https://spectrepro.pro/categories/</loc>
   </url><url>
-    <loc>https://spectrepro.pro/blog/tech/git/</loc>
+    <loc>https://spectrepro.pro/docs/tech/git/</loc>
   </url><url>
     <loc>https://spectrepro.pro/</loc>
   </url><url>
     <loc>https://spectrepro.pro/tags/</loc>
   </url><url>
-    <loc>https://spectrepro.pro/blog/phy/%E9%81%8B%E5%8B%95%E5%AD%B8%E5%9B%9B%E5%A4%A7%E5%85%AC%E5%BC%8F/</loc>
+    <loc>https://spectrepro.pro/docs/phy/%E9%81%8B%E5%8B%95%E5%AD%B8%E5%9B%9B%E5%A4%A7%E5%85%AC%E5%BC%8F/</loc>
   </url>
 </urlset>

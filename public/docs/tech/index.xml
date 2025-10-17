@@ -1,0 +1,75 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SPECTRE NOTE – </title>
+    <link>https://spectrepro.pro/docs/tech/</link>
+    <description>Recent content on SPECTRE NOTE</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    
+	  <atom:link href="https://spectrepro.pro/docs/tech/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Git &amp; Github</title>
+      <link>https://spectrepro.pro/docs/tech/git/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://spectrepro.pro/docs/tech/git/</guid>
+      <description>
+        
+        
+        &lt;h1&gt;Git&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;使用者資料(只需在下載git後運行一次)
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;git config --global user.name &amp;#34;name&amp;#34;  
+git config --global user.email &amp;#34;name@email.com&amp;#34;  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;Copy code&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;文件狀態 :&lt;br&gt;
+&lt;code&gt;git status&lt;/code&gt; (檢查)&lt;br&gt;
+&lt;code&gt;git add .&lt;/code&gt; (追蹤)&lt;br&gt;
+&lt;code&gt;git commit -m &amp;quot;備註&amp;quot;&lt;/code&gt; (暫存)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Branch:&lt;br&gt;
+&lt;code&gt;git checkout -b { branchName }&lt;/code&gt; (add 分支)&lt;br&gt;
+&lt;code&gt;git push { branchName }&lt;/code&gt;(推送branch)&lt;br&gt;
+&lt;code&gt; git merge { 被合併分支 branchName }&lt;/code&gt;(merge branch)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;other:&lt;br&gt;
+&lt;code&gt;git log&lt;/code&gt; (日誌)&lt;br&gt;
+&lt;code&gt;git log  --oneline&lt;/code&gt;(日誌line)&lt;br&gt;
+&lt;code&gt;git diff ID&lt;/code&gt; (比較)&lt;br&gt;
+&lt;code&gt;git checkout ID -- file_name&lt;/code&gt; （應用）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1&gt;GITHUB:&lt;/h1&gt;&lt;p&gt;&lt;code&gt;git push&lt;/code&gt; (上傳github)&lt;br&gt;
+&lt;code&gt;git clone  URL&lt;/code&gt; (fork the repo)&lt;br&gt;
+&lt;code&gt;git pull&lt;/code&gt; (同步)&lt;br&gt;
+&lt;code&gt;git pull --rebase&lt;/code&gt;（把遠端的檔案拉到自己的本地，把本地最新的資料放到最前面）&lt;/p&gt;
+&lt;hr&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>
