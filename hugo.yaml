@@ -1,4 +1,45 @@
 baseURL: https://spectrepro.pro/
 languageCode: zh-tw
-title: spectre note
+title: SPECTRE NOTE
 theme: hextra
+
+params:
+  navbar:
+    displayTitle: true
+    displayLogo: true
+    logo:
+      path: images/logo.svg
+      dark: images/logo-dark.svg
+      link: /
+      width: 40
+      height: 20
+  theme:
+    default: system
+    displayToggle: true
+
+menu:
+  main:
+    - name: Blog
+      pageRef: /blog
+      weight: 1
+    - name: About
+      pageRef: /about
+      weight: 2
+    - name: Search
+      weight: 3
+      params:
+        type: search
+    - name: GitHub
+      weight: 4
+      url: "https://github.com/spectre-pro"
+      params:
+        icon: github
+
+markup:
+  goldmark:
+    extensions:
+      passthrough:
+        delimiters:
+          block: [['\[', '\]'], ["$$", "$$"]]
+          inline: [['\(', '\)'], ["$", "$"]]
+        enable: true
