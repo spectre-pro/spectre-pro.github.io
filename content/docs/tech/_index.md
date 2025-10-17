@@ -1,4 +1,4 @@
 ---
-title: "tech"
+title: "Tech"
 weight: 1
 ---

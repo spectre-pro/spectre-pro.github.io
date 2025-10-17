@@ -1,4 +1,4 @@
 ---
-title: "school"
+title: "School"
 weight: 2
 ---
