@@ -2,7 +2,7 @@
 title: "Git & Github"  
 weight: 1
 ---  
-# Git  
+## Git
   
 1. 使用者資料(只需在下載git後運行一次)  
     ```  
@@ -26,7 +26,7 @@ weight: 1
 `git diff ID` (比較)  
 `git checkout ID -- file_name` （應用）  
 ***
-# GITHUB:  
+## GITHUB  
  `git push` (上傳github)  
  `git clone  URL` (fork the repo)  
  `git pull` (同步)  
