@@ -2,22 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://spectrepro.pro/docs/tech/git/</loc>
+  </url><url>
+    <loc>https://spectrepro.pro/docs/tech/</loc>
+  </url><url>
+    <loc>https://spectrepro.pro/docs/school/chinese/</loc>
+  </url><url>
+    <loc>https://spectrepro.pro/docs/school/chinese/%E8%AB%96%E4%BB%81%E8%AB%96%E5%AD%9D%E8%AB%96%E5%90%9B%E5%AD%90/</loc>
+  </url><url>
+    <loc>https://spectrepro.pro/docs/school/phy/%E9%81%8B%E5%8B%95%E5%AD%B8%E5%9B%9B%E5%A4%A7%E5%85%AC%E5%BC%8F/</loc>
+  </url><url>
+    <loc>https://spectrepro.pro/docs/school/english/</loc>
+  </url><url>
+    <loc>https://spectrepro.pro/docs/school/</loc>
+  </url><url>
+    <loc>https://spectrepro.pro/docs/school/chinese/%E9%AD%9A%E6%88%91%E6%89%80%E6%AC%B2%E4%B9%9F/</loc>
+  </url><url>
+    <loc>https://spectrepro.pro/docs/school/math/</loc>
+  </url><url>
+    <loc>https://spectrepro.pro/docs/school/m2/</loc>
+  </url><url>
+    <loc>https://spectrepro.pro/docs/school/phy/</loc>
+  </url><url>
+    <loc>https://spectrepro.pro/docs/school/ict/</loc>
+  </url><url>
     <loc>https://spectrepro.pro/about/</loc>
   </url><url>
     <loc>https://spectrepro.pro/docs/</loc>
   </url><url>
-    <loc>https://spectrepro.pro/docs/phy/</loc>
-  </url><url>
-    <loc>https://spectrepro.pro/docs/tech/</loc>
-  </url><url>
     <loc>https://spectrepro.pro/categories/</loc>
-  </url><url>
-    <loc>https://spectrepro.pro/docs/tech/git/</loc>
   </url><url>
     <loc>https://spectrepro.pro/</loc>
   </url><url>
     <loc>https://spectrepro.pro/tags/</loc>
-  </url><url>
-    <loc>https://spectrepro.pro/docs/phy/%E9%81%8B%E5%8B%95%E5%AD%B8%E5%9B%9B%E5%A4%A7%E5%85%AC%E5%BC%8F/</loc>
   </url>
 </urlset>

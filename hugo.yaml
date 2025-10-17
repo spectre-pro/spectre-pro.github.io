@@ -19,8 +19,8 @@ params:
 
 menu:
   main:
-    - name: Blog
-      pageRef: /blog
+    - name: Note
+      pageRef: /docs
       weight: 1
     - name: About
       pageRef: /about

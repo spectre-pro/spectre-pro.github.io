@@ -1,5 +1,6 @@
 ---  
 title: "Git & Github"  
+weight: 1
 ---  
 # Git  
   
@@ -24,7 +25,7 @@ title: "Git & Github"
 `git log  --oneline`(日誌line)  
 `git diff ID` (比較)  
 `git checkout ID -- file_name` （應用）  
-  
+***
 # GITHUB:  
  `git push` (上傳github)  
  `git clone  URL` (fork the repo)  
