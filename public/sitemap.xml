@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://spectrepro.pro/</loc>
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>https://spectrepro.pro/about/</loc>
   </url><url>
-    <loc>http://localhost:1313/blog/</loc>
+    <loc>https://spectrepro.pro/blog/</loc>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://spectrepro.pro/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://spectrepro.pro/tags/</loc>
   </url><url>
-    <loc>http://localhost:1313/blog/phy/%E9%81%8B%E5%8B%95%E5%AD%B8%E5%9B%9B%E5%A4%A7%E5%85%AC%E5%BC%8F/</loc>
+    <loc>https://spectrepro.pro/blog/phy/%E9%81%8B%E5%8B%95%E5%AD%B8%E5%9B%9B%E5%A4%A7%E5%85%AC%E5%BC%8F/</loc>
   </url>
 </urlset>
