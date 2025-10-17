@@ -2,13 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://spectrepro.pro/</loc>
-  </url><url>
     <loc>https://spectrepro.pro/about/</loc>
   </url><url>
     <loc>https://spectrepro.pro/blog/</loc>
   </url><url>
     <loc>https://spectrepro.pro/categories/</loc>
+  </url><url>
+    <loc>https://spectrepro.pro/blog/tech/git/</loc>
+  </url><url>
+    <loc>https://spectrepro.pro/</loc>
   </url><url>
     <loc>https://spectrepro.pro/tags/</loc>
   </url><url>
