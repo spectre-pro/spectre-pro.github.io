@@ -1,6 +1,7 @@
 ---
 title: SPECTRE NOTE
 layout: hextra-home
+comments: false
 ---
 
 <style>

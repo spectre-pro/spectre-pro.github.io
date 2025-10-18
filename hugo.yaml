@@ -16,6 +16,15 @@ params:
   theme:
     default: system
     displayToggle: true
+  comments:
+    enable: true
+    type: giscus
+    giscus:
+      repo: spectre-pro/spectre-pro.github.io
+      repoId: R_kgDOOz-m3A
+      category: Announcements
+      categoryId: DIC_kwDOOz-m3M4CrO4f
+
 
 menu:
   main:

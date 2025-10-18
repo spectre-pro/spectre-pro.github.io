@@ -1,5 +1,6 @@
 ---
 title: "Note"
+comments: false
 ---
 <br>  
 
