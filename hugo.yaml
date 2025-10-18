@@ -24,6 +24,9 @@ params:
       repoId: R_kgDOOz-m3A
       category: Announcements
       categoryId: DIC_kwDOOz-m3M4CrO4f
+  editURL:
+    enable: true
+    base: "https://github.com/spectre-pro/spectre-pro.github.io/edit/main/content"
 
 
 menu:
@@ -43,6 +46,17 @@ menu:
       url: "https://github.com/spectre-pro"
       params:
         icon: github
+  sidebar:
+    - name: 更多
+      params:
+        type: separator
+      weight: 1
+    - name: "About"
+      pageRef: "/about"
+      weight: 2
+    - name: "This website repository"
+      url: "https://github.com/spectre-pro/spectre-pro.github.io"
+      weight: 3
 
 markup:
   goldmark:
