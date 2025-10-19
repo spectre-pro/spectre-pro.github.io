@@ -2,6 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://spectrepro.pro/docs/tech/video/1-gemini-proxy/</loc>
+  </url><url>
     <loc>https://spectrepro.pro/docs/tech/1-git/</loc>
   </url><url>
     <loc>https://spectrepro.pro/docs/tech/python/1-pyenv/</loc>
@@ -18,15 +20,25 @@
   </url><url>
     <loc>https://spectrepro.pro/docs/school/2-english/</loc>
   </url><url>
-    <loc>https://spectrepro.pro/docs/tech/python/</loc>
+    <loc>https://spectrepro.pro/docs/tech/video/2-open-webui/</loc>
   </url><url>
     <loc>https://spectrepro.pro/docs/school/</loc>
   </url><url>
+    <loc>https://spectrepro.pro/docs/tech/video/</loc>
+  </url><url>
     <loc>https://spectrepro.pro/docs/school/1-chinese/2-%E9%AD%9A%E6%88%91%E6%89%80%E6%AC%B2%E4%B9%9F/</loc>
+  </url><url>
+    <loc>https://spectrepro.pro/docs/tech/python/</loc>
   </url><url>
     <loc>https://spectrepro.pro/docs/school/3-math/</loc>
   </url><url>
+    <loc>https://spectrepro.pro/docs/tech/video/3-domain/</loc>
+  </url><url>
     <loc>https://spectrepro.pro/docs/school/4-m2/</loc>
+  </url><url>
+    <loc>https://spectrepro.pro/docs/tech/video/4-ubuntu/</loc>
+  </url><url>
+    <loc>https://spectrepro.pro/docs/tech/video/5-github-ai/</loc>
   </url><url>
     <loc>https://spectrepro.pro/docs/school/5-phy/</loc>
   </url><url>
