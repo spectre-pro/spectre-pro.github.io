@@ -41,8 +41,13 @@ menu:
       weight: 3
       params:
         type: search
-    - name: GitHub
+    - name: YouTube
       weight: 4
+      url: "https://youtube.com/@spectre-pro"
+      params:
+        icon: youtube
+    - name: GitHub
+      weight: 5
       url: "https://github.com/spectre-pro"
       params:
         icon: github
