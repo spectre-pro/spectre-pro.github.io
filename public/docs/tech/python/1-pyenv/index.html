@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<html lang="en" dir="ltr"><head>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4421097292963871"
         crossorigin="anonymous"></script>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="robots" content="noindex, nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="robots" content="index, follow" />
   <link rel="icon shortcut" href="/favicon.ico" sizes="32x32" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" id="favicon-svg" />
 <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
@@ -14,7 +14,7 @@
   <meta name="description" content="pyenv 是一個強大的 Python 版本管理工具，主要用於 Linux 和 macOS 系統。
 對於 Windows 使用者，推薦使用pyenv-win 專案，它是 pyenv 在 Windows 上的移植版本。本教學將涵蓋這兩個工具的安裝、設定與基本使用。
 pyenv/pyenv-win 簡介 作用：讓你輕鬆安裝、管理並切換多個 Python 版本，而不會影響系統預設的 Python 環境。 優點： 版本隔離：在使用者層級管理 Python 版本，避免與系統 Python 衝突。 專案獨立：可以為不同專案設定獨立的 Python 版本。 易於切換：透過簡單的指令即可快速切換 Python 版本。 pyenv vs pyenv-win： pyenv：原生支援 Linux、macOS 和其他類 Unix 系統。 pyenv-win：專為 Windows 設計，安裝原生 Windows Python 版本。 安裝 pyenv (Linux/macOS) 在安裝 pyenv 之前，請確保你的系統已安裝必要的建置依賴項。具體依賴項列表請參考 pyenv 官方文件。
-方法一：使用自動安裝程式 (推薦) 這個安裝程式會自動將 pyenv 及其常用外掛 (如 pyenv-build, pyenv-virtualenv, pyenv-update) 安裝到 $HOME/.pyenv 目錄。" /><link rel="canonical" href="http://localhost:1313/docs/tech/python/1-pyenv/" itemprop="url" />
+方法一：使用自動安裝程式 (推薦) 這個安裝程式會自動將 pyenv 及其常用外掛 (如 pyenv-build, pyenv-virtualenv, pyenv-update) 安裝到 $HOME/.pyenv 目錄。" /><link rel="canonical" href="https://spectrepro.pro/docs/tech/python/1-pyenv/" itemprop="url" />
 
 <meta property="og:title" content="pyenv 與 pyenv-win 全面教學">
 <meta
@@ -53,7 +53,7 @@ pyenv-win：專為 Windows 設計，安裝原生 Windows Python 版本。
   content="
     article
   ">
-<meta property="og:url" content="http://localhost:1313/docs/tech/python/1-pyenv/"><meta property="article:section" content="docs">
+<meta property="og:url" content="https://spectrepro.pro/docs/tech/python/1-pyenv/"><meta property="article:section" content="docs">
 
 
 
@@ -70,12 +70,18 @@ pyenv/pyenv-win 簡介 作用：讓你輕鬆安裝、管理並切換多個 Pytho
 對於 Windows 使用者，推薦使用pyenv-win 專案，它是 pyenv 在 Windows 上的移植版本。本教學將涵蓋這兩個工具的安裝、設定與基本使用。
 pyenv/pyenv-win 簡介 作用：讓你輕鬆安裝、管理並切換多個 Python 版本，而不會影響系統預設的 Python 環境。 優點： 版本隔離：在使用者層級管理 Python 版本，避免與系統 Python 衝突。 專案獨立：可以為不同專案設定獨立的 Python 版本。 易於切換：透過簡單的指令即可快速切換 Python 版本。 pyenv vs pyenv-win： pyenv：原生支援 Linux、macOS 和其他類 Unix 系統。 pyenv-win：專為 Windows 設計，安裝原生 Windows Python 版本。 安裝 pyenv (Linux/macOS) 在安裝 pyenv 之前，請確保你的系統已安裝必要的建置依賴項。具體依賴項列表請參考 pyenv 官方文件。
 方法一：使用自動安裝程式 (推薦) 這個安裝程式會自動將 pyenv 及其常用外掛 (如 pyenv-build, pyenv-virtualenv, pyenv-update) 安裝到 $HOME/.pyenv 目錄。">
-<link href="/css/compiled/main.css" rel="stylesheet" />
-    <link href="/css/variables.css" rel="stylesheet" />
-    <link href="/css/custom.css" rel="stylesheet" />
+
+    <link rel="preload" href="/css/compiled/main.min.f1286e08894e4edb7578e277f8af9252465cacf0a6e1ffc14d2218d4b5f80571.css" as="style" integrity="sha256-8ShuCIlOTtt1eOJ3&#43;K&#43;SUkZcrPCm4f/BTSIY1LX4BXE=" />
+    <link href="/css/compiled/main.min.f1286e08894e4edb7578e277f8af9252465cacf0a6e1ffc14d2218d4b5f80571.css" rel="stylesheet" integrity="sha256-8ShuCIlOTtt1eOJ3&#43;K&#43;SUkZcrPCm4f/BTSIY1LX4BXE=" />
 
   
-<script src="/js/main-head.js" integrity=""></script>
+
+
+
+
+
+
+<script src="/js/main-head.min.94da6f95b126542222dab3a6e07ffefe1aaf63ec3ca555e827b58b80e7d3f0b7.js" integrity="sha256-lNpvlbEmVCIi2rOm4H/&#43;/hqvY&#43;w8pVXoJ7WLgOfT8Lc="></script>
 
   
   
@@ -1608,8 +1614,8 @@ pyenv/pyenv-win 簡介 作用：讓你輕鬆安裝、管理並切換多個 Pytho
   </a></div></div>
     </div></footer>
     
-    <script defer src="/js/main.js" integrity=""></script>
-<script defer src="/js/flexsearch.9f5b5908f93ae86f1ecd4b043b799f580c2d1654e703dd9357d568ac41b2547a.js" integrity="sha256-n1tZCPk66G8ezUsEO3mfWAwtFlTnA92TV9VorEGyVHo=" crossorigin="anonymous"></script>
-        <script defer src="/en.search.js" integrity=""></script>
+    <script defer src="/js/main.min.72aae66d9675cb190e04bd13fa6d179d8c15992a48ad1f3fd59e72c75f917861.js" integrity="sha256-cqrmbZZ1yxkOBL0T&#43;m0XnYwVmSpIrR8/1Z5yx1&#43;ReGE="></script>
+<script defer src="/js/flexsearch.433e941a8a573ebb9931fc16fc75266ab6b93f569ac2fb4f3dc66882e0416f4c.js" integrity="sha256-Qz6UGopXPruZMfwW/HUmara5P1aawvtPPcZoguBBb0w=" crossorigin="anonymous"></script>
+        <script defer src="/en.search.min.097e3a24da0aba2ac82ef0f53e82e1500343a7126260a0203f3a45bbe0876093.js" integrity="sha256-CX46JNoKuirILvD1PoLhUANDpxJiYKAgPzpFu&#43;CHYJM="></script>
   </body>
 </html>
