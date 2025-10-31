@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SPECTRE NOTE – School</title>
-    <link>https://spectrepro.pro/docs/school/</link>
+    <link>http://localhost:1313/docs/school/</link>
     <description>Recent content in School on SPECTRE NOTE</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     
-	  <atom:link href="https://spectrepro.pro/docs/school/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="http://localhost:1313/docs/school/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -16,10 +16,10 @@
     
     <item>
       <title>中文</title>
-      <link>https://spectrepro.pro/docs/school/1-chinese/</link>
+      <link>http://localhost:1313/docs/school/1-chinese/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://spectrepro.pro/docs/school/1-chinese/</guid>
+      <guid>http://localhost:1313/docs/school/1-chinese/</guid>
       <description>
         
         
@@ -31,10 +31,10 @@
     
     <item>
       <title>English</title>
-      <link>https://spectrepro.pro/docs/school/2-english/</link>
+      <link>http://localhost:1313/docs/school/2-english/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://spectrepro.pro/docs/school/2-english/</guid>
+      <guid>http://localhost:1313/docs/school/2-english/</guid>
       <description>
         
         
@@ -46,10 +46,10 @@ The curriculum provides students with learning experiences to increase their lan
     
     <item>
       <title>數學</title>
-      <link>https://spectrepro.pro/docs/school/3-math/</link>
+      <link>http://localhost:1313/docs/school/3-math/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://spectrepro.pro/docs/school/3-math/</guid>
+      <guid>http://localhost:1313/docs/school/3-math/</guid>
       <description>
         
         
@@ -61,10 +61,10 @@ The curriculum provides students with learning experiences to increase their lan
     
     <item>
       <title>M2</title>
-      <link>https://spectrepro.pro/docs/school/4-m2/</link>
+      <link>http://localhost:1313/docs/school/4-m2/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://spectrepro.pro/docs/school/4-m2/</guid>
+      <guid>http://localhost:1313/docs/school/4-m2/</guid>
       <description>
         
         
@@ -76,10 +76,10 @@ The curriculum provides students with learning experiences to increase their lan
     
     <item>
       <title>物理</title>
-      <link>https://spectrepro.pro/docs/school/5-phy/</link>
+      <link>http://localhost:1313/docs/school/5-phy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://spectrepro.pro/docs/school/5-phy/</guid>
+      <guid>http://localhost:1313/docs/school/5-phy/</guid>
       <description>
         
         
@@ -90,10 +90,10 @@ The curriculum provides students with learning experiences to increase their lan
     
     <item>
       <title>ICT</title>
-      <link>https://spectrepro.pro/docs/school/6-ict/</link>
+      <link>http://localhost:1313/docs/school/6-ict/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://spectrepro.pro/docs/school/6-ict/</guid>
+      <guid>http://localhost:1313/docs/school/6-ict/</guid>
       <description>
         
         

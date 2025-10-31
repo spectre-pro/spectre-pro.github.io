@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SPECTRE NOTE – About Me</title>
-    <link>https://spectrepro.pro/about/</link>
+    <link>http://localhost:1313/about/</link>
     <description>Recent content in About Me on SPECTRE NOTE</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     
-	  <atom:link href="https://spectrepro.pro/about/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="http://localhost:1313/about/index.xml" rel="self" type="application/rss+xml" />
     
     
       

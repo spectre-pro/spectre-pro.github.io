@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SPECTRE NOTE – Video</title>
-    <link>https://spectrepro.pro/docs/tech/video/</link>
+    <link>http://localhost:1313/docs/tech/video/</link>
     <description>Recent content in Video on SPECTRE NOTE</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     
-	  <atom:link href="https://spectrepro.pro/docs/tech/video/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="http://localhost:1313/docs/tech/video/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -16,10 +16,10 @@
     
     <item>
       <title>Gemini proxy</title>
-      <link>https://spectrepro.pro/docs/tech/video/1-gemini-proxy/</link>
+      <link>http://localhost:1313/docs/tech/video/1-gemini-proxy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://spectrepro.pro/docs/tech/video/1-gemini-proxy/</guid>
+      <guid>http://localhost:1313/docs/tech/video/1-gemini-proxy/</guid>
       <description>
         
         
@@ -35,10 +35,10 @@
     
     <item>
       <title>Open WebUI</title>
-      <link>https://spectrepro.pro/docs/tech/video/2-open-webui/</link>
+      <link>http://localhost:1313/docs/tech/video/2-open-webui/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://spectrepro.pro/docs/tech/video/2-open-webui/</guid>
+      <guid>http://localhost:1313/docs/tech/video/2-open-webui/</guid>
       <description>
         
         
@@ -51,10 +51,10 @@
     
     <item>
       <title>白嫖域名</title>
-      <link>https://spectrepro.pro/docs/tech/video/3-domain/</link>
+      <link>http://localhost:1313/docs/tech/video/3-domain/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://spectrepro.pro/docs/tech/video/3-domain/</guid>
+      <guid>http://localhost:1313/docs/tech/video/3-domain/</guid>
       <description>
         
         
@@ -67,10 +67,10 @@
     
     <item>
       <title>舊電腦復活計畫</title>
-      <link>https://spectrepro.pro/docs/tech/video/4-ubuntu/</link>
+      <link>http://localhost:1313/docs/tech/video/4-ubuntu/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://spectrepro.pro/docs/tech/video/4-ubuntu/</guid>
+      <guid>http://localhost:1313/docs/tech/video/4-ubuntu/</guid>
       <description>
         
         
@@ -83,10 +83,10 @@
     
     <item>
       <title>GitHub AI 終極白嫖指南</title>
-      <link>https://spectrepro.pro/docs/tech/video/5-github-ai/</link>
+      <link>http://localhost:1313/docs/tech/video/5-github-ai/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://spectrepro.pro/docs/tech/video/5-github-ai/</guid>
+      <guid>http://localhost:1313/docs/tech/video/5-github-ai/</guid>
       <description>
         
         
