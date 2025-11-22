@@ -25,11 +25,11 @@
         
         &lt;h2&gt;Git&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;git&#34;&gt;&lt;/span&gt;
     &lt;a href=&#34;#git&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;使用者資料(只需在下載git後運行一次)
+&lt;li&gt;使用者資料(只需在下載 git 後運行一次)
 &lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
 
-&lt;div&gt;&lt;pre&gt;&lt;code&gt;git config --global user.name &amp;#34;name&amp;#34;  
-git config --global user.email &amp;#34;name@email.com&amp;#34;  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;git config --global user.name &amp;#34;name&amp;#34;
+git config --global user.email &amp;#34;name@email.com&amp;#34;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
   &lt;button
     class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
     title=&#34;Copy code&#34;
@@ -52,20 +52,20 @@ git config --global user.email &amp;#34;name@email.com&amp;#34;  &lt;/code&gt;&l
 &lt;ol start=&#34;3&#34;&gt;
 &lt;li&gt;Branch:&lt;br&gt;
 &lt;code&gt;git checkout -b { branchName }&lt;/code&gt; (add 分支)&lt;br&gt;
-&lt;code&gt;git push { branchName }&lt;/code&gt;(推送branch)&lt;br&gt;
+&lt;code&gt;git push { branchName }&lt;/code&gt;(推送 branch)&lt;br&gt;
 &lt;code&gt; git merge { 被合併分支 branchName }&lt;/code&gt;(merge branch)&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;ol start=&#34;4&#34;&gt;
 &lt;li&gt;other:&lt;br&gt;
 &lt;code&gt;git log&lt;/code&gt; (日誌)&lt;br&gt;
-&lt;code&gt;git log  --oneline&lt;/code&gt;(日誌line)&lt;br&gt;
+&lt;code&gt;git log  --oneline&lt;/code&gt;(日誌 line)&lt;br&gt;
 &lt;code&gt;git diff ID&lt;/code&gt; (比較)&lt;br&gt;
 &lt;code&gt;git checkout ID -- file_name&lt;/code&gt; （應用）&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;h2&gt;GITHUB&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;github&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#github&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;git push&lt;/code&gt; (上傳github)&lt;br&gt;
+    &lt;a href=&#34;#github&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;git push&lt;/code&gt; (上傳 github)&lt;br&gt;
 &lt;code&gt;git clone  URL&lt;/code&gt; (fork the repo)&lt;br&gt;
 &lt;code&gt;git pull&lt;/code&gt; (同步)&lt;br&gt;
 &lt;code&gt;git pull --rebase&lt;/code&gt;（把遠端的檔案拉到自己的本地，把本地最新的資料放到最前面）&lt;/p&gt;
