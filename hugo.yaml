@@ -51,6 +51,11 @@ menu:
       url: "https://github.com/spectre-pro"
       params:
         icon: github
+    - name: Theme Toggle
+      weight: 6
+      params:
+        type: theme-toggle
+
   sidebar:
     - name: 更多
       params:
