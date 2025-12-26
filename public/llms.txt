@@ -38,6 +38,10 @@ YouTube BiliBili - Published 2025-12-27
 孟子曰︰「 魚，我所欲也，熊掌，亦我所欲也；二者不可得兼，舍 …
 - [廉頗藺相如列傳](https://www.spectrepro.dev/docs/school/1-chinese/3-%E5%BB%89%E9%A0%97%E8%97%BA%E7%9B%B8%E5%A6%82%E5%88%97%E5%82%B3/): 完璧歸趙 澠池之會 負荊請罪 主旨
 本文記述了「完璧歸趙」、「澠池之會」與「負荊請罪」三個故事，交代了藺相如敢於對抗強秦、維護趙國尊嚴的事跡，以及他跟廉頗兩人由矛盾到和好的過程。文中刻畫出藺相如智勇 …
+- [山居秋暝](https://www.spectrepro.dev/docs/school/1-chinese/4-%E5%B1%B1%E5%B1%85%E7%A7%8B%E6%9A%9D/): 空山新雨後，天氣晚來秋。
+明月松間照，清泉石上流。
+竹喧歸浣女，蓮動下漁舟。
+隨意春芳歇，王孫自可留。
 
 #### English
 - [Tenses](https://www.spectrepro.dev/docs/school/2-english/1-tenses/): 理解英文時態的關鍵在於掌握兩個核心概念：
@@ -69,5 +73,5 @@ YouTube BiliBili - Published 2025-12-27
 
 
 ---
-Generated on 2025-12-27 02:20:13 UTC
+Generated on 2025-12-27 02:25:14 UTC
 Site: https://www.spectrepro.dev/
