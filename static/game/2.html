@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>漢諾塔</title>
+    <style>
+        :root {
+            --bg-color: #0f1014;
+            --card-bg: #1a1c23;
+            --text-main: #ffffff;
+            --text-dim: #94a3b8;
+            --accent: #3b82f6;
+            --success: #10b981;
+            --danger: #ef4444;
+            --peg-color: #334155;
+            /* 盤子漸層色彩 */
+            --grad-1: linear-gradient(135deg, #6366f1, #a855f7);
+            --grad-2: linear-gradient(135deg, #3b82f6, #2dd4bf);
+            --grad-3: linear-gradient(135deg, #f59e0b, #ef4444);
+            --grad-4: linear-gradient(135deg, #10b981, #3b82f6);
+            --grad-5: linear-gradient(135deg, #ec4899, #8b5cf6);
+            --grad-6: linear-gradient(135deg, #f43f5e, #fb923c);
+            --grad-7: linear-gradient(135deg, #06b6d4, #3b82f6);
+            --grad-8: linear-gradient(135deg, #84cc16, #10b981);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .app-container {
+            width: 100%;
+            max-width: 1000px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* 標題與統計區域 */
+        header {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.025em;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .stats-bar span b {
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        /* 控制面板 */
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            background: var(--card-bg);
+            padding: 1rem 2rem;
+            border-radius: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        select, button {
+            background: #2a2d37;
+            border: 1px solid #3f4451;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        select:hover, button:hover {
+            background: #3f4451;
+            border-color: var(--accent);
+        }
+
+        button.primary {
+            background: var(--accent);
+            border-color: var(--accent);
+            font-weight: 600;
+        }
+
+        button.primary:hover {
+            background: #2563eb;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+
+        /* 遊戲主體區域 */
+        .game-world {
+            height: 400px;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            position: relative;
+            background: rgba(255,255,255,0.02);
+            border-radius: 24px;
+            padding-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.03);
+        }
+
+        /* 塔柱 */
+        .peg-container {
+            width: 30%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+            transition: background 0.3s;
+            border-radius: 16px;
+        }
+
+        .peg-container:hover {
+            background: rgba(255,255,255,0.03);
+        }
+
+        .peg-container.active {
+            background: rgba(59, 130, 246, 0.08);
+        }
+
+        /* 垂直杆子 */
+        .peg-rod {
+            width: 8px;
+            height: 280px;
+            background: var(--peg-color);
+            border-radius: 4px;
+            position: absolute;
+            bottom: 20px;
+            z-index: 1;
+        }
+
+        /* 底部盤托 */
+        .peg-base {
+            width: 80%;
+            height: 8px;
+            background: var(--peg-color);
+            border-radius: 4px;
+            position: absolute;
+            bottom: 12px;
+        }
+
+        /* 盤子 */
+        .disc {
+            height: 32px;
+            border-radius: 12px;
+            position: absolute;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.9);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: all 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+        }
+
+        .disc.selected {
+            transform: translateY(-40px) scale(1.05) !important;
+            box-shadow: 0 20px 30px rgba(0,0,0,0.5), 0 0 15px var(--accent);
+            filter: brightness(1.2);
+            z-index: 100;
+        }
+
+        /* 盤子顏色分配 */
+        .disc-1 { background: var(--grad-1); }
+        .disc-2 { background: var(--grad-2); }
+        .disc-3 { background: var(--grad-3); }
+        .disc-4 { background: var(--grad-4); }
+        .disc-5 { background: var(--grad-5); }
+        .disc-6 { background: var(--grad-6); }
+        .disc-7 { background: var(--grad-7); }
+        .disc-8 { background: var(--grad-8); }
+
+        /* 提示訊息 */
+        .message-box {
+            height: 24px;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .text-error { color: var(--danger); }
+        .text-success { color: var(--success); }
+
+        /* 響應式優化 */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .game-world { height: 320px; }
+            .peg-rod { height: 200px; }
+            .disc { height: 26px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <header>
+            <h1>TOWER OF HANOI</h1>
+            <div class="stats-bar">
+                <span>移動次數: <b id="move-count">0</b></span>
+                <span>最少目標: <b id="min-moves">0</b></span>
+            </div>
+        </header>
+
+        <div class="controls">
+            <label style="color: var(--text-dim); font-size: 0.8rem;">難度選擇</label>
+            <select id="disc-select">
+                <option value="3">3 個盤子</option>
+                <option value="4">4 個盤子</option>
+                <option value="5" selected>5 個盤子</option>
+                <option value="6">6 個盤子</option>
+                <option value="7">7 個盤子</option>
+                <option value="8">8 個盤子</option>
+            </select>
+            <button class="primary" id="reset-btn">重設</button>
+        </div>
+
+        <div class="message-box" id="message"></div>
+
+        <div class="game-world">
+            <div class="peg-container" data-index="0">
+                <div class="peg-rod"></div>
+                <div class="peg-base"></div>
+            </div>
+            <div class="peg-container" data-index="1">
+                <div class="peg-rod"></div>
+                <div class="peg-base"></div>
+            </div>
+            <div class="peg-container" data-index="2">
+                <div class="peg-rod"></div>
+                <div class="peg-base"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * 遊戲邏輯與控制
+         */
+        class HanoiGame {
+            constructor() {
+                this.pegs = [[], [], []];
+                this.numDiscs = 5;
+                this.moves = 0;
+                this.selectedPeg = null;
+                this.isLocked = false;
+
+                this.uiPegs = document.querySelectorAll('.peg-container');
+                this.uiMoveCount = document.getElementById('move-count');
+                this.uiMinMoves = document.getElementById('min-moves');
+                this.uiMessage = document.getElementById('message');
+                this.uiSelect = document.getElementById('disc-select');
+                this.uiReset = document.getElementById('reset-btn');
+
+                this.init();
+            }
+
+            init() {
+                // 綁定事件
+                this.uiReset.addEventListener('click', () => this.reset());
+                this.uiSelect.addEventListener('change', () => this.reset());
+                this.uiPegs.forEach(peg => {
+                    peg.addEventListener('click', () => this.handlePegClick(peg));
+                });
+
+                this.reset();
+            }
+
+            reset() {
+                this.numDiscs = parseInt(this.uiSelect.value);
+                this.pegs = [[], [], []];
+                this.moves = 0;
+                this.selectedPeg = null;
+                this.isLocked = false;
+
+                // 初始化第一個塔柱
+                for (let i = this.numDiscs; i >= 1; i--) {
+                    this.pegs[0].push(i);
+                }
+
+                // 計算最少步數 2^n - 1
+                const min = Math.pow(2, this.numDiscs) - 1;
+                this.uiMinMoves.textContent = min;
+                
+                this.clearMessage();
+                this.updateUI();
+            }
+
+            handlePegClick(pegElement) {
+                if (this.isLocked) return;
+
+                const pegIndex = parseInt(pegElement.dataset.index);
+                
+                if (this.selectedPeg === null) {
+                    // 選取階段
+                    if (this.pegs[pegIndex].length === 0) return;
+                    
+                    this.selectedPeg = pegIndex;
+                    this.highlightPeg(pegIndex, true);
+                    this.highlightDisc(pegIndex, true);
+                } else {
+                    // 放置階段
+                    if (this.selectedPeg === pegIndex) {
+                        // 點擊同一個，取消選取
+                        this.highlightPeg(this.selectedPeg, false);
+                        this.highlightDisc(this.selectedPeg, false);
+                        this.selectedPeg = null;
+                        return;
+                    }
+
+                    const sourcePeg = this.pegs[this.selectedPeg];
+                    const targetPeg = this.pegs[pegIndex];
+                    const discToMove = sourcePeg[sourcePeg.length - 1];
+                    const topDiscOnTarget = targetPeg[targetPeg.length - 1];
+
+                    if (!topDiscOnTarget || discToMove < topDiscOnTarget) {
+                        // 合法移動
+                        sourcePeg.pop();
+                        targetPeg.push(discToMove);
+                        this.moves++;
+                        this.completeMove(pegIndex);
+                    } else {
+                        // 不合法移動
+                        this.showMessage("這不符合規則：大盤不能放小盤上", "text-error");
+                        this.highlightPeg(this.selectedPeg, false);
+                        this.highlightDisc(this.selectedPeg, false);
+                        this.selectedPeg = null;
+                    }
+                }
+            }
+
+            completeMove(targetIndex) {
+                this.highlightPeg(this.selectedPeg, false);
+                this.selectedPeg = null;
+                this.updateUI();
+                this.clearMessage();
+
+                // 檢查勝利
+                if (this.pegs[2].length === this.numDiscs) {
+                    this.showMessage(`完美！你用了 ${this.moves} 步完成了挑戰！`, "text-success");
+                    this.isLocked = true;
+                }
+            }
+
+            updateUI() {
+                this.uiMoveCount.textContent = this.moves;
+
+                // 渲染所有盤子
+                // 做法：先清除所有現有的 disc 元素，再根據 state 重新繪製
+                const existingDiscs = document.querySelectorAll('.disc');
+                existingDiscs.forEach(d => d.remove());
+
+                this.pegs.forEach((peg, pegIdx) => {
+                    peg.forEach((discSize, discIdx) => {
+                        const discEl = document.createElement('div');
+                        discEl.className = `disc disc-${discSize}`;
+                        discEl.textContent = discSize;
+                        
+                        // 計算寬度 (盤子越大越寬)
+                        const width = 40 + (discSize * (220 / this.numDiscs));
+                        discEl.style.width = `${width}px`;
+                        
+                        // 計算位置
+                        discEl.style.bottom = `${20 + (discIdx * 35)}px`;
+                        discEl.style.left = `calc(50% - ${width/2}px)`;
+
+                        this.uiPegs[pegIdx].appendChild(discEl);
+                    });
+                });
+            }
+
+            highlightPeg(index, active) {
+                if (active) this.uiPegs[index].classList.add('active');
+                else this.uiPegs.forEach(p => p.classList.remove('active'));
+            }
+
+            highlightDisc(pegIndex, active) {
+                const discs = this.uiPegs[pegIndex].querySelectorAll('.disc');
+                if (discs.length > 0) {
+                    const topDisc = discs[discs.length - 1];
+                    if (active) topDisc.classList.add('selected');
+                    else topDisc.classList.remove('selected');
+                }
+            }
+
+            showMessage(txt, className) {
+                this.uiMessage.textContent = txt;
+                this.uiMessage.className = `message-box ${className}`;
+            }
+
+            clearMessage() {
+                this.uiMessage.textContent = "";
+            }
+        }
+
+        // 啟動遊戲
+        window.addEventListener('DOMContentLoaded', () => {
+            new HanoiGame();
+        });
+    </script>
+</body>
+</html>

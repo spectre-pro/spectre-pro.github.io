@@ -1,0 +1,72 @@
+# SPECTRE NOTE
+
+> <no value>
+
+
+## Game
+
+## Note
+
+### Tech
+- [](https://www.spectrepro.dev/docs/tech/github-alerts/): Note
+[!NOTE]
+Tip
+- [Git & Github](https://www.spectrepro.dev/docs/tech/git/): Git 使用者資料(只需在下載 git 後運行一次) git config --global user.name &#34;name&#34; git config --global …
+
+#### 
+
+#### Python
+- [pyenv 與 pyenv-win 全面教學](https://www.spectrepro.dev/docs/tech/python/1-pyenv/): pyenv 是一個強大的 Python 版本管理工具，主要用於 Linux 和 macOS 系統。
+對於 Windows 使用者，推薦使用pyenv-win 專案，它是 pyenv 在 Windows …
+
+#### Video
+- [Gemini proxy](https://www.spectrepro.dev/docs/tech/video/1-gemini-proxy/): https://github.com/spectre-pro/gemini-proxy
+github
+YouTube BiliBili
+- [Open WebUI](https://www.spectrepro.dev/docs/tech/video/2-open-webui/): YouTube BiliBili
+- [白嫖域名](https://www.spectrepro.dev/docs/tech/video/3-domain/): 不用付錢，也能擁有自己的網址！超簡單域名申請教學YouTube BiliBili
+- [舊電腦復活計畫](https://www.spectrepro.dev/docs/tech/video/4-ubuntu/): 別再讓它吃灰！三十分鐘變身 7x24 小時終極家庭伺服器 (Ubuntu Server + Docker + cockpit + SMB)YouTube BiliBili
+- [GitHub AI 終極白嫖指南](https://www.spectrepro.dev/docs/tech/video/5-github-ai/): 一個賬號，免費試用所有頂級 AI！ GitHub AI 申請教學 (內含 GPT-4, Grok, DeepSeek)。YouTube BiliBili
+
+### School
+
+#### 中文
+- [論仁、論孝、論君子](https://www.spectrepro.dev/docs/school/1-chinese/1-%E8%AB%96%E4%BB%81%E8%AB%96%E5%AD%9D%E8%AB%96%E5%90%9B%E5%AD%90/): 論仁 論孝 論君子 主旨
+本篇所選各則，概括了孔子有關「仁」、「孝」和「君子」的重要理論，從而表達了儒家學說的基本概念，以內心的修養去私(仁)為根本，使人的一切言行能合乎禮儀的規範，這樣便可成為君子 …
+- [魚我所欲也](https://www.spectrepro.dev/docs/school/1-chinese/2-%E9%AD%9A%E6%88%91%E6%89%80%E6%AC%B2%E4%B9%9F/): 主旨
+孟子從生活例子切入，用魚和熊掌比喻生和義之間的選擇，繼而道出人人皆有比生命更重要的原則，並以不同例子勸勉時人堅守原則，不要忘記本心
+孟子曰︰「 魚，我所欲也，熊掌，亦我所欲也；二者不可得兼，舍 …
+- [廉頗藺相如列傳](https://www.spectrepro.dev/docs/school/1-chinese/3-%E5%BB%89%E9%A0%97%E8%97%BA%E7%9B%B8%E5%A6%82%E5%88%97%E5%82%B3/): 完璧歸趙 澠池之會 負荊請罪 主旨
+本文記述了「完璧歸趙」、「澠池之會」與「負荊請罪」三個故事，交代了藺相如敢於對抗強秦、維護趙國尊嚴的事跡，以及他跟廉頗兩人由矛盾到和好的過程。文中刻畫出藺相如智勇 …
+
+#### English
+- [Tenses](https://www.spectrepro.dev/docs/school/2-english/1-tenses/): 理解英文時態的關鍵在於掌握兩個核心概念：
+時間點 (Time)：事件發生在過去、現在還是未來？ 動作狀態 (Action Status)：動作是「一次性完成」、「持續進行中」，還是「在某個時間點之前就 …
+
+#### 數學
+- [4A 第二課 直線的方程](https://www.spectrepro.dev/docs/school/3-math/1-4a-%E7%AC%AC%E4%BA%8C%E8%AA%B2-%E7%9B%B4%E7%B7%9A%E7%9A%84%E6%96%B9%E7%A8%8B/): y−y1=(斜率)(x−x1) y-y_1 = (\text{斜率})(x-x_1) y−y1​=(斜率)(x−x1​) 替換 y1 &amp; x1 \text{替換}\ y_1\ \&amp;\ …
+- [4A 第三課 一元二次方程](https://www.spectrepro.dev/docs/school/3-math/2-4a-%E7%AC%AC%E4%B8%89%E8%AA%B2-%E4%B8%80%E5%85%83%E4%BA%8C%E6%AC%A1%E6%96%B9%E7%A8%8B/): 因式法 (FMLA 01): ax2+bx+c=0 ax^2 + bx + c =0 ax2+bx+c=0 ↓ \downarrow ↓ (px+q)(rx+s)=0 (px+q)(rx+s) = 0 …
+- [4A 第五課 二次函數](https://www.spectrepro.dev/docs/school/3-math/3-4a-%E7%AC%AC%E4%BA%94%E8%AA%B2-%E4%BA%8C%E6%AC%A1%E5%87%BD%E6%95%B8/): 配方法 提取aaa（若a≠1a \neq 1a=1）： ax2+bx+c=a(x2+bax)+cax^2 + bx + c = a\left(x^2 + \frac{b}{a}x\right) + …
+
+#### M2
+- [](https://www.spectrepro.dev/docs/school/4-m2/%E4%BA%8C%E9%A0%85%E5%BC%8F%E5%AE%9A%E7%90%86/): !!!: 階乘
+6!=6×5×4×3×2×1=7206! = 6 \times 5 \times 4 \times 3 \times 2 \times 1 = …
+- [](https://www.spectrepro.dev/docs/school/4-m2/%E7%BA%8C%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B8/): Rad(弧度): π=180∘\pi=180^\circπ=180∘
+奇變偶不變 符號看象限 六個三個函數 sin⁡θ\sin\thetasinθ cos⁡θ\cos\thetacosθ …
+
+#### 物理
+- [B1 位置和移動-力和運動](https://www.spectrepro.dev/docs/school/5-phy/1-b1-%E4%BD%8D%E7%BD%AE%E5%92%8C%E7%A7%BB%E5%8B%95-%E5%8A%9B%E5%92%8C%E9%81%8B%E5%8B%95/): 概念 運動線圖 勻加速運動方程 重力 概念 無方向 有方向 距離 位移 速率 速度 加速度 運動線圖 位移-時間 線圖
+速度-時間 線圖
+位移=面積
+加速度-時間 線圖
+勻加速運動方程 u 是最初的 …
+- [B2 力和運動-力和運動](https://www.spectrepro.dev/docs/school/5-phy/2-b2-%E5%8A%9B%E5%92%8C%E9%81%8B%E5%8B%95-%E5%8A%9B%E5%92%8C%E9%81%8B%E5%8B%95/): 牛頓運動定律 隔離體圖 牛頓運動第一定律 若作用在該物體上的淨力為零，則該物體會保持靜止或繼續以勻速運動。
+牛頓運動第二定律 物體的加速度 (aaa) 和作用在物體上的淨力 (FFF) 方向相同，並 …
+
+#### ICT
+- [A2 試算表函數](https://www.spectrepro.dev/docs/school/6-ict/1-a2%E8%A9%A6%E7%AE%97%E8%A1%A8%E5%87%BD%E6%95%B8/): 目錄 數學與數值函數 Function 簡介 1. INT 無條件捨去數字的小數部分，傳回整數 2. RAND 產生一個大於或等於 0 且小於 1 的隨機亂數。每次重新計算工作表時，此數值都會變動。 …
+
+
+---
+Generated on 2025-12-27 01:14:56 UTC
+Site: https://www.spectrepro.dev/

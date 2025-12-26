@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星際霓虹射手 (Neon Space Shooter)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #000;
+            font-family: 'Orbitron', sans-serif;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        /* 遊戲 UI 容器 */
+        #ui-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* 讓點擊穿透到 Canvas */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+        }
+
+        /* 分數顯示 */
+        #score-board {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 1.5rem;
+            color: #fff;
+            z-index: 10;
+        }
+
+        #score-label {
+            font-size: 0.8rem;
+            color: #00ffff;
+            display: block;
+        }
+
+        /* 遊戲選單 */
+        #modal {
+            background: rgba(0, 0, 0, 0.85);
+            padding: 2rem 4rem;
+            border: 2px solid #00ffff;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3), inset 0 0 20px rgba(0, 255, 255, 0.1);
+            pointer-events: auto; /* 恢復選單的點擊功能 */
+            backdrop-filter: blur(5px);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0;
+            background: linear-gradient(to right, #00ffff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            color: #ccc;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        #big-score {
+            font-size: 4rem;
+            font-weight: bold;
+            display: none;
+            margin: 10px 0;
+        }
+
+        button {
+            background: transparent;
+            color: #00ffff;
+            border: 2px solid #00ffff;
+            padding: 10px 30px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        button:hover {
+            background: #00ffff;
+            color: #000;
+            box-shadow: 0 0 20px #00ffff;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 分數顯示 -->
+    <div id="score-board">
+        <span id="score-label">SCORE</span>
+        <span id="score">0</span>
+    </div>
+
+    <!-- 遊戲主選單/結束畫面 -->
+    <div id="ui-container">
+        <div id="modal">
+            <h1 id="game-title">NEON SHOOTER</h1>
+            <div id="big-score">0</div>
+            <p id="game-desc">滑鼠移動控制 • 點擊發射 • 存活下去</p>
+            <button id="start-btn">開始遊戲</button>
+        </div>
+    </div>
+
+    <canvas id="gameCanvas"></canvas>
+
+    <script>
+        // --- 遊戲設定與變數 ---
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        const scoreEl = document.getElementById('score');
+        const startBtn = document.getElementById('start-btn');
+        const modal = document.getElementById('modal');
+        const bigScoreEl = document.getElementById('big-score');
+        const gameTitle = document.getElementById('game-title');
+        const gameDesc = document.getElementById('game-desc');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let animationId;
+        let score = 0;
+        let gameActive = false;
+        let frame = 0;
+
+        // --- 音效系統 (Web Audio API - 合成音效) ---
+        // 這樣做的好處是不需要加載外部 mp3 文件
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        let audioCtx;
+
+        function initAudio() {
+            if (!audioCtx) audioCtx = new AudioContext();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+        }
+
+        function playSound(type) {
+            if (!audioCtx) return;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            const now = audioCtx.currentTime;
+
+            if (type === 'shoot') {
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(800, now);
+                osc.frequency.exponentialRampToValueAtTime(100, now + 0.1);
+                gain.gain.setValueAtTime(0.1, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
+                osc.start(now);
+                osc.stop(now + 0.1);
+            } else if (type === 'explosion') {
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(100, now);
+                osc.frequency.exponentialRampToValueAtTime(0.01, now + 0.3);
+                gain.gain.setValueAtTime(0.2, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+                osc.start(now);
+                osc.stop(now + 0.3);
+            } else if (type === 'gameover') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(400, now);
+                osc.frequency.exponentialRampToValueAtTime(50, now + 1);
+                gain.gain.setValueAtTime(0.3, now);
+                gain.gain.linearRampToValueAtTime(0, now + 1);
+                osc.start(now);
+                osc.stop(now + 1);
+            }
+        }
+
+        // --- 類別定義 ---
+
+        class Player {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.radius = 15;
+                this.color = '#00ffff';
+                this.velocity = { x: 0, y: 0 };
+            }
+
+            draw() {
+                ctx.beginPath();
+                // 畫一個更像飛船的三角形
+                ctx.moveTo(this.x + 20, this.y);
+                ctx.lineTo(this.x - 15, this.y - 10);
+                ctx.lineTo(this.x - 10, this.y);
+                ctx.lineTo(this.x - 15, this.y + 10);
+                ctx.closePath();
+                
+                ctx.fillStyle = this.color;
+                ctx.shadowBlur = 15;
+                ctx.shadowColor = this.color;
+                ctx.fill();
+                
+                // 引擎核心
+                ctx.beginPath();
+                ctx.arc(this.x - 5, this.y, 4, 0, Math.PI * 2, false);
+                ctx.fillStyle = '#fff';
+                ctx.fill();
+                
+                ctx.shadowBlur = 0; // 重置陰影
+            }
+
+            update(mouse) {
+                // 簡單的平滑跟隨滑鼠
+                const delay = 0.1;
+                this.x += (mouse.x - this.x) * delay;
+                this.y += (mouse.y - this.y) * delay;
+                this.draw();
+            }
+        }
+
+        class Projectile {
+            constructor(x, y, velocity) {
+                this.x = x;
+                this.y = y;
+                this.velocity = velocity;
+                this.radius = 4;
+                this.color = '#fff';
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+                ctx.fillStyle = this.color;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = '#00ffff';
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+
+            update() {
+                this.x = this.x + this.velocity.x;
+                this.y = this.y + this.velocity.y;
+                this.draw();
+            }
+        }
+
+        class Enemy {
+            constructor(x, y, radius, color, velocity) {
+                this.x = x;
+                this.y = y;
+                this.radius = radius;
+                this.color = color;
+                this.velocity = velocity;
+                // 旋轉效果
+                this.angle = 0;
+                this.spinSpeed = Math.random() * 0.1 - 0.05;
+                // 幾何形狀邊數 (3-6邊形)
+                this.sides = Math.floor(Math.random() * 4) + 3;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.angle);
+                
+                ctx.beginPath();
+                ctx.moveTo(this.radius, 0);
+                for (let i = 1; i < this.sides; i++) {
+                    ctx.lineTo(this.radius * Math.cos(i * 2 * Math.PI / this.sides), 
+                               this.radius * Math.sin(i * 2 * Math.PI / this.sides));
+                }
+                ctx.closePath();
+
+                ctx.strokeStyle = this.color;
+                ctx.lineWidth = 3;
+                ctx.shadowBlur = 15;
+                ctx.shadowColor = this.color;
+                ctx.stroke();
+                
+                // 內部填充稍微淡一點
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = 0.2;
+                ctx.fill();
+                
+                ctx.restore();
+            }
+
+            update() {
+                this.x = this.x + this.velocity.x;
+                this.y = this.y + this.velocity.y;
+                this.angle += this.spinSpeed;
+                this.draw();
+            }
+        }
+
+        const friction = 0.98; // 粒子摩擦力
+
+        class Particle {
+            constructor(x, y, radius, color, velocity) {
+                this.x = x;
+                this.y = y;
+                this.radius = radius;
+                this.color = color;
+                this.velocity = velocity;
+                this.alpha = 1;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                ctx.restore();
+            }
+
+            update() {
+                this.velocity.x *= friction;
+                this.velocity.y *= friction;
+                this.x = this.x + this.velocity.x;
+                this.y = this.y + this.velocity.y;
+                this.alpha -= 0.02; // 淡出速度
+                this.draw();
+            }
+        }
+
+        class Star {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.radius = Math.random() * 1.5;
+                this.speed = Math.random() * 2 + 0.5; // 背景移動速度
+            }
+            
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+                ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
+                ctx.fill();
+            }
+
+            update() {
+                this.x -= this.speed;
+                // 當星星移出左側螢幕時，重置到右側
+                if (this.x < 0) {
+                    this.x = canvas.width;
+                    this.y = Math.random() * canvas.height;
+                }
+                this.draw();
+            }
+        }
+
+        // --- 遊戲邏輯變數 ---
+        let player = new Player(canvas.width / 4, canvas.height / 2);
+        let projectiles = [];
+        let enemies = [];
+        let particles = [];
+        let stars = [];
+        let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+
+        // 初始化背景星空
+        function initStars() {
+            stars = [];
+            for (let i = 0; i < 100; i++) {
+                stars.push(new Star());
+            }
+        }
+
+        function initGame() {
+            player = new Player(canvas.width / 4, canvas.height / 2);
+            projectiles = [];
+            enemies = [];
+            particles = [];
+            score = 0;
+            frame = 0;
+            scoreEl.innerHTML = score;
+            bigScoreEl.innerHTML = score;
+            initStars();
+        }
+
+        function spawnEnemies() {
+            // 每秒產生敵人 (根據幀率)
+            if (frame % 50 === 0) {
+                // 敵人屬性
+                const radius = Math.random() * (30 - 10) + 10;
+                let x = canvas.width + radius;
+                let y = Math.random() * (canvas.height - radius * 2) + radius; // 避免太靠邊
+                
+                // 顏色選擇 (Neon Palette)
+                const colors = ['#ff00ff', '#ffff00', '#00ff00', '#ff5722'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                // 速度計算 (始終向左，但稍微瞄準玩家的垂直位置)
+                const angle = Math.atan2(player.y - y, player.x - x);
+                // 隨著分數增加，敵人變快
+                const speedMultiplier = 1 + (score / 2000); 
+                const velocity = {
+                    x: Math.cos(angle) * (Math.random() * 2 + 1) * speedMultiplier,
+                    y: Math.sin(angle) * (Math.random() * 2 + 1) * speedMultiplier
+                };
+
+                enemies.push(new Enemy(x, y, radius, color, velocity));
+            }
+        }
+
+        // --- 動畫主迴圈 ---
+        function animate() {
+            animationId = requestAnimationFrame(animate);
+            frame++;
+            
+            // 繪製半透明黑色背景以產生拖影效果 (Motion Blur)
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // 更新背景星空
+            stars.forEach(star => star.update());
+
+            // 更新玩家
+            player.update(mouse);
+
+            // 更新粒子 (爆炸效果)
+            particles.forEach((particle, index) => {
+                if (particle.alpha <= 0) {
+                    particles.splice(index, 1);
+                } else {
+                    particle.update();
+                }
+            });
+
+            // 更新子彈
+            projectiles.forEach((projectile, index) => {
+                projectile.update();
+                
+                // 移除出畫面的子彈
+                if (
+                    projectile.x + projectile.radius < 0 ||
+                    projectile.x - projectile.radius > canvas.width ||
+                    projectile.y + projectile.radius < 0 ||
+                    projectile.y - projectile.radius > canvas.height
+                ) {
+                    setTimeout(() => {
+                        projectiles.splice(index, 1);
+                    }, 0);
+                }
+            });
+
+            // 更新敵人與碰撞檢測
+            enemies.forEach((enemy, index) => {
+                enemy.update();
+
+                // 檢測敵人與玩家的碰撞 (遊戲結束)
+                const dist = Math.hypot(player.x - enemy.x, player.y - enemy.y);
+                if (dist - enemy.radius - player.radius < 1) {
+                    cancelAnimationFrame(animationId);
+                    endGame();
+                }
+
+                // 檢測子彈與敵人的碰撞
+                projectiles.forEach((projectile, pIndex) => {
+                    const dist = Math.hypot(projectile.x - enemy.x, projectile.y - enemy.y);
+                    
+                    // 碰撞發生
+                    if (dist - enemy.radius - projectile.radius < 1) {
+                        
+                        // 產生爆炸粒子
+                        for (let i = 0; i < enemy.radius * 2; i++) {
+                            particles.push(new Particle(
+                                projectile.x, 
+                                projectile.y, 
+                                Math.random() * 2, 
+                                enemy.color, 
+                                {
+                                    x: (Math.random() - 0.5) * (Math.random() * 6),
+                                    y: (Math.random() - 0.5) * (Math.random() * 6)
+                                }
+                            ));
+                        }
+                        
+                        // 增加分數 (大敵人分少，小敵人分多 - 增加瞄準難度獎勵)
+                        // 這裡簡化為固定加分，加上半徑反比獎勵
+                        const bonus = Math.floor(50 - enemy.radius);
+                        score += 100 + (bonus > 0 ? bonus : 0);
+                        scoreEl.innerHTML = score;
+                        
+                        playSound('explosion');
+
+                        // 移除子彈與敵人
+                        // 使用 setTimeout 避免閃爍
+                        setTimeout(() => {
+                            enemies.splice(index, 1);
+                            projectiles.splice(pIndex, 1);
+                        }, 0);
+                    }
+                });
+
+                // 移除出畫面的敵人
+                if (enemy.x + enemy.radius < 0) {
+                     setTimeout(() => {
+                        enemies.splice(index, 1);
+                    }, 0);
+                }
+            });
+
+            spawnEnemies();
+        }
+
+        // --- 事件監聽與控制 ---
+
+        function endGame() {
+            gameActive = false;
+            modal.style.display = 'flex';
+            bigScoreEl.style.display = 'block';
+            bigScoreEl.innerHTML = score;
+            gameTitle.innerHTML = "GAME OVER";
+            startBtn.innerHTML = "再玩一次";
+            playSound('gameover');
+        }
+
+        window.addEventListener('mousemove', (event) => {
+            mouse.x = event.clientX;
+            mouse.y = event.clientY;
+        });
+
+        window.addEventListener('touchmove', (event) => {
+            // 觸控支援
+            mouse.x = event.touches[0].clientX;
+            mouse.y = event.touches[0].clientY;
+            event.preventDefault(); // 防止滾動
+        }, {passive: false});
+
+        window.addEventListener('click', () => {
+            if (!gameActive) return;
+
+            // 計算射擊角度
+            // 在這個模式下，子彈總是向前飛，但會根據滑鼠目前的速度或位置微調？
+            // 為了街機爽感，我們讓子彈直接往右飛，速度極快
+            const velocity = { x: 15, y: 0 };
+            
+            projectiles.push(new Projectile(player.x, player.y, velocity));
+            playSound('shoot');
+        });
+        
+        // 為了支援手機連點或長按，我們可以增加自動射擊，但這裡保持點擊射擊的節奏感
+        // 簡單的自動射擊開關 (可選)
+        let isMouseDown = false;
+        let shootInterval;
+        
+        window.addEventListener('mousedown', () => {
+             isMouseDown = true;
+             if(gameActive) {
+                 // 立即射擊第一發
+                 projectiles.push(new Projectile(player.x, player.y, { x: 15, y: 0 }));
+                 playSound('shoot');
+                 
+                 // 連射
+                 shootInterval = setInterval(() => {
+                     if(gameActive && isMouseDown) {
+                        projectiles.push(new Projectile(player.x, player.y, { x: 15, y: 0 }));
+                        playSound('shoot');
+                     }
+                 }, 150); // 射速
+             }
+        });
+        
+        window.addEventListener('mouseup', () => {
+            isMouseDown = false;
+            clearInterval(shootInterval);
+        });
+        
+        window.addEventListener('touchstart', () => {
+             isMouseDown = true;
+             // 初始化音效 (iOS需要)
+             initAudio();
+             if(gameActive) {
+                 shootInterval = setInterval(() => {
+                     if(gameActive && isMouseDown) {
+                        projectiles.push(new Projectile(player.x, player.y, { x: 15, y: 0 }));
+                        playSound('shoot');
+                     }
+                 }, 150);
+             }
+        });
+        
+        window.addEventListener('touchend', () => {
+            isMouseDown = false;
+            clearInterval(shootInterval);
+        });
+
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initStars(); // 重置星星以填滿新螢幕
+        });
+
+        startBtn.addEventListener('click', () => {
+            initAudio(); // 確保 AudioContext 在使用者互動後啟動
+            initGame();
+            gameActive = true;
+            animate();
+            modal.style.display = 'none';
+        });
+
+        // 初始背景效果
+        initStars();
+        function idleAnimate() {
+            if (!gameActive) {
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                stars.forEach(star => star.update());
+                requestAnimationFrame(idleAnimate);
+            }
+        }
+        idleAnimate();
+
+    </script>
+</body>
+</html>

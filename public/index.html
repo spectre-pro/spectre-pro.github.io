@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head>
+	<meta name="generator" content="Hugo 0.151.2">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4421097292963871"
+        crossorigin="anonymous"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="robots" content="index, follow" />
+  <link rel="icon shortcut" href="/favicon.ico" sizes="32x32" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" id="favicon-svg" />
+<link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
+<link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+<link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
+<title>SPECTRE NOTE</title>
+  <meta name="description" content="" /><link rel="canonical" href="https://www.spectrepro.dev/" itemprop="url" />
+
+<meta property="og:title" content="SPECTRE NOTE">
+<meta
+  property="og:description"
+  content="
+    
+      
+    
+  ">
+<meta
+  property="og:type"
+  content="
+    website
+  ">
+<meta property="og:url" content="https://www.spectrepro.dev/">
+
+
+  <meta itemprop="name" content="SPECTRE NOTE">
+  <meta itemprop="description" content="{{ define “main” }} {{ partial “landing-page.html” . }} {{ end }}">
+  <meta itemprop="wordCount" content="12">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="SPECTRE NOTE">
+  <meta name="twitter:description" content="{{ define “main” }} {{ partial “landing-page.html” . }} {{ end }}">
+
+    <link rel="preload" href="/css/compiled/main.min.f1286e08894e4edb7578e277f8af9252465cacf0a6e1ffc14d2218d4b5f80571.css" as="style" integrity="sha256-8ShuCIlOTtt1eOJ3&#43;K&#43;SUkZcrPCm4f/BTSIY1LX4BXE=" />
+    <link href="/css/compiled/main.min.f1286e08894e4edb7578e277f8af9252465cacf0a6e1ffc14d2218d4b5f80571.css" rel="stylesheet" integrity="sha256-8ShuCIlOTtt1eOJ3&#43;K&#43;SUkZcrPCm4f/BTSIY1LX4BXE=" />
+
+  
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+  
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RBZ6NBDVS7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "G-RBZ6NBDVS7");
+</script>
+
+
+
+
+
+
+
+<script src="/js/main-head.min.b35edf231d4342eaac536385a0fd7c90bff77c0cb977a194a720ec27a521842d.js" integrity="sha256-s17fIx1DQuqsU2OFoP18kL/3fAy5d6GUpyDsJ6UhhC0="></script>
+
+  
+  
+  </head>
+<body><div class="hextra-nav-container hx:sticky hx:top-0 hx:z-20 hx:w-full hx:bg-transparent hx:print:hidden">
+  <div
+    class="hextra-nav-container-blur hx:pointer-events-none hx:absolute hx:z-[-1] hx:h-full hx:w-full hx:bg-white hx:dark:bg-dark hx:shadow-[0_2px_4px_rgba(0,0,0,.02),0_1px_0_rgba(0,0,0,.06)] hx:contrast-more:shadow-[0_0_0_1px_#000] hx:dark:shadow-[0_-1px_0_rgba(255,255,255,.1)_inset] hx:contrast-more:dark:shadow-[0_0_0_1px_#fff]"
+  ></div>
+
+  <nav class="hextra-max-navbar-width hx:mx-auto hx:flex hx:items-center hx:justify-end hx:gap-2 hx:h-16 hx:px-6">
+    <a class="hx:flex hx:items-center hx:hover:opacity-75 hx:ltr:mr-auto hx:rtl:ml-auto" href="/">
+    <img class="hx:mr-2 hx:block hx:dark:hidden" src="/images/logo.svg" alt="Logo" height="20" width="40" />
+    <img class="hx:mr-2 hx:hidden hx:dark:block" src="/images/logo-dark.svg" alt="Dark Logo" height="20" width="40" />
+    <span class="hx:mr-2 hx:font-extrabold hx:inline hx:select-none" title="SPECTRE NOTE">SPECTRE NOTE</span>
+</a>
+<a
+  title=""
+  href="/docs"
+  
+  class="hx:text-sm hx:contrast-more:text-gray-700 hx:contrast-more:dark:text-gray-100 hx:relative hx:-ml-2 hx:hidden hx:whitespace-nowrap hx:p-2 hx:md:inline-flex hx:items-center hx:gap-1 hx:text-gray-600 hx:hover:text-gray-800 hx:dark:text-gray-400 hx:dark:hover:text-gray-200"
+><span class="hx:text-center">Note</span>
+</a><a
+  title=""
+  href="/game"
+  
+  class="hx:text-sm hx:contrast-more:text-gray-700 hx:contrast-more:dark:text-gray-100 hx:relative hx:-ml-2 hx:hidden hx:whitespace-nowrap hx:p-2 hx:md:inline-flex hx:items-center hx:gap-1 hx:text-gray-600 hx:hover:text-gray-800 hx:dark:text-gray-400 hx:dark:hover:text-gray-200"
+><span class="hx:text-center">Game</span>
+</a><div class="hextra-search-wrapper hx:relative hx:md:w-64">
+  <div class="hx:relative hx:flex hx:items-center hx:text-gray-900 hx:contrast-more:text-gray-800 hx:dark:text-gray-300 hx:contrast-more:dark:text-gray-300">
+    <input
+      placeholder="Search..."
+      class="hextra-search-input hx:focus:hextra-focus hx:block hx:w-full hx:appearance-none hx:rounded-lg hx:px-3 hx:py-2 hx:transition-colors hx:text-base hx:leading-tight hx:md:text-sm hx:bg-black/[.05] hx:dark:bg-gray-50/10 hx:focus:bg-white hx:dark:focus:bg-dark hx:placeholder:text-gray-500 hx:dark:placeholder:text-gray-400 hx:contrast-more:border hx:contrast-more:border-current"
+      type="search"
+      value=""
+      spellcheck="false"
+    />
+    <kbd
+      class="hx:absolute hx:my-1.5 hx:select-none hx:ltr:right-1.5 hx:rtl:left-1.5 hx:h-5 hx:rounded-sm hx:bg-white hx:px-1.5 hx:font-mono hx:text-[10px] hx:font-medium hx:text-gray-500 hx:border hx:border-gray-200 hx:dark:border-gray-100/20 hx:dark:bg-dark/50 hx:contrast-more:border-current hx:contrast-more:text-current hx:contrast-more:dark:border-current hx:items-center hx:gap-1 hx:transition-opacity hx:pointer-events-none hx:hidden hx:sm:flex"
+    >
+      CTRL K
+    </kbd>
+  </div>
+
+  <div>
+    <ul
+      class="hextra-search-results hextra-scrollbar hx:hidden hx:border hx:border-gray-200 hx:bg-white hx:text-gray-100 hx:dark:border-neutral-800 hx:dark:bg-neutral-900 hx:absolute hx:top-full hx:z-20 hx:mt-2 hx:overflow-auto hx:overscroll-contain hx:rounded-xl hx:py-2.5 hx:shadow-xl hx:max-h-[min(calc(50vh-11rem-env(safe-area-inset-bottom)),400px)] hx:md:max-h-[min(calc(100vh-5rem-env(safe-area-inset-bottom)),400px)] hx:inset-x-0 hx:ltr:md:left-auto hx:rtl:md:right-auto hx:contrast-more:border hx:contrast-more:border-gray-900 hx:contrast-more:dark:border-gray-50 hx:w-screen hx:min-h-[100px] hx:max-w-[min(calc(100vw-2rem),calc(100%+20rem))]"
+      style="transition: max-height 0.2s ease 0s;"
+    ></ul>
+  </div>
+</div>
+
+          <a class="hx:p-2 hx:text-current" target="_blank" rel="noreferrer" href="https://youtube.com/@spectre-pro" title="YouTube"><svg height=24 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="currentColor" d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104l.022.26l.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105l-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006l-.087-.004l-.171-.007l-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103l.003-.052l.008-.104l.022-.26l.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007l.172-.006l.086-.003l.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/></svg><span class="hx:sr-only">YouTube</span>
+          </a>
+          <a class="hx:p-2 hx:text-current" target="_blank" rel="noreferrer" href="https://github.com/spectre-pro" title="GitHub"><svg height=24 fill="currentColor" viewBox="3 3 18 18">
+  <path d="M12 3C7.0275 3 3 7.12937 3 12.2276C3 16.3109 5.57625 19.7597 9.15374 20.9824C9.60374 21.0631 9.77249 20.7863 9.77249 20.5441C9.77249 20.3249 9.76125 19.5982 9.76125 18.8254C7.5 19.2522 6.915 18.2602 6.735 17.7412C6.63375 17.4759 6.19499 16.6569 5.8125 16.4378C5.4975 16.2647 5.0475 15.838 5.80124 15.8264C6.51 15.8149 7.01625 16.4954 7.18499 16.7723C7.99499 18.1679 9.28875 17.7758 9.80625 17.5335C9.885 16.9337 10.1212 16.53 10.38 16.2993C8.3775 16.0687 6.285 15.2728 6.285 11.7432C6.285 10.7397 6.63375 9.9092 7.20749 9.26326C7.1175 9.03257 6.8025 8.08674 7.2975 6.81794C7.2975 6.81794 8.05125 6.57571 9.77249 7.76377C10.4925 7.55615 11.2575 7.45234 12.0225 7.45234C12.7875 7.45234 13.5525 7.55615 14.2725 7.76377C15.9937 6.56418 16.7475 6.81794 16.7475 6.81794C17.2424 8.08674 16.9275 9.03257 16.8375 9.26326C17.4113 9.9092 17.76 10.7281 17.76 11.7432C17.76 15.2843 15.6563 16.0687 13.6537 16.2993C13.98 16.5877 14.2613 17.1414 14.2613 18.0065C14.2613 19.2407 14.25 20.2326 14.25 20.5441C14.25 20.7863 14.4188 21.0746 14.8688 20.9824C16.6554 20.364 18.2079 19.1866 19.3078 17.6162C20.4077 16.0457 20.9995 14.1611 21 12.2276C21 7.12937 16.9725 3 12 3Z"></path>
+</svg>
+<span class="hx:sr-only">GitHub</span>
+          </a><div class="hx:flex hx:justify-items-start hx:group" data-theme="light">
+  <button
+    title="Change theme"
+    data-state="closed"
+    data-location="top"
+    class="hextra-theme-toggle hx:cursor-pointer hx:rounded-md hx:text-left hx:font-medium hx:p-2 hx:grow"
+    type="button"
+    aria-label="Change theme"
+  >
+    <div class="hx:flex hx:items-center hx:gap-2 hx:capitalize"><svg height=24 class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=system]:hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg><svg height=24 class="hx:group-data-[theme=light]:hidden hx:group-data-[theme=system]:hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg><svg height=24 class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=light]:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  fill="currentColor">
+  <path d="M 11.996094,2 C 6.4986225,2.0192368 2.03125,6.5024993 2.03125,12 c 0,5.497501 4.4673725,9.980763 9.964844,10 H 12 12.0039 c 5.497471,-0.01924 9.964844,-4.502499 9.964844,-10 0,-5.4975007 -4.467373,-9.9807632 -9.964844,-10 H 12 Z M 12,4 c 4.417218,0.017598 7.96875,3.5822356 7.96875,8 0,4.417764 -3.551532,7.982402 -7.96875,8 z" />
+</svg>
+</div>
+  </button>
+  <ul
+    class="hextra-theme-toggle-options hx:hidden hx:z-20 hx:max-h-64 hx:overflow-auto hx:rounded-md hx:ring-1 hx:ring-black/5 hx:bg-white hx:py-1 hx:text-sm hx:shadow-lg hx:dark:ring-white/20 hx:dark:bg-neutral-800"
+    style="position: fixed; inset: auto auto 0px 0px; margin: 0px; min-width: 100px;"
+    data-theme="light"
+  >
+    <li class="hx:flex hx:flex-col">
+      <p
+        data-item="light"
+        class="hx:text-gray-800 hx:dark:text-gray-100 hx:hover:bg-primary-50 hx:hover:text-primary-600 hx:hover:dark:bg-primary-500/10 hx:hover:dark:text-primary-600 hx:relative hx:cursor-pointer hx:whitespace-nowrap hx:py-1.5 hx:transition-colors hx:ltr:pl-3 hx:ltr:pr-9 hx:rtl:pr-3 hx:rtl:pl-9"
+      >
+        Light
+         <span class="hx:absolute hx:inset-y-0 hx:flex hx:items-center hx:ltr:right-3 hx:rtl:left-3 hx:group-data-[theme=dark]:hidden hx:group-data-[theme=system]:hidden"><svg height=1em width=1em xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+      </p>
+    </li>
+    <li class="hx:flex hx:flex-col">
+      <p
+        data-item="dark"
+        class="hx:text-gray-800 hx:dark:text-gray-100 hx:hover:bg-primary-50 hx:hover:text-primary-600 hx:hover:dark:bg-primary-500/10 hx:hover:dark:text-primary-600 hx:relative hx:cursor-pointer hx:whitespace-nowrap hx:py-1.5 hx:transition-colors hx:ltr:pl-3 hx:ltr:pr-9 hx:rtl:pr-3 hx:rtl:pl-9"
+      >
+        Dark
+         <span class="hx:absolute hx:inset-y-0 hx:flex hx:items-center hx:ltr:right-3 hx:rtl:left-3 hx:group-data-[theme=light]:hidden hx:group-data-[theme=system]:hidden"><svg height=1em width=1em xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+      </p>
+    </li>
+    <li class="hx:flex hx:flex-col">
+      <p
+        data-item="system"
+        class="hx:text-gray-800 hx:dark:text-gray-100 hx:hover:bg-primary-50 hx:hover:text-primary-600 hx:hover:dark:bg-primary-500/10 hx:hover:dark:text-primary-600 hx:relative hx:cursor-pointer hx:whitespace-nowrap hx:py-1.5 hx:transition-colors hx:ltr:pl-3 hx:ltr:pr-9 hx:rtl:pr-3 hx:rtl:pl-9"
+      >
+        System
+         <span class="hx:absolute hx:inset-y-0 hx:flex hx:items-center hx:ltr:right-3 hx:rtl:left-3 hx:group-data-[theme=dark]:hidden hx:group-data-[theme=light]:hidden"><svg height=1em width=1em xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+      </p>
+    </li>
+  </ul>
+</div><button type="button" aria-label="Menu" class="hextra-hamburger-menu hx:cursor-pointer hx:-mr-2 hx:rounded-sm hx:p-2 hx:active:bg-gray-400/20 hx:md:hidden"><svg height=24 fill="none" viewBox="0 0 24 24" stroke="currentColor"><g><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8H20"></path></g><g><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16H20"></path></g></svg></button>
+  </nav>
+</div>
+
+    <style>
+    
+    .landing-page-wrapper .summary-text {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: var(--landing-muted);
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-top: 0.5rem;
+    }
+
+    
+    .landing-page-wrapper .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        min-height: 250px;
+        
+        width: 100%; 
+        box-sizing: border-box;
+    }
+
+    
+    .landing-page-wrapper {
+        --landing-bg: #050505;
+        --landing-text: #ffffff;
+        --landing-muted: #888888;
+        --landing-glass-bg: rgba(255, 255, 255, 0.03);
+        --landing-glass-border: rgba(255, 255, 255, 0.08);
+        --landing-card-glow: rgba(5, 117, 230, 0.15);
+        --landing-btn-hover: rgba(5, 117, 230, 0.6);
+
+        background-color: var(--landing-bg);
+        color: var(--landing-text);
+        font-family: 'Inter', sans-serif;
+        position: relative;
+        overflow-x: hidden; 
+        z-index: 1;
+        margin-top: -64px;
+        width: 100%;
+    }
+
+    
+    .landing-page-wrapper .mouse-glow {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+        background: radial-gradient(
+            600px circle at var(--x, 50%) var(--y, 50%), 
+            rgba(29, 78, 216, 0.15), 
+            transparent 40%
+        );
+    }
+
+    .landing-page-wrapper .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        position: relative;
+        z-index: 2;
+    }
+
+    
+    .landing-page-wrapper .hero {
+        height: 90vh; 
+        min-height: 600px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .landing-page-wrapper .hero h1 {
+        font-size: 5rem;
+        line-height: 1.1;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(to right, #fff, #666);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        border: none;
+        word-wrap: break-word; 
+    }
+
+    
+    .landing-page-wrapper .typing-container {
+        font-size: 2rem;
+        color: var(--landing-muted);
+        margin-bottom: 1rem;
+        min-height: 2.4rem;
+    }
+
+    .landing-page-wrapper .cursor {
+        display: inline-block;
+        width: 3px;
+        height: 1.8rem;
+        background-color: var(--landing-text);
+        margin-left: 5px;
+        animation: landing-blink 1s infinite;
+    }
+
+    @keyframes landing-blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+    }
+
+    
+    .landing-page-wrapper .landing-btn {
+        display: inline-block;
+        padding: 14px 40px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #fff;
+        text-decoration: none;
+        background: var(--landing-glass-bg);
+        border: 1px solid var(--landing-glass-border);
+        border-radius: 50px;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        letter-spacing: 0.5px;
+    }
+
+    .landing-page-wrapper .landing-btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 0 30px var(--landing-card-glow);
+        transform: translateY(-3px);
+    }
+    
+    .landing-page-wrapper .landing-btn::after {
+        content: ' →';
+        opacity: 0;
+        margin-left: -10px;
+        transition: all 0.3s ease;
+    }
+
+    .landing-page-wrapper .landing-btn:hover::after {
+        opacity: 1;
+        margin-left: 8px;
+    }
+
+    
+    .landing-page-wrapper .reveal {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 1s ease;
+    }
+
+    .landing-page-wrapper .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    
+    .landing-page-wrapper .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        font-weight: 600;
+    }
+
+    .landing-page-wrapper .about-section {
+        padding: 100px 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+    }
+
+    .landing-page-wrapper .about-text p {
+        color: var(--landing-muted);
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+    }
+
+    
+    .landing-page-wrapper .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    
+    .landing-page-wrapper .card {
+        background: var(--landing-glass-bg);
+        border: 1px solid var(--landing-glass-border);
+        backdrop-filter: blur(12px);
+        padding: 2.5rem;
+        border-radius: 20px;
+        transform-style: preserve-3d;
+        transform: perspective(1000px);
+        transition: transform 0.1s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    
+    .landing-page-wrapper .card::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), var(--landing-card-glow), transparent 60%);
+        opacity: 0;
+        transition: opacity 0.5s;
+        z-index: -1;
+    }
+
+    .landing-page-wrapper .card:hover::before { opacity: 1; }
+
+    .landing-page-wrapper .card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(90deg, #fff, #aaa);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transform: translateZ(20px);
+    }
+
+    .landing-page-wrapper .card p {
+        color: var(--landing-muted);
+        transform: translateZ(20px);
+        margin-bottom: 0;
+    }
+
+    .landing-page-wrapper .tag {
+        display: inline-block;
+        margin-top: 1.5rem;
+        padding: 5px 12px;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        background: rgba(255,255,255,0.1);
+        color: #fff;
+    }
+
+    .landing-page-wrapper footer {
+        padding: 4rem 0;
+        text-align: center;
+        color: var(--landing-muted);
+        font-size: 0.8rem;
+        border-top: 1px solid var(--landing-glass-border);
+    }
+
+    @media (max-width: 768px) {
+        
+        .landing-page-wrapper .container {
+            padding: 0 1.5rem;
+        }
+
+        
+        .landing-page-wrapper .hero {
+            height: auto; 
+            min-height: 80vh; 
+            padding-top: 4rem;
+        }
+
+        .landing-page-wrapper .hero h1 { 
+            font-size: 3rem; 
+        }
+
+        .landing-page-wrapper .typing-container { 
+            font-size: 1.3rem; 
+            min-height: 3rem;
+        }
+        
+        .landing-page-wrapper .cursor {
+            height: 1.2rem;
+        }
+
+        
+        .landing-page-wrapper .about-section { 
+            grid-template-columns: 1fr; 
+            padding: 60px 0;
+            gap: 2rem;
+        }
+
+        .landing-page-wrapper .about-visual {
+            order: 2; 
+            width: 100%;
+        }
+
+        
+        .landing-page-wrapper .about-visual .card {
+            width: 100% !important; 
+            height: auto !important;
+            aspect-ratio: 16/9; 
+            min-height: auto;
+        }
+
+        
+        .landing-page-wrapper .grid {
+            grid-template-columns: 1fr; 
+            gap: 1.5rem;
+        }
+
+        
+        .landing-page-wrapper .card {
+            padding: 1.5rem;
+            min-height: auto;
+        }
+        
+        .landing-page-wrapper .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+    }
+</style>
+
+<div class="landing-page-wrapper">
+    <div class="mouse-glow" id="mouse-glow-overlay"></div>
+    <div class="container">
+        
+        <section class="hero">
+            <h1>Exploration of<br>Future</h1>
+            <div class="typing-container">
+                I write about <span id="landing-typewriter"></span><span class="cursor"></span>
+            </div>
+            <a href="/docs" class="landing-btn">Get Started</a>
+        </section>
+
+        <section id="about" class="about-section reveal">
+            <div class="about-text">
+                <div class="section-title">About Me</div>
+                <p>Hello! I'm a tech enthusiast who focuses on clean code, modern aesthetics, and UX. </p>
+                <p>This is where I'll be sharing my notes on AI, web development, homelabs, and networking.</p>
+            </div>
+            <div class="about-visual">
+                <div class="card" style="height: 300px; width: 450px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                    <img src="myimagelll.webp" alt="Visual" style="max-width: 120%; max-height: 120%; object-fit: contain;">
+                </div>
+            </div>
+        </section>
+
+        <section id="notes" class="notes-section">
+            <div class="section-title reveal">Latest Notes</div>
+            <div class="grid">
+                
+                
+                
+                
+                <a href="/docs/tech/git/" style="text-decoration: none; color: inherit;">
+                    <div class="card tilt-card reveal">
+                        <h3>Git &amp; Github</h3>
+                        
+                        <p class="summary-text">
+                            Git 使用者資料(只需在下載 git 後運行一次) git config --global user.name &#34;name&#34; git config --global user.email &#34;name@email.com&#34; 文件狀態 : …
+                        </p>
+                        
+                        <span class="tag">Tech</span>
+                    </div>
+                </a>
+                
+                <a href="/docs/tech/github-alerts/" style="text-decoration: none; color: inherit;">
+                    <div class="card tilt-card reveal">
+                        <h3>Github Alerts</h3>
+                        
+                        <p class="summary-text">
+                             Note
+[!NOTE]
+Tip
+
+                        </p>
+                        
+                        <span class="tag">Tech</span>
+                    </div>
+                </a>
+                
+                <a href="/docs/school/4-m2/%E7%BA%8C%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B8/" style="text-decoration: none; color: inherit;">
+                    <div class="card tilt-card reveal">
+                        <h3>續三角函數</h3>
+                        
+                        <p class="summary-text">
+                            Rad(弧度): π=180∘\pi=180^\circπ=180∘
+奇變偶不變 符號看象限 六個三個函數 sin⁡θ\sin\thetasinθ cos⁡θ\cos\thetacosθ tan⁡θ\tan\thetatanθ …
+                        </p>
+                        
+                        <span class="tag">M2</span>
+                    </div>
+                </a>
+                
+                <a href="/docs/school/4-m2/%E4%BA%8C%E9%A0%85%E5%BC%8F%E5%AE%9A%E7%90%86/" style="text-decoration: none; color: inherit;">
+                    <div class="card tilt-card reveal">
+                        <h3>二項式定理</h3>
+                        
+                        <p class="summary-text">
+                            !!!: 階乘
+6!=6×5×4×3×2×1=7206! = 6 \times 5 \times 4 \times 3 \times 2 \times 1 = 7206!=6×5×4×3×2×1=720 …
+                        </p>
+                        
+                        <span class="tag">M2</span>
+                    </div>
+                </a>
+                
+                <a href="/docs/tech/video/5-github-ai/" style="text-decoration: none; color: inherit;">
+                    <div class="card tilt-card reveal">
+                        <h3>GitHub AI 終極白嫖指南</h3>
+                        
+                        <p class="summary-text">
+                            一個賬號，免費試用所有頂級 AI！ GitHub AI 申請教學 (內含 GPT-4, Grok, DeepSeek)。YouTube BiliBili 
+                        </p>
+                        
+                        <span class="tag">Video</span>
+                    </div>
+                </a>
+                
+            </div>
+        </section>
+        <footer>
+        </footer>
+    </div>
+</div>
+
+<script>
+    (function() {
+        
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+        if (!isTouchDevice) {
+            document.addEventListener('mousemove', (e) => {
+                document.documentElement.style.setProperty('--x', e.clientX + 'px');
+                document.documentElement.style.setProperty('--y', e.clientY + 'px');
+            });
+        }
+
+        
+        const words = ["Modern Web.", "Creative JS.", "CSS Art.", "Future Tech."];
+        const textElement = document.getElementById('landing-typewriter');
+        
+        if(textElement) {
+            let wordIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let typeSpeed = 100;
+
+            function type() {
+                const currentWord = words[wordIndex];
+                if (isDeleting) {
+                    textElement.textContent = currentWord.substring(0, charIndex - 1);
+                    charIndex--;
+                    typeSpeed = 50;
+                } else {
+                    textElement.textContent = currentWord.substring(0, charIndex + 1);
+                    charIndex++;
+                    typeSpeed = 150;
+                }
+
+                if (!isDeleting && charIndex === currentWord.length) {
+                    isDeleting = true;
+                    typeSpeed = 2000;
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                    typeSpeed = 500;
+                }
+                setTimeout(type, typeSpeed);
+            }
+            type();
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    
+                    entry.target.classList.add('active');
+                } else {
+                    
+                    
+                    entry.target.classList.remove('active'); 
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.landing-page-wrapper .reveal').forEach(el => observer.observe(el));
+
+        if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+            document.querySelectorAll('.landing-page-wrapper .tilt-card').forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateX = ((y - centerY) / centerY) * -8;
+                    const rotateY = ((x - centerX) / centerX) * 8;
+                    
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+                });
+            });
+        }
+
+        const btn = document.querySelector('.landing-btn');
+        if(btn) {
+            btn.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if(href.startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = href.substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if(targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        }
+    })();
+</script>
+
+      <footer class="hextra-footer hx:bg-gray-100 hx:pb-[env(safe-area-inset-bottom)] hx:dark:bg-neutral-900 hx:print:bg-transparent"><div class="hextra-custom-footer hextra-max-footer-width hx:pl-[max(env(safe-area-inset-left),1.5rem)] hx:pr-[max(env(safe-area-inset-right),1.5rem)] hx:text-gray-600 hx:dark:text-gray-400"></div><div
+      class="hextra-max-footer-width hx:mx-auto hx:flex hx:justify-center hx:py-12 hx:pl-[max(env(safe-area-inset-left),1.5rem)] hx:pr-[max(env(safe-area-inset-right),1.5rem)] hx:text-gray-600 hx:dark:text-gray-400 hx:md:justify-start"
+    >
+      <div class="hx:flex hx:w-full hx:flex-col hx:items-center hx:sm:items-start"><div class="hx:font-semibold"><a class="hx:flex hx:text-sm hx:items-center hx:gap-1 hx:text-current" target="_blank" rel="noopener noreferrer" title="Hextra GitHub Homepage" href="https://github.com/imfing/hextra">
+    <span>Powered by SPECTRE</span>
+  </a></div><div class="hx:mt-6 hx:text-xs">&copy; <script>document.write(new Date().getFullYear())</script>&nbsp;SPECTRE All rights reserved.</div></div>
+    </div></footer>
+    
+    <script defer src="/js/main.min.939f9f01da5755b7117a6d4651192b124fc58799125404b474e0ab4030dcedfe.js" integrity="sha256-k5&#43;fAdpXVbcRem1GURkrEk/Fh5kSVAS0dOCrQDDc7f4="></script>
+<script defer src="/js/flexsearch.433e941a8a573ebb9931fc16fc75266ab6b93f569ac2fb4f3dc66882e0416f4c.js" integrity="sha256-Qz6UGopXPruZMfwW/HUmara5P1aawvtPPcZoguBBb0w=" crossorigin="anonymous"></script>
+        <script defer src="/en.search.min.097e3a24da0aba2ac82ef0f53e82e1500343a7126260a0203f3a45bbe0876093.js" integrity="sha256-CX46JNoKuirILvD1PoLhUANDpxJiYKAgPzpFu&#43;CHYJM="></script>
+  </body>
+</html>

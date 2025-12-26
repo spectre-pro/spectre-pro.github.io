@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL 網路偵探 (SQL Cyber Detective)</title>
+    
+    <!-- 1. 引入 Tailwind CSS (樣式) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 2. 設定 Import Map (讓瀏覽器知道去哪裡下載 React 和 Icons) -->
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@18.2.0",
+        "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+        "lucide-react": "https://esm.sh/lucide-react@0.292.0"
+      }
+    }
+    </script>
+    
+    <!-- 3. 引入 Babel (將 JSX 轉換為瀏覽器可讀的 JS) -->
+    <script src="babel.min.js"></script>
+    
+    <style>
+        /* 基礎全螢幕與背景設定 */
+        body, html { 
+            margin: 0; 
+            padding: 0; 
+            height: 100%; 
+            overflow: hidden; 
+            background-color: #030712; 
+        }
+        #root { height: 100%; }
+        
+        /* 自定義捲軸樣式 */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #111827; }
+        ::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #374151; }
+
+        /* 掃描線效果 */
+        .scanline-effect {
+            pointer-events: none;
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.1));
+            background-size: 100% 4px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <!-- 4. 遊戲主程式 (React Code) -->
+    <script type="text/babel" data-type="module">
+        import React, { useState, useEffect, useRef } from 'react';
+        import { createRoot } from 'react-dom/client';
+        import { 
+            Terminal, Database, Play, RotateCcw, HelpCircle, AlertCircle, 
+            ChevronRight, BookOpen, Shield, Lock, Unlock, Zap, Fingerprint, Search 
+        } from 'lucide-react';
+
+        // --- 遊戲數據與配置 ---
+        const TABLE_NAME = "suspects";
+        const USER_CODENAME = "AGENT_007";
+
+        const INITIAL_DATA = [
+            { id: 101, name: '陳大文', age: 25, role: '黑客', district: '旺角', credits: 50, status: '在逃' },
+            { id: 102, name: '李小龍', age: 32, role: '車手', district: '尖沙咀', credits: 120, status: '已捕' },
+            { id: 103, name: '張志明', age: 19, role: '黑客', district: '觀塘', credits: 15, status: '在逃' },
+            { id: 104, name: '黃翠如', age: 45, role: '主腦', district: '中環', credits: 999, status: '在逃' },
+            { id: 105, name: '何金水', age: 28, role: '打手', district: '旺角', credits: 0, status: '已捕' },
+            { id: 106, name: '林亞珍', age: 22, role: '黑客', district: '銅鑼灣', credits: 88, status: '在逃' },
+            { id: 107, name: '史提芬', age: 35, role: '車手', district: '尖沙咀', credits: 200, status: '在逃' },
+            { id: 108, name: '周星星', age: 25, role: '卧底', district: '中環', credits: 50, status: '在逃' },
+            { id: 109, name: '陳小春', age: 40, role: '打手', district: '銅鑼灣', credits: 60, status: '在逃' },
+            { id: 110, name: '劉德華', age: 50, role: '車手', district: '旺角', credits: 500, status: '已捕' },
+        ];
+
+        const LEVELS = [
+            {
+                id: 1,
+                title: "系統入侵 (System Breach)",
+                brief: "特工，我們成功連線到犯罪集團的伺服器。首要任務是取得所有疑犯的原始資料，確認數據庫結構。",
+                goal: "選取 `suspects` 表中的所有欄位。",
+                hint: "使用 `SELECT * FROM suspects`。",
+                check: (res) => res.length === 10 && Object.keys(res[0]).length === 7,
+                defaultQuery: "SELECT * FROM suspects"
+            },
+            {
+                id: 2,
+                title: "過濾雜訊 (Data Extraction)",
+                brief: "原始資料太多雜訊了。指揮中心只需要關鍵資訊：疑犯的「姓名」和「職業」。別讓不相關的資料干擾分析。",
+                goal: "只選取 `name` 和 `role` 兩個欄位。",
+                hint: "例如: `SELECT col1, col2 ...`",
+                check: (res) => res.length === 10 && res[0].hasOwnProperty('name') && res[0].hasOwnProperty('role') && !res[0].hasOwnProperty('age'),
+                defaultQuery: "SELECT name, role FROM suspects"
+            },
+            {
+                id: 3,
+                title: "年齡特徵 (Age Profiling)",
+                brief: "線人回報，目標人物是一名年輕人。系統顯示該組織通常招募 25 歲以下的成員。請過濾出符合條件的名單。",
+                goal: "選取所有 `age` < 25 的疑犯資料。",
+                hint: "例如: `WHERE age < 25`。",
+                check: (res) => res.length > 0 && res.every(r => r.age < 25),
+                defaultQuery: "SELECT * FROM suspects WHERE age < 25"
+            },
+            {
+                id: 4,
+                title: "地區鎖定 (Geo-Location)",
+                brief: "追蹤訊號顯示目標正在「旺角」一帶活動。立即鎖定該區的所有疑犯。",
+                goal: "找出所有 `district` 為 '旺角' 的疑犯。",
+                hint: "文字值必須用單引號包圍。例如: `WHERE district = '旺角'`。",
+                check: (res) => res.length > 0 && res.every(r => r.district === '旺角'),
+                defaultQuery: "SELECT * FROM suspects WHERE district = '旺角'"
+            },
+            {
+                id: 5,
+                title: "模糊匹配 (Pattern Match)",
+                brief: "閉路電視拍到一名疑犯，但我方只能確認他姓「陳」。使用模糊搜尋找出所有可能的嫌疑人。",
+                goal: "找出所有 `name` 以 '陳' 開頭的疑犯。",
+                hint: "使用 `%` 作為通配符。例如: `WHERE name LIKE '陳%'`。",
+                check: (res) => res.length > 0 && res.every(r => r.name.startsWith('陳')),
+                defaultQuery: "SELECT * FROM suspects WHERE name LIKE '陳%'"
+            },
+            {
+                id: 6,
+                title: "多區搜捕 (Multi-Target)",
+                brief: "目標正高速移動，可能藏身於「旺角」或「銅鑼灣」。擴大搜索範圍。",
+                goal: "找出 `district` 是 '旺角' 或 '銅鑼灣' 的疑犯。",
+                hint: "使用 `IN` 語法。例如: `WHERE district IN ('A', 'B')`。",
+                check: (res) => res.length > 0 && res.every(r => ['旺角', '銅鑼灣'].includes(r.district)),
+                defaultQuery: "SELECT * FROM suspects WHERE district IN ('旺角', '銅鑼灣')"
+            },
+            {
+                id: 7,
+                title: "威脅評估 (Risk Range)",
+                brief: "我們需要中間層幹部名單。鎖定危險程度 (credits) 在 50 到 100 之間的疑犯。",
+                goal: "找出 `credits` 在 50 到 100 之間 (包含) 的疑犯。",
+                hint: "使用 `BETWEEN x AND y`。例如: `WHERE credits BETWEEN 50 AND 100`。",
+                check: (res) => res.length > 0 && res.every(r => r.credits >= 50 && r.credits <= 100),
+                defaultQuery: "SELECT * FROM suspects WHERE credits BETWEEN 50 AND 100"
+            },
+            {
+                id: 8,
+                title: "精確打擊 (Target Lock)",
+                brief: "情報確認：目標是一名正在「在逃」的「黑客」。這是唯一特徵，立即找出他！",
+                goal: "找出 `status` 為 '在逃' 且 `role` 為 '黑客' 的人。",
+                hint: "使用 `AND` 連接兩個條件。",
+                check: (res) => res.length > 0 && res.every(r => r.role === '黑客' && r.status === '在逃'),
+                defaultQuery: "SELECT * FROM suspects WHERE role = '黑客' AND status = '在逃'"
+            },
+            {
+                id: 9,
+                title: "危險名單 (Priority List)",
+                brief: "上級需要一份按危險程度排列的名單。誰的分數最高，誰就是首要目標。",
+                goal: "選取所有資料，並按 `credits` 降序 (DESC) 排列。",
+                hint: "使用 `ORDER BY credits DESC`。",
+                check: (res) => {
+                    if (res.length !== 10) return false;
+                    for (let i = 0; i < res.length - 1; i++) {
+                        if (res[i].credits < res[i+1].credits) return false;
+                    }
+                    return true;
+                },
+                defaultQuery: "SELECT * FROM suspects ORDER BY credits DESC"
+            },
+            {
+                id: 10,
+                title: "頭號通緝 (Top 3 Wanted)",
+                brief: "拘捕行動人手有限。長官只批准拘捕前 3 名最危險的罪犯。",
+                goal: "按 `credits` 降序排列，並只顯示前 3 筆。",
+                hint: "在語句最後加上 `LIMIT 3`。",
+                check: (res) => res.length === 3 && res[0].credits >= res[1].credits && res[1].credits >= res[2].credits,
+                defaultQuery: "SELECT * FROM suspects ORDER BY credits DESC LIMIT 3"
+            },
+            {
+                id: 11,
+                title: "勢力分析 (Headcount)",
+                brief: "我們需要評估敵方網絡戰力。計算一下對方到底有多少名「黑客」。",
+                goal: "計算 `role` 為 '黑客' 的紀錄數量。",
+                hint: "使用 `SELECT COUNT(*) ...`。",
+                check: (res) => res.length === 1 && (Object.values(res[0])[0] === 3),
+                defaultQuery: "SELECT COUNT(*) FROM suspects WHERE role = '黑客'"
+            },
+            {
+                id: 12,
+                title: "地區分佈 (District Stats)",
+                brief: "分析犯罪集團的據點分佈。列出每個地區的總人數。",
+                goal: "按 `district` 分組，並顯示地區名稱及該區總人數。",
+                hint: "使用 `GROUP BY district`。",
+                check: (res) => res.length >= 4 && res.some(r => r.district === '旺角' && (r.count === 3 || r['COUNT(*)'] === 3)),
+                defaultQuery: "SELECT district, COUNT(*) FROM suspects GROUP BY district"
+            },
+            {
+                id: 13,
+                title: "熱點掃蕩 (Hotspots)",
+                brief: "集中警力掃蕩犯罪熱點！找出那些聚集了超過 2 名疑犯的地區。",
+                goal: "按地區分組，找出 `COUNT(*) > 2` 的地區。",
+                hint: "在 GROUP BY 後使用 `HAVING COUNT(*) > 2`。注意：WHERE 用於分組前，HAVING 用於分組後。",
+                check: (res) => res.length > 0 && res.every(r => (r.count > 2 || r['COUNT(*)'] > 2)),
+                defaultQuery: "SELECT district, COUNT(*) FROM suspects GROUP BY district HAVING COUNT(*) > 2"
+            }
+        ];
+
+        // --- SQL 模擬解析引擎 ---
+        const normalizeQuery = (str) => {
+            return str
+                .replace(/[\uff01-\uff5e]/g, c => String.fromCharCode(c.charCodeAt(0) - 0xfee0))
+                .replace(/\u3000/g, ' ')
+                .trim()
+                .replace(/\s+/g, ' ');
+        };
+
+        const transpileSQLCondition = (condition) => {
+            let js = condition;
+            js = js.replace(/(\w+)\s+LIKE\s+'([^']*)'/gi, (match, col, pat) => {
+                let regexStr = pat;
+                if (regexStr.startsWith('%')) regexStr = regexStr.substring(1); else regexStr = '^' + regexStr;
+                if (regexStr.endsWith('%')) regexStr = regexStr.substring(0, regexStr.length - 1); else regexStr = regexStr + '$';
+                return `new RegExp("${regexStr}").test(${col})`;
+            });
+            js = js.replace(/([a-zA-Z0-9_\.]+)\s+BETWEEN\s+['"]?(-?[\d\.]+)['"]?\s+AND\s+['"]?(-?[\d\.]+)['"]?/gi, "($1 >= $2 && $1 <= $3)");
+            js = js.replace(/(\w+)\s+IN\s+\((.*?)\)/gi, (match, col, vals) => {
+                const arrayStr = `[${vals}]`.replace(/'/g, '"'); 
+                return `${arrayStr}.includes(${col})`;
+            });
+            js = js.replace(/>=/g, ' __GTE__ ').replace(/<=/g, ' __LTE__ ').replace(/<>/g, ' !== ').replace(/!=/g, ' !== ');
+            js = js.replace(/=/g, ' === ');
+            js = js.replace(/__GTE__/g, '>=').replace(/__LTE__/g, '<=');
+            js = js.replace(/\bAND\b/gi, '&&').replace(/\bOR\b/gi, '||');
+            js = js.replace(/'([^']*)'/g, '"$1"');
+            js = js.replace(/COUNT\(\*\)/gi, '__count_all');
+            return js;
+        };
+
+        const runSQL = (query, data) => {
+            try {
+                let q = normalizeQuery(query);
+                const selectRegex = /SELECT\s+(.*?)\s+FROM/i;
+                const fromRegex = /FROM\s+(\w+)/i;
+                const whereRegex  = /WHERE\s+(.*?)(?:\s+GROUP\s+BY|\s+HAVING|\s+ORDER\s+BY|\s+LIMIT|$)/i;
+                const groupByRegex = /GROUP\s+BY\s+(.*?)(?:\s+HAVING|\s+ORDER\s+BY|\s+LIMIT|$)/i;
+                const havingRegex = /HAVING\s+(.*?)(?:\s+ORDER\s+BY|\s+LIMIT|$)/i;
+                const orderByRegex = /ORDER\s+BY\s+(.*?)(?:\s+LIMIT|$)/i;
+                const limitRegex   = /LIMIT\s+(\d+)(?:$)/i;
+
+                const selectMatch = q.match(selectRegex);
+                const fromMatch = q.match(fromRegex);
+                
+                if (!selectMatch || !fromMatch) throw new Error("指令格式錯誤：缺少 SELECT 或 FROM。");
+                if (fromMatch[1].toLowerCase() !== TABLE_NAME) throw new Error(`目標錯誤：找不到資料表 '${fromMatch[1]}'。`);
+
+                let result = [...data];
+                let columns = selectMatch[1].split(',').map(c => c.trim());
+                
+                const whereMatch = q.match(whereRegex);
+                if (whereMatch) {
+                    const jsCondition = transpileSQLCondition(whereMatch[1]);
+                    let filterError = null;
+                    result = result.filter(row => {
+                        try {
+                            const validEntries = Object.entries(row).filter(([k]) => /^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(k));
+                            const keys = validEntries.map(([k]) => k);
+                            const values = validEntries.map(([, v]) => v);
+                            const func = new Function(...keys, `return ${jsCondition};`);
+                            return func(...values);
+                        } catch (e) { 
+                            if (!filterError) filterError = e;
+                            return false; 
+                        }
+                    });
+                    if (result.length === 0 && filterError) throw new Error(`查詢邏輯錯誤: ${filterError.message}`);
+                }
+
+                const groupByMatch = q.match(groupByRegex);
+                let isGrouped = false;
+                if (groupByMatch) {
+                    isGrouped = true;
+                    const groupCol = groupByMatch[1].trim();
+                    const groups = {};
+                    result.forEach(row => {
+                        const key = row[groupCol];
+                        if (!groups[key]) groups[key] = [];
+                        groups[key].push(row);
+                    });
+                    result = Object.keys(groups).map(key => {
+                        const rows = groups[key];
+                        const retRow = { '__count_all': rows.length };
+                        columns.forEach(col => {
+                            const upperCol = col.toUpperCase();
+                            if (upperCol.includes('COUNT')) retRow['COUNT(*)'] = rows.length;
+                            else retRow[col] = rows[0][col]; 
+                        });
+                        return retRow;
+                    });
+                }
+
+                const havingMatch = q.match(havingRegex);
+                if (havingMatch && isGrouped) {
+                    const jsCondition = transpileSQLCondition(havingMatch[1]);
+                    result = result.filter(row => {
+                        try {
+                            const validEntries = Object.entries(row).filter(([k]) => /^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(k));
+                            const keys = validEntries.map(([k]) => k);
+                            const values = validEntries.map(([, v]) => v);
+                            const func = new Function(...keys, `return ${jsCondition};`);
+                            return func(...values);
+                        } catch (e) { return false; }
+                    });
+                }
+
+                if (!isGrouped) {
+                    const isGlobalAgg = columns.some(c => c.toUpperCase().includes('COUNT'));
+                    if (isGlobalAgg) {
+                        result = [{ 'COUNT(*)': result.length }];
+                    } else if (columns[0] !== '*') {
+                        result = result.map(row => {
+                            const newRow = {};
+                            columns.forEach(col => { if (row.hasOwnProperty(col)) newRow[col] = row[col]; });
+                            return newRow;
+                        });
+                    }
+                }
+
+                const orderByMatch = q.match(orderByRegex);
+                if (orderByMatch) {
+                    const parts = orderByMatch[1].trim().split(/\s+/);
+                    const sortCol = parts[0];
+                    const direction = parts[1] && parts[1].toUpperCase() === 'DESC' ? -1 : 1;
+                    result.sort((a, b) => (a[sortCol] < b[sortCol] ? -1 : 1) * direction);
+                }
+
+                const limitMatch = q.match(limitRegex);
+                if (limitMatch) result = result.slice(0, parseInt(limitMatch[1], 10));
+
+                return { success: true, data: result };
+            } catch (err) {
+                return { success: false, error: err.message };
+            }
+        };
+
+        // --- UI 組件 ---
+        const TypewriterText = ({ text, speed = 20, onComplete }) => {
+            const [displayedText, setDisplayedText] = useState('');
+            useEffect(() => {
+                setDisplayedText('');
+                let index = 0;
+                const timer = setInterval(() => {
+                    index++;
+                    setDisplayedText(text.slice(0, index));
+                    if (index >= text.length) {
+                        clearInterval(timer);
+                        if (onComplete) onComplete();
+                    }
+                }, speed);
+                return () => clearInterval(timer);
+            }, [text]);
+            return <span>{displayedText}</span>;
+        };
+
+        const BootScreen = ({ onComplete }) => {
+            const [step, setStep] = useState(0);
+            useEffect(() => {
+                const sequence = [
+                    { t: 800, act: () => setStep(1) },
+                    { t: 1600, act: () => setStep(2) },
+                    { t: 2400, act: () => setStep(3) },
+                    { t: 3500, act: onComplete }
+                ];
+                sequence.forEach(s => setTimeout(s.act, s.t));
+            }, []);
+            return (
+                <div className="fixed inset-0 bg-black text-green-500 font-mono flex flex-col items-center justify-center p-8 z-50">
+                    <div className="w-full max-w-2xl">
+                        <div className="mb-4 text-xs opacity-50">SECURE CONNECTION V4.0.2</div>
+                        {step >= 0 && <div className="mb-2">&gt; 初始化網絡協議... <span className="text-green-300">成功</span></div>}
+                        {step >= 1 && <div className="mb-2">&gt; 驗證特工身份 ({USER_CODENAME})... <span className="text-green-300">已確認</span></div>}
+                        {step >= 2 && <div className="mb-2">&gt; 正在解密罪案資料庫... <span className="text-green-300">100%</span></div>}
+                        {step >= 3 && <div className="mt-8 animate-pulse text-xl font-bold text-center border-t border-b border-green-500 py-4">SYSTEM READY. WELCOME, AGENT.</div>}
+                    </div>
+                </div>
+            );
+        };
+
+        const MissionModal = ({ level, onStart }) => (
+            <div className="absolute inset-0 bg-black/80 backdrop-blur-sm z-40 flex items-center justify-center p-4">
+                <div className="bg-gray-900 border-2 border-green-600 w-full max-w-lg shadow-lg rounded overflow-hidden">
+                    <div className="p-6">
+                        <div className="flex justify-between items-center mb-6 border-b border-gray-700 pb-2">
+                            <h2 className="text-xl font-bold text-green-400 flex items-center gap-2"><Shield size={20} /> 機密任務 #{level.id}</h2>
+                            <span className="text-xs text-red-400 font-mono px-2 py-1 border border-red-500 rounded">TOP SECRET</span>
+                        </div>
+                        <div className="mb-6 font-mono text-gray-300 min-h-[80px]">
+                            <TypewriterText text={level.brief} speed={25} />
+                        </div>
+                        <div className="bg-blue-900/20 border-l-4 border-blue-500 p-4 mb-6">
+                            <div className="text-xs text-blue-400 font-bold uppercase mb-1">目標 (OBJECTIVE)</div>
+                            <div className="text-gray-100 font-medium">{level.goal}</div>
+                        </div>
+                        <button onClick={onStart} className="w-full bg-green-700 hover:bg-green-600 text-white font-bold py-3 rounded flex items-center justify-center gap-2 transition-all">
+                            <Unlock size={18} /> 接受任務 (ACCEPT)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        );
+
+        const ResultTable = ({ data }) => {
+            if (!data || data.length === 0) return <div className="p-8 text-gray-500 italic text-center font-mono">-- 暫無數據 --</div>;
+            const headers = Object.keys(data[0]).filter(k => !k.startsWith('__'));
+            return (
+                <div className="overflow-x-auto border border-gray-700 bg-black/40 rounded-sm">
+                    <table className="w-full text-left text-sm text-gray-300 font-mono">
+                        <thead className="bg-gray-800/80 text-xs uppercase text-green-400">
+                            <tr>{headers.map(h => <th key={h} className="px-4 py-3 border-b border-gray-600">{h}</th>)}</tr>
+                        </thead>
+                        <tbody>
+                            {data.map((row, idx) => (
+                                <tr key={idx} className="hover:bg-green-900/20 border-b border-gray-800 last:border-0">
+                                    {headers.map(h => <td key={h} className="px-4 py-2 border-r border-gray-800/50 last:border-0">{row[h]}</td>)}
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            );
+        };
+
+        // --- 主遊戲組件 ---
+        const SQLGame = () => {
+            const [booted, setBooted] = useState(false);
+            const [currentLevelIdx, setCurrentLevelIdx] = useState(0);
+            const [showBriefing, setShowBriefing] = useState(true);
+            const [query, setQuery] = useState('');
+            const [result, setResult] = useState(null);
+            const [error, setError] = useState(null);
+            const [isProcessing, setIsProcessing] = useState(false);
+            const [passed, setPassed] = useState(false);
+            const [showHint, setShowHint] = useState(false);
+            const [showSchema, setShowSchema] = useState(false);
+
+            const currentLevel = LEVELS[currentLevelIdx];
+
+            useEffect(() => {
+                setQuery('');
+                setResult(null);
+                setError(null);
+                setPassed(false);
+                setShowHint(false);
+                setShowBriefing(true);
+            }, [currentLevelIdx]);
+
+            const handleRun = () => {
+                if (isProcessing) return;
+                setIsProcessing(true);
+                setError(null);
+                setTimeout(() => {
+                    const exec = runSQL(query, INITIAL_DATA);
+                    setIsProcessing(false);
+                    if (exec.success) {
+                        setResult(exec.data);
+                        if (currentLevel.check(exec.data)) setPassed(true);
+                        else setError("指令成功但結果不符。");
+                    } else {
+                        setError("語法錯誤: " + exec.error);
+                    }
+                }, 600);
+            };
+
+            if (!booted) return <BootScreen onComplete={() => setBooted(true)} />;
+
+            return (
+                <div className="h-full bg-gray-950 text-gray-200 font-mono flex flex-col md:flex-row overflow-hidden relative">
+                    {showBriefing && <MissionModal level={currentLevel} onStart={() => setShowBriefing(false)} />}
+                    
+                    {/* 側邊欄 */}
+                    <div className="w-full md:w-64 bg-black border-r border-gray-800 flex flex-col md:h-full shrink-0 z-10">
+                        <div className="p-4 border-b border-gray-800 flex items-center gap-3 text-green-500 font-bold bg-gray-900/50">
+                            <Fingerprint size={24} />
+                            <div className="flex flex-col">
+                                <span className="text-xs text-green-700">DATABASE</span>
+                                <span>偵探終端</span>
+                            </div>
+                        </div>
+                        <div className="p-4 bg-gray-900/30">
+                            <button onClick={() => setShowSchema(!showSchema)} className="flex items-center justify-between w-full text-xs text-gray-500 font-bold mb-2">
+                                <span className="flex items-center gap-2"><Database size={14}/> 表結構 (Schema)</span>
+                                <ChevronRight size={14} className={`md:hidden transform transition-transform ${showSchema ? 'rotate-90' : ''}`} />
+                            </button>
+                            <div className={`${showSchema ? 'block' : 'hidden'} md:block text-[10px] text-gray-400 bg-black p-3 rounded border border-gray-800`}>
+                                <div className="text-green-400 border-b border-gray-800 pb-1 mb-2 font-bold">TABLE: suspects</div>
+                                <ul className="space-y-1">
+                                    <li>id (INT)</li><li>name (VARCHAR)</li><li>age (INT)</li><li>role (VARCHAR)</li>
+                                    <li>district (VARCHAR)</li><li>credits (INT)</li><li>status (VARCHAR)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div className="p-4 mt-auto hidden md:block">
+                            <div className="text-xl font-bold text-white">LEVEL {currentLevel.id}</div>
+                            <div className="h-1.5 w-full bg-gray-800 rounded-full mt-2 overflow-hidden">
+                                <div className="h-full bg-green-600 transition-all" style={{ width: `${(currentLevelIdx + 1) / LEVELS.length * 100}%` }}></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* 主工作區 */}
+                    <div className="flex-1 flex flex-col p-4 md:p-6 overflow-hidden">
+                        <div className="mb-4 bg-gray-900/80 p-4 rounded border border-gray-700 flex justify-between">
+                            <div>
+                                <h1 className="text-lg font-bold text-white">{currentLevel.title}</h1>
+                                <p className="text-xs text-gray-400">{currentLevel.goal}</p>
+                            </div>
+                            <button onClick={() => setShowBriefing(true)} className="text-xs text-green-400 border border-green-800 px-3 py-1 rounded hover:bg-green-900/30">任務簡報</button>
+                        </div>
+
+                        <div className="flex flex-col shrink-0 relative mb-4">
+                            <div className="bg-gray-800 px-4 py-1 border-t border-x border-gray-700 rounded-t flex justify-between items-center text-xs">
+                                <span className="flex items-center gap-2"><Terminal size={12}/> sql_client</span>
+                                <button onClick={() => setShowHint(!showHint)} className="text-gray-500">{showHint ? '隱藏情報' : '情報支援'}</button>
+                            </div>
+                            <div className="relative border-x border-gray-700 bg-gray-900">
+                                <textarea
+                                    value={query}
+                                    onChange={(e) => setQuery(e.target.value)}
+                                    placeholder="-- 輸入 SQL 指令..."
+                                    className="w-full bg-transparent text-green-400 p-4 font-mono text-sm focus:outline-none min-h-[120px] resize-none"
+                                />
+                                {showHint && <div className="absolute top-2 right-2 bg-yellow-900/90 text-yellow-100 text-[10px] p-2 rounded border border-yellow-600 max-w-[200px]">{currentLevel.hint}</div>}
+                            </div>
+                            <div className="bg-gray-800 p-2 flex justify-end rounded-b border-b border-x border-gray-700">
+                                <button onClick={handleRun} className="bg-green-700 hover:bg-green-600 text-white font-bold py-1 px-6 rounded text-sm flex items-center gap-2">
+                                    <Play size={14} fill="currentColor" /> 發送指令
+                                </button>
+                            </div>
+                        </div>
+
+                        <div className="flex-1 flex flex-col overflow-hidden border border-gray-700 rounded bg-gray-900/50">
+                            <div className="h-8 bg-gray-800/80 border-b border-gray-700 flex items-center px-3 text-xs text-gray-500">OUTPUT CONSOLE</div>
+                            <div className="flex-1 overflow-auto p-2">
+                                {isProcessing ? <div className="text-center p-10 animate-pulse">連線中...</div> : error ? <div className="text-red-400 p-4 border border-red-900 bg-red-900/10 text-xs">{error}</div> : <ResultTable data={result} />}
+                            </div>
+                            {passed && (
+                                <div className="p-4 bg-green-900/90 border-t border-green-500 flex justify-between items-center">
+                                    <div className="text-green-400 font-bold">ACCESS GRANTED</div>
+                                    {currentLevelIdx < LEVELS.length - 1 ? (
+                                        <button onClick={() => setCurrentLevelIdx(c => c + 1)} className="bg-green-600 px-4 py-1 rounded text-white text-sm">下一關</button>
+                                    ) : (
+                                        <div className="text-yellow-400 animate-bounce">MISSION ACCOMPLISHED!</div>
+                                    )}
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const root = createRoot(document.getElementById('root'));
+        root.render(<SQLGame />);
+    </script>
+</body>
+</html>

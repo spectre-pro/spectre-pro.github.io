@@ -1,0 +1,18 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SPECTRE NOTE – </title>
+    <link>https://www.spectrepro.dev/docs/tech/homelab/</link>
+    <description>Recent content on SPECTRE NOTE</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    
+	  <atom:link href="https://www.spectrepro.dev/docs/tech/homelab/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+  </channel>
+</rss>

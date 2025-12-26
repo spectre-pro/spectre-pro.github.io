@@ -1,0 +1,18 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SPECTRE NOTE – Categories</title>
+    <link>https://www.spectrepro.dev/categories/</link>
+    <description>Recent content in Categories on SPECTRE NOTE</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    
+	  <atom:link href="https://www.spectrepro.dev/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+  </channel>
+</rss>

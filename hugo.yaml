@@ -1,0 +1,91 @@
+baseURL: https://www.spectrepro.dev/
+languageCode: zh-tw
+title: SPECTRE NOTE
+theme: hextra
+
+enableInlineShortcodes: true
+
+params:
+  navbar:
+    displayTitle: true
+    displayLogo: true
+    logo:
+      path: images/logo.svg
+      dark: images/logo-dark.svg
+      link: /
+      width: 40
+      height: 20
+  theme:
+    default: dark
+    displayToggle: true
+  comments:
+    enable: true
+    type: giscus
+    giscus:
+      repo: spectre-pro/spectre-pro.github.io
+      repoId: R_kgDOOz-m3A
+      category: Announcements
+      categoryId: DIC_kwDOOz-m3M4CrO4f
+  editURL:
+    enable: true
+    base: "https://github.com/spectre-pro/spectre-pro.github.io/blob/main/content"
+  footer:
+    enable: true
+    displayCopyright: true
+
+services:
+  googleAnalytics:
+    ID: G-RBZ6NBDVS7
+
+
+menu:
+  main:
+    - name: Note
+      pageRef: /docs
+      weight: 1
+    - name: Game
+      pageRef: /game
+      weight: 2
+    - name: Search
+      weight: 3
+      params:
+        type: search
+    - name: YouTube
+      weight: 4
+      url: "https://youtube.com/@spectre-pro"
+      params:
+        icon: youtube
+    - name: GitHub
+      weight: 5
+      url: "https://github.com/spectre-pro"
+      params:
+        icon: github
+    - name: Theme Toggle
+      weight: 6
+      params:
+        type: theme-toggle
+
+  sidebar:
+    - name: 更多
+      params:
+        type: separator
+      weight: 1
+    - name: "This website repository"
+      url: "https://github.com/spectre-pro/spectre-pro.github.io"
+      weight: 2
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+    extensions:
+      passthrough:
+        delimiters:
+          block: [['\[', '\]'], ["$$", "$$"]]
+          inline: [['\(', '\)'], ["$", "$"]]
+        enable: true
+
+outputs:
+  home: [html, llms]
+  page: [html]
+  section: [html, rss]

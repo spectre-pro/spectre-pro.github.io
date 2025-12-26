@@ -1,0 +1,480 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SPECTRE NOTE – ICT</title>
+    <link>https://www.spectrepro.dev/docs/school/6-ict/</link>
+    <description>Recent content in ICT on SPECTRE NOTE</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    
+	  <atom:link href="https://www.spectrepro.dev/docs/school/6-ict/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>A2 試算表函數</title>
+      <link>https://www.spectrepro.dev/docs/school/6-ict/1-a2%E8%A9%A6%E7%AE%97%E8%A1%A8%E5%87%BD%E6%95%B8/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.spectrepro.dev/docs/school/6-ict/1-a2%E8%A9%A6%E7%AE%97%E8%A1%A8%E5%87%BD%E6%95%B8/</guid>
+      <description>
+        
+        
+        &lt;h2&gt;目錄&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;目錄&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e7%9b%ae%e9%8c%84&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;數學與數值函數&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;數學與數值函數&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e6%95%b8%e5%ad%b8%e8%88%87%e6%95%b8%e5%80%bc%e5%87%bd%e6%95%b8&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Function&lt;/th&gt;
+          &lt;th&gt;簡介&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;1. &lt;a href=&#34;#int&#34;&gt;INT&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;無條件捨去數字的小數部分，傳回整數&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;2. &lt;a href=&#34;#rand&#34;&gt;RAND&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;產生一個大於或等於 0 且小於 1 的隨機亂數。每次重新計算工作表時，此數值都會變動。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;3. &lt;a href=&#34;#sqrt&#34;&gt;SQRT&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;計算一個數字的正平方根&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;4. &lt;a href=&#34;#round&#34;&gt;ROUND&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;將數字四捨五入到指定的位數。&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h3&gt;邏輯函數&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;邏輯函數&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e9%82%8f%e8%bc%af%e5%87%bd%e6%95%b8&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Function&lt;/th&gt;
+          &lt;th&gt;簡介&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;5. &lt;a href=&#34;#and&#34;&gt;AND&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;檢查所有條件是否都為 TRUE。如果所有條件皆為 TRUE，則回傳 TRUE；只要有任一條件為 FALSE，就回傳 FALSE。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;6. &lt;a href=&#34;#not&#34;&gt;NOT&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;將邏輯值反轉。TRUE 變為 FALSE，FALSE 變為 TRUE。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;7. &lt;a href=&#34;#or&#34;&gt;OR&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;檢查是否有任何一個條件為 TRUE。只要有任一條件為 TRUE，就回傳 TRUE；只有當所有條件都為 FALSE 時，才回傳 FALSE。&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h3&gt;文字函數&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;文字函數&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e6%96%87%e5%ad%97%e5%87%bd%e6%95%b8&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Function&lt;/th&gt;
+          &lt;th&gt;簡介&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;8. &lt;a href=&#34;#left&#34;&gt;LEFT&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;從文字字串的左邊（開頭）開始，傳回指定數量的字元。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;9. &lt;a href=&#34;#len&#34;&gt;LEN&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;計算一個文字字串的總長度（字元數）。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;10. &lt;a href=&#34;#mid&#34;&gt;MID&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;從文字字串的指定位置開始，傳回指定數量的字元。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;11. &lt;a href=&#34;#right&#34;&gt;RIGHT&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;從文字字串的右邊（結尾）開始，傳回指定數量的字元。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;12. &lt;a href=&#34;#find&#34;&gt;FIND&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;在一個文字字串中尋找另一個文字字串，並回傳其開始的位置編號。此函數&lt;strong&gt;有區分&lt;/strong&gt;英文大小寫。&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h3&gt;統計與計算函數&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;統計與計算函數&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e7%b5%b1%e8%a8%88%e8%88%87%e8%a8%88%e7%ae%97%e5%87%bd%e6%95%b8&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Function&lt;/th&gt;
+          &lt;th&gt;簡介&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;13. &lt;a href=&#34;#average&#34;&gt;AVERAGE&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;計算所有參數的算術平均值。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;14. &lt;a href=&#34;#count&#34;&gt;COUNT&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;計算一個範圍內包含「數字」的儲存格數量。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;15. &lt;a href=&#34;#countif&#34;&gt;COUNTIF&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;計算一個範圍內符合「單一條件」的儲存格數量。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;16. &lt;a href=&#34;#max&#34;&gt;MAX&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;找出一個範圍內的最大值。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;17. &lt;a href=&#34;#min&#34;&gt;MIN&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;找出一個範圍內的最小值。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;18. &lt;a href=&#34;#rank&#34;&gt;RANK&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;傳回一個數字在一組數字清單中的排名。（註：新版 Excel 建議使用 &lt;code&gt;RANK.EQ&lt;/code&gt;）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;19. &lt;a href=&#34;#sum&#34;&gt;SUM&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;將指定的儲存格或範圍中的所有數字加總。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;20. &lt;a href=&#34;#sumif&#34;&gt;SUMIF&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;將一個範圍內符合「單一條件」的對應儲存格加總。&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h3&gt;查詢與判斷函數&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;查詢與判斷函數&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e6%9f%a5%e8%a9%a2%e8%88%87%e5%88%a4%e6%96%b7%e5%87%bd%e6%95%b8&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Function&lt;/th&gt;
+          &lt;th&gt;簡介&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;21. &lt;a href=&#34;#xlookup&#34;&gt;XLOOKUP&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;一個強大且靈活的查詢函數，用於在一個範圍或陣列中尋找項目，並傳回對應項目。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;22. &lt;a href=&#34;#if&#34;&gt;IF&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;執行邏輯判斷。如果條件為真，則回傳一個值；如果條件為假，則回傳另一個值。&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2&gt;詳細使用方法&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;詳細使用方法&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e8%a9%b3%e7%b4%b0%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;數學與數值函數&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;數學與數值函數-1&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e6%95%b8%e5%ad%b8%e8%88%87%e6%95%b8%e5%80%bc%e5%87%bd%e6%95%b8-1&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;INT&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;int&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#int&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能說明&lt;/strong&gt;：無條件捨去數字的小數部分，傳回整數。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;語法&lt;/strong&gt;：&lt;code&gt;INT(number)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;參數說明&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;number&lt;/code&gt; (&lt;strong&gt;必要&lt;/strong&gt;): 您想要無條件捨去的數字或儲存格參照。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;範例&lt;/strong&gt;：&lt;code&gt;=INT(99.9)&lt;/code&gt; 將回傳 &lt;code&gt;99&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h4&gt;RAND&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;rand&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#rand&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能說明&lt;/strong&gt;：產生一個大於或等於 0 且小於 1 的隨機亂數。每次重新計算工作表時，此數值都會變動。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;語法&lt;/strong&gt;：&lt;code&gt;RAND()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;參數說明&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;此函數沒有任何參數。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;範例&lt;/strong&gt;：&lt;code&gt;=RAND()*100&lt;/code&gt; 將產生一個 0 到 100 之間的隨機數。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h4&gt;SQRT&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;sqrt&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#sqrt&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能說明&lt;/strong&gt;：計算一個數字的正平方根。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;語法&lt;/strong&gt;：&lt;code&gt;SQRT(number)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;參數說明&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;number&lt;/code&gt; (&lt;strong&gt;必要&lt;/strong&gt;): 您想要計算平方根的數字。此數字必須為正數。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;範例&lt;/strong&gt;：&lt;code&gt;=SQRT(144)&lt;/code&gt; 將回傳 &lt;code&gt;12&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h4&gt;ROUND&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;round&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#round&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能說明&lt;/strong&gt;：將數字四捨五入到指定的位數。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;語法&lt;/strong&gt;：&lt;code&gt;ROUND(number, num_digits)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;參數說明&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;number&lt;/code&gt; (&lt;strong&gt;必要&lt;/strong&gt;): 您想要進行四捨五入的數字。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;num_digits&lt;/code&gt; (&lt;strong&gt;必要&lt;/strong&gt;): 您想要四捨五入到的位數。正數代表小數點右側的位數；0 代表整數位；負數代表小數點左側的位數（例如 -1 代表十位數）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;範例&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;=ROUND(3.14159, 2)&lt;/code&gt; 將回傳 &lt;code&gt;3.14&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;=ROUND(12345, -2)&lt;/code&gt; 將回傳 &lt;code&gt;12300&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3&gt;邏輯函數&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;邏輯函數-1&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e9%82%8f%e8%bc%af%e5%87%bd%e6%95%b8-1&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;AND&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;and&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#and&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能說明&lt;/strong&gt;：檢查所有條件是否都為 TRUE。如果所有條件皆為 TRUE，則回傳 TRUE；只要有任一條件為 FALSE，就回傳 FALSE。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;語法&lt;/strong&gt;：&lt;code&gt;AND(logical1, [logical2], ...)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;參數說明&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;logical1&lt;/code&gt; (&lt;strong&gt;必要&lt;/strong&gt;): 第一個要評估的條件。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;logical2&lt;/code&gt; (&lt;strong&gt;可選&lt;/strong&gt;): 第二個及之後要評估的條件，最多可達 255 個。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;範例&lt;/strong&gt;：&lt;code&gt;=AND(A1&amp;gt;60, B1=&amp;quot;男&amp;quot;)&lt;/code&gt; 只有當 A1 大於 60 &lt;strong&gt;且&lt;/strong&gt; B1 是 &amp;ldquo;男&amp;rdquo; 時，才會回傳 TRUE。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h4&gt;NOT&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;not&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#not&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能說明&lt;/strong&gt;：將邏輯值反轉。TRUE 變為 FALSE，FALSE 變為 TRUE。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;語法&lt;/strong&gt;：&lt;code&gt;NOT(logical)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;參數說明&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;logical&lt;/code&gt; (&lt;strong&gt;必要&lt;/strong&gt;): 一個可以評估為 TRUE 或 FALSE 的值或運算式。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;範例&lt;/strong&gt;：&lt;code&gt;=NOT(A1=10)&lt;/code&gt; 如果 A1 的值&lt;strong&gt;不等於&lt;/strong&gt; 10，則回傳 TRUE。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h4&gt;OR&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;or&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#or&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能說明&lt;/strong&gt;：檢查是否有任何一個條件為 TRUE。只要有任一條件為 TRUE，就回傳 TRUE；只有當所有條件都為 FALSE 時，才回傳 FALSE。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;語法&lt;/strong&gt;：&lt;code&gt;OR(logical1, [logical2], ...)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;參數說明&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;logical1&lt;/code&gt; (&lt;strong&gt;必要&lt;/strong&gt;): 第一個要評估的條件。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;logical2&lt;/code&gt; (&lt;strong&gt;可選&lt;/strong&gt;): 第二個及之後要評估的條件，最多可達 255 個。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;範例&lt;/strong&gt;：&lt;code&gt;=OR(A1=&amp;quot;週末&amp;quot;, A1=&amp;quot;國定假日&amp;quot;)&lt;/code&gt; 只要 A1 是 &amp;ldquo;週末&amp;rdquo; &lt;strong&gt;或&lt;/strong&gt; &amp;ldquo;國定假日&amp;rdquo;，就會回傳 TRUE。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3&gt;文字函數&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;文字函數-1&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e6%96%87%e5%ad%97%e5%87%bd%e6%95%b8-1&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;LEFT&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;left&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#left&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能說明&lt;/strong&gt;：從文字字串的左邊（開頭）開始，傳回指定數量的字元。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;語法&lt;/strong&gt;：&lt;code&gt;LEFT(text, [num_chars])&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;參數說明&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;text&lt;/code&gt; (&lt;strong&gt;必要&lt;/strong&gt;): 包含您想擷取字元的文字字串。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;num_chars&lt;/code&gt; (&lt;strong&gt;可選&lt;/strong&gt;): 指定要擷取的字元數。如果省略，預設為 1。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;範例&lt;/strong&gt;：&lt;code&gt;=LEFT(&amp;quot;台北101&amp;quot;, 2)&lt;/code&gt; 將回傳 &lt;code&gt;台北&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h4&gt;LEN&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;len&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#len&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能說明&lt;/strong&gt;：計算一個文字字串的總長度（字元數）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;語法&lt;/strong&gt;：&lt;code&gt;LEN(text)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;參數說明&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;text&lt;/code&gt; (&lt;strong&gt;必要&lt;/strong&gt;): 您想要計算長度的文字。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;範例&lt;/strong&gt;：&lt;code&gt;=LEN(&amp;quot;Hello World&amp;quot;)&lt;/code&gt; 將回傳 &lt;code&gt;11&lt;/code&gt; (空格也算一個字元)。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h4&gt;MID&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;mid&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#mid&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能說明&lt;/strong&gt;：從文字字串的指定位置開始，傳回指定數量的字元。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;語法&lt;/strong&gt;：&lt;code&gt;MID(text, start_num, num_chars)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;參數說明&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;text&lt;/code&gt; (&lt;strong&gt;必要&lt;/strong&gt;): 包含您想擷取字元的文字字串。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;start_num&lt;/code&gt; (&lt;strong&gt;必要&lt;/strong&gt;): 您要開始擷取的起始字元位置（從 1 開始算）。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;num_chars&lt;/code&gt; (&lt;strong&gt;必要&lt;/strong&gt;): 您要擷取的字元數。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;範例&lt;/strong&gt;：&lt;code&gt;=MID(&amp;quot;我是台灣人&amp;quot;, 3, 2)&lt;/code&gt; 將回傳 &lt;code&gt;台灣&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h4&gt;RIGHT&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;right&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#right&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能說明&lt;/strong&gt;：從文字字串的右邊（結尾）開始，傳回指定數量的字元。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;語法&lt;/strong&gt;：&lt;code&gt;RIGHT(text, [num_chars])&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;參數說明&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;text&lt;/code&gt; (&lt;strong&gt;必要&lt;/strong&gt;): 包含您想擷取字元的文字字串。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;num_chars&lt;/code&gt; (&lt;strong&gt;可選&lt;/strong&gt;): 指定要擷取的字元數。如果省略，預設為 1。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;範例&lt;/strong&gt;：&lt;code&gt;=RIGHT(&amp;quot;產品編號-ABC&amp;quot;, 3)&lt;/code&gt; 將回傳 &lt;code&gt;ABC&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h4&gt;FIND&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;find&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#find&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能說明&lt;/strong&gt;：在一個文字字串中尋找另一個文字字串，並回傳其開始的位置編號。此函數&lt;strong&gt;有區分&lt;/strong&gt;英文大小寫。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;語法&lt;/strong&gt;：&lt;code&gt;FIND(find_text, within_text, [start_num])&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;參數說明&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;find_text&lt;/code&gt; (&lt;strong&gt;必要&lt;/strong&gt;): 您要尋找的文字。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;within_text&lt;/code&gt; (&lt;strong&gt;必要&lt;/strong&gt;): 包含您要尋找文字的目標字串。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;start_num&lt;/code&gt; (&lt;strong&gt;可選&lt;/strong&gt;): 指定在 &lt;code&gt;within_text&lt;/code&gt; 中從第幾個字元開始搜尋。如果省略，預設為 1。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;範例&lt;/strong&gt;：&lt;code&gt;=FIND(&amp;quot;P&amp;quot;, &amp;quot;Apple iPad&amp;quot;)&lt;/code&gt; 將回傳 &lt;code&gt;8&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3&gt;統計與計算函數&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;統計與計算函數-1&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e7%b5%b1%e8%a8%88%e8%88%87%e8%a8%88%e7%ae%97%e5%87%bd%e6%95%b8-1&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;AVERAGE&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;average&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#average&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能說明&lt;/strong&gt;：計算所有參數的算術平均值。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;語法&lt;/strong&gt;：&lt;code&gt;AVERAGE(number1, [number2], ...)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;參數說明&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;number1&lt;/code&gt; (&lt;strong&gt;必要&lt;/strong&gt;): 第一個要計算平均的數字、儲存格或範圍。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;number2&lt;/code&gt; (&lt;strong&gt;可選&lt;/strong&gt;): 其他要計算平均的數字、儲存格或範圍。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;範例&lt;/strong&gt;：&lt;code&gt;=AVERAGE(A1:A10)&lt;/code&gt; 會計算 A1 到 A10 儲存格中所有數字的平均值。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h4&gt;COUNT&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;count&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#count&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能說明&lt;/strong&gt;：計算一個範圍內包含「數字」的儲存格數量。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;語法&lt;/strong&gt;：&lt;code&gt;COUNT(value1, [value2], ...)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;參數說明&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;value1&lt;/code&gt; (&lt;strong&gt;必要&lt;/strong&gt;): 第一個要計算的項目、儲存格參照或範圍。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;value2&lt;/code&gt; (&lt;strong&gt;可選&lt;/strong&gt;): 其他要計算的項目、儲存格參照或範圍。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;範例&lt;/strong&gt;：若 A1=95, A2=&amp;ldquo;缺考&amp;rdquo;, A3=88，則 &lt;code&gt;=COUNT(A1:A3)&lt;/code&gt; 會回傳 &lt;code&gt;2&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h4&gt;COUNTIF&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;countif&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#countif&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能說明&lt;/strong&gt;：計算一個範圍內符合「單一條件」的儲存格數量。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;語法&lt;/strong&gt;：&lt;code&gt;COUNTIF(range, criteria)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;參數說明&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;range&lt;/code&gt; (&lt;strong&gt;必要&lt;/strong&gt;): 您想要計算的儲存格範圍。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;criteria&lt;/code&gt; (&lt;strong&gt;必要&lt;/strong&gt;): 用來決定哪些儲存格要被計算的條件（可以是數字、運算式、文字）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;範例&lt;/strong&gt;：&lt;code&gt;=COUNTIF(B1:B20, &amp;quot;&amp;gt;=60&amp;quot;)&lt;/code&gt; 會計算 B1 到 B20 範圍內，數值大於或等於 60 的儲存格數量。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h4&gt;MAX&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;max&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#max&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能說明&lt;/strong&gt;：找出一個範圍內的最大值。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;語法&lt;/strong&gt;：&lt;code&gt;MAX(number1, [number2], ...)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;參數說明&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;number1&lt;/code&gt; (&lt;strong&gt;必要&lt;/strong&gt;): 第一個要尋找最大值的數字、儲存格或範圍。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;number2&lt;/code&gt; (&lt;strong&gt;可選&lt;/strong&gt;): 其他要比較大小的數字、儲存格或範圍。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;範例&lt;/strong&gt;：&lt;code&gt;=MAX(A1:A10)&lt;/code&gt; 會回傳 A1 到 A10 範圍中的最大值。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h4&gt;MIN&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;min&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#min&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能說明&lt;/strong&gt;：找出一個範圍內的最小值。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;語法&lt;/strong&gt;：&lt;code&gt;MIN(number1, [number2], ...)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;參數說明&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;number1&lt;/code&gt; (&lt;strong&gt;必要&lt;/strong&gt;): 第一個要尋找最小值的數字、儲存格或範圍。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;number2&lt;/code&gt; (&lt;strong&gt;可選&lt;/strong&gt;): 其他要比較大小的數字、儲存格或範圍。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;範例&lt;/strong&gt;：&lt;code&gt;=MIN(A1:A10)&lt;/code&gt; 會回傳 A1 到 A10 範圍中的最小值。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h4&gt;RANK&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;rank&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#rank&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能說明&lt;/strong&gt;：傳回一個數字在一組數字清單中的排名。（註：新版 Excel 建議使用 &lt;code&gt;RANK.EQ&lt;/code&gt;）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;語法&lt;/strong&gt;：&lt;code&gt;RANK(number, ref, [order])&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;參數說明&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;number&lt;/code&gt; (&lt;strong&gt;必要&lt;/strong&gt;): 您想要知道排名的數字。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ref&lt;/code&gt; (&lt;strong&gt;必要&lt;/strong&gt;): 包含數字清單的範圍。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;order&lt;/code&gt; (&lt;strong&gt;可選&lt;/strong&gt;): 指定排名的順序。&lt;code&gt;0&lt;/code&gt; 或省略代表遞減（高分是第 1 名）；任何非零值代表遞增（低分是第 1 名）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;範例&lt;/strong&gt;：&lt;code&gt;=RANK(A1, A1:A20, 0)&lt;/code&gt; 會計算 A1 的值在 A1:A20 範圍中的排名（遞減排序）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h4&gt;SUM&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;sum&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#sum&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能說明&lt;/strong&gt;：將指定的儲存格或範圍中的所有數字加總。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;語法&lt;/strong&gt;：&lt;code&gt;SUM(number1, [number2], ...)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;參數說明&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;number1&lt;/code&gt; (&lt;strong&gt;必要&lt;/strong&gt;): 第一個要加總的數字、儲存格或範圍。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;number2&lt;/code&gt; (&lt;strong&gt;可選&lt;/strong&gt;): 其他要加總的數字、儲存格或範圍。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;範例&lt;/strong&gt;：&lt;code&gt;=SUM(A1:A10)&lt;/code&gt; 會將 A1 到 A10 的所有數值相加。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h4&gt;SUMIF&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;sumif&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#sumif&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能說明&lt;/strong&gt;：將一個範圍內符合「單一條件」的對應儲存格加總。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;語法&lt;/strong&gt;：&lt;code&gt;SUMIF(range, criteria, [sum_range])&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;參數說明&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;range&lt;/code&gt; (&lt;strong&gt;必要&lt;/strong&gt;): 用於條件判斷的儲存格範圍。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;criteria&lt;/code&gt; (&lt;strong&gt;必要&lt;/strong&gt;): 決定哪些儲存格要被加總的條件。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sum_range&lt;/code&gt; (&lt;strong&gt;可選&lt;/strong&gt;): 實際要進行加總的儲存格範圍。如果省略，則會加總 &lt;code&gt;range&lt;/code&gt; 參數中的數字。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;範例&lt;/strong&gt;：&lt;code&gt;=SUMIF(A1:A10, &amp;quot;水果&amp;quot;, B1:B10)&lt;/code&gt; 會在 A1:A10 範圍中尋找 &amp;ldquo;水果&amp;rdquo;，並將 B1:B10 範圍中對應的數值加總。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3&gt;查詢與判斷函數&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;查詢與判斷函數-1&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e6%9f%a5%e8%a9%a2%e8%88%87%e5%88%a4%e6%96%b7%e5%87%bd%e6%95%b8-1&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;XLOOKUP&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;xlookup&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#xlookup&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能說明&lt;/strong&gt;：一個強大且靈活的查詢函數，用於在一個範圍或陣列中尋找項目，並傳回對應項目。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;語法&lt;/strong&gt;：&lt;code&gt;XLOOKUP(lookup_value, lookup_array, return_array, [if_not_found], [match_mode], [search_mode])&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;參數說明&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;lookup_value&lt;/code&gt; (&lt;strong&gt;必要&lt;/strong&gt;): 您要尋找的值。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;lookup_array&lt;/code&gt; (&lt;strong&gt;必要&lt;/strong&gt;): 要在其中搜尋的範圍或陣列。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;return_array&lt;/code&gt; (&lt;strong&gt;必要&lt;/strong&gt;): 要從中傳回值的範圍或陣列。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;if_not_found&lt;/code&gt; (&lt;strong&gt;可選&lt;/strong&gt;): 如果找不到相符項目時要傳回的值。若省略，則會回傳 #N/A 錯誤。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;match_mode&lt;/code&gt; (&lt;strong&gt;可選&lt;/strong&gt;): 指定比對方式。&lt;code&gt;0&lt;/code&gt; (預設)為完全相符；&lt;code&gt;-1&lt;/code&gt; 為下一個較小項目；&lt;code&gt;1&lt;/code&gt; 為下一個較大項目；&lt;code&gt;2&lt;/code&gt; 為萬用字元比對。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;search_mode&lt;/code&gt; (&lt;strong&gt;可選&lt;/strong&gt;): 指定搜尋模式。&lt;code&gt;1&lt;/code&gt; (預設)從第一個項目開始搜尋；&lt;code&gt;-1&lt;/code&gt; 從最後一個項目開始反向搜尋。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;範例&lt;/strong&gt;：&lt;code&gt;=XLOOKUP(&amp;quot;S003&amp;quot;, A1:A100, B1:B100, &amp;quot;查無此員工&amp;quot;)&lt;/code&gt; 會在 A 欄中尋找 &amp;ldquo;S003&amp;rdquo;，回傳 B 欄對應的姓名，如果找不到則顯示 &amp;ldquo;查無此員工&amp;rdquo;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h4&gt;IF&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;if&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#if&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能說明&lt;/strong&gt;：執行邏輯判斷。如果條件為真，則回傳一個值；如果條件為假，則回傳另一個值。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;語法&lt;/strong&gt;：&lt;code&gt;IF(logical_test, value_if_true, [value_if_false])&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;參數說明&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;logical_test&lt;/code&gt; (&lt;strong&gt;必要&lt;/strong&gt;): 任何可以評估為 TRUE 或 FALSE 的值或運算式。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;value_if_true&lt;/code&gt; (&lt;strong&gt;必要&lt;/strong&gt;): 當 &lt;code&gt;logical_test&lt;/code&gt; 為 TRUE 時要傳回的值。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;value_if_false&lt;/code&gt; (&lt;strong&gt;可選&lt;/strong&gt;): 當 &lt;code&gt;logical_test&lt;/code&gt; 為 FALSE 時要傳回的值。如果省略，則會回傳 &lt;code&gt;FALSE&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;範例&lt;/strong&gt;：&lt;code&gt;=IF(A1&amp;gt;=60, &amp;quot;及格&amp;quot;, &amp;quot;不及格&amp;quot;)&lt;/code&gt; 如果 A1 的分數大於或等於 60，就顯示 &amp;ldquo;及格&amp;rdquo;，否則顯示 &amp;ldquo;不及格&amp;rdquo;。&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,2029 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4421097292963871"
+        crossorigin="anonymous"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="robots" content="index, follow" />
+  <link rel="icon shortcut" href="/favicon.ico" sizes="32x32" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" id="favicon-svg" />
+<link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
+<link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+<link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
+<title>A2 試算表函數 – SPECTRE NOTE</title>
+  <meta name="description" content="目錄 數學與數值函數 Function 簡介 1. INT 無條件捨去數字的小數部分，傳回整數 2. RAND 產生一個大於或等於 0 且小於 1 的隨機亂數。每次重新計算工作表時，此數值都會變動。 3. SQRT 計算一個數字的正平方根 4. ROUND 將數字四捨五入到指定的位數。 邏輯函數 Function 簡介 5. AND 檢查所有條件是否都為 TRUE。如果所有條件皆為 TRUE，則回傳 TRUE；只要有任一條件為 FALSE，就回傳 FALSE。 6. NOT 將邏輯值反轉。TRUE 變為 FALSE，FALSE 變為 TRUE。 7. OR 檢查是否有任何一個條件為 TRUE。只要有任一條件為 TRUE，就回傳 TRUE；只有當所有條件都為 FALSE 時，才回傳 FALSE。 文字函數 Function 簡介 8. LEFT 從文字字串的左邊（開頭）開始，傳回指定數量的字元。 9. LEN 計算一個文字字串的總長度（字元數）。 10. MID 從文字字串的指定位置開始，傳回指定數量的字元。 11. RIGHT 從文字字串的右邊（結尾）開始，傳回指定數量的字元。 12. FIND 在一個文字字串中尋找另一個文字字串，並回傳其開始的位置編號。此函數有區分英文大小寫。 統計與計算函數 Function 簡介 13. AVERAGE 計算所有參數的算術平均值。 14. COUNT 計算一個範圍內包含「數字」的儲存格數量。 15. COUNTIF 計算一個範圍內符合「單一條件」的儲存格數量。 16. MAX 找出一個範圍內的最大值。 17. MIN 找出一個範圍內的最小值。 18. RANK 傳回一個數字在一組數字清單中的排名。（註：新版 Excel 建議使用 RANK.EQ） 19. SUM 將指定的儲存格或範圍中的所有數字加總。 20. SUMIF 將一個範圍內符合「單一條件」的對應儲存格加總。 查詢與判斷函數 Function 簡介 21. XLOOKUP 一個強大且靈活的查詢函數，用於在一個範圍或陣列中尋找項目，並傳回對應項目。 22. IF 執行邏輯判斷。如果條件為真，則回傳一個值；如果條件為假，則回傳另一個值。 詳細使用方法 數學與數值函數 INT 功能說明：無條件捨去數字的小數部分，傳回整數。 語法：INT(number) 參數說明： number (必要): 您想要無條件捨去的數字或儲存格參照。 範例：=INT(99.9) 將回傳 99。 RAND 功能說明：產生一個大於或等於 0 且小於 1 的隨機亂數。每次重新計算工作表時，此數值都會變動。 語法：RAND() 參數說明： 此函數沒有任何參數。 範例：=RAND()*100 將產生一個 0 到 100 之間的隨機數。 SQRT 功能說明：計算一個數字的正平方根。 語法：SQRT(number) 參數說明： number (必要): 您想要計算平方根的數字。此數字必須為正數。 範例：=SQRT(144) 將回傳 12。 ROUND 功能說明：將數字四捨五入到指定的位數。 語法：ROUND(number, num_digits) 參數說明： number (必要): 您想要進行四捨五入的數字。 num_digits (必要): 您想要四捨五入到的位數。正數代表小數點右側的位數；0 代表整數位；負數代表小數點左側的位數（例如 -1 代表十位數）。 範例： =ROUND(3.14159, 2) 將回傳 3.14。 =ROUND(12345, -2) 將回傳 12300。 邏輯函數 AND 功能說明：檢查所有條件是否都為 TRUE。如果所有條件皆為 TRUE，則回傳 TRUE；只要有任一條件為 FALSE，就回傳 FALSE。 語法：AND(logical1, [logical2], ...) 參數說明： logical1 (必要): 第一個要評估的條件。 logical2 (可選): 第二個及之後要評估的條件，最多可達 255 個。 範例：=AND(A1&gt;60, B1=&#34;男&#34;) 只有當 A1 大於 60 且 B1 是 “男” 時，才會回傳 TRUE。 NOT 功能說明：將邏輯值反轉。TRUE 變為 FALSE，FALSE 變為 TRUE。 語法：NOT(logical) 參數說明： logical (必要): 一個可以評估為 TRUE 或 FALSE 的值或運算式。 範例：=NOT(A1=10) 如果 A1 的值不等於 10，則回傳 TRUE。 OR 功能說明：檢查是否有任何一個條件為 TRUE。只要有任一條件為 TRUE，就回傳 TRUE；只有當所有條件都為 FALSE 時，才回傳 FALSE。 語法：OR(logical1, [logical2], ...) 參數說明： logical1 (必要): 第一個要評估的條件。 logical2 (可選): 第二個及之後要評估的條件，最多可達 255 個。 範例：=OR(A1=&#34;週末&#34;, A1=&#34;國定假日&#34;) 只要 A1 是 “週末” 或 “國定假日”，就會回傳 TRUE。 文字函數 LEFT 功能說明：從文字字串的左邊（開頭）開始，傳回指定數量的字元。 語法：LEFT(text, [num_chars]) 參數說明： text (必要): 包含您想擷取字元的文字字串。 num_chars (可選): 指定要擷取的字元數。如果省略，預設為 1。 範例：=LEFT(&#34;台北101&#34;, 2) 將回傳 台北。 LEN 功能說明：計算一個文字字串的總長度（字元數）。 語法：LEN(text) 參數說明： text (必要): 您想要計算長度的文字。 範例：=LEN(&#34;Hello World&#34;) 將回傳 11 (空格也算一個字元)。 MID 功能說明：從文字字串的指定位置開始，傳回指定數量的字元。 語法：MID(text, start_num, num_chars) 參數說明： text (必要): 包含您想擷取字元的文字字串。 start_num (必要): 您要開始擷取的起始字元位置（從 1 開始算）。 num_chars (必要): 您要擷取的字元數。 範例：=MID(&#34;我是台灣人&#34;, 3, 2) 將回傳 台灣。 RIGHT 功能說明：從文字字串的右邊（結尾）開始，傳回指定數量的字元。 語法：RIGHT(text, [num_chars]) 參數說明： text (必要): 包含您想擷取字元的文字字串。 num_chars (可選): 指定要擷取的字元數。如果省略，預設為 1。 範例：=RIGHT(&#34;產品編號-ABC&#34;, 3) 將回傳 ABC。 FIND 功能說明：在一個文字字串中尋找另一個文字字串，並回傳其開始的位置編號。此函數有區分英文大小寫。 語法：FIND(find_text, within_text, [start_num]) 參數說明： find_text (必要): 您要尋找的文字。 within_text (必要): 包含您要尋找文字的目標字串。 start_num (可選): 指定在 within_text 中從第幾個字元開始搜尋。如果省略，預設為 1。 範例：=FIND(&#34;P&#34;, &#34;Apple iPad&#34;) 將回傳 8。 統計與計算函數 AVERAGE 功能說明：計算所有參數的算術平均值。 語法：AVERAGE(number1, [number2], ...) 參數說明： number1 (必要): 第一個要計算平均的數字、儲存格或範圍。 number2 (可選): 其他要計算平均的數字、儲存格或範圍。 範例：=AVERAGE(A1:A10) 會計算 A1 到 A10 儲存格中所有數字的平均值。 COUNT 功能說明：計算一個範圍內包含「數字」的儲存格數量。 語法：COUNT(value1, [value2], ...) 參數說明： value1 (必要): 第一個要計算的項目、儲存格參照或範圍。 value2 (可選): 其他要計算的項目、儲存格參照或範圍。 範例：若 A1=95, A2=“缺考”, A3=88，則 =COUNT(A1:A3) 會回傳 2。 COUNTIF 功能說明：計算一個範圍內符合「單一條件」的儲存格數量。 語法：COUNTIF(range, criteria) 參數說明： range (必要): 您想要計算的儲存格範圍。 criteria (必要): 用來決定哪些儲存格要被計算的條件（可以是數字、運算式、文字）。 範例：=COUNTIF(B1:B20, &#34;&gt;=60&#34;) 會計算 B1 到 B20 範圍內，數值大於或等於 60 的儲存格數量。 MAX 功能說明：找出一個範圍內的最大值。 語法：MAX(number1, [number2], ...) 參數說明： number1 (必要): 第一個要尋找最大值的數字、儲存格或範圍。 number2 (可選): 其他要比較大小的數字、儲存格或範圍。 範例：=MAX(A1:A10) 會回傳 A1 到 A10 範圍中的最大值。 MIN 功能說明：找出一個範圍內的最小值。 語法：MIN(number1, [number2], ...) 參數說明： number1 (必要): 第一個要尋找最小值的數字、儲存格或範圍。 number2 (可選): 其他要比較大小的數字、儲存格或範圍。 範例：=MIN(A1:A10) 會回傳 A1 到 A10 範圍中的最小值。 RANK 功能說明：傳回一個數字在一組數字清單中的排名。（註：新版 Excel 建議使用 RANK.EQ） 語法：RANK(number, ref, [order]) 參數說明： number (必要): 您想要知道排名的數字。 ref (必要): 包含數字清單的範圍。 order (可選): 指定排名的順序。0 或省略代表遞減（高分是第 1 名）；任何非零值代表遞增（低分是第 1 名）。 範例：=RANK(A1, A1:A20, 0) 會計算 A1 的值在 A1:A20 範圍中的排名（遞減排序）。 SUM 功能說明：將指定的儲存格或範圍中的所有數字加總。 語法：SUM(number1, [number2], ...) 參數說明： number1 (必要): 第一個要加總的數字、儲存格或範圍。 number2 (可選): 其他要加總的數字、儲存格或範圍。 範例：=SUM(A1:A10) 會將 A1 到 A10 的所有數值相加。 SUMIF 功能說明：將一個範圍內符合「單一條件」的對應儲存格加總。 語法：SUMIF(range, criteria, [sum_range]) 參數說明： range (必要): 用於條件判斷的儲存格範圍。 criteria (必要): 決定哪些儲存格要被加總的條件。 sum_range (可選): 實際要進行加總的儲存格範圍。如果省略，則會加總 range 參數中的數字。 範例：=SUMIF(A1:A10, &#34;水果&#34;, B1:B10) 會在 A1:A10 範圍中尋找 “水果”，並將 B1:B10 範圍中對應的數值加總。 查詢與判斷函數 XLOOKUP 功能說明：一個強大且靈活的查詢函數，用於在一個範圍或陣列中尋找項目，並傳回對應項目。 語法：XLOOKUP(lookup_value, lookup_array, return_array, [if_not_found], [match_mode], [search_mode]) 參數說明： lookup_value (必要): 您要尋找的值。 lookup_array (必要): 要在其中搜尋的範圍或陣列。 return_array (必要): 要從中傳回值的範圍或陣列。 if_not_found (可選): 如果找不到相符項目時要傳回的值。若省略，則會回傳 #N/A 錯誤。 match_mode (可選): 指定比對方式。0 (預設)為完全相符；-1 為下一個較小項目；1 為下一個較大項目；2 為萬用字元比對。 search_mode (可選): 指定搜尋模式。1 (預設)從第一個項目開始搜尋；-1 從最後一個項目開始反向搜尋。 範例：=XLOOKUP(&#34;S003&#34;, A1:A100, B1:B100, &#34;查無此員工&#34;) 會在 A 欄中尋找 “S003”，回傳 B 欄對應的姓名，如果找不到則顯示 “查無此員工”。 IF 功能說明：執行邏輯判斷。如果條件為真，則回傳一個值；如果條件為假，則回傳另一個值。 語法：IF(logical_test, value_if_true, [value_if_false]) 參數說明： logical_test (必要): 任何可以評估為 TRUE 或 FALSE 的值或運算式。 value_if_true (必要): 當 logical_test 為 TRUE 時要傳回的值。 value_if_false (可選): 當 logical_test 為 FALSE 時要傳回的值。如果省略，則會回傳 FALSE。 範例：=IF(A1&gt;=60, &#34;及格&#34;, &#34;不及格&#34;) 如果 A1 的分數大於或等於 60，就顯示 “及格”，否則顯示 “不及格”。 " /><link rel="canonical" href="https://www.spectrepro.dev/docs/school/6-ict/1-a2%E8%A9%A6%E7%AE%97%E8%A1%A8%E5%87%BD%E6%95%B8/" itemprop="url" />
+
+<meta property="og:title" content="A2 試算表函數">
+<meta
+  property="og:description"
+  content="
+    
+      目錄
+    數學與數值函數
+    
+  
+      
+          Function
+          簡介
+      
+  
+  
+      
+          1. INT
+          無條件捨去數字的小數部分，傳回整數
+      
+      
+          2. RAND
+          產生一個大於或等於 0 且小於 1 的隨機亂數。每次重新計算工作表時，此數值都會變動。
+      
+      
+          3. SQRT
+          計算一個數字的正平方根
+      
+      
+          4. ROUND
+          將數字四捨五入到指定的位數。
+      
+  
+
+
+邏輯函數
+    
+  
+      
+          Function
+          簡介
+      
+  
+  
+      
+          5. AND
+          檢查所有條件是否都為 TRUE。如果所有條件皆為 TRUE，則回傳 TRUE；只要有任一條件為 FALSE，就回傳 FALSE。
+      
+      
+          6. NOT
+          將邏輯值反轉。TRUE 變為 FALSE，FALSE 變為 TRUE。
+      
+      
+          7. OR
+          檢查是否有任何一個條件為 TRUE。只要有任一條件為 TRUE，就回傳 TRUE；只有當所有條件都為 FALSE 時，才回傳 FALSE。
+      
+  
+
+
+文字函數
+    
+  
+      
+          Function
+          簡介
+      
+  
+  
+      
+          8. LEFT
+          從文字字串的左邊（開頭）開始，傳回指定數量的字元。
+      
+      
+          9. LEN
+          計算一個文字字串的總長度（字元數）。
+      
+      
+          10. MID
+          從文字字串的指定位置開始，傳回指定數量的字元。
+      
+      
+          11. RIGHT
+          從文字字串的右邊（結尾）開始，傳回指定數量的字元。
+      
+      
+          12. FIND
+          在一個文字字串中尋找另一個文字字串，並回傳其開始的位置編號。此函數有區分英文大小寫。
+      
+  
+
+
+統計與計算函數
+    
+  
+      
+          Function
+          簡介
+      
+  
+  
+      
+          13. AVERAGE
+          計算所有參數的算術平均值。
+      
+      
+          14. COUNT
+          計算一個範圍內包含「數字」的儲存格數量。
+      
+      
+          15. COUNTIF
+          計算一個範圍內符合「單一條件」的儲存格數量。
+      
+      
+          16. MAX
+          找出一個範圍內的最大值。
+      
+      
+          17. MIN
+          找出一個範圍內的最小值。
+      
+      
+          18. RANK
+          傳回一個數字在一組數字清單中的排名。（註：新版 Excel 建議使用 RANK.EQ）
+      
+      
+          19. SUM
+          將指定的儲存格或範圍中的所有數字加總。
+      
+      
+          20. SUMIF
+          將一個範圍內符合「單一條件」的對應儲存格加總。
+      
+  
+
+
+查詢與判斷函數
+    
+  
+      
+          Function
+          簡介
+      
+  
+  
+      
+          21. XLOOKUP
+          一個強大且靈活的查詢函數，用於在一個範圍或陣列中尋找項目，並傳回對應項目。
+      
+      
+          22. IF
+          執行邏輯判斷。如果條件為真，則回傳一個值；如果條件為假，則回傳另一個值。
+      
+  
+
+
+詳細使用方法
+    數學與數值函數
+    INT
+    
+功能說明：無條件捨去數字的小數部分，傳回整數。
+語法：INT(number)
+參數說明：
+
+number (必要): 您想要無條件捨去的數字或儲存格參照。
+
+
+範例：=INT(99.9) 將回傳 99。
+
+
+RAND
+    
+功能說明：產生一個大於或等於 0 且小於 1 的隨機亂數。每次重新計算工作表時，此數值都會變動。
+語法：RAND()
+參數說明：
+
+此函數沒有任何參數。
+
+
+範例：=RAND()*100 將產生一個 0 到 100 之間的隨機數。
+
+
+SQRT
+    
+功能說明：計算一個數字的正平方根。
+語法：SQRT(number)
+參數說明：
+
+number (必要): 您想要計算平方根的數字。此數字必須為正數。
+
+
+範例：=SQRT(144) 將回傳 12。
+
+
+ROUND
+    
+功能說明：將數字四捨五入到指定的位數。
+語法：ROUND(number, num_digits)
+參數說明：
+
+number (必要): 您想要進行四捨五入的數字。
+num_digits (必要): 您想要四捨五入到的位數。正數代表小數點右側的位數；0 代表整數位；負數代表小數點左側的位數（例如 -1 代表十位數）。
+
+
+範例：
+
+=ROUND(3.14159, 2) 將回傳 3.14。
+=ROUND(12345, -2) 將回傳 12300。
+
+
+
+
+邏輯函數
+    AND
+    
+功能說明：檢查所有條件是否都為 TRUE。如果所有條件皆為 TRUE，則回傳 TRUE；只要有任一條件為 FALSE，就回傳 FALSE。
+語法：AND(logical1, [logical2], ...)
+參數說明：
+
+logical1 (必要): 第一個要評估的條件。
+logical2 (可選): 第二個及之後要評估的條件，最多可達 255 個。
+
+
+範例：=AND(A1&gt;60, B1=&quot;男&quot;) 只有當 A1 大於 60 且 B1 是 &ldquo;男&rdquo; 時，才會回傳 TRUE。
+
+
+NOT
+    
+功能說明：將邏輯值反轉。TRUE 變為 FALSE，FALSE 變為 TRUE。
+語法：NOT(logical)
+參數說明：
+
+logical (必要): 一個可以評估為 TRUE 或 FALSE 的值或運算式。
+
+
+範例：=NOT(A1=10) 如果 A1 的值不等於 10，則回傳 TRUE。
+
+
+OR
+    
+功能說明：檢查是否有任何一個條件為 TRUE。只要有任一條件為 TRUE，就回傳 TRUE；只有當所有條件都為 FALSE 時，才回傳 FALSE。
+語法：OR(logical1, [logical2], ...)
+參數說明：
+
+logical1 (必要): 第一個要評估的條件。
+logical2 (可選): 第二個及之後要評估的條件，最多可達 255 個。
+
+
+範例：=OR(A1=&quot;週末&quot;, A1=&quot;國定假日&quot;) 只要 A1 是 &ldquo;週末&rdquo; 或 &ldquo;國定假日&rdquo;，就會回傳 TRUE。
+
+
+文字函數
+    LEFT
+    
+功能說明：從文字字串的左邊（開頭）開始，傳回指定數量的字元。
+語法：LEFT(text, [num_chars])
+參數說明：
+
+text (必要): 包含您想擷取字元的文字字串。
+num_chars (可選): 指定要擷取的字元數。如果省略，預設為 1。
+
+
+範例：=LEFT(&quot;台北101&quot;, 2) 將回傳 台北。
+
+
+LEN
+    
+功能說明：計算一個文字字串的總長度（字元數）。
+語法：LEN(text)
+參數說明：
+
+text (必要): 您想要計算長度的文字。
+
+
+範例：=LEN(&quot;Hello World&quot;) 將回傳 11 (空格也算一個字元)。
+
+
+MID
+    
+功能說明：從文字字串的指定位置開始，傳回指定數量的字元。
+語法：MID(text, start_num, num_chars)
+參數說明：
+
+text (必要): 包含您想擷取字元的文字字串。
+start_num (必要): 您要開始擷取的起始字元位置（從 1 開始算）。
+num_chars (必要): 您要擷取的字元數。
+
+
+範例：=MID(&quot;我是台灣人&quot;, 3, 2) 將回傳 台灣。
+
+
+RIGHT
+    
+功能說明：從文字字串的右邊（結尾）開始，傳回指定數量的字元。
+語法：RIGHT(text, [num_chars])
+參數說明：
+
+text (必要): 包含您想擷取字元的文字字串。
+num_chars (可選): 指定要擷取的字元數。如果省略，預設為 1。
+
+
+範例：=RIGHT(&quot;產品編號-ABC&quot;, 3) 將回傳 ABC。
+
+
+FIND
+    
+功能說明：在一個文字字串中尋找另一個文字字串，並回傳其開始的位置編號。此函數有區分英文大小寫。
+語法：FIND(find_text, within_text, [start_num])
+參數說明：
+
+find_text (必要): 您要尋找的文字。
+within_text (必要): 包含您要尋找文字的目標字串。
+start_num (可選): 指定在 within_text 中從第幾個字元開始搜尋。如果省略，預設為 1。
+
+
+範例：=FIND(&quot;P&quot;, &quot;Apple iPad&quot;) 將回傳 8。
+
+
+統計與計算函數
+    AVERAGE
+    
+功能說明：計算所有參數的算術平均值。
+語法：AVERAGE(number1, [number2], ...)
+參數說明：
+
+number1 (必要): 第一個要計算平均的數字、儲存格或範圍。
+number2 (可選): 其他要計算平均的數字、儲存格或範圍。
+
+
+範例：=AVERAGE(A1:A10) 會計算 A1 到 A10 儲存格中所有數字的平均值。
+
+
+COUNT
+    
+功能說明：計算一個範圍內包含「數字」的儲存格數量。
+語法：COUNT(value1, [value2], ...)
+參數說明：
+
+value1 (必要): 第一個要計算的項目、儲存格參照或範圍。
+value2 (可選): 其他要計算的項目、儲存格參照或範圍。
+
+
+範例：若 A1=95, A2=&ldquo;缺考&rdquo;, A3=88，則 =COUNT(A1:A3) 會回傳 2。
+
+
+COUNTIF
+    
+功能說明：計算一個範圍內符合「單一條件」的儲存格數量。
+語法：COUNTIF(range, criteria)
+參數說明：
+
+range (必要): 您想要計算的儲存格範圍。
+criteria (必要): 用來決定哪些儲存格要被計算的條件（可以是數字、運算式、文字）。
+
+
+範例：=COUNTIF(B1:B20, &quot;&gt;=60&quot;) 會計算 B1 到 B20 範圍內，數值大於或等於 60 的儲存格數量。
+
+
+MAX
+    
+功能說明：找出一個範圍內的最大值。
+語法：MAX(number1, [number2], ...)
+參數說明：
+
+number1 (必要): 第一個要尋找最大值的數字、儲存格或範圍。
+number2 (可選): 其他要比較大小的數字、儲存格或範圍。
+
+
+範例：=MAX(A1:A10) 會回傳 A1 到 A10 範圍中的最大值。
+
+
+MIN
+    
+功能說明：找出一個範圍內的最小值。
+語法：MIN(number1, [number2], ...)
+參數說明：
+
+number1 (必要): 第一個要尋找最小值的數字、儲存格或範圍。
+number2 (可選): 其他要比較大小的數字、儲存格或範圍。
+
+
+範例：=MIN(A1:A10) 會回傳 A1 到 A10 範圍中的最小值。
+
+
+RANK
+    
+功能說明：傳回一個數字在一組數字清單中的排名。（註：新版 Excel 建議使用 RANK.EQ）
+語法：RANK(number, ref, [order])
+參數說明：
+
+number (必要): 您想要知道排名的數字。
+ref (必要): 包含數字清單的範圍。
+order (可選): 指定排名的順序。0 或省略代表遞減（高分是第 1 名）；任何非零值代表遞增（低分是第 1 名）。
+
+
+範例：=RANK(A1, A1:A20, 0) 會計算 A1 的值在 A1:A20 範圍中的排名（遞減排序）。
+
+
+SUM
+    
+功能說明：將指定的儲存格或範圍中的所有數字加總。
+語法：SUM(number1, [number2], ...)
+參數說明：
+
+number1 (必要): 第一個要加總的數字、儲存格或範圍。
+number2 (可選): 其他要加總的數字、儲存格或範圍。
+
+
+範例：=SUM(A1:A10) 會將 A1 到 A10 的所有數值相加。
+
+
+SUMIF
+    
+功能說明：將一個範圍內符合「單一條件」的對應儲存格加總。
+語法：SUMIF(range, criteria, [sum_range])
+參數說明：
+
+range (必要): 用於條件判斷的儲存格範圍。
+criteria (必要): 決定哪些儲存格要被加總的條件。
+sum_range (可選): 實際要進行加總的儲存格範圍。如果省略，則會加總 range 參數中的數字。
+
+
+範例：=SUMIF(A1:A10, &quot;水果&quot;, B1:B10) 會在 A1:A10 範圍中尋找 &ldquo;水果&rdquo;，並將 B1:B10 範圍中對應的數值加總。
+
+
+查詢與判斷函數
+    XLOOKUP
+    
+功能說明：一個強大且靈活的查詢函數，用於在一個範圍或陣列中尋找項目，並傳回對應項目。
+語法：XLOOKUP(lookup_value, lookup_array, return_array, [if_not_found], [match_mode], [search_mode])
+參數說明：
+
+lookup_value (必要): 您要尋找的值。
+lookup_array (必要): 要在其中搜尋的範圍或陣列。
+return_array (必要): 要從中傳回值的範圍或陣列。
+if_not_found (可選): 如果找不到相符項目時要傳回的值。若省略，則會回傳 #N/A 錯誤。
+match_mode (可選): 指定比對方式。0 (預設)為完全相符；-1 為下一個較小項目；1 為下一個較大項目；2 為萬用字元比對。
+search_mode (可選): 指定搜尋模式。1 (預設)從第一個項目開始搜尋；-1 從最後一個項目開始反向搜尋。
+
+
+範例：=XLOOKUP(&quot;S003&quot;, A1:A100, B1:B100, &quot;查無此員工&quot;) 會在 A 欄中尋找 &ldquo;S003&rdquo;，回傳 B 欄對應的姓名，如果找不到則顯示 &ldquo;查無此員工&rdquo;。
+
+
+IF
+    
+功能說明：執行邏輯判斷。如果條件為真，則回傳一個值；如果條件為假，則回傳另一個值。
+語法：IF(logical_test, value_if_true, [value_if_false])
+參數說明：
+
+logical_test (必要): 任何可以評估為 TRUE 或 FALSE 的值或運算式。
+value_if_true (必要): 當 logical_test 為 TRUE 時要傳回的值。
+value_if_false (可選): 當 logical_test 為 FALSE 時要傳回的值。如果省略，則會回傳 FALSE。
+
+
+範例：=IF(A1&gt;=60, &quot;及格&quot;, &quot;不及格&quot;) 如果 A1 的分數大於或等於 60，就顯示 &ldquo;及格&rdquo;，否則顯示 &ldquo;不及格&rdquo;。
+
+    
+  ">
+<meta
+  property="og:type"
+  content="
+    article
+  ">
+<meta property="og:url" content="https://www.spectrepro.dev/docs/school/6-ict/1-a2%E8%A9%A6%E7%AE%97%E8%A1%A8%E5%87%BD%E6%95%B8/"><meta property="article:section" content="docs">
+
+
+
+
+  <meta itemprop="name" content="A2 試算表函數">
+  <meta itemprop="description" content="目錄 數學與數值函數 Function 簡介 1. INT 無條件捨去數字的小數部分，傳回整數 2. RAND 產生一個大於或等於 0 且小於 1 的隨機亂數。每次重新計算工作表時，此數值都會變動。 3. SQRT 計算一個數字的正平方根 4. ROUND 將數字四捨五入到指定的位數。 邏輯函數 Function 簡介 5. AND 檢查所有條件是否都為 TRUE。如果所有條件皆為 TRUE，則回傳 TRUE；只要有任一條件為 FALSE，就回傳 FALSE。 6. NOT 將邏輯值反轉。TRUE 變為 FALSE，FALSE 變為 TRUE。 7. OR 檢查是否有任何一個條件為 TRUE。只要有任一條件為 TRUE，就回傳 TRUE；只有當所有條件都為 FALSE 時，才回傳 FALSE。 文字函數 Function 簡介 8. LEFT 從文字字串的左邊（開頭）開始，傳回指定數量的字元。 9. LEN 計算一個文字字串的總長度（字元數）。 10. MID 從文字字串的指定位置開始，傳回指定數量的字元。 11. RIGHT 從文字字串的右邊（結尾）開始，傳回指定數量的字元。 12. FIND 在一個文字字串中尋找另一個文字字串，並回傳其開始的位置編號。此函數有區分英文大小寫。 統計與計算函數 Function 簡介 13. AVERAGE 計算所有參數的算術平均值。 14. COUNT 計算一個範圍內包含「數字」的儲存格數量。 15. COUNTIF 計算一個範圍內符合「單一條件」的儲存格數量。 16. MAX 找出一個範圍內的最大值。 17. MIN 找出一個範圍內的最小值。 18. RANK 傳回一個數字在一組數字清單中的排名。（註：新版 Excel 建議使用 RANK.EQ） 19. SUM 將指定的儲存格或範圍中的所有數字加總。 20. SUMIF 將一個範圍內符合「單一條件」的對應儲存格加總。 查詢與判斷函數 Function 簡介 21. XLOOKUP 一個強大且靈活的查詢函數，用於在一個範圍或陣列中尋找項目，並傳回對應項目。 22. IF 執行邏輯判斷。如果條件為真，則回傳一個值；如果條件為假，則回傳另一個值。 詳細使用方法 數學與數值函數 INT 功能說明：無條件捨去數字的小數部分，傳回整數。 語法：INT(number) 參數說明： number (必要): 您想要無條件捨去的數字或儲存格參照。 範例：=INT(99.9) 將回傳 99。 RAND 功能說明：產生一個大於或等於 0 且小於 1 的隨機亂數。每次重新計算工作表時，此數值都會變動。 語法：RAND() 參數說明： 此函數沒有任何參數。 範例：=RAND()*100 將產生一個 0 到 100 之間的隨機數。 SQRT 功能說明：計算一個數字的正平方根。 語法：SQRT(number) 參數說明： number (必要): 您想要計算平方根的數字。此數字必須為正數。 範例：=SQRT(144) 將回傳 12。 ROUND 功能說明：將數字四捨五入到指定的位數。 語法：ROUND(number, num_digits) 參數說明： number (必要): 您想要進行四捨五入的數字。 num_digits (必要): 您想要四捨五入到的位數。正數代表小數點右側的位數；0 代表整數位；負數代表小數點左側的位數（例如 -1 代表十位數）。 範例： =ROUND(3.14159, 2) 將回傳 3.14。 =ROUND(12345, -2) 將回傳 12300。 邏輯函數 AND 功能說明：檢查所有條件是否都為 TRUE。如果所有條件皆為 TRUE，則回傳 TRUE；只要有任一條件為 FALSE，就回傳 FALSE。 語法：AND(logical1, [logical2], ...) 參數說明： logical1 (必要): 第一個要評估的條件。 logical2 (可選): 第二個及之後要評估的條件，最多可達 255 個。 範例：=AND(A1&gt;60, B1=&#34;男&#34;) 只有當 A1 大於 60 且 B1 是 “男” 時，才會回傳 TRUE。 NOT 功能說明：將邏輯值反轉。TRUE 變為 FALSE，FALSE 變為 TRUE。 語法：NOT(logical) 參數說明： logical (必要): 一個可以評估為 TRUE 或 FALSE 的值或運算式。 範例：=NOT(A1=10) 如果 A1 的值不等於 10，則回傳 TRUE。 OR 功能說明：檢查是否有任何一個條件為 TRUE。只要有任一條件為 TRUE，就回傳 TRUE；只有當所有條件都為 FALSE 時，才回傳 FALSE。 語法：OR(logical1, [logical2], ...) 參數說明： logical1 (必要): 第一個要評估的條件。 logical2 (可選): 第二個及之後要評估的條件，最多可達 255 個。 範例：=OR(A1=&#34;週末&#34;, A1=&#34;國定假日&#34;) 只要 A1 是 “週末” 或 “國定假日”，就會回傳 TRUE。 文字函數 LEFT 功能說明：從文字字串的左邊（開頭）開始，傳回指定數量的字元。 語法：LEFT(text, [num_chars]) 參數說明： text (必要): 包含您想擷取字元的文字字串。 num_chars (可選): 指定要擷取的字元數。如果省略，預設為 1。 範例：=LEFT(&#34;台北101&#34;, 2) 將回傳 台北。 LEN 功能說明：計算一個文字字串的總長度（字元數）。 語法：LEN(text) 參數說明： text (必要): 您想要計算長度的文字。 範例：=LEN(&#34;Hello World&#34;) 將回傳 11 (空格也算一個字元)。 MID 功能說明：從文字字串的指定位置開始，傳回指定數量的字元。 語法：MID(text, start_num, num_chars) 參數說明： text (必要): 包含您想擷取字元的文字字串。 start_num (必要): 您要開始擷取的起始字元位置（從 1 開始算）。 num_chars (必要): 您要擷取的字元數。 範例：=MID(&#34;我是台灣人&#34;, 3, 2) 將回傳 台灣。 RIGHT 功能說明：從文字字串的右邊（結尾）開始，傳回指定數量的字元。 語法：RIGHT(text, [num_chars]) 參數說明： text (必要): 包含您想擷取字元的文字字串。 num_chars (可選): 指定要擷取的字元數。如果省略，預設為 1。 範例：=RIGHT(&#34;產品編號-ABC&#34;, 3) 將回傳 ABC。 FIND 功能說明：在一個文字字串中尋找另一個文字字串，並回傳其開始的位置編號。此函數有區分英文大小寫。 語法：FIND(find_text, within_text, [start_num]) 參數說明： find_text (必要): 您要尋找的文字。 within_text (必要): 包含您要尋找文字的目標字串。 start_num (可選): 指定在 within_text 中從第幾個字元開始搜尋。如果省略，預設為 1。 範例：=FIND(&#34;P&#34;, &#34;Apple iPad&#34;) 將回傳 8。 統計與計算函數 AVERAGE 功能說明：計算所有參數的算術平均值。 語法：AVERAGE(number1, [number2], ...) 參數說明： number1 (必要): 第一個要計算平均的數字、儲存格或範圍。 number2 (可選): 其他要計算平均的數字、儲存格或範圍。 範例：=AVERAGE(A1:A10) 會計算 A1 到 A10 儲存格中所有數字的平均值。 COUNT 功能說明：計算一個範圍內包含「數字」的儲存格數量。 語法：COUNT(value1, [value2], ...) 參數說明： value1 (必要): 第一個要計算的項目、儲存格參照或範圍。 value2 (可選): 其他要計算的項目、儲存格參照或範圍。 範例：若 A1=95, A2=“缺考”, A3=88，則 =COUNT(A1:A3) 會回傳 2。 COUNTIF 功能說明：計算一個範圍內符合「單一條件」的儲存格數量。 語法：COUNTIF(range, criteria) 參數說明： range (必要): 您想要計算的儲存格範圍。 criteria (必要): 用來決定哪些儲存格要被計算的條件（可以是數字、運算式、文字）。 範例：=COUNTIF(B1:B20, &#34;&gt;=60&#34;) 會計算 B1 到 B20 範圍內，數值大於或等於 60 的儲存格數量。 MAX 功能說明：找出一個範圍內的最大值。 語法：MAX(number1, [number2], ...) 參數說明： number1 (必要): 第一個要尋找最大值的數字、儲存格或範圍。 number2 (可選): 其他要比較大小的數字、儲存格或範圍。 範例：=MAX(A1:A10) 會回傳 A1 到 A10 範圍中的最大值。 MIN 功能說明：找出一個範圍內的最小值。 語法：MIN(number1, [number2], ...) 參數說明： number1 (必要): 第一個要尋找最小值的數字、儲存格或範圍。 number2 (可選): 其他要比較大小的數字、儲存格或範圍。 範例：=MIN(A1:A10) 會回傳 A1 到 A10 範圍中的最小值。 RANK 功能說明：傳回一個數字在一組數字清單中的排名。（註：新版 Excel 建議使用 RANK.EQ） 語法：RANK(number, ref, [order]) 參數說明： number (必要): 您想要知道排名的數字。 ref (必要): 包含數字清單的範圍。 order (可選): 指定排名的順序。0 或省略代表遞減（高分是第 1 名）；任何非零值代表遞增（低分是第 1 名）。 範例：=RANK(A1, A1:A20, 0) 會計算 A1 的值在 A1:A20 範圍中的排名（遞減排序）。 SUM 功能說明：將指定的儲存格或範圍中的所有數字加總。 語法：SUM(number1, [number2], ...) 參數說明： number1 (必要): 第一個要加總的數字、儲存格或範圍。 number2 (可選): 其他要加總的數字、儲存格或範圍。 範例：=SUM(A1:A10) 會將 A1 到 A10 的所有數值相加。 SUMIF 功能說明：將一個範圍內符合「單一條件」的對應儲存格加總。 語法：SUMIF(range, criteria, [sum_range]) 參數說明： range (必要): 用於條件判斷的儲存格範圍。 criteria (必要): 決定哪些儲存格要被加總的條件。 sum_range (可選): 實際要進行加總的儲存格範圍。如果省略，則會加總 range 參數中的數字。 範例：=SUMIF(A1:A10, &#34;水果&#34;, B1:B10) 會在 A1:A10 範圍中尋找 “水果”，並將 B1:B10 範圍中對應的數值加總。 查詢與判斷函數 XLOOKUP 功能說明：一個強大且靈活的查詢函數，用於在一個範圍或陣列中尋找項目，並傳回對應項目。 語法：XLOOKUP(lookup_value, lookup_array, return_array, [if_not_found], [match_mode], [search_mode]) 參數說明： lookup_value (必要): 您要尋找的值。 lookup_array (必要): 要在其中搜尋的範圍或陣列。 return_array (必要): 要從中傳回值的範圍或陣列。 if_not_found (可選): 如果找不到相符項目時要傳回的值。若省略，則會回傳 #N/A 錯誤。 match_mode (可選): 指定比對方式。0 (預設)為完全相符；-1 為下一個較小項目；1 為下一個較大項目；2 為萬用字元比對。 search_mode (可選): 指定搜尋模式。1 (預設)從第一個項目開始搜尋；-1 從最後一個項目開始反向搜尋。 範例：=XLOOKUP(&#34;S003&#34;, A1:A100, B1:B100, &#34;查無此員工&#34;) 會在 A 欄中尋找 “S003”，回傳 B 欄對應的姓名，如果找不到則顯示 “查無此員工”。 IF 功能說明：執行邏輯判斷。如果條件為真，則回傳一個值；如果條件為假，則回傳另一個值。 語法：IF(logical_test, value_if_true, [value_if_false]) 參數說明： logical_test (必要): 任何可以評估為 TRUE 或 FALSE 的值或運算式。 value_if_true (必要): 當 logical_test 為 TRUE 時要傳回的值。 value_if_false (可選): 當 logical_test 為 FALSE 時要傳回的值。如果省略，則會回傳 FALSE。 範例：=IF(A1&gt;=60, &#34;及格&#34;, &#34;不及格&#34;) 如果 A1 的分數大於或等於 60，就顯示 “及格”，否則顯示 “不及格”。">
+  <meta itemprop="wordCount" content="589">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="A2 試算表函數">
+  <meta name="twitter:description" content="目錄 數學與數值函數 Function 簡介 1. INT 無條件捨去數字的小數部分，傳回整數 2. RAND 產生一個大於或等於 0 且小於 1 的隨機亂數。每次重新計算工作表時，此數值都會變動。 3. SQRT 計算一個數字的正平方根 4. ROUND 將數字四捨五入到指定的位數。 邏輯函數 Function 簡介 5. AND 檢查所有條件是否都為 TRUE。如果所有條件皆為 TRUE，則回傳 TRUE；只要有任一條件為 FALSE，就回傳 FALSE。 6. NOT 將邏輯值反轉。TRUE 變為 FALSE，FALSE 變為 TRUE。 7. OR 檢查是否有任何一個條件為 TRUE。只要有任一條件為 TRUE，就回傳 TRUE；只有當所有條件都為 FALSE 時，才回傳 FALSE。 文字函數 Function 簡介 8. LEFT 從文字字串的左邊（開頭）開始，傳回指定數量的字元。 9. LEN 計算一個文字字串的總長度（字元數）。 10. MID 從文字字串的指定位置開始，傳回指定數量的字元。 11. RIGHT 從文字字串的右邊（結尾）開始，傳回指定數量的字元。 12. FIND 在一個文字字串中尋找另一個文字字串，並回傳其開始的位置編號。此函數有區分英文大小寫。 統計與計算函數 Function 簡介 13. AVERAGE 計算所有參數的算術平均值。 14. COUNT 計算一個範圍內包含「數字」的儲存格數量。 15. COUNTIF 計算一個範圍內符合「單一條件」的儲存格數量。 16. MAX 找出一個範圍內的最大值。 17. MIN 找出一個範圍內的最小值。 18. RANK 傳回一個數字在一組數字清單中的排名。（註：新版 Excel 建議使用 RANK.EQ） 19. SUM 將指定的儲存格或範圍中的所有數字加總。 20. SUMIF 將一個範圍內符合「單一條件」的對應儲存格加總。 查詢與判斷函數 Function 簡介 21. XLOOKUP 一個強大且靈活的查詢函數，用於在一個範圍或陣列中尋找項目，並傳回對應項目。 22. IF 執行邏輯判斷。如果條件為真，則回傳一個值；如果條件為假，則回傳另一個值。 詳細使用方法 數學與數值函數 INT 功能說明：無條件捨去數字的小數部分，傳回整數。 語法：INT(number) 參數說明： number (必要): 您想要無條件捨去的數字或儲存格參照。 範例：=INT(99.9) 將回傳 99。 RAND 功能說明：產生一個大於或等於 0 且小於 1 的隨機亂數。每次重新計算工作表時，此數值都會變動。 語法：RAND() 參數說明： 此函數沒有任何參數。 範例：=RAND()*100 將產生一個 0 到 100 之間的隨機數。 SQRT 功能說明：計算一個數字的正平方根。 語法：SQRT(number) 參數說明： number (必要): 您想要計算平方根的數字。此數字必須為正數。 範例：=SQRT(144) 將回傳 12。 ROUND 功能說明：將數字四捨五入到指定的位數。 語法：ROUND(number, num_digits) 參數說明： number (必要): 您想要進行四捨五入的數字。 num_digits (必要): 您想要四捨五入到的位數。正數代表小數點右側的位數；0 代表整數位；負數代表小數點左側的位數（例如 -1 代表十位數）。 範例： =ROUND(3.14159, 2) 將回傳 3.14。 =ROUND(12345, -2) 將回傳 12300。 邏輯函數 AND 功能說明：檢查所有條件是否都為 TRUE。如果所有條件皆為 TRUE，則回傳 TRUE；只要有任一條件為 FALSE，就回傳 FALSE。 語法：AND(logical1, [logical2], ...) 參數說明： logical1 (必要): 第一個要評估的條件。 logical2 (可選): 第二個及之後要評估的條件，最多可達 255 個。 範例：=AND(A1&gt;60, B1=&#34;男&#34;) 只有當 A1 大於 60 且 B1 是 “男” 時，才會回傳 TRUE。 NOT 功能說明：將邏輯值反轉。TRUE 變為 FALSE，FALSE 變為 TRUE。 語法：NOT(logical) 參數說明： logical (必要): 一個可以評估為 TRUE 或 FALSE 的值或運算式。 範例：=NOT(A1=10) 如果 A1 的值不等於 10，則回傳 TRUE。 OR 功能說明：檢查是否有任何一個條件為 TRUE。只要有任一條件為 TRUE，就回傳 TRUE；只有當所有條件都為 FALSE 時，才回傳 FALSE。 語法：OR(logical1, [logical2], ...) 參數說明： logical1 (必要): 第一個要評估的條件。 logical2 (可選): 第二個及之後要評估的條件，最多可達 255 個。 範例：=OR(A1=&#34;週末&#34;, A1=&#34;國定假日&#34;) 只要 A1 是 “週末” 或 “國定假日”，就會回傳 TRUE。 文字函數 LEFT 功能說明：從文字字串的左邊（開頭）開始，傳回指定數量的字元。 語法：LEFT(text, [num_chars]) 參數說明： text (必要): 包含您想擷取字元的文字字串。 num_chars (可選): 指定要擷取的字元數。如果省略，預設為 1。 範例：=LEFT(&#34;台北101&#34;, 2) 將回傳 台北。 LEN 功能說明：計算一個文字字串的總長度（字元數）。 語法：LEN(text) 參數說明： text (必要): 您想要計算長度的文字。 範例：=LEN(&#34;Hello World&#34;) 將回傳 11 (空格也算一個字元)。 MID 功能說明：從文字字串的指定位置開始，傳回指定數量的字元。 語法：MID(text, start_num, num_chars) 參數說明： text (必要): 包含您想擷取字元的文字字串。 start_num (必要): 您要開始擷取的起始字元位置（從 1 開始算）。 num_chars (必要): 您要擷取的字元數。 範例：=MID(&#34;我是台灣人&#34;, 3, 2) 將回傳 台灣。 RIGHT 功能說明：從文字字串的右邊（結尾）開始，傳回指定數量的字元。 語法：RIGHT(text, [num_chars]) 參數說明： text (必要): 包含您想擷取字元的文字字串。 num_chars (可選): 指定要擷取的字元數。如果省略，預設為 1。 範例：=RIGHT(&#34;產品編號-ABC&#34;, 3) 將回傳 ABC。 FIND 功能說明：在一個文字字串中尋找另一個文字字串，並回傳其開始的位置編號。此函數有區分英文大小寫。 語法：FIND(find_text, within_text, [start_num]) 參數說明： find_text (必要): 您要尋找的文字。 within_text (必要): 包含您要尋找文字的目標字串。 start_num (可選): 指定在 within_text 中從第幾個字元開始搜尋。如果省略，預設為 1。 範例：=FIND(&#34;P&#34;, &#34;Apple iPad&#34;) 將回傳 8。 統計與計算函數 AVERAGE 功能說明：計算所有參數的算術平均值。 語法：AVERAGE(number1, [number2], ...) 參數說明： number1 (必要): 第一個要計算平均的數字、儲存格或範圍。 number2 (可選): 其他要計算平均的數字、儲存格或範圍。 範例：=AVERAGE(A1:A10) 會計算 A1 到 A10 儲存格中所有數字的平均值。 COUNT 功能說明：計算一個範圍內包含「數字」的儲存格數量。 語法：COUNT(value1, [value2], ...) 參數說明： value1 (必要): 第一個要計算的項目、儲存格參照或範圍。 value2 (可選): 其他要計算的項目、儲存格參照或範圍。 範例：若 A1=95, A2=“缺考”, A3=88，則 =COUNT(A1:A3) 會回傳 2。 COUNTIF 功能說明：計算一個範圍內符合「單一條件」的儲存格數量。 語法：COUNTIF(range, criteria) 參數說明： range (必要): 您想要計算的儲存格範圍。 criteria (必要): 用來決定哪些儲存格要被計算的條件（可以是數字、運算式、文字）。 範例：=COUNTIF(B1:B20, &#34;&gt;=60&#34;) 會計算 B1 到 B20 範圍內，數值大於或等於 60 的儲存格數量。 MAX 功能說明：找出一個範圍內的最大值。 語法：MAX(number1, [number2], ...) 參數說明： number1 (必要): 第一個要尋找最大值的數字、儲存格或範圍。 number2 (可選): 其他要比較大小的數字、儲存格或範圍。 範例：=MAX(A1:A10) 會回傳 A1 到 A10 範圍中的最大值。 MIN 功能說明：找出一個範圍內的最小值。 語法：MIN(number1, [number2], ...) 參數說明： number1 (必要): 第一個要尋找最小值的數字、儲存格或範圍。 number2 (可選): 其他要比較大小的數字、儲存格或範圍。 範例：=MIN(A1:A10) 會回傳 A1 到 A10 範圍中的最小值。 RANK 功能說明：傳回一個數字在一組數字清單中的排名。（註：新版 Excel 建議使用 RANK.EQ） 語法：RANK(number, ref, [order]) 參數說明： number (必要): 您想要知道排名的數字。 ref (必要): 包含數字清單的範圍。 order (可選): 指定排名的順序。0 或省略代表遞減（高分是第 1 名）；任何非零值代表遞增（低分是第 1 名）。 範例：=RANK(A1, A1:A20, 0) 會計算 A1 的值在 A1:A20 範圍中的排名（遞減排序）。 SUM 功能說明：將指定的儲存格或範圍中的所有數字加總。 語法：SUM(number1, [number2], ...) 參數說明： number1 (必要): 第一個要加總的數字、儲存格或範圍。 number2 (可選): 其他要加總的數字、儲存格或範圍。 範例：=SUM(A1:A10) 會將 A1 到 A10 的所有數值相加。 SUMIF 功能說明：將一個範圍內符合「單一條件」的對應儲存格加總。 語法：SUMIF(range, criteria, [sum_range]) 參數說明： range (必要): 用於條件判斷的儲存格範圍。 criteria (必要): 決定哪些儲存格要被加總的條件。 sum_range (可選): 實際要進行加總的儲存格範圍。如果省略，則會加總 range 參數中的數字。 範例：=SUMIF(A1:A10, &#34;水果&#34;, B1:B10) 會在 A1:A10 範圍中尋找 “水果”，並將 B1:B10 範圍中對應的數值加總。 查詢與判斷函數 XLOOKUP 功能說明：一個強大且靈活的查詢函數，用於在一個範圍或陣列中尋找項目，並傳回對應項目。 語法：XLOOKUP(lookup_value, lookup_array, return_array, [if_not_found], [match_mode], [search_mode]) 參數說明： lookup_value (必要): 您要尋找的值。 lookup_array (必要): 要在其中搜尋的範圍或陣列。 return_array (必要): 要從中傳回值的範圍或陣列。 if_not_found (可選): 如果找不到相符項目時要傳回的值。若省略，則會回傳 #N/A 錯誤。 match_mode (可選): 指定比對方式。0 (預設)為完全相符；-1 為下一個較小項目；1 為下一個較大項目；2 為萬用字元比對。 search_mode (可選): 指定搜尋模式。1 (預設)從第一個項目開始搜尋；-1 從最後一個項目開始反向搜尋。 範例：=XLOOKUP(&#34;S003&#34;, A1:A100, B1:B100, &#34;查無此員工&#34;) 會在 A 欄中尋找 “S003”，回傳 B 欄對應的姓名，如果找不到則顯示 “查無此員工”。 IF 功能說明：執行邏輯判斷。如果條件為真，則回傳一個值；如果條件為假，則回傳另一個值。 語法：IF(logical_test, value_if_true, [value_if_false]) 參數說明： logical_test (必要): 任何可以評估為 TRUE 或 FALSE 的值或運算式。 value_if_true (必要): 當 logical_test 為 TRUE 時要傳回的值。 value_if_false (可選): 當 logical_test 為 FALSE 時要傳回的值。如果省略，則會回傳 FALSE。 範例：=IF(A1&gt;=60, &#34;及格&#34;, &#34;不及格&#34;) 如果 A1 的分數大於或等於 60，就顯示 “及格”，否則顯示 “不及格”。">
+
+    <link rel="preload" href="/css/compiled/main.min.f1286e08894e4edb7578e277f8af9252465cacf0a6e1ffc14d2218d4b5f80571.css" as="style" integrity="sha256-8ShuCIlOTtt1eOJ3&#43;K&#43;SUkZcrPCm4f/BTSIY1LX4BXE=" />
+    <link href="/css/compiled/main.min.f1286e08894e4edb7578e277f8af9252465cacf0a6e1ffc14d2218d4b5f80571.css" rel="stylesheet" integrity="sha256-8ShuCIlOTtt1eOJ3&#43;K&#43;SUkZcrPCm4f/BTSIY1LX4BXE=" />
+
+  
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+  
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RBZ6NBDVS7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "G-RBZ6NBDVS7");
+</script>
+
+
+
+
+
+
+
+<script src="/js/main-head.min.b35edf231d4342eaac536385a0fd7c90bff77c0cb977a194a720ec27a521842d.js" integrity="sha256-s17fIx1DQuqsU2OFoP18kL/3fAy5d6GUpyDsJ6UhhC0="></script>
+
+  
+  
+  </head>
+<body><div class="hextra-nav-container hx:sticky hx:top-0 hx:z-20 hx:w-full hx:bg-transparent hx:print:hidden">
+  <div
+    class="hextra-nav-container-blur hx:pointer-events-none hx:absolute hx:z-[-1] hx:h-full hx:w-full hx:bg-white hx:dark:bg-dark hx:shadow-[0_2px_4px_rgba(0,0,0,.02),0_1px_0_rgba(0,0,0,.06)] hx:contrast-more:shadow-[0_0_0_1px_#000] hx:dark:shadow-[0_-1px_0_rgba(255,255,255,.1)_inset] hx:contrast-more:dark:shadow-[0_0_0_1px_#fff]"
+  ></div>
+
+  <nav class="hextra-max-navbar-width hx:mx-auto hx:flex hx:items-center hx:justify-end hx:gap-2 hx:h-16 hx:px-6">
+    <a class="hx:flex hx:items-center hx:hover:opacity-75 hx:ltr:mr-auto hx:rtl:ml-auto" href="/">
+    <img class="hx:mr-2 hx:block hx:dark:hidden" src="/images/logo.svg" alt="Logo" height="20" width="40" />
+    <img class="hx:mr-2 hx:hidden hx:dark:block" src="/images/logo-dark.svg" alt="Dark Logo" height="20" width="40" />
+    <span class="hx:mr-2 hx:font-extrabold hx:inline hx:select-none" title="SPECTRE NOTE">SPECTRE NOTE</span>
+</a>
+<a
+  title=""
+  href="/docs"
+  
+  class="hx:text-sm hx:contrast-more:text-gray-700 hx:contrast-more:dark:text-gray-100 hx:relative hx:-ml-2 hx:hidden hx:whitespace-nowrap hx:p-2 hx:md:inline-flex hx:items-center hx:gap-1 hx:font-medium"
+><span class="hx:text-center">Note</span>
+</a><a
+  title=""
+  href="/game"
+  
+  class="hx:text-sm hx:contrast-more:text-gray-700 hx:contrast-more:dark:text-gray-100 hx:relative hx:-ml-2 hx:hidden hx:whitespace-nowrap hx:p-2 hx:md:inline-flex hx:items-center hx:gap-1 hx:text-gray-600 hx:hover:text-gray-800 hx:dark:text-gray-400 hx:dark:hover:text-gray-200"
+><span class="hx:text-center">Game</span>
+</a><div class="hextra-search-wrapper hx:relative hx:md:w-64">
+  <div class="hx:relative hx:flex hx:items-center hx:text-gray-900 hx:contrast-more:text-gray-800 hx:dark:text-gray-300 hx:contrast-more:dark:text-gray-300">
+    <input
+      placeholder="Search..."
+      class="hextra-search-input hx:focus:hextra-focus hx:block hx:w-full hx:appearance-none hx:rounded-lg hx:px-3 hx:py-2 hx:transition-colors hx:text-base hx:leading-tight hx:md:text-sm hx:bg-black/[.05] hx:dark:bg-gray-50/10 hx:focus:bg-white hx:dark:focus:bg-dark hx:placeholder:text-gray-500 hx:dark:placeholder:text-gray-400 hx:contrast-more:border hx:contrast-more:border-current"
+      type="search"
+      value=""
+      spellcheck="false"
+    />
+    <kbd
+      class="hx:absolute hx:my-1.5 hx:select-none hx:ltr:right-1.5 hx:rtl:left-1.5 hx:h-5 hx:rounded-sm hx:bg-white hx:px-1.5 hx:font-mono hx:text-[10px] hx:font-medium hx:text-gray-500 hx:border hx:border-gray-200 hx:dark:border-gray-100/20 hx:dark:bg-dark/50 hx:contrast-more:border-current hx:contrast-more:text-current hx:contrast-more:dark:border-current hx:items-center hx:gap-1 hx:transition-opacity hx:pointer-events-none hx:hidden hx:sm:flex"
+    >
+      CTRL K
+    </kbd>
+  </div>
+
+  <div>
+    <ul
+      class="hextra-search-results hextra-scrollbar hx:hidden hx:border hx:border-gray-200 hx:bg-white hx:text-gray-100 hx:dark:border-neutral-800 hx:dark:bg-neutral-900 hx:absolute hx:top-full hx:z-20 hx:mt-2 hx:overflow-auto hx:overscroll-contain hx:rounded-xl hx:py-2.5 hx:shadow-xl hx:max-h-[min(calc(50vh-11rem-env(safe-area-inset-bottom)),400px)] hx:md:max-h-[min(calc(100vh-5rem-env(safe-area-inset-bottom)),400px)] hx:inset-x-0 hx:ltr:md:left-auto hx:rtl:md:right-auto hx:contrast-more:border hx:contrast-more:border-gray-900 hx:contrast-more:dark:border-gray-50 hx:w-screen hx:min-h-[100px] hx:max-w-[min(calc(100vw-2rem),calc(100%+20rem))]"
+      style="transition: max-height 0.2s ease 0s;"
+    ></ul>
+  </div>
+</div>
+
+          <a class="hx:p-2 hx:text-current" target="_blank" rel="noreferrer" href="https://youtube.com/@spectre-pro" title="YouTube"><svg height=24 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="currentColor" d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104l.022.26l.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105l-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006l-.087-.004l-.171-.007l-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103l.003-.052l.008-.104l.022-.26l.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007l.172-.006l.086-.003l.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/></svg><span class="hx:sr-only">YouTube</span>
+          </a>
+          <a class="hx:p-2 hx:text-current" target="_blank" rel="noreferrer" href="https://github.com/spectre-pro" title="GitHub"><svg height=24 fill="currentColor" viewBox="3 3 18 18">
+  <path d="M12 3C7.0275 3 3 7.12937 3 12.2276C3 16.3109 5.57625 19.7597 9.15374 20.9824C9.60374 21.0631 9.77249 20.7863 9.77249 20.5441C9.77249 20.3249 9.76125 19.5982 9.76125 18.8254C7.5 19.2522 6.915 18.2602 6.735 17.7412C6.63375 17.4759 6.19499 16.6569 5.8125 16.4378C5.4975 16.2647 5.0475 15.838 5.80124 15.8264C6.51 15.8149 7.01625 16.4954 7.18499 16.7723C7.99499 18.1679 9.28875 17.7758 9.80625 17.5335C9.885 16.9337 10.1212 16.53 10.38 16.2993C8.3775 16.0687 6.285 15.2728 6.285 11.7432C6.285 10.7397 6.63375 9.9092 7.20749 9.26326C7.1175 9.03257 6.8025 8.08674 7.2975 6.81794C7.2975 6.81794 8.05125 6.57571 9.77249 7.76377C10.4925 7.55615 11.2575 7.45234 12.0225 7.45234C12.7875 7.45234 13.5525 7.55615 14.2725 7.76377C15.9937 6.56418 16.7475 6.81794 16.7475 6.81794C17.2424 8.08674 16.9275 9.03257 16.8375 9.26326C17.4113 9.9092 17.76 10.7281 17.76 11.7432C17.76 15.2843 15.6563 16.0687 13.6537 16.2993C13.98 16.5877 14.2613 17.1414 14.2613 18.0065C14.2613 19.2407 14.25 20.2326 14.25 20.5441C14.25 20.7863 14.4188 21.0746 14.8688 20.9824C16.6554 20.364 18.2079 19.1866 19.3078 17.6162C20.4077 16.0457 20.9995 14.1611 21 12.2276C21 7.12937 16.9725 3 12 3Z"></path>
+</svg>
+<span class="hx:sr-only">GitHub</span>
+          </a><div class="hx:flex hx:justify-items-start hx:group" data-theme="light">
+  <button
+    title="Change theme"
+    data-state="closed"
+    data-location="top"
+    class="hextra-theme-toggle hx:cursor-pointer hx:rounded-md hx:text-left hx:font-medium hx:p-2 hx:grow"
+    type="button"
+    aria-label="Change theme"
+  >
+    <div class="hx:flex hx:items-center hx:gap-2 hx:capitalize"><svg height=24 class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=system]:hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg><svg height=24 class="hx:group-data-[theme=light]:hidden hx:group-data-[theme=system]:hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg><svg height=24 class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=light]:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  fill="currentColor">
+  <path d="M 11.996094,2 C 6.4986225,2.0192368 2.03125,6.5024993 2.03125,12 c 0,5.497501 4.4673725,9.980763 9.964844,10 H 12 12.0039 c 5.497471,-0.01924 9.964844,-4.502499 9.964844,-10 0,-5.4975007 -4.467373,-9.9807632 -9.964844,-10 H 12 Z M 12,4 c 4.417218,0.017598 7.96875,3.5822356 7.96875,8 0,4.417764 -3.551532,7.982402 -7.96875,8 z" />
+</svg>
+</div>
+  </button>
+  <ul
+    class="hextra-theme-toggle-options hx:hidden hx:z-20 hx:max-h-64 hx:overflow-auto hx:rounded-md hx:ring-1 hx:ring-black/5 hx:bg-white hx:py-1 hx:text-sm hx:shadow-lg hx:dark:ring-white/20 hx:dark:bg-neutral-800"
+    style="position: fixed; inset: auto auto 0px 0px; margin: 0px; min-width: 100px;"
+    data-theme="light"
+  >
+    <li class="hx:flex hx:flex-col">
+      <p
+        data-item="light"
+        class="hx:text-gray-800 hx:dark:text-gray-100 hx:hover:bg-primary-50 hx:hover:text-primary-600 hx:hover:dark:bg-primary-500/10 hx:hover:dark:text-primary-600 hx:relative hx:cursor-pointer hx:whitespace-nowrap hx:py-1.5 hx:transition-colors hx:ltr:pl-3 hx:ltr:pr-9 hx:rtl:pr-3 hx:rtl:pl-9"
+      >
+        Light
+         <span class="hx:absolute hx:inset-y-0 hx:flex hx:items-center hx:ltr:right-3 hx:rtl:left-3 hx:group-data-[theme=dark]:hidden hx:group-data-[theme=system]:hidden"><svg height=1em width=1em xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+      </p>
+    </li>
+    <li class="hx:flex hx:flex-col">
+      <p
+        data-item="dark"
+        class="hx:text-gray-800 hx:dark:text-gray-100 hx:hover:bg-primary-50 hx:hover:text-primary-600 hx:hover:dark:bg-primary-500/10 hx:hover:dark:text-primary-600 hx:relative hx:cursor-pointer hx:whitespace-nowrap hx:py-1.5 hx:transition-colors hx:ltr:pl-3 hx:ltr:pr-9 hx:rtl:pr-3 hx:rtl:pl-9"
+      >
+        Dark
+         <span class="hx:absolute hx:inset-y-0 hx:flex hx:items-center hx:ltr:right-3 hx:rtl:left-3 hx:group-data-[theme=light]:hidden hx:group-data-[theme=system]:hidden"><svg height=1em width=1em xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+      </p>
+    </li>
+    <li class="hx:flex hx:flex-col">
+      <p
+        data-item="system"
+        class="hx:text-gray-800 hx:dark:text-gray-100 hx:hover:bg-primary-50 hx:hover:text-primary-600 hx:hover:dark:bg-primary-500/10 hx:hover:dark:text-primary-600 hx:relative hx:cursor-pointer hx:whitespace-nowrap hx:py-1.5 hx:transition-colors hx:ltr:pl-3 hx:ltr:pr-9 hx:rtl:pr-3 hx:rtl:pl-9"
+      >
+        System
+         <span class="hx:absolute hx:inset-y-0 hx:flex hx:items-center hx:ltr:right-3 hx:rtl:left-3 hx:group-data-[theme=dark]:hidden hx:group-data-[theme=light]:hidden"><svg height=1em width=1em xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+      </p>
+    </li>
+  </ul>
+</div><button type="button" aria-label="Menu" class="hextra-hamburger-menu hx:cursor-pointer hx:-mr-2 hx:rounded-sm hx:p-2 hx:active:bg-gray-400/20 hx:md:hidden"><svg height=24 fill="none" viewBox="0 0 24 24" stroke="currentColor"><g><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8H20"></path></g><g><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16H20"></path></g></svg></button>
+  </nav>
+</div>
+
+  <div class='hx:mx-auto hx:flex hextra-max-page-width'>
+    <aside class="hextra-sidebar-container hx:flex hx:flex-col hx:print:hidden hx:md:top-16 hx:md:shrink-0 hx:md:w-64 hx:md:self-start hx:max-md:[transform:translate3d(0,-100%,0)] hx:md:sticky">
+  
+  <div class="hx:px-4 hx:pt-4 hx:md:hidden">
+    <div class="hextra-search-wrapper hx:relative hx:md:w-64">
+  <div class="hx:relative hx:flex hx:items-center hx:text-gray-900 hx:contrast-more:text-gray-800 hx:dark:text-gray-300 hx:contrast-more:dark:text-gray-300">
+    <input
+      placeholder="Search..."
+      class="hextra-search-input hx:focus:hextra-focus hx:block hx:w-full hx:appearance-none hx:rounded-lg hx:px-3 hx:py-2 hx:transition-colors hx:text-base hx:leading-tight hx:md:text-sm hx:bg-black/[.05] hx:dark:bg-gray-50/10 hx:focus:bg-white hx:dark:focus:bg-dark hx:placeholder:text-gray-500 hx:dark:placeholder:text-gray-400 hx:contrast-more:border hx:contrast-more:border-current"
+      type="search"
+      value=""
+      spellcheck="false"
+    />
+    <kbd
+      class="hx:absolute hx:my-1.5 hx:select-none hx:ltr:right-1.5 hx:rtl:left-1.5 hx:h-5 hx:rounded-sm hx:bg-white hx:px-1.5 hx:font-mono hx:text-[10px] hx:font-medium hx:text-gray-500 hx:border hx:border-gray-200 hx:dark:border-gray-100/20 hx:dark:bg-dark/50 hx:contrast-more:border-current hx:contrast-more:text-current hx:contrast-more:dark:border-current hx:items-center hx:gap-1 hx:transition-opacity hx:pointer-events-none hx:hidden hx:sm:flex"
+    >
+      CTRL K
+    </kbd>
+  </div>
+
+  <div>
+    <ul
+      class="hextra-search-results hextra-scrollbar hx:hidden hx:border hx:border-gray-200 hx:bg-white hx:text-gray-100 hx:dark:border-neutral-800 hx:dark:bg-neutral-900 hx:absolute hx:top-full hx:z-20 hx:mt-2 hx:overflow-auto hx:overscroll-contain hx:rounded-xl hx:py-2.5 hx:shadow-xl hx:max-h-[min(calc(50vh-11rem-env(safe-area-inset-bottom)),400px)] hx:md:max-h-[min(calc(100vh-5rem-env(safe-area-inset-bottom)),400px)] hx:inset-x-0 hx:ltr:md:left-auto hx:rtl:md:right-auto hx:contrast-more:border hx:contrast-more:border-gray-900 hx:contrast-more:dark:border-gray-50 hx:w-screen hx:min-h-[100px] hx:max-w-[min(calc(100vw-2rem),calc(100%+20rem))]"
+      style="transition: max-height 0.2s ease 0s;"
+    ></ul>
+  </div>
+</div>
+
+  </div>
+  <div class="hextra-scrollbar hx:overflow-y-auto hx:overflow-x-hidden hx:p-4 hx:grow hx:md:h-[calc(100vh-var(--navbar-height)-var(--menu-height))]">
+    <ul class="hx:flex hx:flex-col hx:gap-1 hx:md:hidden">
+      
+      
+          <li class=""><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/game/"
+    
+  >Game
+    </a></li>
+          <li class="open"><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/"
+    
+  >Note
+        <span class="hextra-sidebar-collapsible-button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hx:h-[18px] hx:min-w-[18px] hx:rounded-xs hx:p-0.5 hx:hover:bg-gray-800/5 hx:dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx:origin-center hx:transition-transform hx:rtl:-rotate-180"></path></svg></span>
+    </a><div class="hx:ltr:pr-0 hx:overflow-hidden">
+        <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/tech/"
+    
+  >Tech
+        <span class="hextra-sidebar-collapsible-button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hx:h-[18px] hx:min-w-[18px] hx:rounded-xs hx:p-0.5 hx:hover:bg-gray-800/5 hx:dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx:origin-center hx:transition-transform hx:rtl:-rotate-180"></path></svg></span>
+    </a>
+              <div class="hx:ltr:pr-0 hx:overflow-hidden">
+        <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/tech/github-alerts/"
+    
+  >Github Alerts
+    </a>
+              
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/tech/homelab/"
+    
+  >Homelab
+    </a>
+              
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/tech/git/"
+    
+  >Git &amp; Github
+    </a>
+              
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/tech/python/"
+    
+  >Python
+        <span class="hextra-sidebar-collapsible-button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hx:h-[18px] hx:min-w-[18px] hx:rounded-xs hx:p-0.5 hx:hover:bg-gray-800/5 hx:dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx:origin-center hx:transition-transform hx:rtl:-rotate-180"></path></svg></span>
+    </a>
+              <div class="hx:ltr:pr-0 hx:overflow-hidden">
+        <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/tech/python/1-pyenv/"
+    
+  >pyenv 與 pyenv-win 全面教學
+    </a>
+              
+            </li></ul>
+      </div>
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/tech/video/"
+    
+  >Video
+        <span class="hextra-sidebar-collapsible-button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hx:h-[18px] hx:min-w-[18px] hx:rounded-xs hx:p-0.5 hx:hover:bg-gray-800/5 hx:dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx:origin-center hx:transition-transform hx:rtl:-rotate-180"></path></svg></span>
+    </a>
+              <div class="hx:ltr:pr-0 hx:overflow-hidden">
+        <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/tech/video/1-gemini-proxy/"
+    
+  >Gemini proxy
+    </a>
+              
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/tech/video/2-open-webui/"
+    
+  >Open WebUI
+    </a>
+              
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/tech/video/3-domain/"
+    
+  >白嫖域名
+    </a>
+              
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/tech/video/4-ubuntu/"
+    
+  >舊電腦復活計畫
+    </a>
+              
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/tech/video/5-github-ai/"
+    
+  >GitHub AI 終極白嫖指南
+    </a>
+              
+            </li></ul>
+      </div>
+            </li></ul>
+      </div>
+            </li><li class="hx:flex hx:flex-col open"><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/"
+    
+  >School
+        <span class="hextra-sidebar-collapsible-button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hx:h-[18px] hx:min-w-[18px] hx:rounded-xs hx:p-0.5 hx:hover:bg-gray-800/5 hx:dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx:origin-center hx:transition-transform hx:rtl:-rotate-180"></path></svg></span>
+    </a>
+              <div class="hx:ltr:pr-0 hx:overflow-hidden">
+        <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/1-chinese/"
+    
+  >中文
+        <span class="hextra-sidebar-collapsible-button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hx:h-[18px] hx:min-w-[18px] hx:rounded-xs hx:p-0.5 hx:hover:bg-gray-800/5 hx:dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx:origin-center hx:transition-transform hx:rtl:-rotate-180"></path></svg></span>
+    </a>
+              <div class="hx:ltr:pr-0 hx:overflow-hidden">
+        <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/1-chinese/1-%E8%AB%96%E4%BB%81%E8%AB%96%E5%AD%9D%E8%AB%96%E5%90%9B%E5%AD%90/"
+    
+  >論仁、論孝、論君子
+    </a>
+              
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/1-chinese/2-%E9%AD%9A%E6%88%91%E6%89%80%E6%AC%B2%E4%B9%9F/"
+    
+  >魚我所欲也
+    </a>
+              
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/1-chinese/3-%E5%BB%89%E9%A0%97%E8%97%BA%E7%9B%B8%E5%A6%82%E5%88%97%E5%82%B3/"
+    
+  >廉頗藺相如列傳
+    </a>
+              
+            </li></ul>
+      </div>
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/2-english/"
+    
+  >English
+        <span class="hextra-sidebar-collapsible-button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hx:h-[18px] hx:min-w-[18px] hx:rounded-xs hx:p-0.5 hx:hover:bg-gray-800/5 hx:dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx:origin-center hx:transition-transform hx:rtl:-rotate-180"></path></svg></span>
+    </a>
+              <div class="hx:ltr:pr-0 hx:overflow-hidden">
+        <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/2-english/1-tenses/"
+    
+  >Tenses
+    </a>
+              
+            </li></ul>
+      </div>
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/3-math/"
+    
+  >數學
+        <span class="hextra-sidebar-collapsible-button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hx:h-[18px] hx:min-w-[18px] hx:rounded-xs hx:p-0.5 hx:hover:bg-gray-800/5 hx:dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx:origin-center hx:transition-transform hx:rtl:-rotate-180"></path></svg></span>
+    </a>
+              <div class="hx:ltr:pr-0 hx:overflow-hidden">
+        <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/3-math/1-4a-%E7%AC%AC%E4%BA%8C%E8%AA%B2-%E7%9B%B4%E7%B7%9A%E7%9A%84%E6%96%B9%E7%A8%8B/"
+    
+  >4A 第二課 直線的方程
+    </a>
+              
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/3-math/2-4a-%E7%AC%AC%E4%B8%89%E8%AA%B2-%E4%B8%80%E5%85%83%E4%BA%8C%E6%AC%A1%E6%96%B9%E7%A8%8B/"
+    
+  >4A 第三課 一元二次方程
+    </a>
+              
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/3-math/3-4a-%E7%AC%AC%E4%BA%94%E8%AA%B2-%E4%BA%8C%E6%AC%A1%E5%87%BD%E6%95%B8/"
+    
+  >4A 第五課 二次函數
+    </a>
+              
+            </li></ul>
+      </div>
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/4-m2/"
+    
+  >M2
+        <span class="hextra-sidebar-collapsible-button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hx:h-[18px] hx:min-w-[18px] hx:rounded-xs hx:p-0.5 hx:hover:bg-gray-800/5 hx:dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx:origin-center hx:transition-transform hx:rtl:-rotate-180"></path></svg></span>
+    </a>
+              <div class="hx:ltr:pr-0 hx:overflow-hidden">
+        <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/4-m2/%E4%BA%8C%E9%A0%85%E5%BC%8F%E5%AE%9A%E7%90%86/"
+    
+  >二項式定理
+    </a>
+              
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/4-m2/%E7%BA%8C%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B8/"
+    
+  >續三角函數
+    </a>
+              
+            </li></ul>
+      </div>
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/5-phy/"
+    
+  >物理
+        <span class="hextra-sidebar-collapsible-button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hx:h-[18px] hx:min-w-[18px] hx:rounded-xs hx:p-0.5 hx:hover:bg-gray-800/5 hx:dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx:origin-center hx:transition-transform hx:rtl:-rotate-180"></path></svg></span>
+    </a>
+              <div class="hx:ltr:pr-0 hx:overflow-hidden">
+        <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/5-phy/1-b1-%E4%BD%8D%E7%BD%AE%E5%92%8C%E7%A7%BB%E5%8B%95-%E5%8A%9B%E5%92%8C%E9%81%8B%E5%8B%95/"
+    
+  >B1 位置和移動-力和運動
+    </a>
+              
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/5-phy/2-b2-%E5%8A%9B%E5%92%8C%E9%81%8B%E5%8B%95-%E5%8A%9B%E5%92%8C%E9%81%8B%E5%8B%95/"
+    
+  >B2 力和運動-力和運動
+    </a>
+              
+            </li></ul>
+      </div>
+            </li><li class="hx:flex hx:flex-col open"><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/6-ict/"
+    
+  >ICT
+        <span class="hextra-sidebar-collapsible-button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hx:h-[18px] hx:min-w-[18px] hx:rounded-xs hx:p-0.5 hx:hover:bg-gray-800/5 hx:dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx:origin-center hx:transition-transform hx:rtl:-rotate-180"></path></svg></span>
+    </a>
+              <div class="hx:ltr:pr-0 hx:overflow-hidden">
+        <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'><li class="hx:flex hx:flex-col open"><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hextra-sidebar-active-item hx:bg-primary-100 hx:font-semibold hx:text-primary-800 hx:contrast-more:border hx:contrast-more:border-primary-500 hx:dark:bg-primary-400/10 hx:dark:text-primary-600 hx:contrast-more:dark:border-primary-500"
+    href="/docs/school/6-ict/1-a2%E8%A9%A6%E7%AE%97%E8%A1%A8%E5%87%BD%E6%95%B8/"
+    
+  >A2 試算表函數
+    </a>
+  
+    <ul class='hx:flex hx:flex-col hx:gap-1 hx:relative hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:dark:before:bg-neutral-800 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:pr-3 hx:rtl:before:right-0 hx:ltr:ml-3 hx:rtl:mr-3'><li>
+              <a
+                href="#%e7%9b%ae%e9%8c%84"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >目錄</a>
+            </li>
+          <li>
+              <a
+                href="#%e8%a9%b3%e7%b4%b0%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >詳細使用方法</a>
+            </li>
+          </ul>
+  
+              
+            </li></ul>
+      </div>
+            </li></ul>
+      </div>
+            </li></ul>
+      </div></li>
+      <li class="[word-break:break-word] hx:mt-5 hx:mb-2 hx:px-2 hx:py-1.5 hx:text-sm hx:font-semibold hx:text-gray-900 hx:first:mt-0 hx:dark:text-gray-100">
+        <span class="hx:cursor-default">更多</span>
+      </li>
+    <li><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="https://github.com/spectre-pro/spectre-pro.github.io"
+    target="_blank" rel="noreferrer"
+  >This website repository</a></li>
+    
+    </ul>
+
+    <ul class="hx:flex hx:flex-col hx:gap-1 hx:max-md:hidden">
+        
+          <li class=""><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/tech/"
+    
+  >Tech
+        <span class="hextra-sidebar-collapsible-button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hx:h-[18px] hx:min-w-[18px] hx:rounded-xs hx:p-0.5 hx:hover:bg-gray-800/5 hx:dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx:origin-center hx:transition-transform hx:rtl:-rotate-180"></path></svg></span>
+    </a><div class="hx:ltr:pr-0 hx:overflow-hidden">
+        <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/tech/github-alerts/"
+    
+  >Github Alerts
+    </a>
+              
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/tech/homelab/"
+    
+  >Homelab
+    </a>
+              
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/tech/git/"
+    
+  >Git &amp; Github
+    </a>
+              
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/tech/python/"
+    
+  >Python
+        <span class="hextra-sidebar-collapsible-button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hx:h-[18px] hx:min-w-[18px] hx:rounded-xs hx:p-0.5 hx:hover:bg-gray-800/5 hx:dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx:origin-center hx:transition-transform hx:rtl:-rotate-180"></path></svg></span>
+    </a>
+              <div class="hx:ltr:pr-0 hx:overflow-hidden">
+        <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/tech/python/1-pyenv/"
+    
+  >pyenv 與 pyenv-win 全面教學
+    </a>
+              
+            </li></ul>
+      </div>
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/tech/video/"
+    
+  >Video
+        <span class="hextra-sidebar-collapsible-button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hx:h-[18px] hx:min-w-[18px] hx:rounded-xs hx:p-0.5 hx:hover:bg-gray-800/5 hx:dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx:origin-center hx:transition-transform hx:rtl:-rotate-180"></path></svg></span>
+    </a>
+              <div class="hx:ltr:pr-0 hx:overflow-hidden">
+        <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/tech/video/1-gemini-proxy/"
+    
+  >Gemini proxy
+    </a>
+              
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/tech/video/2-open-webui/"
+    
+  >Open WebUI
+    </a>
+              
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/tech/video/3-domain/"
+    
+  >白嫖域名
+    </a>
+              
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/tech/video/4-ubuntu/"
+    
+  >舊電腦復活計畫
+    </a>
+              
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/tech/video/5-github-ai/"
+    
+  >GitHub AI 終極白嫖指南
+    </a>
+              
+            </li></ul>
+      </div>
+            </li></ul>
+      </div></li>
+          <li class="open"><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/"
+    
+  >School
+        <span class="hextra-sidebar-collapsible-button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hx:h-[18px] hx:min-w-[18px] hx:rounded-xs hx:p-0.5 hx:hover:bg-gray-800/5 hx:dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx:origin-center hx:transition-transform hx:rtl:-rotate-180"></path></svg></span>
+    </a><div class="hx:ltr:pr-0 hx:overflow-hidden">
+        <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/1-chinese/"
+    
+  >中文
+        <span class="hextra-sidebar-collapsible-button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hx:h-[18px] hx:min-w-[18px] hx:rounded-xs hx:p-0.5 hx:hover:bg-gray-800/5 hx:dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx:origin-center hx:transition-transform hx:rtl:-rotate-180"></path></svg></span>
+    </a>
+              <div class="hx:ltr:pr-0 hx:overflow-hidden">
+        <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/1-chinese/1-%E8%AB%96%E4%BB%81%E8%AB%96%E5%AD%9D%E8%AB%96%E5%90%9B%E5%AD%90/"
+    
+  >論仁、論孝、論君子
+    </a>
+              
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/1-chinese/2-%E9%AD%9A%E6%88%91%E6%89%80%E6%AC%B2%E4%B9%9F/"
+    
+  >魚我所欲也
+    </a>
+              
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/1-chinese/3-%E5%BB%89%E9%A0%97%E8%97%BA%E7%9B%B8%E5%A6%82%E5%88%97%E5%82%B3/"
+    
+  >廉頗藺相如列傳
+    </a>
+              
+            </li></ul>
+      </div>
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/2-english/"
+    
+  >English
+        <span class="hextra-sidebar-collapsible-button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hx:h-[18px] hx:min-w-[18px] hx:rounded-xs hx:p-0.5 hx:hover:bg-gray-800/5 hx:dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx:origin-center hx:transition-transform hx:rtl:-rotate-180"></path></svg></span>
+    </a>
+              <div class="hx:ltr:pr-0 hx:overflow-hidden">
+        <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/2-english/1-tenses/"
+    
+  >Tenses
+    </a>
+              
+            </li></ul>
+      </div>
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/3-math/"
+    
+  >數學
+        <span class="hextra-sidebar-collapsible-button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hx:h-[18px] hx:min-w-[18px] hx:rounded-xs hx:p-0.5 hx:hover:bg-gray-800/5 hx:dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx:origin-center hx:transition-transform hx:rtl:-rotate-180"></path></svg></span>
+    </a>
+              <div class="hx:ltr:pr-0 hx:overflow-hidden">
+        <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/3-math/1-4a-%E7%AC%AC%E4%BA%8C%E8%AA%B2-%E7%9B%B4%E7%B7%9A%E7%9A%84%E6%96%B9%E7%A8%8B/"
+    
+  >4A 第二課 直線的方程
+    </a>
+              
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/3-math/2-4a-%E7%AC%AC%E4%B8%89%E8%AA%B2-%E4%B8%80%E5%85%83%E4%BA%8C%E6%AC%A1%E6%96%B9%E7%A8%8B/"
+    
+  >4A 第三課 一元二次方程
+    </a>
+              
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/3-math/3-4a-%E7%AC%AC%E4%BA%94%E8%AA%B2-%E4%BA%8C%E6%AC%A1%E5%87%BD%E6%95%B8/"
+    
+  >4A 第五課 二次函數
+    </a>
+              
+            </li></ul>
+      </div>
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/4-m2/"
+    
+  >M2
+        <span class="hextra-sidebar-collapsible-button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hx:h-[18px] hx:min-w-[18px] hx:rounded-xs hx:p-0.5 hx:hover:bg-gray-800/5 hx:dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx:origin-center hx:transition-transform hx:rtl:-rotate-180"></path></svg></span>
+    </a>
+              <div class="hx:ltr:pr-0 hx:overflow-hidden">
+        <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/4-m2/%E4%BA%8C%E9%A0%85%E5%BC%8F%E5%AE%9A%E7%90%86/"
+    
+  >二項式定理
+    </a>
+              
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/4-m2/%E7%BA%8C%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B8/"
+    
+  >續三角函數
+    </a>
+              
+            </li></ul>
+      </div>
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/5-phy/"
+    
+  >物理
+        <span class="hextra-sidebar-collapsible-button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hx:h-[18px] hx:min-w-[18px] hx:rounded-xs hx:p-0.5 hx:hover:bg-gray-800/5 hx:dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx:origin-center hx:transition-transform hx:rtl:-rotate-180"></path></svg></span>
+    </a>
+              <div class="hx:ltr:pr-0 hx:overflow-hidden">
+        <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/5-phy/1-b1-%E4%BD%8D%E7%BD%AE%E5%92%8C%E7%A7%BB%E5%8B%95-%E5%8A%9B%E5%92%8C%E9%81%8B%E5%8B%95/"
+    
+  >B1 位置和移動-力和運動
+    </a>
+              
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/5-phy/2-b2-%E5%8A%9B%E5%92%8C%E9%81%8B%E5%8B%95-%E5%8A%9B%E5%92%8C%E9%81%8B%E5%8B%95/"
+    
+  >B2 力和運動-力和運動
+    </a>
+              
+            </li></ul>
+      </div>
+            </li><li class="hx:flex hx:flex-col open"><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/school/6-ict/"
+    
+  >ICT
+        <span class="hextra-sidebar-collapsible-button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hx:h-[18px] hx:min-w-[18px] hx:rounded-xs hx:p-0.5 hx:hover:bg-gray-800/5 hx:dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx:origin-center hx:transition-transform hx:rtl:-rotate-180"></path></svg></span>
+    </a>
+              <div class="hx:ltr:pr-0 hx:overflow-hidden">
+        <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'><li class="hx:flex hx:flex-col open"><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hextra-sidebar-active-item hx:bg-primary-100 hx:font-semibold hx:text-primary-800 hx:contrast-more:border hx:contrast-more:border-primary-500 hx:dark:bg-primary-400/10 hx:dark:text-primary-600 hx:contrast-more:dark:border-primary-500"
+    href="/docs/school/6-ict/1-a2%E8%A9%A6%E7%AE%97%E8%A1%A8%E5%87%BD%E6%95%B8/"
+    
+  >A2 試算表函數
+    </a>
+              
+            </li></ul>
+      </div>
+            </li></ul>
+      </div></li>
+        
+      <li class="[word-break:break-word] hx:mt-5 hx:mb-2 hx:px-2 hx:py-1.5 hx:text-sm hx:font-semibold hx:text-gray-900 hx:first:mt-0 hx:dark:text-gray-100">
+        <span class="hx:cursor-default">更多</span>
+      </li>
+    <li><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="https://github.com/spectre-pro/spectre-pro.github.io"
+    target="_blank" rel="noreferrer"
+  >This website repository</a></li>
+    
+      </ul>
+    </div>
+  
+  
+    <div class="  hx:sticky hx:bottom-0 hx:max-h-(--menu-height) hx:bg-white hx:dark:bg-dark hx:mx-4 hx:py-4 hx:shadow-[0_-12px_16px_#fff] hx:flex hx:items-center hx:gap-2 hx:border-gray-200 hx:dark:border-neutral-800 hx:dark:shadow-[0_-12px_16px_#111] hx:contrast-more:border-neutral-400 hx:contrast-more:shadow-none hx:contrast-more:dark:shadow-none hx:border-t" data-toggle-animation="show"><div class="hx:flex hx:grow hx:flex-col"><div class="hx:flex hx:justify-items-start hx:group" data-theme="light">
+  <button
+    title="Change theme"
+    data-state="closed"
+    data-location="bottom"
+    class="hextra-theme-toggle hx:cursor-pointer hx:rounded-md hx:text-left hx:font-medium hx:h-7 hx:px-2 hx:text-xs hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:font-medium hx:text-gray-600 hx:transition-colors hx:dark:text-gray-400 hx:grow"
+    type="button"
+    aria-label="Change theme"
+  >
+    <div class="hx:flex hx:items-center hx:gap-2 hx:capitalize"><svg height=12 class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=system]:hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg><span class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=system]:hidden">Light</span><svg height=12 class="hx:group-data-[theme=light]:hidden hx:group-data-[theme=system]:hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg><span class="hx:group-data-[theme=light]:hidden hx:group-data-[theme=system]:hidden">Dark</span><svg height=12 class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=light]:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  fill="currentColor">
+  <path d="M 11.996094,2 C 6.4986225,2.0192368 2.03125,6.5024993 2.03125,12 c 0,5.497501 4.4673725,9.980763 9.964844,10 H 12 12.0039 c 5.497471,-0.01924 9.964844,-4.502499 9.964844,-10 0,-5.4975007 -4.467373,-9.9807632 -9.964844,-10 H 12 Z M 12,4 c 4.417218,0.017598 7.96875,3.5822356 7.96875,8 0,4.417764 -3.551532,7.982402 -7.96875,8 z" />
+</svg>
+<span class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=light]:hidden">System</span></div>
+  </button>
+  <ul
+    class="hextra-theme-toggle-options hx:hidden hx:z-20 hx:max-h-64 hx:overflow-auto hx:rounded-md hx:ring-1 hx:ring-black/5 hx:bg-white hx:py-1 hx:text-sm hx:shadow-lg hx:dark:ring-white/20 hx:dark:bg-neutral-800"
+    style="position: fixed; inset: auto auto 0px 0px; margin: 0px; min-width: 100px;"
+    data-theme="light"
+  >
+    <li class="hx:flex hx:flex-col">
+      <p
+        data-item="light"
+        class="hx:text-gray-800 hx:dark:text-gray-100 hx:hover:bg-primary-50 hx:hover:text-primary-600 hx:hover:dark:bg-primary-500/10 hx:hover:dark:text-primary-600 hx:relative hx:cursor-pointer hx:whitespace-nowrap hx:py-1.5 hx:transition-colors hx:ltr:pl-3 hx:ltr:pr-9 hx:rtl:pr-3 hx:rtl:pl-9"
+      >
+        Light
+         <span class="hx:absolute hx:inset-y-0 hx:flex hx:items-center hx:ltr:right-3 hx:rtl:left-3 hx:group-data-[theme=dark]:hidden hx:group-data-[theme=system]:hidden"><svg height=1em width=1em xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+      </p>
+    </li>
+    <li class="hx:flex hx:flex-col">
+      <p
+        data-item="dark"
+        class="hx:text-gray-800 hx:dark:text-gray-100 hx:hover:bg-primary-50 hx:hover:text-primary-600 hx:hover:dark:bg-primary-500/10 hx:hover:dark:text-primary-600 hx:relative hx:cursor-pointer hx:whitespace-nowrap hx:py-1.5 hx:transition-colors hx:ltr:pl-3 hx:ltr:pr-9 hx:rtl:pr-3 hx:rtl:pl-9"
+      >
+        Dark
+         <span class="hx:absolute hx:inset-y-0 hx:flex hx:items-center hx:ltr:right-3 hx:rtl:left-3 hx:group-data-[theme=light]:hidden hx:group-data-[theme=system]:hidden"><svg height=1em width=1em xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+      </p>
+    </li>
+    <li class="hx:flex hx:flex-col">
+      <p
+        data-item="system"
+        class="hx:text-gray-800 hx:dark:text-gray-100 hx:hover:bg-primary-50 hx:hover:text-primary-600 hx:hover:dark:bg-primary-500/10 hx:hover:dark:text-primary-600 hx:relative hx:cursor-pointer hx:whitespace-nowrap hx:py-1.5 hx:transition-colors hx:ltr:pl-3 hx:ltr:pr-9 hx:rtl:pr-3 hx:rtl:pl-9"
+      >
+        System
+         <span class="hx:absolute hx:inset-y-0 hx:flex hx:items-center hx:ltr:right-3 hx:rtl:left-3 hx:group-data-[theme=dark]:hidden hx:group-data-[theme=light]:hidden"><svg height=1em width=1em xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+      </p>
+    </li>
+  </ul>
+</div></div></div></aside>
+    
+<nav class="hextra-toc hx:order-last hx:hidden hx:w-64 hx:shrink-0 hx:xl:block hx:print:hidden hx:px-4" aria-label="table of contents">
+    <div class="hextra-scrollbar hx:sticky hx:top-16 hx:overflow-y-auto hx:pr-4 hx:pt-6 hx:text-sm [hyphens:auto] hx:max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] hx:ltr:-mr-4 hx:rtl:-ml-4"><p class="hx:mb-4 hx:font-semibold hx:tracking-tight">On this page</p><ul>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#%e7%9b%ae%e9%8c%84">目錄
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#%e6%95%b8%e5%ad%b8%e8%88%87%e6%95%b8%e5%80%bc%e5%87%bd%e6%95%b8">數學與數值函數
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#%e9%82%8f%e8%bc%af%e5%87%bd%e6%95%b8">邏輯函數
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#%e6%96%87%e5%ad%97%e5%87%bd%e6%95%b8">文字函數
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#%e7%b5%b1%e8%a8%88%e8%88%87%e8%a8%88%e7%ae%97%e5%87%bd%e6%95%b8">統計與計算函數
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#%e6%9f%a5%e8%a9%a2%e8%88%87%e5%88%a4%e6%96%b7%e5%87%bd%e6%95%b8">查詢與判斷函數
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#%e8%a9%b3%e7%b4%b0%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95">詳細使用方法
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#%e6%95%b8%e5%ad%b8%e8%88%87%e6%95%b8%e5%80%bc%e5%87%bd%e6%95%b8-1">數學與數值函數
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#int">INT
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#rand">RAND
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#sqrt">SQRT
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#round">ROUND
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#%e9%82%8f%e8%bc%af%e5%87%bd%e6%95%b8-1">邏輯函數
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#and">AND
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#not">NOT
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#or">OR
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#%e6%96%87%e5%ad%97%e5%87%bd%e6%95%b8-1">文字函數
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#left">LEFT
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#len">LEN
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#mid">MID
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#right">RIGHT
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#find">FIND
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#%e7%b5%b1%e8%a8%88%e8%88%87%e8%a8%88%e7%ae%97%e5%87%bd%e6%95%b8-1">統計與計算函數
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#average">AVERAGE
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#count">COUNT
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#countif">COUNTIF
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#max">MAX
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#min">MIN
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#rank">RANK
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#sum">SUM
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#sumif">SUMIF
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#%e6%9f%a5%e8%a9%a2%e8%88%87%e5%88%a4%e6%96%b7%e5%87%bd%e6%95%b8-1">查詢與判斷函數
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#xlookup">XLOOKUP
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#if">IF
+        </a>
+      </li></ul>
+      <div class="hx:mt-8 hx:border-t hx:bg-white hx:pt-8 hx:shadow-[0_-12px_16px_white] hx:dark:bg-dark hx:dark:shadow-[0_-12px_16px_#111] hx:sticky hx:bottom-0 hx:flex hx:flex-col hx:items-start hx:gap-2 hx:pb-8 hx:border-gray-200 hx:dark:border-neutral-800 hx:contrast-more:border-t hx:contrast-more:border-neutral-400 hx:contrast-more:shadow-none hx:contrast-more:dark:border-neutral-400"><a class="hx:text-xs hx:font-medium hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-100 hx:contrast-more:text-gray-800 hx:contrast-more:dark:text-gray-50" href="https://github.com/spectre-pro/spectre-pro.github.io/blob/main/content/docs/school/6-ict/1-A2%E8%A9%A6%E7%AE%97%E8%A1%A8%E5%87%BD%E6%95%B8.md" target="_blank" rel="noreferrer">Edit this page on GitHub →</a>
+        <button aria-hidden="true" id="backToTop" onClick="scrollUp();" class="hx:cursor-pointer hx:transition-all hx:duration-75 hx:opacity-0 hx:text-xs hx:font-medium hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-100 hx:contrast-more:text-gray-800 hx:contrast-more:dark:text-gray-50">
+          <span>Scroll to top</span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hx:inline hx:ltr:ml-1 hx:rtl:mr-1 hx:h-3.5 hx:w-3.5 hx:rounded-full hx:border hx:border-gray-500 hx:hover:border-gray-900 hx:dark:border-gray-400 hx:dark:hover:border-gray-100 hx:contrast-more:border-gray-800 hx:contrast-more:dark:border-gray-50">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+
+    <article class="hx:w-full hx:break-words hx:flex hx:min-h-[calc(100vh-var(--navbar-height))] hx:min-w-0 hx:justify-center hx:pb-8 hx:pr-[calc(env(safe-area-inset-right)-1.5rem)]">
+      <main class="hx:w-full hx:min-w-0 hx:max-w-6xl hx:px-6 hx:pt-4 hx:md:px-12">
+        <div class="hx:mt-1.5 hx:flex hx:items-center hx:gap-1 hx:overflow-hidden hx:text-sm hx:text-gray-500 hx:dark:text-gray-400 hx:contrast-more:text-current">
+        <div class="hx:whitespace-nowrap hx:transition-colors hx:min-w-[24px] hx:overflow-hidden hx:text-ellipsis hx:hover:text-gray-900 hx:dark:hover:text-gray-100">
+          <a href="/docs/">Note</a>
+        </div><svg class="hx:w-3.5 hx:shrink-0 hx:rtl:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        <div class="hx:whitespace-nowrap hx:transition-colors hx:min-w-[24px] hx:overflow-hidden hx:text-ellipsis hx:hover:text-gray-900 hx:dark:hover:text-gray-100">
+          <a href="/docs/school/">School</a>
+        </div><svg class="hx:w-3.5 hx:shrink-0 hx:rtl:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        <div class="hx:whitespace-nowrap hx:transition-colors hx:min-w-[24px] hx:overflow-hidden hx:text-ellipsis hx:hover:text-gray-900 hx:dark:hover:text-gray-100">
+          <a href="/docs/school/6-ict/">ICT</a>
+        </div><svg class="hx:w-3.5 hx:shrink-0 hx:rtl:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg><div class="hx:whitespace-nowrap hx:transition-colors hx:font-medium hx:text-gray-700 hx:contrast-more:font-bold hx:contrast-more:text-current hx:dark:text-gray-100 hx:contrast-more:dark:text-current">A2 試算表函數</div>
+  </div>
+
+        <div class="content">
+          <h1>A2 試算表函數</h1>
+          <h2>目錄<span class="hx:absolute hx:-mt-20" id="目錄"></span>
+    <a href="#%e7%9b%ae%e9%8c%84" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><h3>數學與數值函數<span class="hx:absolute hx:-mt-20" id="數學與數值函數"></span>
+    <a href="#%e6%95%b8%e5%ad%b8%e8%88%87%e6%95%b8%e5%80%bc%e5%87%bd%e6%95%b8" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><table>
+  <thead>
+      <tr>
+          <th>Function</th>
+          <th>簡介</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1. <a href="#int">INT</a></td>
+          <td>無條件捨去數字的小數部分，傳回整數</td>
+      </tr>
+      <tr>
+          <td>2. <a href="#rand">RAND</a></td>
+          <td>產生一個大於或等於 0 且小於 1 的隨機亂數。每次重新計算工作表時，此數值都會變動。</td>
+      </tr>
+      <tr>
+          <td>3. <a href="#sqrt">SQRT</a></td>
+          <td>計算一個數字的正平方根</td>
+      </tr>
+      <tr>
+          <td>4. <a href="#round">ROUND</a></td>
+          <td>將數字四捨五入到指定的位數。</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3>邏輯函數<span class="hx:absolute hx:-mt-20" id="邏輯函數"></span>
+    <a href="#%e9%82%8f%e8%bc%af%e5%87%bd%e6%95%b8" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><table>
+  <thead>
+      <tr>
+          <th>Function</th>
+          <th>簡介</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>5. <a href="#and">AND</a></td>
+          <td>檢查所有條件是否都為 TRUE。如果所有條件皆為 TRUE，則回傳 TRUE；只要有任一條件為 FALSE，就回傳 FALSE。</td>
+      </tr>
+      <tr>
+          <td>6. <a href="#not">NOT</a></td>
+          <td>將邏輯值反轉。TRUE 變為 FALSE，FALSE 變為 TRUE。</td>
+      </tr>
+      <tr>
+          <td>7. <a href="#or">OR</a></td>
+          <td>檢查是否有任何一個條件為 TRUE。只要有任一條件為 TRUE，就回傳 TRUE；只有當所有條件都為 FALSE 時，才回傳 FALSE。</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3>文字函數<span class="hx:absolute hx:-mt-20" id="文字函數"></span>
+    <a href="#%e6%96%87%e5%ad%97%e5%87%bd%e6%95%b8" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><table>
+  <thead>
+      <tr>
+          <th>Function</th>
+          <th>簡介</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>8. <a href="#left">LEFT</a></td>
+          <td>從文字字串的左邊（開頭）開始，傳回指定數量的字元。</td>
+      </tr>
+      <tr>
+          <td>9. <a href="#len">LEN</a></td>
+          <td>計算一個文字字串的總長度（字元數）。</td>
+      </tr>
+      <tr>
+          <td>10. <a href="#mid">MID</a></td>
+          <td>從文字字串的指定位置開始，傳回指定數量的字元。</td>
+      </tr>
+      <tr>
+          <td>11. <a href="#right">RIGHT</a></td>
+          <td>從文字字串的右邊（結尾）開始，傳回指定數量的字元。</td>
+      </tr>
+      <tr>
+          <td>12. <a href="#find">FIND</a></td>
+          <td>在一個文字字串中尋找另一個文字字串，並回傳其開始的位置編號。此函數<strong>有區分</strong>英文大小寫。</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3>統計與計算函數<span class="hx:absolute hx:-mt-20" id="統計與計算函數"></span>
+    <a href="#%e7%b5%b1%e8%a8%88%e8%88%87%e8%a8%88%e7%ae%97%e5%87%bd%e6%95%b8" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><table>
+  <thead>
+      <tr>
+          <th>Function</th>
+          <th>簡介</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>13. <a href="#average">AVERAGE</a></td>
+          <td>計算所有參數的算術平均值。</td>
+      </tr>
+      <tr>
+          <td>14. <a href="#count">COUNT</a></td>
+          <td>計算一個範圍內包含「數字」的儲存格數量。</td>
+      </tr>
+      <tr>
+          <td>15. <a href="#countif">COUNTIF</a></td>
+          <td>計算一個範圍內符合「單一條件」的儲存格數量。</td>
+      </tr>
+      <tr>
+          <td>16. <a href="#max">MAX</a></td>
+          <td>找出一個範圍內的最大值。</td>
+      </tr>
+      <tr>
+          <td>17. <a href="#min">MIN</a></td>
+          <td>找出一個範圍內的最小值。</td>
+      </tr>
+      <tr>
+          <td>18. <a href="#rank">RANK</a></td>
+          <td>傳回一個數字在一組數字清單中的排名。（註：新版 Excel 建議使用 <code>RANK.EQ</code>）</td>
+      </tr>
+      <tr>
+          <td>19. <a href="#sum">SUM</a></td>
+          <td>將指定的儲存格或範圍中的所有數字加總。</td>
+      </tr>
+      <tr>
+          <td>20. <a href="#sumif">SUMIF</a></td>
+          <td>將一個範圍內符合「單一條件」的對應儲存格加總。</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3>查詢與判斷函數<span class="hx:absolute hx:-mt-20" id="查詢與判斷函數"></span>
+    <a href="#%e6%9f%a5%e8%a9%a2%e8%88%87%e5%88%a4%e6%96%b7%e5%87%bd%e6%95%b8" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><table>
+  <thead>
+      <tr>
+          <th>Function</th>
+          <th>簡介</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>21. <a href="#xlookup">XLOOKUP</a></td>
+          <td>一個強大且靈活的查詢函數，用於在一個範圍或陣列中尋找項目，並傳回對應項目。</td>
+      </tr>
+      <tr>
+          <td>22. <a href="#if">IF</a></td>
+          <td>執行邏輯判斷。如果條件為真，則回傳一個值；如果條件為假，則回傳另一個值。</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2>詳細使用方法<span class="hx:absolute hx:-mt-20" id="詳細使用方法"></span>
+    <a href="#%e8%a9%b3%e7%b4%b0%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><h3>數學與數值函數<span class="hx:absolute hx:-mt-20" id="數學與數值函數-1"></span>
+    <a href="#%e6%95%b8%e5%ad%b8%e8%88%87%e6%95%b8%e5%80%bc%e5%87%bd%e6%95%b8-1" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><h4>INT<span class="hx:absolute hx:-mt-20" id="int"></span>
+    <a href="#int" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li><strong>功能說明</strong>：無條件捨去數字的小數部分，傳回整數。</li>
+<li><strong>語法</strong>：<code>INT(number)</code></li>
+<li><strong>參數說明</strong>：
+<ul>
+<li><code>number</code> (<strong>必要</strong>): 您想要無條件捨去的數字或儲存格參照。</li>
+</ul>
+</li>
+<li><strong>範例</strong>：<code>=INT(99.9)</code> 將回傳 <code>99</code>。</li>
+</ul>
+<hr>
+<h4>RAND<span class="hx:absolute hx:-mt-20" id="rand"></span>
+    <a href="#rand" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li><strong>功能說明</strong>：產生一個大於或等於 0 且小於 1 的隨機亂數。每次重新計算工作表時，此數值都會變動。</li>
+<li><strong>語法</strong>：<code>RAND()</code></li>
+<li><strong>參數說明</strong>：
+<ul>
+<li>此函數沒有任何參數。</li>
+</ul>
+</li>
+<li><strong>範例</strong>：<code>=RAND()*100</code> 將產生一個 0 到 100 之間的隨機數。</li>
+</ul>
+<hr>
+<h4>SQRT<span class="hx:absolute hx:-mt-20" id="sqrt"></span>
+    <a href="#sqrt" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li><strong>功能說明</strong>：計算一個數字的正平方根。</li>
+<li><strong>語法</strong>：<code>SQRT(number)</code></li>
+<li><strong>參數說明</strong>：
+<ul>
+<li><code>number</code> (<strong>必要</strong>): 您想要計算平方根的數字。此數字必須為正數。</li>
+</ul>
+</li>
+<li><strong>範例</strong>：<code>=SQRT(144)</code> 將回傳 <code>12</code>。</li>
+</ul>
+<hr>
+<h4>ROUND<span class="hx:absolute hx:-mt-20" id="round"></span>
+    <a href="#round" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li><strong>功能說明</strong>：將數字四捨五入到指定的位數。</li>
+<li><strong>語法</strong>：<code>ROUND(number, num_digits)</code></li>
+<li><strong>參數說明</strong>：
+<ul>
+<li><code>number</code> (<strong>必要</strong>): 您想要進行四捨五入的數字。</li>
+<li><code>num_digits</code> (<strong>必要</strong>): 您想要四捨五入到的位數。正數代表小數點右側的位數；0 代表整數位；負數代表小數點左側的位數（例如 -1 代表十位數）。</li>
+</ul>
+</li>
+<li><strong>範例</strong>：
+<ul>
+<li><code>=ROUND(3.14159, 2)</code> 將回傳 <code>3.14</code>。</li>
+<li><code>=ROUND(12345, -2)</code> 將回傳 <code>12300</code>。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>邏輯函數<span class="hx:absolute hx:-mt-20" id="邏輯函數-1"></span>
+    <a href="#%e9%82%8f%e8%bc%af%e5%87%bd%e6%95%b8-1" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><h4>AND<span class="hx:absolute hx:-mt-20" id="and"></span>
+    <a href="#and" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li><strong>功能說明</strong>：檢查所有條件是否都為 TRUE。如果所有條件皆為 TRUE，則回傳 TRUE；只要有任一條件為 FALSE，就回傳 FALSE。</li>
+<li><strong>語法</strong>：<code>AND(logical1, [logical2], ...)</code></li>
+<li><strong>參數說明</strong>：
+<ul>
+<li><code>logical1</code> (<strong>必要</strong>): 第一個要評估的條件。</li>
+<li><code>logical2</code> (<strong>可選</strong>): 第二個及之後要評估的條件，最多可達 255 個。</li>
+</ul>
+</li>
+<li><strong>範例</strong>：<code>=AND(A1&gt;60, B1=&quot;男&quot;)</code> 只有當 A1 大於 60 <strong>且</strong> B1 是 &ldquo;男&rdquo; 時，才會回傳 TRUE。</li>
+</ul>
+<hr>
+<h4>NOT<span class="hx:absolute hx:-mt-20" id="not"></span>
+    <a href="#not" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li><strong>功能說明</strong>：將邏輯值反轉。TRUE 變為 FALSE，FALSE 變為 TRUE。</li>
+<li><strong>語法</strong>：<code>NOT(logical)</code></li>
+<li><strong>參數說明</strong>：
+<ul>
+<li><code>logical</code> (<strong>必要</strong>): 一個可以評估為 TRUE 或 FALSE 的值或運算式。</li>
+</ul>
+</li>
+<li><strong>範例</strong>：<code>=NOT(A1=10)</code> 如果 A1 的值<strong>不等於</strong> 10，則回傳 TRUE。</li>
+</ul>
+<hr>
+<h4>OR<span class="hx:absolute hx:-mt-20" id="or"></span>
+    <a href="#or" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li><strong>功能說明</strong>：檢查是否有任何一個條件為 TRUE。只要有任一條件為 TRUE，就回傳 TRUE；只有當所有條件都為 FALSE 時，才回傳 FALSE。</li>
+<li><strong>語法</strong>：<code>OR(logical1, [logical2], ...)</code></li>
+<li><strong>參數說明</strong>：
+<ul>
+<li><code>logical1</code> (<strong>必要</strong>): 第一個要評估的條件。</li>
+<li><code>logical2</code> (<strong>可選</strong>): 第二個及之後要評估的條件，最多可達 255 個。</li>
+</ul>
+</li>
+<li><strong>範例</strong>：<code>=OR(A1=&quot;週末&quot;, A1=&quot;國定假日&quot;)</code> 只要 A1 是 &ldquo;週末&rdquo; <strong>或</strong> &ldquo;國定假日&rdquo;，就會回傳 TRUE。</li>
+</ul>
+<hr>
+<h3>文字函數<span class="hx:absolute hx:-mt-20" id="文字函數-1"></span>
+    <a href="#%e6%96%87%e5%ad%97%e5%87%bd%e6%95%b8-1" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><h4>LEFT<span class="hx:absolute hx:-mt-20" id="left"></span>
+    <a href="#left" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li><strong>功能說明</strong>：從文字字串的左邊（開頭）開始，傳回指定數量的字元。</li>
+<li><strong>語法</strong>：<code>LEFT(text, [num_chars])</code></li>
+<li><strong>參數說明</strong>：
+<ul>
+<li><code>text</code> (<strong>必要</strong>): 包含您想擷取字元的文字字串。</li>
+<li><code>num_chars</code> (<strong>可選</strong>): 指定要擷取的字元數。如果省略，預設為 1。</li>
+</ul>
+</li>
+<li><strong>範例</strong>：<code>=LEFT(&quot;台北101&quot;, 2)</code> 將回傳 <code>台北</code>。</li>
+</ul>
+<hr>
+<h4>LEN<span class="hx:absolute hx:-mt-20" id="len"></span>
+    <a href="#len" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li><strong>功能說明</strong>：計算一個文字字串的總長度（字元數）。</li>
+<li><strong>語法</strong>：<code>LEN(text)</code></li>
+<li><strong>參數說明</strong>：
+<ul>
+<li><code>text</code> (<strong>必要</strong>): 您想要計算長度的文字。</li>
+</ul>
+</li>
+<li><strong>範例</strong>：<code>=LEN(&quot;Hello World&quot;)</code> 將回傳 <code>11</code> (空格也算一個字元)。</li>
+</ul>
+<hr>
+<h4>MID<span class="hx:absolute hx:-mt-20" id="mid"></span>
+    <a href="#mid" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li><strong>功能說明</strong>：從文字字串的指定位置開始，傳回指定數量的字元。</li>
+<li><strong>語法</strong>：<code>MID(text, start_num, num_chars)</code></li>
+<li><strong>參數說明</strong>：
+<ul>
+<li><code>text</code> (<strong>必要</strong>): 包含您想擷取字元的文字字串。</li>
+<li><code>start_num</code> (<strong>必要</strong>): 您要開始擷取的起始字元位置（從 1 開始算）。</li>
+<li><code>num_chars</code> (<strong>必要</strong>): 您要擷取的字元數。</li>
+</ul>
+</li>
+<li><strong>範例</strong>：<code>=MID(&quot;我是台灣人&quot;, 3, 2)</code> 將回傳 <code>台灣</code>。</li>
+</ul>
+<hr>
+<h4>RIGHT<span class="hx:absolute hx:-mt-20" id="right"></span>
+    <a href="#right" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li><strong>功能說明</strong>：從文字字串的右邊（結尾）開始，傳回指定數量的字元。</li>
+<li><strong>語法</strong>：<code>RIGHT(text, [num_chars])</code></li>
+<li><strong>參數說明</strong>：
+<ul>
+<li><code>text</code> (<strong>必要</strong>): 包含您想擷取字元的文字字串。</li>
+<li><code>num_chars</code> (<strong>可選</strong>): 指定要擷取的字元數。如果省略，預設為 1。</li>
+</ul>
+</li>
+<li><strong>範例</strong>：<code>=RIGHT(&quot;產品編號-ABC&quot;, 3)</code> 將回傳 <code>ABC</code>。</li>
+</ul>
+<hr>
+<h4>FIND<span class="hx:absolute hx:-mt-20" id="find"></span>
+    <a href="#find" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li><strong>功能說明</strong>：在一個文字字串中尋找另一個文字字串，並回傳其開始的位置編號。此函數<strong>有區分</strong>英文大小寫。</li>
+<li><strong>語法</strong>：<code>FIND(find_text, within_text, [start_num])</code></li>
+<li><strong>參數說明</strong>：
+<ul>
+<li><code>find_text</code> (<strong>必要</strong>): 您要尋找的文字。</li>
+<li><code>within_text</code> (<strong>必要</strong>): 包含您要尋找文字的目標字串。</li>
+<li><code>start_num</code> (<strong>可選</strong>): 指定在 <code>within_text</code> 中從第幾個字元開始搜尋。如果省略，預設為 1。</li>
+</ul>
+</li>
+<li><strong>範例</strong>：<code>=FIND(&quot;P&quot;, &quot;Apple iPad&quot;)</code> 將回傳 <code>8</code>。</li>
+</ul>
+<hr>
+<h3>統計與計算函數<span class="hx:absolute hx:-mt-20" id="統計與計算函數-1"></span>
+    <a href="#%e7%b5%b1%e8%a8%88%e8%88%87%e8%a8%88%e7%ae%97%e5%87%bd%e6%95%b8-1" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><h4>AVERAGE<span class="hx:absolute hx:-mt-20" id="average"></span>
+    <a href="#average" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li><strong>功能說明</strong>：計算所有參數的算術平均值。</li>
+<li><strong>語法</strong>：<code>AVERAGE(number1, [number2], ...)</code></li>
+<li><strong>參數說明</strong>：
+<ul>
+<li><code>number1</code> (<strong>必要</strong>): 第一個要計算平均的數字、儲存格或範圍。</li>
+<li><code>number2</code> (<strong>可選</strong>): 其他要計算平均的數字、儲存格或範圍。</li>
+</ul>
+</li>
+<li><strong>範例</strong>：<code>=AVERAGE(A1:A10)</code> 會計算 A1 到 A10 儲存格中所有數字的平均值。</li>
+</ul>
+<hr>
+<h4>COUNT<span class="hx:absolute hx:-mt-20" id="count"></span>
+    <a href="#count" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li><strong>功能說明</strong>：計算一個範圍內包含「數字」的儲存格數量。</li>
+<li><strong>語法</strong>：<code>COUNT(value1, [value2], ...)</code></li>
+<li><strong>參數說明</strong>：
+<ul>
+<li><code>value1</code> (<strong>必要</strong>): 第一個要計算的項目、儲存格參照或範圍。</li>
+<li><code>value2</code> (<strong>可選</strong>): 其他要計算的項目、儲存格參照或範圍。</li>
+</ul>
+</li>
+<li><strong>範例</strong>：若 A1=95, A2=&ldquo;缺考&rdquo;, A3=88，則 <code>=COUNT(A1:A3)</code> 會回傳 <code>2</code>。</li>
+</ul>
+<hr>
+<h4>COUNTIF<span class="hx:absolute hx:-mt-20" id="countif"></span>
+    <a href="#countif" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li><strong>功能說明</strong>：計算一個範圍內符合「單一條件」的儲存格數量。</li>
+<li><strong>語法</strong>：<code>COUNTIF(range, criteria)</code></li>
+<li><strong>參數說明</strong>：
+<ul>
+<li><code>range</code> (<strong>必要</strong>): 您想要計算的儲存格範圍。</li>
+<li><code>criteria</code> (<strong>必要</strong>): 用來決定哪些儲存格要被計算的條件（可以是數字、運算式、文字）。</li>
+</ul>
+</li>
+<li><strong>範例</strong>：<code>=COUNTIF(B1:B20, &quot;&gt;=60&quot;)</code> 會計算 B1 到 B20 範圍內，數值大於或等於 60 的儲存格數量。</li>
+</ul>
+<hr>
+<h4>MAX<span class="hx:absolute hx:-mt-20" id="max"></span>
+    <a href="#max" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li><strong>功能說明</strong>：找出一個範圍內的最大值。</li>
+<li><strong>語法</strong>：<code>MAX(number1, [number2], ...)</code></li>
+<li><strong>參數說明</strong>：
+<ul>
+<li><code>number1</code> (<strong>必要</strong>): 第一個要尋找最大值的數字、儲存格或範圍。</li>
+<li><code>number2</code> (<strong>可選</strong>): 其他要比較大小的數字、儲存格或範圍。</li>
+</ul>
+</li>
+<li><strong>範例</strong>：<code>=MAX(A1:A10)</code> 會回傳 A1 到 A10 範圍中的最大值。</li>
+</ul>
+<hr>
+<h4>MIN<span class="hx:absolute hx:-mt-20" id="min"></span>
+    <a href="#min" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li><strong>功能說明</strong>：找出一個範圍內的最小值。</li>
+<li><strong>語法</strong>：<code>MIN(number1, [number2], ...)</code></li>
+<li><strong>參數說明</strong>：
+<ul>
+<li><code>number1</code> (<strong>必要</strong>): 第一個要尋找最小值的數字、儲存格或範圍。</li>
+<li><code>number2</code> (<strong>可選</strong>): 其他要比較大小的數字、儲存格或範圍。</li>
+</ul>
+</li>
+<li><strong>範例</strong>：<code>=MIN(A1:A10)</code> 會回傳 A1 到 A10 範圍中的最小值。</li>
+</ul>
+<hr>
+<h4>RANK<span class="hx:absolute hx:-mt-20" id="rank"></span>
+    <a href="#rank" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li><strong>功能說明</strong>：傳回一個數字在一組數字清單中的排名。（註：新版 Excel 建議使用 <code>RANK.EQ</code>）</li>
+<li><strong>語法</strong>：<code>RANK(number, ref, [order])</code></li>
+<li><strong>參數說明</strong>：
+<ul>
+<li><code>number</code> (<strong>必要</strong>): 您想要知道排名的數字。</li>
+<li><code>ref</code> (<strong>必要</strong>): 包含數字清單的範圍。</li>
+<li><code>order</code> (<strong>可選</strong>): 指定排名的順序。<code>0</code> 或省略代表遞減（高分是第 1 名）；任何非零值代表遞增（低分是第 1 名）。</li>
+</ul>
+</li>
+<li><strong>範例</strong>：<code>=RANK(A1, A1:A20, 0)</code> 會計算 A1 的值在 A1:A20 範圍中的排名（遞減排序）。</li>
+</ul>
+<hr>
+<h4>SUM<span class="hx:absolute hx:-mt-20" id="sum"></span>
+    <a href="#sum" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li><strong>功能說明</strong>：將指定的儲存格或範圍中的所有數字加總。</li>
+<li><strong>語法</strong>：<code>SUM(number1, [number2], ...)</code></li>
+<li><strong>參數說明</strong>：
+<ul>
+<li><code>number1</code> (<strong>必要</strong>): 第一個要加總的數字、儲存格或範圍。</li>
+<li><code>number2</code> (<strong>可選</strong>): 其他要加總的數字、儲存格或範圍。</li>
+</ul>
+</li>
+<li><strong>範例</strong>：<code>=SUM(A1:A10)</code> 會將 A1 到 A10 的所有數值相加。</li>
+</ul>
+<hr>
+<h4>SUMIF<span class="hx:absolute hx:-mt-20" id="sumif"></span>
+    <a href="#sumif" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li><strong>功能說明</strong>：將一個範圍內符合「單一條件」的對應儲存格加總。</li>
+<li><strong>語法</strong>：<code>SUMIF(range, criteria, [sum_range])</code></li>
+<li><strong>參數說明</strong>：
+<ul>
+<li><code>range</code> (<strong>必要</strong>): 用於條件判斷的儲存格範圍。</li>
+<li><code>criteria</code> (<strong>必要</strong>): 決定哪些儲存格要被加總的條件。</li>
+<li><code>sum_range</code> (<strong>可選</strong>): 實際要進行加總的儲存格範圍。如果省略，則會加總 <code>range</code> 參數中的數字。</li>
+</ul>
+</li>
+<li><strong>範例</strong>：<code>=SUMIF(A1:A10, &quot;水果&quot;, B1:B10)</code> 會在 A1:A10 範圍中尋找 &ldquo;水果&rdquo;，並將 B1:B10 範圍中對應的數值加總。</li>
+</ul>
+<hr>
+<h3>查詢與判斷函數<span class="hx:absolute hx:-mt-20" id="查詢與判斷函數-1"></span>
+    <a href="#%e6%9f%a5%e8%a9%a2%e8%88%87%e5%88%a4%e6%96%b7%e5%87%bd%e6%95%b8-1" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><h4>XLOOKUP<span class="hx:absolute hx:-mt-20" id="xlookup"></span>
+    <a href="#xlookup" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li><strong>功能說明</strong>：一個強大且靈活的查詢函數，用於在一個範圍或陣列中尋找項目，並傳回對應項目。</li>
+<li><strong>語法</strong>：<code>XLOOKUP(lookup_value, lookup_array, return_array, [if_not_found], [match_mode], [search_mode])</code></li>
+<li><strong>參數說明</strong>：
+<ul>
+<li><code>lookup_value</code> (<strong>必要</strong>): 您要尋找的值。</li>
+<li><code>lookup_array</code> (<strong>必要</strong>): 要在其中搜尋的範圍或陣列。</li>
+<li><code>return_array</code> (<strong>必要</strong>): 要從中傳回值的範圍或陣列。</li>
+<li><code>if_not_found</code> (<strong>可選</strong>): 如果找不到相符項目時要傳回的值。若省略，則會回傳 #N/A 錯誤。</li>
+<li><code>match_mode</code> (<strong>可選</strong>): 指定比對方式。<code>0</code> (預設)為完全相符；<code>-1</code> 為下一個較小項目；<code>1</code> 為下一個較大項目；<code>2</code> 為萬用字元比對。</li>
+<li><code>search_mode</code> (<strong>可選</strong>): 指定搜尋模式。<code>1</code> (預設)從第一個項目開始搜尋；<code>-1</code> 從最後一個項目開始反向搜尋。</li>
+</ul>
+</li>
+<li><strong>範例</strong>：<code>=XLOOKUP(&quot;S003&quot;, A1:A100, B1:B100, &quot;查無此員工&quot;)</code> 會在 A 欄中尋找 &ldquo;S003&rdquo;，回傳 B 欄對應的姓名，如果找不到則顯示 &ldquo;查無此員工&rdquo;。</li>
+</ul>
+<hr>
+<h4>IF<span class="hx:absolute hx:-mt-20" id="if"></span>
+    <a href="#if" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li><strong>功能說明</strong>：執行邏輯判斷。如果條件為真，則回傳一個值；如果條件為假，則回傳另一個值。</li>
+<li><strong>語法</strong>：<code>IF(logical_test, value_if_true, [value_if_false])</code></li>
+<li><strong>參數說明</strong>：
+<ul>
+<li><code>logical_test</code> (<strong>必要</strong>): 任何可以評估為 TRUE 或 FALSE 的值或運算式。</li>
+<li><code>value_if_true</code> (<strong>必要</strong>): 當 <code>logical_test</code> 為 TRUE 時要傳回的值。</li>
+<li><code>value_if_false</code> (<strong>可選</strong>): 當 <code>logical_test</code> 為 FALSE 時要傳回的值。如果省略，則會回傳 <code>FALSE</code>。</li>
+</ul>
+</li>
+<li><strong>範例</strong>：<code>=IF(A1&gt;=60, &quot;及格&quot;, &quot;不及格&quot;)</code> 如果 A1 的分數大於或等於 60，就顯示 &ldquo;及格&rdquo;，否則顯示 &ldquo;不及格&rdquo;。</li>
+</ul>
+
+        </div>
+        <div class="hx:mt-16"></div>
+        
+        <script>
+  function getGiscusTheme() {
+    const giscusTheme = '';
+    if (giscusTheme === 'light' || giscusTheme === 'dark') {
+      return giscusTheme;
+    }
+
+    const hugoTheme = localStorage.getItem("color-theme");
+    if (hugoTheme === 'light' || hugoTheme === 'dark') {
+      return hugoTheme;
+    }
+
+    if (hugoTheme === 'system') {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    const defaultTheme = 'dark';
+    if (defaultTheme === 'light' || defaultTheme === 'dark') {
+      return defaultTheme;
+    }
+
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function setGiscusTheme() {
+    const iframe = document.querySelector('iframe.giscus-frame');
+    if (!iframe) return;
+
+    const msg = {
+      giscus: {
+        setConfig: {
+          theme: getGiscusTheme(),
+        },
+      },
+    }
+
+    iframe.contentWindow.postMessage(msg, 'https://giscus.app');
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const giscusAttributes = {
+      "src": "https://giscus.app/client.js",
+      "data-repo": "spectre-pro\/spectre-pro.github.io",
+      "data-repo-id": "R_kgDOOz-m3A",
+      "data-category": "Announcements",
+      "data-category-id": "DIC_kwDOOz-m3M4CrO4f",
+      "data-mapping": "pathname",
+      "data-strict": "0",
+      "data-reactions-enabled": "1",
+      "data-emit-metadata": "0",
+      "data-input-position": "top",
+      "data-theme": getGiscusTheme(),
+      "data-lang": "en",
+      "crossorigin": "anonymous",
+      "async": "",
+    };
+
+    
+    const giscusScript = document.createElement("script");
+    Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+    
+    document.getElementById('giscus-hextra-bb112b9f807c37c1752e5da6a1652a29').appendChild(giscusScript);
+
+    
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", setGiscusTheme);
+
+    
+    const themeToggleOptions = document.querySelectorAll(".hextra-theme-toggle-options p");
+    if (themeToggleOptions) {
+      themeToggleOptions.forEach(toggle => toggle.addEventListener('click', setGiscusTheme));
+    }
+  });
+</script>
+
+<div id="giscus-hextra-bb112b9f807c37c1752e5da6a1652a29"></div>
+      </main>
+    </article>
+  </div>
+
+      <footer class="hextra-footer hx:bg-gray-100 hx:pb-[env(safe-area-inset-bottom)] hx:dark:bg-neutral-900 hx:print:bg-transparent"><div class="hextra-custom-footer hextra-max-footer-width hx:pl-[max(env(safe-area-inset-left),1.5rem)] hx:pr-[max(env(safe-area-inset-right),1.5rem)] hx:text-gray-600 hx:dark:text-gray-400"></div><div
+      class="hextra-max-footer-width hx:mx-auto hx:flex hx:justify-center hx:py-12 hx:pl-[max(env(safe-area-inset-left),1.5rem)] hx:pr-[max(env(safe-area-inset-right),1.5rem)] hx:text-gray-600 hx:dark:text-gray-400 hx:md:justify-start"
+    >
+      <div class="hx:flex hx:w-full hx:flex-col hx:items-center hx:sm:items-start"><div class="hx:font-semibold"><a class="hx:flex hx:text-sm hx:items-center hx:gap-1 hx:text-current" target="_blank" rel="noopener noreferrer" title="Hextra GitHub Homepage" href="https://github.com/imfing/hextra">
+    <span>Powered by SPECTRE</span>
+  </a></div><div class="hx:mt-6 hx:text-xs">&copy; <script>document.write(new Date().getFullYear())</script>&nbsp;SPECTRE All rights reserved.</div></div>
+    </div></footer>
+    
+    <script defer src="/js/main.min.939f9f01da5755b7117a6d4651192b124fc58799125404b474e0ab4030dcedfe.js" integrity="sha256-k5&#43;fAdpXVbcRem1GURkrEk/Fh5kSVAS0dOCrQDDc7f4="></script>
+<script defer src="/js/flexsearch.433e941a8a573ebb9931fc16fc75266ab6b93f569ac2fb4f3dc66882e0416f4c.js" integrity="sha256-Qz6UGopXPruZMfwW/HUmara5P1aawvtPPcZoguBBb0w=" crossorigin="anonymous"></script>
+        <script defer src="/en.search.min.097e3a24da0aba2ac82ef0f53e82e1500343a7126260a0203f3a45bbe0876093.js" integrity="sha256-CX46JNoKuirILvD1PoLhUANDpxJiYKAgPzpFu&#43;CHYJM="></script>
+  </body>
+</html>
