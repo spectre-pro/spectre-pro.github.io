@@ -23,9 +23,9 @@ params:
     type: giscus
     giscus:
       repo: spectre-pro/spectre-pro.github.io
-      repoId: R_kgDOOz-m3A
+      repoId: R_kgDOQvTgDA
       category: Announcements
-      categoryId: DIC_kwDOOz-m3M4CrO4f
+      categoryId: DIC_kwDOQvTgDM4C0Q9E
   editURL:
     enable: true
     base: "https://github.com/spectre-pro/spectre-pro.github.io/blob/main/content"
