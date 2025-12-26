@@ -32,6 +32,8 @@ params:
   footer:
     enable: true
     displayCopyright: true
+  displayUpdatedDate: true
+  dateFormat: "January 2, 2006"
 
 services:
   googleAnalytics:
@@ -89,3 +91,9 @@ outputs:
   home: [html, llms]
   page: [html]
   section: [html, rss]
+
+enableGitInfo: true
+
+frontmatter:
+  date: [":git", "date", "publishDate", "lastmod"]
+  lastmod: [":git", "lastmod", "date", "publishDate"]

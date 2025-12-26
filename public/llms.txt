@@ -10,23 +10,23 @@
 ### Tech
 - [](https://www.spectrepro.dev/docs/tech/github-alerts/): Note
 [!NOTE]
-Tip
-- [Git & Github](https://www.spectrepro.dev/docs/tech/git/): Git 使用者資料(只需在下載 git 後運行一次) git config --global user.name &#34;name&#34; git config --global …
+Tip - Published 2025-12-27
+- [Git & Github](https://www.spectrepro.dev/docs/tech/git/): Git 使用者資料(只需在下載 git 後運行一次) git config --global user.name &#34;name&#34; git config --global … - Published 2025-12-27
 
 #### 
 
 #### Python
 - [pyenv 與 pyenv-win 全面教學](https://www.spectrepro.dev/docs/tech/python/1-pyenv/): pyenv 是一個強大的 Python 版本管理工具，主要用於 Linux 和 macOS 系統。
-對於 Windows 使用者，推薦使用pyenv-win 專案，它是 pyenv 在 Windows …
+對於 Windows 使用者，推薦使用pyenv-win 專案，它是 pyenv 在 Windows … - Published 2025-12-27
 
 #### Video
 - [Gemini proxy](https://www.spectrepro.dev/docs/tech/video/1-gemini-proxy/): https://github.com/spectre-pro/gemini-proxy
 github
-YouTube BiliBili
-- [Open WebUI](https://www.spectrepro.dev/docs/tech/video/2-open-webui/): YouTube BiliBili
-- [白嫖域名](https://www.spectrepro.dev/docs/tech/video/3-domain/): 不用付錢，也能擁有自己的網址！超簡單域名申請教學YouTube BiliBili
-- [舊電腦復活計畫](https://www.spectrepro.dev/docs/tech/video/4-ubuntu/): 別再讓它吃灰！三十分鐘變身 7x24 小時終極家庭伺服器 (Ubuntu Server + Docker + cockpit + SMB)YouTube BiliBili
-- [GitHub AI 終極白嫖指南](https://www.spectrepro.dev/docs/tech/video/5-github-ai/): 一個賬號，免費試用所有頂級 AI！ GitHub AI 申請教學 (內含 GPT-4, Grok, DeepSeek)。YouTube BiliBili
+YouTube BiliBili - Published 2025-12-27
+- [Open WebUI](https://www.spectrepro.dev/docs/tech/video/2-open-webui/): YouTube BiliBili - Published 2025-12-27
+- [白嫖域名](https://www.spectrepro.dev/docs/tech/video/3-domain/): 不用付錢，也能擁有自己的網址！超簡單域名申請教學YouTube BiliBili - Published 2025-12-27
+- [舊電腦復活計畫](https://www.spectrepro.dev/docs/tech/video/4-ubuntu/): 別再讓它吃灰！三十分鐘變身 7x24 小時終極家庭伺服器 (Ubuntu Server + Docker + cockpit + SMB)YouTube BiliBili - Published 2025-12-27
+- [GitHub AI 終極白嫖指南](https://www.spectrepro.dev/docs/tech/video/5-github-ai/): 一個賬號，免費試用所有頂級 AI！ GitHub AI 申請教學 (內含 GPT-4, Grok, DeepSeek)。YouTube BiliBili - Published 2025-12-27
 
 ### School
 
@@ -41,12 +41,13 @@ YouTube BiliBili
 
 #### English
 - [Tenses](https://www.spectrepro.dev/docs/school/2-english/1-tenses/): 理解英文時態的關鍵在於掌握兩個核心概念：
-時間點 (Time)：事件發生在過去、現在還是未來？ 動作狀態 (Action Status)：動作是「一次性完成」、「持續進行中」，還是「在某個時間點之前就 …
+時間點 (Time)：事件發生在過去、現在還是未來？ 動作狀態 (Action Status)：動作是「一次性完成」、「持續進行中」，還是「在某個時間點之前就 … - Published 2025-12-27
 
 #### 數學
 - [4A 第二課 直線的方程](https://www.spectrepro.dev/docs/school/3-math/1-4a-%E7%AC%AC%E4%BA%8C%E8%AA%B2-%E7%9B%B4%E7%B7%9A%E7%9A%84%E6%96%B9%E7%A8%8B/): y−y1=(斜率)(x−x1) y-y_1 = (\text{斜率})(x-x_1) y−y1​=(斜率)(x−x1​) 替換 y1 &amp; x1 \text{替換}\ y_1\ \&amp;\ …
 - [4A 第三課 一元二次方程](https://www.spectrepro.dev/docs/school/3-math/2-4a-%E7%AC%AC%E4%B8%89%E8%AA%B2-%E4%B8%80%E5%85%83%E4%BA%8C%E6%AC%A1%E6%96%B9%E7%A8%8B/): 因式法 (FMLA 01): ax2+bx+c=0 ax^2 + bx + c =0 ax2+bx+c=0 ↓ \downarrow ↓ (px+q)(rx+s)=0 (px+q)(rx+s) = 0 …
 - [4A 第五課 二次函數](https://www.spectrepro.dev/docs/school/3-math/3-4a-%E7%AC%AC%E4%BA%94%E8%AA%B2-%E4%BA%8C%E6%AC%A1%E5%87%BD%E6%95%B8/): 配方法 提取aaa（若a≠1a \neq 1a=1）： ax2+bx+c=a(x2+bax)+cax^2 + bx + c = a\left(x^2 + \frac{b}{a}x\right) + …
+- [4A 06第六課 續多項式](https://www.spectrepro.dev/docs/school/3-math/4-4a-06%E7%AC%AC%E5%85%AD%E8%AA%B2-%E7%BA%8C%E5%A4%9A%E9%A0%85%E5%BC%8F/): 03⟵商式除式⟶9)28‾⟵被除式 27‾01⟵餘式 \begin{array}{rll} &amp; \phantom{0}3 &amp; \longleftarrow \textbf{商式}\\ …
 
 #### M2
 - [](https://www.spectrepro.dev/docs/school/4-m2/%E4%BA%8C%E9%A0%85%E5%BC%8F%E5%AE%9A%E7%90%86/): !!!: 階乘
@@ -68,5 +69,5 @@ YouTube BiliBili
 
 
 ---
-Generated on 2025-12-27 01:14:56 UTC
+Generated on 2025-12-27 02:20:13 UTC
 Site: https://www.spectrepro.dev/
