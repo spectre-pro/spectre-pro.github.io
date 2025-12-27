@@ -39,7 +39,6 @@ services:
   googleAnalytics:
     ID: G-RBZ6NBDVS7
 
-
 menu:
   main:
     - name: Note

@@ -173,7 +173,6 @@
 </div>
 
     <style>
-    
     .landing-page-wrapper .summary-text {
         display: -webkit-box;
         -webkit-line-clamp: 3;
@@ -186,19 +185,19 @@
         margin-top: 0.5rem;
     }
 
-    
+
     .landing-page-wrapper .card {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         height: 100%;
         min-height: 250px;
-        
-        width: 100%; 
+
+        width: 100%;
         box-sizing: border-box;
     }
 
-    
+
     .landing-page-wrapper {
         --landing-bg: #050505;
         --landing-text: #ffffff;
@@ -212,13 +211,13 @@
         color: var(--landing-text);
         font-family: 'Inter', sans-serif;
         position: relative;
-        overflow-x: hidden; 
+        overflow-x: hidden;
         z-index: 1;
         margin-top: -64px;
         width: 100%;
     }
 
-    
+
     .landing-page-wrapper .mouse-glow {
         position: fixed;
         top: 0;
@@ -227,11 +226,9 @@
         height: 100%;
         pointer-events: none;
         z-index: 0;
-        background: radial-gradient(
-            600px circle at var(--x, 50%) var(--y, 50%), 
-            rgba(29, 78, 216, 0.15), 
-            transparent 40%
-        );
+        background: radial-gradient(600px circle at var(--x, 50%) var(--y, 50%),
+                rgba(29, 78, 216, 0.15),
+                transparent 40%);
     }
 
     .landing-page-wrapper .container {
@@ -242,9 +239,9 @@
         z-index: 2;
     }
 
-    
+
     .landing-page-wrapper .hero {
-        height: 90vh; 
+        height: 90vh;
         min-height: 600px;
         display: flex;
         flex-direction: column;
@@ -261,10 +258,10 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         border: none;
-        word-wrap: break-word; 
+        word-wrap: break-word;
     }
 
-    
+
     .landing-page-wrapper .typing-container {
         font-size: 2rem;
         color: var(--landing-muted);
@@ -282,11 +279,18 @@
     }
 
     @keyframes landing-blink {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0; }
+
+        0%,
+        100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0;
+        }
     }
 
-    
+
     .landing-page-wrapper .landing-btn {
         display: inline-block;
         padding: 14px 40px;
@@ -310,7 +314,7 @@
         box-shadow: 0 0 30px var(--landing-card-glow);
         transform: translateY(-3px);
     }
-    
+
     .landing-page-wrapper .landing-btn::after {
         content: ' →';
         opacity: 0;
@@ -323,7 +327,7 @@
         margin-left: 8px;
     }
 
-    
+
     .landing-page-wrapper .reveal {
         opacity: 0;
         transform: translateY(50px);
@@ -335,7 +339,7 @@
         transform: translateY(0);
     }
 
-    
+
     .landing-page-wrapper .section-title {
         font-size: 2.5rem;
         margin-bottom: 3rem;
@@ -357,14 +361,14 @@
         font-size: 1.1rem;
     }
 
-    
+
     .landing-page-wrapper .grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 2rem;
     }
 
-    
+
     .landing-page-wrapper .card {
         background: var(--landing-glass-bg);
         border: 1px solid var(--landing-glass-border);
@@ -378,18 +382,23 @@
         overflow: hidden;
     }
 
-    
+
     .landing-page-wrapper .card::before {
         content: "";
         position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
         background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), var(--landing-card-glow), transparent 60%);
         opacity: 0;
         transition: opacity 0.5s;
         z-index: -1;
     }
 
-    .landing-page-wrapper .card:hover::before { opacity: 1; }
+    .landing-page-wrapper .card:hover::before {
+        opacity: 1;
+    }
 
     .landing-page-wrapper .card h3 {
         font-size: 1.5rem;
@@ -412,7 +421,7 @@
         padding: 5px 12px;
         border-radius: 50px;
         font-size: 0.75rem;
-        background: rgba(255,255,255,0.1);
+        background: rgba(255, 255, 255, 0.1);
         color: #fff;
     }
 
@@ -425,63 +434,63 @@
     }
 
     @media (max-width: 768px) {
-        
+
         .landing-page-wrapper .container {
             padding: 0 1.5rem;
         }
 
-        
+
         .landing-page-wrapper .hero {
-            height: auto; 
-            min-height: 80vh; 
+            height: auto;
+            min-height: 80vh;
             padding-top: 4rem;
         }
 
-        .landing-page-wrapper .hero h1 { 
-            font-size: 3rem; 
+        .landing-page-wrapper .hero h1 {
+            font-size: 3rem;
         }
 
-        .landing-page-wrapper .typing-container { 
-            font-size: 1.3rem; 
+        .landing-page-wrapper .typing-container {
+            font-size: 1.3rem;
             min-height: 3rem;
         }
-        
+
         .landing-page-wrapper .cursor {
             height: 1.2rem;
         }
 
-        
-        .landing-page-wrapper .about-section { 
-            grid-template-columns: 1fr; 
+
+        .landing-page-wrapper .about-section {
+            grid-template-columns: 1fr;
             padding: 60px 0;
             gap: 2rem;
         }
 
         .landing-page-wrapper .about-visual {
-            order: 2; 
+            order: 2;
             width: 100%;
         }
 
-        
+
         .landing-page-wrapper .about-visual .card {
-            width: 100% !important; 
+            width: 100% !important;
             height: auto !important;
-            aspect-ratio: 16/9; 
+            aspect-ratio: 16/9;
             min-height: auto;
         }
 
-        
+
         .landing-page-wrapper .grid {
-            grid-template-columns: 1fr; 
+            grid-template-columns: 1fr;
             gap: 1.5rem;
         }
 
-        
+
         .landing-page-wrapper .card {
             padding: 1.5rem;
             min-height: auto;
         }
-        
+
         .landing-page-wrapper .section-title {
             font-size: 2rem;
             margin-bottom: 2rem;
@@ -492,7 +501,7 @@
 <div class="landing-page-wrapper">
     <div class="mouse-glow" id="mouse-glow-overlay"></div>
     <div class="container">
-        
+
         <section class="hero">
             <h1>Exploration of<br>Future</h1>
             <div class="typing-container">
@@ -508,8 +517,10 @@
                 <p>This is where I'll be sharing my notes on AI, web development, homelabs, and networking.</p>
             </div>
             <div class="about-visual">
-                <div class="card" style="height: 300px; width: 450px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                    <img src="myimagelll.webp" alt="Visual" style="max-width: 120%; max-height: 120%; object-fit: contain;">
+                <div class="card"
+                    style="height: 300px; width: 450px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                    <img src="myimagelll.webp" alt="Visual"
+                        style="max-width: 120%; max-height: 120%; object-fit: contain;">
                 </div>
             </div>
         </section>
@@ -517,18 +528,18 @@
         <section id="notes" class="notes-section">
             <div class="section-title reveal">Latest Notes</div>
             <div class="grid">
+
                 
-                
-                
+
                 
                 <a href="/docs/tech/git/" style="text-decoration: none; color: inherit;">
                     <div class="card tilt-card reveal">
                         <h3>Git &amp; Github</h3>
-                        
+
                         <p class="summary-text">
                             Git 使用者資料(只需在下載 git 後運行一次) git config --global user.name &#34;name&#34; git config --global user.email &#34;name@email.com&#34; 文件狀態 : …
                         </p>
-                        
+
                         <span class="tag">Tech</span>
                     </div>
                 </a>
@@ -536,14 +547,14 @@
                 <a href="/docs/tech/github-alerts/" style="text-decoration: none; color: inherit;">
                     <div class="card tilt-card reveal">
                         <h3>Github Alerts</h3>
-                        
+
                         <p class="summary-text">
                              Note
 [!NOTE]
 Tip
 
                         </p>
-                        
+
                         <span class="tag">Tech</span>
                     </div>
                 </a>
@@ -551,11 +562,11 @@ Tip
                 <a href="/docs/tech/video/5-github-ai/" style="text-decoration: none; color: inherit;">
                     <div class="card tilt-card reveal">
                         <h3>GitHub AI 終極白嫖指南</h3>
-                        
+
                         <p class="summary-text">
                             一個賬號，免費試用所有頂級 AI！ GitHub AI 申請教學 (內含 GPT-4, Grok, DeepSeek)。YouTube BiliBili 
                         </p>
-                        
+
                         <span class="tag">Video</span>
                     </div>
                 </a>
@@ -563,11 +574,11 @@ Tip
                 <a href="/docs/tech/video/4-ubuntu/" style="text-decoration: none; color: inherit;">
                     <div class="card tilt-card reveal">
                         <h3>舊電腦復活計畫</h3>
-                        
+
                         <p class="summary-text">
                             別再讓它吃灰！三十分鐘變身 7x24 小時終極家庭伺服器 (Ubuntu Server + Docker + cockpit + SMB)YouTube BiliBili 
                         </p>
-                        
+
                         <span class="tag">Video</span>
                     </div>
                 </a>
@@ -575,11 +586,11 @@ Tip
                 <a href="/docs/tech/video/3-domain/" style="text-decoration: none; color: inherit;">
                     <div class="card tilt-card reveal">
                         <h3>白嫖域名</h3>
-                        
+
                         <p class="summary-text">
                             不用付錢，也能擁有自己的網址！超簡單域名申請教學YouTube BiliBili 
                         </p>
-                        
+
                         <span class="tag">Video</span>
                     </div>
                 </a>
@@ -592,8 +603,8 @@ Tip
 </div>
 
 <script>
-    (function() {
-        
+    (function () {
+
         const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
         if (!isTouchDevice) {
@@ -603,11 +614,11 @@ Tip
             });
         }
 
-        
+
         const words = ["Modern Web.", "Creative JS.", "CSS Art.", "Future Tech."];
         const textElement = document.getElementById('landing-typewriter');
-        
-        if(textElement) {
+
+        if (textElement) {
             let wordIndex = 0;
             let charIndex = 0;
             let isDeleting = false;
@@ -641,12 +652,12 @@ Tip
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    
+
                     entry.target.classList.add('active');
                 } else {
-                    
-                    
-                    entry.target.classList.remove('active'); 
+
+
+                    entry.target.classList.remove('active');
                 }
             });
         }, { threshold: 0.5 });
@@ -661,10 +672,10 @@ Tip
                     const y = e.clientY - rect.top;
                     const centerX = rect.width / 2;
                     const centerY = rect.height / 2;
-                    
+
                     const rotateX = ((y - centerY) / centerY) * -8;
                     const rotateY = ((x - centerX) / centerX) * 8;
-                    
+
                     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
                     card.style.setProperty('--mouse-x', `${x}px`);
                     card.style.setProperty('--mouse-y', `${y}px`);
@@ -676,14 +687,14 @@ Tip
         }
 
         const btn = document.querySelector('.landing-btn');
-        if(btn) {
-            btn.addEventListener('click', function(e) {
+        if (btn) {
+            btn.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
-                if(href.startsWith('#')) {
+                if (href.startsWith('#')) {
                     e.preventDefault();
                     const targetId = href.substring(1);
                     const targetSection = document.getElementById(targetId);
-                    if(targetSection) {
+                    if (targetSection) {
                         targetSection.scrollIntoView({ behavior: 'smooth' });
                     }
                 }

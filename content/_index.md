@@ -5,5 +5,5 @@ comments: false
 ---
 
 {{ define "main" }}
-    {{ partial "landing-page.html" . }}
+{{ partial "landing-page.html" . }}
 {{ end }}
