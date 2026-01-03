@@ -51,18 +51,11 @@ menu:
       weight: 3
       params:
         type: search
-    - name: YouTube
+    - name: "About ME"
+      url: "https://260410.xyz"
       weight: 4
-      url: "https://youtube.com/@spectre-pro"
-      params:
-        icon: youtube
-    - name: GitHub
-      weight: 5
-      url: "https://github.com/spectre-pro"
-      params:
-        icon: github
     - name: Theme Toggle
-      weight: 6
+      weight: 5
       params:
         type: theme-toggle
 
@@ -74,6 +67,9 @@ menu:
     - name: "This website repository"
       url: "https://github.com/spectre-pro/spectre-pro.github.io"
       weight: 2
+    - name: "About ME"
+      url: "https://260410.xyz"
+      weight: 3
 
 markup:
   goldmark:
