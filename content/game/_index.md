@@ -1,6 +1,5 @@
 ---
 title: "Game"
-comments: false
 ---
 
 > [!Caution]
@@ -25,8 +24,3 @@ comments: false
 {{< card link="3" title="Chrome Dino" icon="game">}}
 {{< /cards >}}
 
-## SQL
-
-{{< cards >}}
-{{< card link="4" title="SQL 網路偵探" icon="game">}}
-{{< /cards >}}

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>現代化地質斷層互動模型</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&display=swap');
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #020617;
+            color: #f8fafc;
+        }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .canvas-container {
+            box-shadow: 0 0 50px -12px rgba(0, 0, 0, 0.5);
+            background: #020617;
+        }
+        /* 自定義滑桿 */
+        input[type=range] {
+            -webkit-appearance: none;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            background: #1e293b;
+            border-radius: 2px;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #38bdf8;
+            cursor: pointer;
+            margin-top: -6px;
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useMemo } = React;
+
+        const App = () => {
+            const [faultType, setFaultType] = useState('normal');
+            const [displacement, setDisplacement] = useState(0);
+            const [showLabels, setShowLabels] = useState(true);
+
+            const faultData = {
+                normal: {
+                    name: '正斷層',
+                    eng: 'Normal Fault',
+                    force: '張力 (Tension)',
+                    desc: '地殼受拉張力影響，上盤沿斷層面向下滑動。常出現在板塊張裂邊界。',
+                    theme: 'from-cyan-500 to-blue-600',
+                    arrow: "← TENSION →",
+                    arrowColor: "#22d3ee"
+                },
+                reverse: {
+                    name: '逆斷層',
+                    eng: 'Reverse Fault',
+                    force: '擠壓力 (Compression)',
+                    desc: '地殼受擠壓力影響，上盤沿斷層面向上推移。常出現在造山帶與聚合邊界。',
+                    theme: 'from-rose-500 to-red-600',
+                    arrow: "→ COMPRESSION ←",
+                    arrowColor: "#fb7185"
+                },
+                transform: {
+                    name: '轉換斷層',
+                    eng: 'Transform Fault',
+                    force: '剪切力 (Shear)',
+                    desc: '岩層沿著斷層面進行水平錯動。常見於中洋脊的錯斷或如聖安德烈亞斯斷層。',
+                    theme: 'from-amber-500 to-yellow-600',
+                    arrow: "⇅ SHEAR FORCES",
+                    arrowColor: "#fbbf24"
+                }
+            };
+
+            // SVG 參數修正
+            const W = 800;
+            const H = 480; // 增加高度空間
+            const CX = 300;
+            const GY = 140; // 稍微向下移，留出頂部給箭頭
+            const BH = 240;
+            const SDX = 100;
+
+            const transforms = useMemo(() => {
+                const factor = displacement * 1.2;
+                if (faultType === 'transform') {
+                    return { left: `translate(0px, ${factor}px)`, right: `translate(0px, ${-factor}px)` };
+                }
+                const slopeAngle = Math.atan2(BH, SDX);
+                const dx = factor * Math.cos(slopeAngle);
+                const dy = factor * Math.sin(slopeAngle);
+                return faultType === 'normal' 
+                    ? { left: `translate(0px, 0px)`, right: `translate(${dx}px, ${dy}px)` }
+                    : { left: `translate(0px, 0px)`, right: `translate(${-dx}px, ${-dy}px)` };
+            }, [displacement, faultType]);
+
+            return (
+                <main className="min-h-screen flex flex-col items-center justify-center p-4 md:p-10">
+                    {/* Header */}
+                    <div className="mb-8 text-center">
+                        <h1 className="text-4xl md:text-5xl font-black bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-emerald-400 mb-2">
+                            GEOLOGY DYNAMICS
+                        </h1>
+                        <p className="text-slate-500 font-mono text-[10px] tracking-[0.4em] uppercase italic">Interactive Tectonic Fault Model v2.0</p>
+                    </div>
+
+                    <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-6">
+                        {/* 左側：控制 */}
+                        <div className="lg:col-span-3 space-y-4">
+                            <div className="glass-card p-6 rounded-[2rem] space-y-6">
+                                <div>
+                                    <h3 className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-4">斷層模式</h3>
+                                    <div className="grid grid-cols-1 gap-2">
+                                        {Object.entries(faultData).map(([key, data]) => (
+                                            <button
+                                                key={key}
+                                                onClick={() => { setFaultType(key); setDisplacement(0); }}
+                                                className={`w-full p-4 rounded-2xl text-left transition-all duration-300 ${
+                                                    faultType === key 
+                                                    ? `bg-gradient-to-br ${data.theme} text-white shadow-xl scale-105`
+                                                    : 'bg-slate-800/50 text-slate-500 hover:bg-slate-800'
+                                                }`}
+                                            >
+                                                <div className="font-bold">{data.name}</div>
+                                                <div className="text-[10px] font-mono opacity-60 leading-none">{data.eng}</div>
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div className="pt-4 border-t border-white/5">
+                                    <div className="flex justify-between mb-4">
+                                        <h3 className="text-[10px] font-black text-slate-500 uppercase tracking-widest">地殼應力位移</h3>
+                                        <span className="text-sky-400 font-mono text-[10px] font-bold">{displacement}%</span>
+                                    </div>
+                                    <input
+                                        type="range" min="0" max="100" value={displacement}
+                                        onChange={(e) => setDisplacement(parseInt(e.target.value))}
+                                        className="w-full"
+                                    />
+                                </div>
+
+                                <button 
+                                    onClick={() => setShowLabels(!showLabels)}
+                                    className="w-full py-2 rounded-xl text-[10px] font-bold tracking-widest uppercase border border-white/10 text-slate-400 hover:bg-white/5 transition-all"
+                                >
+                                    {showLabels ? '隱藏地質標籤' : '顯示地質標籤'}
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* 中央：SVG 畫布 */}
+                        <div className="lg:col-span-6 canvas-container rounded-[2.5rem] overflow-hidden border border-white/5 relative shadow-2xl">
+                            
+                            {/* 視圖標籤：移至右下角，避免擋住上方的字 */}
+                            <div className="absolute bottom-6 right-6 z-20">
+                                <div className="glass-card px-4 py-2 rounded-full flex items-center gap-3">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+                                    <span className="text-white/50 text-[10px] font-bold tracking-widest uppercase">
+                                        {faultType === 'transform' ? 'Map View' : 'Cross-Section'}
+                                    </span>
+                                </div>
+                            </div>
+
+                            <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto">
+                                <defs>
+                                    <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#14b8a6"/><stop offset="100%" stopColor="#0f766e"/></linearGradient>
+                                    <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#f59e0b"/><stop offset="100%" stopColor="#92400e"/></linearGradient>
+                                    <linearGradient id="g3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#6366f1"/><stop offset="100%" stopColor="#3730a3"/></linearGradient>
+                                    <linearGradient id="g4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#475569"/><stop offset="100%" stopColor="#1e293b"/></linearGradient>
+                                    
+                                    <clipPath id="cp-left"><path d={faultType === 'transform' ? `M 40 ${GY} H ${CX} V ${GY+BH} H 40 Z` : `M 40 ${GY} H ${CX} L ${CX+SDX} ${GY+BH} H 40 Z`} /></clipPath>
+                                    <clipPath id="cp-right"><path d={faultType === 'transform' ? `M ${CX} ${GY} H ${W-40} V ${GY+BH} H ${CX} Z` : `M ${CX} ${GY} H ${W-40} V ${GY+BH} L ${CX+SDX} ${GY+BH} Z`} /></clipPath>
+                                </defs>
+
+                                {/* 格線背景 */}
+                                <g opacity="0.05">
+                                    {Array.from({length:10}).map((_,i) => <line key={i} x1="0" y1={i*50} x2={W} y2={i*50} stroke="white" />)}
+                                    {Array.from({length:16}).map((_,i) => <line key={i} x1={i*50} y1="0" x2={i*50} y2={H} stroke="white" />)}
+                                </g>
+
+                                {/* 頂部：應力指示（不再被擋住） */}
+                                <text x={W/2} y={GY-50} fill={faultData[faultType].arrowColor} fontSize="22" fontWeight="900" textAnchor="middle" style={{ letterSpacing: '4px' }}>
+                                    {faultData[faultType].arrow}
+                                </text>
+
+                                {/* 左側板塊 */}
+                                <g style={{ transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)', transform: transforms.left }}>
+                                    <g clipPath="url(#cp-left)">
+                                        <rect x="0" y={GY} width={W} height={BH*0.1} fill="url(#g1)" />
+                                        <rect x="0" y={GY+BH*0.1} width={W} height={BH*0.3} fill="url(#g2)" />
+                                        <rect x="0" y={GY+BH*0.4} width={W} height={BH*0.25} fill="url(#g3)" />
+                                        <rect x="0" y={GY+BH*0.65} width={W} height={BH*0.35} fill="url(#g4)" />
+                                    </g>
+                                    <path d={faultType === 'transform' ? `M 40 ${GY} H ${CX} V ${GY+BH} H 40 Z` : `M 40 ${GY} H ${CX} L ${CX+SDX} ${GY+BH} H 40 Z`} fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="2" />
+                                    {showLabels && <text x={CX-120} y={GY+BH+40} fill="#475569" fontSize="12" fontWeight="bold" textAnchor="middle" className="uppercase tracking-widest">{faultType === 'transform' ? 'Plate A' : 'Footwall 下盤'}</text>}
+                                </g>
+
+                                {/* 右側板塊 */}
+                                <g style={{ transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)', transform: transforms.right }}>
+                                    <g clipPath="url(#cp-right)">
+                                        <rect x="0" y={GY} width={W} height={BH*0.1} fill="url(#g1)" />
+                                        <rect x="0" y={GY+BH*0.1} width={W} height={BH*0.3} fill="url(#g2)" />
+                                        <rect x="0" y={GY+BH*0.4} width={W} height={BH*0.25} fill="url(#g3)" />
+                                        <rect x="0" y={GY+BH*0.65} width={W} height={BH*0.35} fill="url(#g4)" />
+                                    </g>
+                                    <path d={faultType === 'transform' ? `M ${CX} ${GY} H ${W-40} V ${GY+BH} H ${CX} Z` : `M ${CX} ${GY} H ${W-40} V ${GY+BH} L ${CX+SDX} ${GY+BH} Z`} fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="2" />
+                                    {showLabels && <text x={CX+220} y={GY+BH+40} fill="#475569" fontSize="12" fontWeight="bold" textAnchor="middle" className="uppercase tracking-widest">{faultType === 'transform' ? 'Plate B' : 'Hanging Wall 上盤'}</text>}
+                                </g>
+                            </svg>
+                        </div>
+
+                        {/* 右側：解析 */}
+                        <div className="lg:col-span-3">
+                            <div className="glass-card p-8 rounded-[2rem] h-full flex flex-col justify-between border-b-4 border-b-sky-500">
+                                <div>
+                                    <div className="text-sky-500 text-[10px] font-black uppercase tracking-[0.3em] mb-4">Fault Analysis</div>
+                                    <h2 className="text-3xl font-black text-white mb-6 uppercase leading-tight">{faultData[faultType].name}</h2>
+                                    <p className="text-slate-400 text-sm leading-relaxed mb-6">
+                                        {faultData[faultType].desc}
+                                    </p>
+                                </div>
+                                <div className="space-y-2">
+                                    <div className="text-[10px] font-bold text-slate-600 uppercase">Primary Stress</div>
+                                    <div className="text-lg font-bold text-white tracking-wide">{faultData[faultType].force}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <footer className="mt-12 text-slate-800 text-[10px] font-black tracking-[0.8em] uppercase">
+                        TerraDynamics // Advanced Simulation Unit
+                    </footer>
+                </main>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
