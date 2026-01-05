@@ -16,4 +16,4 @@ readMore: "Read more →"
 searchPlaceholder: "Search..."
 system: "System"
 tags: "Tags"
-poweredBy: '<a href="https://github.com/spectre-pro">Powered by SPECTRE</a>'
+poweredBy: '<a href="https://github.com/spectre-pro" target="_blank" rel="noopener noreferrer">Powered by SPECTRE</a>'
