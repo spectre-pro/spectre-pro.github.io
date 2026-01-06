@@ -3,12 +3,6 @@
 > <no value>
 
 
-## Game
-
-### ICT
-
-### 地理
-
 ## Note
 
 ### Tech
@@ -77,6 +71,12 @@ YouTube BiliBili - Published 2025-12-27
 #### ICT
 - [A2 試算表函數](https://www.spectrepro.dev/docs/school/6-ict/1-a2%E8%A9%A6%E7%AE%97%E8%A1%A8%E5%87%BD%E6%95%B8/): 目錄 數學與數值函數 Function 簡介 1. INT 無條件捨去數字的小數部分，傳回整數 2. RAND 產生一個大於或等於 0 且小於 1 的隨機亂數。每次重新計算工作表時，此數值都會變動。 …
 
+## Game
+
+### ICT
+
+### 地理
+
 
 ## Root Pages
 - [Contact Us](https://www.spectrepro.dev/contact/): 感謝您造訪 SPECTRE NOTE！
@@ -86,5 +86,5 @@ YouTube BiliBili - Published 2025-12-27
 一、隱私權保護政策的適用 … - Published 2026-01-05
 
 ---
-Generated on 2026-01-06 19:29:13 UTC
+Generated on 2026-01-06 19:46:05 UTC
 Site: https://www.spectrepro.dev/

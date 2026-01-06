@@ -1,5 +1,6 @@
 ---
 title: "Contact Us"
+weight: 3
 comments: false
 ---
 感謝您造訪 **SPECTRE NOTE**！

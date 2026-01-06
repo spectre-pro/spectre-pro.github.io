@@ -1,5 +1,6 @@
 ---
 title: "Game"
+weight: 2
 ---
 
 > [!Caution]

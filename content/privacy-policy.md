@@ -1,5 +1,6 @@
 ---
 title: "Privacy Policy"
+weight: 4
 comments: false
 ---
 

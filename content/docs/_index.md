@@ -1,5 +1,6 @@
 ---
 title: "Note"
+weight: 1
 comments: false
 ---
 
