@@ -27,9 +27,22 @@
         &lt;p&gt;&lt;a href=&#34;https://github.com/spectre-pro/gemini-proxy&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/spectre-pro/gemini-proxy&lt;/a&gt;&lt;br&gt;
 &lt;a href=&#34;https://github.com/spectre-pro/gemini-proxy&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;github&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;YouTube&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;youtube&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#youtube&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/lDK_xjpJrsw?si=nWF-rxN8o6a8PyGf&#34; title=&#34;YouTube video player&#34; frameborder=&#34;0&#34; allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; allowfullscreen&gt;&lt;/iframe&gt;
+    &lt;a href=&#34;#youtube&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/lDK_xjpJrsw?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+
 &lt;h2&gt;BiliBili&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;bilibili&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#bilibili&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;//player.bilibili.com/player.html?isOutside=true&amp;aid=114960990473081&amp;bvid=BV1o9hNzzEVq&amp;cid=31805869829&amp;p=1&#34; scrolling=&#34;no&#34; border=&#34;0&#34; frameborder=&#34;no&#34; framespacing=&#34;0&#34; allowfullscreen=&#34;true&#34;&gt;&lt;/iframe&gt;
+    &lt;a href=&#34;#bilibili&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe 
+    src=&#34;//player.bilibili.com/player.html?bvid=BV1o9hNzzEVq&amp;page=1&amp;autoplay=0&amp;high_quality=1&amp;danmaku=1&amp;isOutside=true&#34; 
+    style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; 
+    scrolling=&#34;no&#34; 
+    border=&#34;0&#34; 
+    frameborder=&#34;no&#34; 
+    framespacing=&#34;0&#34; 
+    allowfullscreen=&#34;true&#34;&gt;
+  &lt;/iframe&gt;
+&lt;/div&gt;
 
       </description>
     </item>
@@ -1881,9 +1894,22 @@ v 是最後的瞬時速度&lt;br&gt;
         
         
         &lt;h2&gt;YouTube&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;youtube&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#youtube&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/4l9VaGssNNs?si=xAdhWYw1G1c-8mq-&#34; title=&#34;YouTube video player&#34; frameborder=&#34;0&#34; allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; allowfullscreen&gt;&lt;/iframe&gt;
+    &lt;a href=&#34;#youtube&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/4l9VaGssNNs?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+
 &lt;h2&gt;BiliBili&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;bilibili&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#bilibili&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;//player.bilibili.com/player.html?isOutside=true&amp;aid=114977046333564&amp;bvid=BV1aB4RzFEda&amp;cid=31805603874&amp;p=1&#34; scrolling=&#34;no&#34; border=&#34;0&#34; frameborder=&#34;no&#34; framespacing=&#34;0&#34; allowfullscreen=&#34;true&#34;&gt;&lt;/iframe&gt;
+    &lt;a href=&#34;#bilibili&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe 
+    src=&#34;//player.bilibili.com/player.html?bvid=BV1aB4RzFEda&amp;page=1&amp;autoplay=0&amp;high_quality=1&amp;danmaku=1&amp;isOutside=true&#34; 
+    style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; 
+    scrolling=&#34;no&#34; 
+    border=&#34;0&#34; 
+    frameborder=&#34;no&#34; 
+    framespacing=&#34;0&#34; 
+    allowfullscreen=&#34;true&#34;&gt;
+  &lt;/iframe&gt;
+&lt;/div&gt;
 
       </description>
     </item>
@@ -2176,9 +2202,22 @@ M834 80h400000v40h-400000z&#34;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;/span&gt;&lt;/s
         
         
         &lt;h1&gt;不用付錢，也能擁有自己的網址！超簡單域名申請教學&lt;/h1&gt;&lt;h2&gt;YouTube&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;youtube&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#youtube&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/wpV3ifYfshk?si=rjCGV4l71LTNucMA&#34; title=&#34;YouTube video player&#34; frameborder=&#34;0&#34; allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; allowfullscreen&gt;&lt;/iframe&gt;
+    &lt;a href=&#34;#youtube&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/wpV3ifYfshk?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+
 &lt;h2&gt;BiliBili&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;bilibili&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#bilibili&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;//player.bilibili.com/player.html?isOutside=true&amp;aid=115055328825153&amp;bvid=BV1Y6ewzYEuY&amp;cid=31806522771&amp;p=1&#34; scrolling=&#34;no&#34; border=&#34;0&#34; frameborder=&#34;no&#34; framespacing=&#34;0&#34; allowfullscreen=&#34;true&#34;&gt;&lt;/iframe&gt;
+    &lt;a href=&#34;#bilibili&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe 
+    src=&#34;//player.bilibili.com/player.html?bvid=BV1Y6ewzYEuY&amp;page=1&amp;autoplay=0&amp;high_quality=1&amp;danmaku=1&amp;isOutside=true&#34; 
+    style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; 
+    scrolling=&#34;no&#34; 
+    border=&#34;0&#34; 
+    frameborder=&#34;no&#34; 
+    framespacing=&#34;0&#34; 
+    allowfullscreen=&#34;true&#34;&gt;
+  &lt;/iframe&gt;
+&lt;/div&gt;
 
       </description>
     </item>
@@ -2524,9 +2563,22 @@ M834 80h400000v40h-400000z&#34;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;/span&gt;&lt;/s
         
         
         &lt;h1&gt;別再讓它吃灰！三十分鐘變身 7x24 小時終極家庭伺服器 (Ubuntu Server + Docker + cockpit + SMB)&lt;/h1&gt;&lt;h2&gt;YouTube&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;youtube&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#youtube&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/Y3vD9wzVfAM?si=TQGZXKVtdz-fJXo-&#34; title=&#34;YouTube video player&#34; frameborder=&#34;0&#34; allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; allowfullscreen&gt;&lt;/iframe&gt;
+    &lt;a href=&#34;#youtube&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/Y3vD9wzVfAM?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+
 &lt;h2&gt;BiliBili&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;bilibili&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#bilibili&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;//player.bilibili.com/player.html?isOutside=true&amp;aid=115062106819304&amp;bvid=BV1wfe3zGEda&amp;cid=31833263308&amp;p=1&#34; scrolling=&#34;no&#34; border=&#34;0&#34; frameborder=&#34;no&#34; framespacing=&#34;0&#34; allowfullscreen=&#34;true&#34;&gt;&lt;/iframe&gt;
+    &lt;a href=&#34;#bilibili&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe 
+    src=&#34;//player.bilibili.com/player.html?bvid=BV1wfe3zGEda&amp;page=1&amp;autoplay=0&amp;high_quality=1&amp;danmaku=1&amp;isOutside=true&#34; 
+    style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; 
+    scrolling=&#34;no&#34; 
+    border=&#34;0&#34; 
+    frameborder=&#34;no&#34; 
+    framespacing=&#34;0&#34; 
+    allowfullscreen=&#34;true&#34;&gt;
+  &lt;/iframe&gt;
+&lt;/div&gt;
 
       </description>
     </item>
@@ -2610,9 +2662,22 @@ M834 80h400000v40h-400000z&#34;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;/span&gt;&lt;/s
         
         
         &lt;h1&gt;一個賬號，免費試用所有頂級 AI！ GitHub AI 申請教學 (內含 GPT-4, Grok, DeepSeek)。&lt;/h1&gt;&lt;h2&gt;YouTube&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;youtube&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#youtube&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/3EouR1ook28?si=l7d-Xoyi31vnWK76&#34; title=&#34;YouTube video player&#34; frameborder=&#34;0&#34; allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; allowfullscreen&gt;&lt;/iframe&gt;
+    &lt;a href=&#34;#youtube&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/3EouR1ook28?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+
 &lt;h2&gt;BiliBili&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;bilibili&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#bilibili&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;//player.bilibili.com/player.html?isOutside=true&amp;aid=115067962003305&amp;bvid=BV13hYdzLE1d&amp;cid=31857116166&amp;p=1&#34; scrolling=&#34;no&#34; border=&#34;0&#34; frameborder=&#34;no&#34; framespacing=&#34;0&#34; allowfullscreen=&#34;true&#34;&gt;&lt;/iframe&gt;
+    &lt;a href=&#34;#bilibili&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe 
+    src=&#34;//player.bilibili.com/player.html?bvid=BV13hYdzLE1d&amp;page=1&amp;autoplay=0&amp;high_quality=1&amp;danmaku=1&amp;isOutside=true&#34; 
+    style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; 
+    scrolling=&#34;no&#34; 
+    border=&#34;0&#34; 
+    frameborder=&#34;no&#34; 
+    framespacing=&#34;0&#34; 
+    allowfullscreen=&#34;true&#34;&gt;
+  &lt;/iframe&gt;
+&lt;/div&gt;
 
       </description>
     </item>
