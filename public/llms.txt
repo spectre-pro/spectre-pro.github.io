@@ -20,11 +20,11 @@ Tip - Published 2025-12-27
 #### Video
 - [Gemini proxy](https://www.spectrepro.dev/docs/tech/video/1-gemini-proxy/): https://github.com/spectre-pro/gemini-proxy
 github
-YouTube BiliBili - Published 2025-12-27
-- [Open WebUI](https://www.spectrepro.dev/docs/tech/video/2-open-webui/): YouTube BiliBili - Published 2025-12-27
-- [白嫖域名](https://www.spectrepro.dev/docs/tech/video/3-domain/): 不用付錢，也能擁有自己的網址！超簡單域名申請教學YouTube BiliBili - Published 2025-12-27
-- [舊電腦復活計畫](https://www.spectrepro.dev/docs/tech/video/4-ubuntu/): 別再讓它吃灰！三十分鐘變身 7x24 小時終極家庭伺服器 (Ubuntu Server + Docker + cockpit + SMB)YouTube BiliBili - Published 2025-12-27
-- [GitHub AI 終極白嫖指南](https://www.spectrepro.dev/docs/tech/video/5-github-ai/): 一個賬號，免費試用所有頂級 AI！ GitHub AI 申請教學 (內含 GPT-4, Grok, DeepSeek)。YouTube BiliBili - Published 2025-12-27
+YouTube BiliBili - Published 2026-01-06
+- [Open WebUI](https://www.spectrepro.dev/docs/tech/video/2-open-webui/): YouTube BiliBili - Published 2026-01-06
+- [白嫖域名](https://www.spectrepro.dev/docs/tech/video/3-domain/): 不用付錢，也能擁有自己的網址！超簡單域名申請教學YouTube BiliBili - Published 2026-01-06
+- [舊電腦復活計畫](https://www.spectrepro.dev/docs/tech/video/4-ubuntu/): 別再讓它吃灰！三十分鐘變身 7x24 小時終極家庭伺服器 (Ubuntu Server + Docker + cockpit + SMB)YouTube BiliBili - Published 2026-01-06
+- [GitHub AI 終極白嫖指南](https://www.spectrepro.dev/docs/tech/video/5-github-ai/): 一個賬號，免費試用所有頂級 AI！ GitHub AI 申請教學 (內含 GPT-4, Grok, DeepSeek)。YouTube BiliBili - Published 2026-01-06
 
 ### School
 
@@ -86,5 +86,5 @@ YouTube BiliBili - Published 2025-12-27
 一、隱私權保護政策的適用 … - Published 2026-01-06
 
 ---
-Generated on 2026-01-06 20:32:14 UTC
+Generated on 2026-01-06 20:46:45 UTC
 Site: https://www.spectrepro.dev/
