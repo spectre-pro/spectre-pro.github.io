@@ -316,7 +316,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     resultsElement.classList.remove('hx:hidden');
 
-    const pageResults = window.pageIndex.search(query, 5, { enrich: true, suggest: true })[0]?.result || [];
+    // Configurable search limits with sensible defaults
+    const maxPageResults = parseInt('20', 10);
+    const maxSectionResults = parseInt('10', 10);
+    const pageResults = window.pageIndex.search(query, maxPageResults, { enrich: true, suggest: true })[0]?.result || [];
 
     const results = [];
     const pageTitleMatches = {};
@@ -325,12 +328,13 @@ document.addEventListener("DOMContentLoaded", function () {
       const result = pageResults[i];
       pageTitleMatches[i] = 0;
 
-      // Show the top 5 results for each page
-      const sectionResults = window.sectionIndex.search(query, 5, { enrich: true, suggest: true, tag: { 'pageId': `page_${result.id}` } })[0]?.result || [];
+      const sectionResults = window.sectionIndex.search(query,
+        { enrich: true, suggest: true, tag: { 'pageId': `page_${result.id}` } })[0]?.result || [];
       let isFirstItemOfPage = true
       const occurred = {}
 
-      for (let j = 0; j < sectionResults.length; j++) {
+      const nResults = Math.min(sectionResults.length, maxSectionResults);
+      for (let j = 0; j < nResults; j++) {
         const { doc } = sectionResults[j]
         const isMatchingTitle = doc.display !== undefined
         if (isMatchingTitle) {
