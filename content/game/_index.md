@@ -27,5 +27,5 @@ weight: 2
 
 # Other
 {{< cards >}}
-{{< card link="6" title="test" icon="game">}}
+{{< card link="6" title="Voxel Architect Pro - 空間手繪設計師" icon="game">}}
 {{< /cards >}}
