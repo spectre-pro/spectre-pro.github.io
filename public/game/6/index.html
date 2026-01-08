@@ -2,34 +2,205 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <title>Voxel Architect</title>
+    <title>Voxel Architect PRO - HUD Mode</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        :root { --neon-blue: #00f0ff; --neon-pink: #ff0055; --neon-green: #00ffcc; }
-        body { margin: 0; background: #000; overflow: hidden; font-family: sans-serif; }
-        #input_video { position: absolute; width: 100vw; height: 100vh; object-fit: cover; transform: scaleX(-1); z-index: 1; }
+        :root {
+            --neon-blue: #00f3ff;
+            --neon-pink: #ff0055;
+            --neon-green: #00ff9d;
+            --neon-yellow: #ffcc00;
+            --glass-bg: rgba(10, 20, 30, 0.75);
+            --glass-border: 1px solid rgba(0, 243, 255, 0.3);
+        }
+
+        body { 
+            margin: 0; 
+            background: #050505; 
+            overflow: hidden; 
+            font-family: 'Roboto', sans-serif; 
+            user-select: none;
+        }
+
+        /* 畫布層級管理 */
+        #input_video { position: absolute; width: 100vw; height: 100vh; object-fit: cover; transform: scaleX(-1); z-index: 1; opacity: 0.6; }
         #three_canvas { position: absolute; top: 0; left: 0; z-index: 5; pointer-events: none; }
-        /* 關鍵：此畫布已鏡像，所以 JS 繪圖坐標不應再手動反轉 */
         #biometric_canvas { position: absolute; width: 100vw; height: 100vh; z-index: 10; transform: scaleX(-1); pointer-events: none; }
-        #ui {
+
+        /* 左側 UI (狀態) */
+        #ui_left {
             position: absolute; top: 20px; left: 20px; z-index: 100;
-            color: #fff; background: rgba(0,0,0,0.7); padding: 20px; border-radius: 10px;
-            backdrop-filter: blur(5px); border: 1px solid var(--neon-blue);
+            display: flex; flex-direction: column; gap: 10px;
+            width: 220px;
         }
-        .stat-val { color: var(--neon-green); font-family: monospace; }
-        #swap_btn {
-            width: 100%; margin-top: 10px; background: transparent; border: 1px solid var(--neon-blue);
-            color: var(--neon-blue); padding: 8px; cursor: pointer;
+
+        /* 右側 UI (教學面板) */
+        #ui_right {
+            position: absolute; top: 20px; right: 20px; z-index: 100;
+            display: flex; flex-direction: column; align-items: flex-end; gap: 10px;
+            pointer-events: none; /* 讓滑鼠穿透空白區域 */
         }
+
+        /* 通用面板風格 */
+        .hud-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: var(--glass-border);
+            padding: 15px;
+            border-radius: 8px; /* 稍微方一點比較像科技面板 */
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.1);
+            color: #fff;
+            transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+            pointer-events: auto; /* 恢復點擊 */
+        }
+
+        /* 左側標題 */
+        .hud-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            color: var(--neon-blue);
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 5px;
+        }
+
+        .stat-row { display: flex; justify-content: space-between; margin: 4px 0; font-size: 13px; }
+        .stat-val { font-family: 'Orbitron', monospace; color: var(--neon-green); font-weight: bold; }
+        .mode-text { font-weight: bold; color: #fff; text-shadow: 0 0 5px var(--neon-blue); }
+
+        .cyber-btn {
+            background: rgba(0, 243, 255, 0.1);
+            border: 1px solid var(--neon-blue);
+            color: var(--neon-blue);
+            padding: 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 11px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            width: 100%;
+            margin-top: 5px;
+            border-radius: 4px;
+        }
+        .cyber-btn:hover { background: var(--neon-blue); color: #000; }
+
+        /* 右側教學列表樣式 */
+        #tutorial_panel {
+            width: 260px;
+            transform: translateX(0);
+            opacity: 1;
+        }
+        
+        /* 收折狀態 */
+        #tutorial_panel.collapsed {
+            transform: translateX(120%); /* 往右滑出 */
+            opacity: 0;
+        }
+
+        .t-list { list-style: none; padding: 0; margin: 0; }
+        .t-item { 
+            display: flex; align-items: center; margin-bottom: 12px; 
+            border-left: 3px solid #555; padding-left: 10px;
+        }
+        .t-icon { font-size: 20px; margin-right: 10px; min-width: 25px; text-align: center; }
+        .t-content h4 { margin: 0; font-size: 14px; color: var(--neon-blue); font-weight: normal; }
+        .t-content p { margin: 2px 0 0 0; font-size: 11px; color: #aaa; }
+
+        /* 幫助開關按鈕 */
+        #help_toggle {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            border: 1px solid var(--neon-blue);
+            color: var(--neon-blue);
+            font-family: 'Orbitron';
+            font-weight: bold;
+            font-size: 18px;
+            cursor: pointer;
+            pointer-events: auto;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 0 10px rgba(0,243,255,0.2);
+            transition: 0.3s;
+        }
+        #help_toggle:hover { background: var(--neon-blue); color: #000; }
+
+        /* 載入指示器 */
+        #loading_indicator {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            color: var(--neon-blue); font-family: 'Orbitron'; font-size: 20px;
+            background: rgba(0,0,0,0.8); padding: 20px; border-radius: 10px;
+            pointer-events: none; z-index: 200;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .loader {
+            border: 3px solid rgba(0,243,255,0.3); border-top: 3px solid var(--neon-blue);
+            border-radius: 50%; width: 30px; height: 30px; margin-bottom: 10px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
     </style>
 </head>
 <body>
 
-    <div id="ui">
-        <div style="font-weight:bold; color:var(--neon-blue)">VOXEL ARCHITECT v4.2</div>
-        <div style="margin:5px 0">狀態: <span id="mode" class="stat-val">準備中</span></div>
-        <div style="margin:5px 0">方塊: <span id="count" class="stat-val">0</span></div>
-        <div id="hand_info" style="font-size:12px; margin-top:10px">配置: 左(抓取) | 右(建造)</div>
-        <button id="swap_btn">掉轉左右手</button>
+    <div id="loading_indicator">
+        <div class="loader"></div>
+        <div>SYSTEM INITIALIZING...</div>
+    </div>
+
+    <div id="ui_left">
+        <div class="hud-panel">
+            <div class="hud-title">STATUS // V5.0</div>
+            <div class="stat-row">模式: <span id="mode" class="mode-text">偵測中...</span></div>
+            <div class="stat-row">方塊: <span id="count" class="stat-val">0</span></div>
+            <div class="stat-row" style="margin-top:8px; border-top:1px solid rgba(255,255,255,0.1); padding-top:5px;">
+                <span id="hand_config_text" style="font-size:11px; color:#aaa;">左手移動 / 右手建造</span>
+            </div>
+            <button id="swap_btn" class="cyber-btn">交換左右手</button>
+        </div>
+    </div>
+
+    <div id="ui_right">
+        <button id="help_toggle">?</button>
+        
+        <div id="tutorial_panel" class="hud-panel">
+            <div class="hud-title" style="margin-bottom:10px;">COMMANDS // 指令</div>
+            <div class="t-list">
+                <div class="t-item" style="border-color: var(--neon-yellow);">
+                    <div class="t-icon">✊</div>
+                    <div class="t-content">
+                        <h4>握拳 (Grab)</h4>
+                        <p>抓取並移動世界</p>
+                    </div>
+                </div>
+                <div class="t-item" style="border-color: var(--neon-green);">
+                    <div class="t-icon">👌</div>
+                    <div class="t-content">
+                        <h4>捏合 (Pinch)</h4>
+                        <p>開始建造/拉動方塊</p>
+                    </div>
+                </div>
+                <div class="t-item" style="border-color: var(--neon-pink);">
+                    <div class="t-icon">☝️</div>
+                    <div class="t-content">
+                        <h4>食指 (Point)</h4>
+                        <p>刪除方塊</p>
+                    </div>
+                </div>
+                <div class="t-item" style="border-color: #fff;">
+                    <div class="t-icon">✋</div>
+                    <div class="t-content">
+                        <h4>張手 (Palm)</h4>
+                        <p>停止/確認/移動游標</p>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top:10px; font-size:10px; color:#666; text-align:right;">
+                保持手部距離鏡頭 50cm
+            </div>
+        </div>
     </div>
 
     <video id="input_video" autoplay playsinline></video>
@@ -44,169 +215,237 @@
         const videoElement = document.getElementById('input_video');
         const bioCanvas = document.getElementById('biometric_canvas');
         const bioCtx = bioCanvas.getContext('2d');
-        const modeEl = document.getElementById('mode');
-        const countEl = document.getElementById('count');
-        const handInfoEl = document.getElementById('hand_info');
-        const swapBtn = document.getElementById('swap_btn');
-
-        let isHandSwapped = false;
-        swapBtn.onclick = () => {
-            isHandSwapped = !isHandSwapped;
-            handInfoEl.innerText = isHandSwapped ? "配置: 左(建造) | 右(抓取)" : "配置: 左(抓取) | 右(建造)";
+        
+        const uiElements = {
+            mode: document.getElementById('mode'),
+            count: document.getElementById('count'),
+            config: document.getElementById('hand_config_text'),
+            swap: document.getElementById('swap_btn'),
+            tutorial: document.getElementById('tutorial_panel'),
+            helpBtn: document.getElementById('help_toggle'),
+            loader: document.getElementById('loading_indicator')
         };
 
-        // Three.js Scene
+        // UI 邏輯
+        let isHandSwapped = false;
+        
+        // 教學面板開關
+        uiElements.helpBtn.onclick = () => {
+            uiElements.tutorial.classList.toggle('collapsed');
+        };
+
+        // 交換左右手
+        uiElements.swap.onclick = () => {
+            isHandSwapped = !isHandSwapped;
+            uiElements.config.innerText = isHandSwapped ? "左手建造 / 右手移動" : "左手移動 / 右手建造";
+        };
+
+        // 平滑參數
+        const SMOOTH_FACTOR = 0.3;
+        let smoothedLeftHand = null;
+        let smoothedRightHand = null;
+
+        // Three.js Setup
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+        scene.fog = new THREE.FogExp2(0x000000, 0.015);
+        const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('three_canvas'), antialias: true, alpha: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
         const voxelGroup = new THREE.Group();
         scene.add(voxelGroup);
         const currentSketch = new THREE.Group();
         voxelGroup.add(currentSketch);
 
-        const gridSize = 1.2;
+        const gridSize = 1.0;
         const placedVoxels = new Map();
+
         const crosshair = new THREE.Mesh(
             new THREE.BoxGeometry(gridSize, gridSize, gridSize),
-            new THREE.MeshBasicMaterial({ color: 0x00f0ff, wireframe: true, transparent: true, opacity: 0.5 })
+            new THREE.MeshBasicMaterial({ color: 0x00f3ff, wireframe: true, transparent: true, opacity: 0.6 })
         );
         scene.add(crosshair);
-        scene.add(new THREE.AmbientLight(0xffffff, 0.5));
-        const light = new THREE.DirectionalLight(0xffffff, 0.8);
-        light.position.set(5,5,5);
-        scene.add(light);
-        camera.position.z = 25;
 
-        // Logic variables
+        scene.add(new THREE.AmbientLight(0xffffff, 0.6));
+        const dirLight = new THREE.DirectionalLight(0x00f3ff, 0.8);
+        dirLight.position.set(10, 20, 10);
+        scene.add(dirLight);
+        
+        camera.position.z = 20;
+
+        // Logic Variables
         let grabTimer = 0, isGrabbing = false, grabOffset = new THREE.Vector3();
-        let buildTimer = 0, isBuilding = false, eraseTimer = 0, isErasing = false;
+        let buildTimer = 0, isBuilding = false, eraseTimer = 0;
         let startPinchPos = null, activeAxis = null;
         let sketchKeys = new Set();
-        const HOLD = 500;
-        const PINCH_DIST = 0.04;
+        const HOLD_TIME = 400;
+        const PINCH_THRESHOLD = 0.05;
+
+        // Helper Functions
+        function lerp(start, end, amt) { return (1 - amt) * start + amt * end; }
+        function smoothLandmarks(prev, curr) {
+            if (!prev) return curr;
+            const smoothed = [];
+            for (let i = 0; i < curr.length; i++) {
+                smoothed.push({
+                    x: lerp(prev[i].x, curr[i].x, SMOOTH_FACTOR),
+                    y: lerp(prev[i].y, curr[i].y, SMOOTH_FACTOR),
+                    z: lerp(prev[i].z, curr[i].z, SMOOTH_FACTOR)
+                });
+            }
+            return smoothed;
+        }
 
         function drawHUDCircle(ctx, x, y, progress, color) {
+            if (progress <= 0) return;
             ctx.save();
-            ctx.beginPath();
-            ctx.arc(x, y, 40, -Math.PI/2, (-Math.PI/2) + (Math.PI * 2 * progress));
-            ctx.lineWidth = 6; ctx.strokeStyle = color; ctx.stroke();
-            // 內圈裝飾
-            ctx.setLineDash([4, 4]);
-            ctx.beginPath(); ctx.arc(x, y, 34, 0, Math.PI * 2); ctx.lineWidth = 1; ctx.stroke();
+            ctx.translate(x, y);
+            ctx.beginPath(); ctx.arc(0, 0, 30, 0, Math.PI * 2);
+            ctx.strokeStyle = "rgba(255,255,255,0.2)"; ctx.lineWidth = 4; ctx.stroke();
+            ctx.beginPath(); ctx.rotate(-Math.PI / 2);
+            ctx.arc(0, 0, 30, 0, Math.PI * 2 * progress);
+            ctx.strokeStyle = color; ctx.lineWidth = 4; ctx.lineCap = "round"; ctx.stroke();
             ctx.restore();
         }
 
-        function drawSkeleton(ctx, landmarks) {
-            ctx.strokeStyle = "rgba(0, 240, 255, 0.4)";
-            ctx.lineWidth = 2;
-            const CONN = [[0,1],[1,2],[2,3],[3,4],[0,5],[5,6],[6,7],[7,8],[9,10],[10,11],[11,12],[13,14],[14,15],[15,16],[0,17],[17,18],[18,19],[19,20],[5,9],[9,13],[13,17]];
-            CONN.forEach(([a, b]) => {
-                ctx.beginPath();
+        function drawSkeleton(ctx, landmarks, color) {
+            ctx.strokeStyle = color; ctx.lineWidth = 2;
+            const CONNECTIONS = [[0,1],[1,2],[2,3],[3,4],[0,5],[5,6],[6,7],[7,8],[9,10],[10,11],[11,12],[13,14],[14,15],[15,16],[0,17],[17,18],[18,19],[19,20],[5,9],[9,13],[13,17]];
+            ctx.beginPath();
+            CONNECTIONS.forEach(([a, b]) => {
                 ctx.moveTo(landmarks[a].x * bioCanvas.width, landmarks[a].y * bioCanvas.height);
                 ctx.lineTo(landmarks[b].x * bioCanvas.width, landmarks[b].y * bioCanvas.height);
-                ctx.stroke();
+            });
+            ctx.stroke();
+            ctx.fillStyle = "#fff";
+            landmarks.forEach(p => {
+                ctx.beginPath(); ctx.arc(p.x * bioCanvas.width, p.y * bioCanvas.height, 2, 0, 2*Math.PI); ctx.fill();
             });
         }
 
         function onResults(results) {
+            // 隱藏 Loading
+            uiElements.loader.style.display = 'none';
+            
             bioCtx.clearRect(0, 0, bioCanvas.width, bioCanvas.height);
-            crosshair.visible = false;
+            if (!results.multiHandLandmarks) {
+                crosshair.visible = false;
+                smoothedLeftHand = null; smoothedRightHand = null;
+                return;
+            }
 
-            if (!results.multiHandLandmarks) return;
-
-            let physL = null, physR = null;
+            let rawL = null, rawR = null;
             results.multiHandLandmarks.forEach((landmarks, idx) => {
                 const label = results.multiHandedness[idx].label;
-                drawSkeleton(bioCtx, landmarks);
-                if (label === 'Left') physL = landmarks;
-                if (label === 'Right') physR = landmarks;
+                if (label === 'Left') rawL = landmarks;
+                if (label === 'Right') rawR = landmarks;
             });
 
-            // 決定哪隻手負責什麼功能 (依據 UI 配置)
-            // 註：MediaPipe 的 Left 手在鏡像畫面中看起來在右邊。
-            let lHand = isHandSwapped ? physL : physR; 
-            let rHand = isHandSwapped ? physR : physL; 
+            smoothedLeftHand = rawL ? smoothLandmarks(smoothedLeftHand, rawL) : null;
+            smoothedRightHand = rawR ? smoothLandmarks(smoothedRightHand, rawR) : null;
 
-            // 左手邏輯 (抓取)
+            if (smoothedLeftHand) drawSkeleton(bioCtx, smoothedLeftHand, "rgba(0, 243, 255, 0.5)");
+            if (smoothedRightHand) drawSkeleton(bioCtx, smoothedRightHand, "rgba(255, 0, 85, 0.5)");
+
+            let lHand = isHandSwapped ? smoothedLeftHand : smoothedRightHand; 
+            let rHand = isHandSwapped ? smoothedRightHand : smoothedLeftHand; 
+
+            // 移動 (Move)
             if (lHand) {
-                const isFist = lHand[8].y > lHand[6].y && lHand[12].y > lHand[10].y;
-                const sx = lHand[9].x * bioCanvas.width;
-                const sy = lHand[9].y * bioCanvas.height;
+                const isFist = lHand[8].y > lHand[5].y && lHand[12].y > lHand[9].y && lHand[16].y > lHand[13].y;
+                const px = lHand[9].x * bioCanvas.width;
+                const py = lHand[9].y * bioCanvas.height;
                 const worldPos = new THREE.Vector3((0.5 - lHand[9].x) * 30, (0.5 - lHand[9].y) * 20, 0);
 
                 if (isFist) {
                     grabTimer += 16;
-                    drawHUDCircle(bioCtx, sx, sy, Math.min(grabTimer/HOLD, 1), "#ffbb00");
-                    if (grabTimer > HOLD) {
+                    drawHUDCircle(bioCtx, px, py, Math.min(grabTimer/HOLD_TIME, 1), "#ffcc00");
+                    if (grabTimer > HOLD_TIME) {
                         if (!isGrabbing) { grabOffset.copy(voxelGroup.position).sub(worldPos); isGrabbing = true; }
-                        voxelGroup.position.copy(worldPos).add(grabOffset);
-                        modeEl.innerText = "拖拽中";
+                        voxelGroup.position.lerp(new THREE.Vector3().copy(worldPos).add(grabOffset), 0.2);
+                        uiElements.mode.innerText = "移動中 (MOVE)";
+                        uiElements.mode.style.color = "var(--neon-yellow)";
                     }
-                } else { isGrabbing = false; grabTimer = 0; }
+                } else {
+                    isGrabbing = false; grabTimer = 0;
+                }
             }
 
-            // 右手邏輯 (建造 - Z軸鎖定為0)
+            // 建造 (Build)
             if (rHand) {
-                const dist = Math.sqrt(Math.pow(rHand[4].x-rHand[8].x,2) + Math.pow(rHand[4].y-rHand[8].y,2));
-                const isPinching = dist < PINCH_DIST;
-                const isPointing = rHand[8].y < rHand[6].y && rHand[12].y > rHand[10].y;
-                const isPalm = rHand[8].y < rHand[6].y && rHand[12].y < rHand[10].y;
-                
-                const sx = rHand[8].x * bioCanvas.width;
-                const sy = rHand[8].y * bioCanvas.height;
-                
-                const rawPos = new THREE.Vector3((0.5 - rHand[8].x) * 30, (0.5 - rHand[8].y) * 20, 0);
+                const indexTip = rHand[8], thumbTip = rHand[4];
+                const dist = Math.hypot(indexTip.x - thumbTip.x, indexTip.y - thumbTip.y);
+                const isPinching = dist < PINCH_THRESHOLD;
+                const isPointing = rHand[8].y < rHand[6].y && rHand[12].y > rHand[10].y; 
+                const isPalm = !isPinching && !isPointing && rHand[12].y < rHand[10].y;
+
+                const px = indexTip.x * bioCanvas.width;
+                const py = indexTip.y * bioCanvas.height;
+                const rawPos = new THREE.Vector3((0.5 - indexTip.x) * 30, (0.5 - indexTip.y) * 20, 0);
                 const localPos = voxelGroup.worldToLocal(rawPos.clone());
                 const gx = Math.round(localPos.x / gridSize) * gridSize;
                 const gy = Math.round(localPos.y / gridSize) * gridSize;
-
-                crosshair.position.copy(voxelGroup.localToWorld(new THREE.Vector3(gx, gy, 0)));
+                
                 crosshair.visible = true;
+                crosshair.position.lerp(voxelGroup.localToWorld(new THREE.Vector3(gx, gy, 0)), 0.5);
 
-                if (isPointing && !isPalm) {
+                if (isPointing && !isPalm && !isBuilding) {
                     eraseTimer += 16;
-                    drawHUDCircle(bioCtx, sx, sy, Math.min(eraseTimer/HOLD, 1), "#ff3333");
-                    if (eraseTimer > HOLD) {
+                    drawHUDCircle(bioCtx, px, py, Math.min(eraseTimer/HOLD_TIME, 1), "#ff0055");
+                    uiElements.mode.innerText = "刪除 (ERASE)";
+                    uiElements.mode.style.color = "var(--neon-pink)";
+                    if (eraseTimer > HOLD_TIME) {
                         const key = `${gx.toFixed(1)},${gy.toFixed(1)},0.0`;
                         if (placedVoxels.has(key)) {
                             voxelGroup.remove(placedVoxels.get(key));
                             placedVoxels.delete(key);
-                            countEl.innerText = placedVoxels.size;
+                            uiElements.count.innerText = placedVoxels.size;
+                            eraseTimer = 0;
                         }
                     }
                 } else { eraseTimer = 0; }
 
                 if (isPinching) {
                     buildTimer += 16;
-                    drawHUDCircle(bioCtx, sx, sy, Math.min(buildTimer/HOLD, 1), "#00ffcc");
-                    if (buildTimer > HOLD) {
+                    drawHUDCircle(bioCtx, px, py, Math.min(buildTimer/HOLD_TIME, 1), "#00ff9d");
+                    if (buildTimer > HOLD_TIME) {
+                        uiElements.mode.innerText = "建造 (BUILD)";
+                        uiElements.mode.style.color = "var(--neon-green)";
                         if (!isBuilding) {
                             startPinchPos = { x: gx, y: gy };
                             sketchKeys.clear();
-                            isBuilding = true;
-                            activeAxis = null;
+                            isBuilding = true; activeAxis = null;
                         } else {
                             const dx = Math.abs(gx - startPinchPos.x), dy = Math.abs(gy - startPinchPos.y);
                             if (!activeAxis && (dx > 0.5 || dy > 0.5)) activeAxis = dx > dy ? 'x' : 'y';
-                            let tx = startPinchPos.x, ty = startPinchPos.y;
-                            if (activeAxis === 'x') tx = gx; else if (activeAxis === 'y') ty = gy;
+                            let tx = gx, ty = gy;
+                            if (activeAxis === 'x') ty = startPinchPos.y;
+                            else if (activeAxis === 'y') tx = startPinchPos.x;
                             addSketchVoxel(tx, ty, 0);
                         }
-                        modeEl.innerText = "建築中";
                     }
                 } else {
-                    if (isPalm && isBuilding) commitVoxels();
-                    if (isPalm) { isBuilding = false; buildTimer = 0; modeEl.innerText = "導航中"; }
+                    if (isBuilding) { commitVoxels(); isBuilding = false; }
+                    buildTimer = 0;
+                    if (!isPointing) {
+                        uiElements.mode.innerText = "導航 (READY)";
+                        uiElements.mode.style.color = "#fff";
+                    }
                 }
+            } else {
+                if(isBuilding) { commitVoxels(); isBuilding = false; }
+                buildTimer = 0; eraseTimer = 0;
             }
         }
 
         function addSketchVoxel(x, y, z) {
             const key = `${x.toFixed(1)},${y.toFixed(1)},${z.toFixed(1)}`;
             if (sketchKeys.has(key) || placedVoxels.has(key)) return;
-            const mesh = new THREE.Mesh(new THREE.BoxGeometry(gridSize*0.9, gridSize*0.9, gridSize*0.9), new THREE.MeshBasicMaterial({ color: 0x00f0ff, wireframe: true }));
+            const mesh = new THREE.Mesh(
+                new THREE.BoxGeometry(gridSize*0.9, gridSize*0.9, gridSize*0.9), 
+                new THREE.MeshBasicMaterial({ color: 0x00f3ff, wireframe: true, transparent: true, opacity: 0.5 })
+            );
             mesh.position.set(x, y, z);
             currentSketch.add(mesh);
             sketchKeys.add(key);
@@ -216,36 +455,37 @@
             while(currentSketch.children.length > 0) {
                 const f = currentSketch.children[0];
                 const key = `${f.position.x.toFixed(1)},${f.position.y.toFixed(1)},0.0`;
-                const g = new THREE.BoxGeometry(gridSize*0.95, gridSize*0.95, gridSize*0.95);
-                const m = new THREE.MeshPhongMaterial({ color: 0x112233, emissive: 0x00f0ff, emissiveIntensity: 0.4 });
-                const cube = new THREE.Mesh(g, m);
+                const cube = new THREE.Mesh(
+                    new THREE.BoxGeometry(gridSize*0.95, gridSize*0.95, gridSize*0.95), 
+                    new THREE.MeshStandardMaterial({ color: 0x112233, roughness: 0.3, metalness: 0.8, emissive: 0x00f3ff, emissiveIntensity: 0.2 })
+                );
                 cube.position.copy(f.position);
-                cube.add(new THREE.LineSegments(new THREE.EdgesGeometry(g), new THREE.LineBasicMaterial({ color: 0x00f0ff })));
+                cube.add(new THREE.LineSegments(new THREE.EdgesGeometry(cube.geometry), new THREE.LineBasicMaterial({ color: 0x00aaff })));
                 voxelGroup.add(cube);
                 placedVoxels.set(key, cube);
                 currentSketch.remove(f);
             }
-            countEl.innerText = placedVoxels.size;
+            uiElements.count.innerText = placedVoxels.size;
         }
 
         const hands = new Hands({locateFile: (f) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${f}`});
-        hands.setOptions({ maxNumHands: 2, modelComplexity: 1, minDetectionConfidence: 0.8, minTrackingConfidence: 0.8 });
+        hands.setOptions({ maxNumHands: 2, modelComplexity: 1, minDetectionConfidence: 0.7, minTrackingConfidence: 0.7 });
         hands.onResults(onResults);
 
-        new Camera(videoElement, {
+        const cameraUtils = new Camera(videoElement, {
             onFrame: async () => {
                 bioCanvas.width = videoElement.videoWidth;
                 bioCanvas.height = videoElement.videoHeight;
                 await hands.send({image: videoElement});
             },
             width: 1280, height: 720
-        }).start();
+        });
+        cameraUtils.start(); // 自動啟動
 
         function animate() { requestAnimationFrame(animate); renderer.render(scene, camera); }
         animate();
         window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
+            camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
     </script>
