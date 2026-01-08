@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <title>Voxel Architect v4.1 - Sync Update</title>
+    <title>Voxel Architect v4.1 - Sync Update (Swappable)</title>
     <style>
         body { margin: 0; background: #000; overflow: hidden; font-family: 'Courier New', monospace; }
         #input_video { position: absolute; width: 100vw; height: 100vh; object-fit: cover; transform: scaleX(-1); z-index: 1; }
@@ -13,8 +13,29 @@
             color: #00f0ff; font-weight: bold; font-size: 14px;
             text-shadow: 0 0 10px #00f0ff; border-left: 3px solid #00f0ff; padding-left: 15px;
             background: rgba(0,0,0,0.6); padding: 15px;
+            pointer-events: auto; /* 確保按鈕可點擊 */
         }
         .stat-val { color: #fff; }
+        #swap_btn {
+            margin-top: 10px;
+            background: transparent;
+            border: 1px solid #00f0ff;
+            color: #00f0ff;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            transition: 0.3s;
+            display: block;
+        }
+        #swap_btn:hover {
+            background: rgba(0, 240, 255, 0.2);
+            box-shadow: 0 0 10px #00f0ff;
+        }
+        #swap_btn:active {
+            background: #00f0ff;
+            color: #000;
+        }
     </style>
 </head>
 <body>
@@ -22,9 +43,14 @@
         <div>BIO_SYNC: ARCHITECT_OS_v4.1</div>
         <div>STATE: <span id="mode" class="stat-val">INITIALIZING</span></div>
         <div>VOXELS: <span id="count" class="stat-val">0</span></div>
-        <div style="font-size: 10px; margin-top: 5px; color: #ff3333;">2 FISTS: HOLD TO RESET | 2 PALMS: HOLD TO ROTATE</div>
+        <div id="hand_info" style="font-size: 11px; margin-top: 5px; color: #ccff00;">
+            目前配置: 左手(抓取) | 右手(建造)
+        </div>
+        <div style="font-size: 10px; margin-top: 5px; color: #ff3333;">
+            雙拳: 長按重置 | 雙掌: 長按旋轉
+        </div>
+        <button id="swap_btn">掉轉左右手功能</button>
     </div>
-
     <video id="input_video" autoplay playsinline></video>
     <canvas id="three_canvas"></canvas>
     <canvas id="biometric_canvas"></canvas>
@@ -39,6 +65,21 @@
         const bioCtx = bioCanvas.getContext('2d');
         const modeEl = document.getElementById('mode');
         const countEl = document.getElementById('count');
+        const handInfoEl = document.getElementById('hand_info');
+        const swapBtn = document.getElementById('swap_btn');
+
+        // 追蹤是否掉轉手部功能
+        let isHandSwapped = false;
+        swapBtn.addEventListener('click', () => {
+            isHandSwapped = !isHandSwapped;
+            if (isHandSwapped) {
+                handInfoEl.innerText = "目前配置: 左手(建造) | 右手(抓取)";
+                swapBtn.innerText = "切換回標準模式";
+            } else {
+                handInfoEl.innerText = "目前配置: 左手(抓取) | 右手(建造)";
+                swapBtn.innerText = "掉轉左右手功能";
+            }
+        });
 
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -49,7 +90,6 @@
         scene.add(voxelGroup);
         const currentSketch = new THREE.Group();
         voxelGroup.add(currentSketch);
-
         const gridSize = 1.2; 
         const placedVoxels = new Map();
         
@@ -58,7 +98,6 @@
             new THREE.MeshBasicMaterial({ color: 0x00f0ff, wireframe: true, transparent: true, opacity: 0.5 })
         );
         scene.add(crosshair);
-
         scene.add(new THREE.AmbientLight(0xffffff, 0.5));
         const sun = new THREE.DirectionalLight(0x00f0ff, 1.0);
         sun.position.set(5, 5, 5);
@@ -105,11 +144,9 @@
 
         let isGrabbing = false, grabTimer = 0;
         let grabOffset = new THREE.Vector3();
-        
         let isBuilding = false, buildTimer = 0;
         let isErasing = false, eraseTimer = 0;
         let resetTimer = 0, rotateTimer = 0; 
-
         let startPinchPos = null, activeAxis = null;
         let sketchKeys = new Set();
         
@@ -117,7 +154,6 @@
         const INTENT_HOLD = 500;    
         const RESET_HOLD = 1000;    
         const ROTATE_HOLD = 1000;   
-
         const pinchThreshold = 0.05; 
 
         function getDist(p1, p2) { return Math.sqrt(Math.pow(p1.x-p2.x,2)+Math.pow(p1.y-p2.y,2)+(p1.z&&p2.z?Math.pow(p1.z-p2.z,2):0)); }
@@ -134,20 +170,32 @@
             }
 
             let lHand = null, rHand = null;
-            let handsDetected = results.multiHandedness.length;
+            let physicalLeft = null, physicalRight = null;
 
             results.multiHandedness.forEach((hand, idx) => {
                 const landmarks = results.multiHandLandmarks[idx];
                 drawCyberHand(bioCtx, landmarks, hand.label);
-                if(hand.label === 'Left') lHand = smoothedLandmarks['Left'];
-                if(hand.label === 'Right') rHand = smoothedLandmarks['Right'];
+                
+                // 獲取物理上的左右手資料
+                if(hand.label === 'Left') physicalLeft = smoothedLandmarks['Left'];
+                if(hand.label === 'Right') physicalRight = smoothedLandmarks['Right'];
             });
 
-            if (lHand && rHand) {
-                const lFist = lHand[8].y > lHand[6].y && lHand[12].y > lHand[10].y && lHand[16].y > lHand[14].y;
-                const rFist = rHand[8].y > rHand[6].y && rHand[12].y > rHand[10].y && rHand[16].y > rHand[14].y;
-                const lPalm = lHand[8].y < lHand[6].y && lHand[12].y < lHand[10].y && lHand[20].y < lHand[18].y;
-                const rPalm = rHand[8].y < rHand[6].y && rHand[12].y < rHand[10].y && rHand[20].y < rHand[18].y;
+            // 根據掉轉狀態分配邏輯手 (lHand 負責抓取, rHand 負責建造)
+            if (!isHandSwapped) {
+                lHand = physicalLeft;
+                rHand = physicalRight;
+            } else {
+                lHand = physicalRight; // 右手變為邏輯左手 (抓取)
+                rHand = physicalLeft;  // 左手變為邏輯右手 (建造)
+            }
+
+            // 雙手連動功能 (重置與旋轉) - 不受掉轉影響，因為需要雙手
+            if (physicalLeft && physicalRight) {
+                const lFist = physicalLeft[8].y > physicalLeft[6].y && physicalLeft[12].y > physicalLeft[10].y && physicalLeft[16].y > physicalLeft[14].y;
+                const rFist = physicalRight[8].y > physicalRight[6].y && physicalRight[12].y > physicalRight[10].y && physicalRight[16].y > physicalRight[14].y;
+                const lPalm = physicalLeft[8].y < physicalLeft[6].y && physicalLeft[12].y < physicalLeft[10].y && physicalLeft[20].y < physicalLeft[18].y;
+                const rPalm = physicalRight[8].y < physicalRight[6].y && physicalRight[12].y < physicalRight[10].y && physicalRight[20].y < physicalRight[18].y;
 
                 if (lFist && rFist) {
                     rotateTimer = 0; 
@@ -161,9 +209,7 @@
                         modeEl.innerText = "SYSTEM: HARD_RESET COMPLETE";
                     }
                     return; 
-                } else {
-                    resetTimer = 0; 
-                }
+                } else { resetTimer = 0; }
 
                 if (lPalm && rPalm) {
                     if (rotateTimer < ROTATE_HOLD) {
@@ -172,25 +218,23 @@
                         modeEl.innerText = "SYSTEM: HOLD TO ENABLE ROTATION...";
                     } else {
                         modeEl.innerText = "SYSTEM: GLOBAL_ROTATE ACTIVE";
-                        voxelGroup.rotation.y += (rHand[9].x - lHand[9].x - 0.5) * 0.05;
-                        voxelGroup.rotation.x += (rHand[9].y - lHand[9].y) * 0.05;
+                        voxelGroup.rotation.y += (physicalRight[9].x - physicalLeft[9].x - 0.5) * 0.05;
+                        voxelGroup.rotation.x += (physicalRight[9].y - physicalLeft[9].y) * 0.05;
                     }
                     return; 
-                } else {
-                    rotateTimer = 0; 
-                }
+                } else { rotateTimer = 0; }
             } else {
                 resetTimer = 0;
                 rotateTimer = 0;
             }
 
+            // --- 邏輯左手：抓取/移動場景 ---
             let lPinching = false;
             if (lHand) {
                 const isFist = lHand[8].y > lHand[6].y && lHand[12].y > lHand[10].y && lHand[16].y > lHand[14].y;
                 const isPalm = lHand[8].y < lHand[6].y && lHand[12].y < lHand[10].y;
                 lPinching = getDist(lHand[4], lHand[8]) < pinchThreshold;
                 const handWorldPos = new THREE.Vector3((0.5 - lHand[9].x) * 25, (0.5 - lHand[9].y) * 18, 0);
-
                 if (isFist) {
                     if (grabTimer < GRAB_HOLD) {
                         grabTimer += 16;
@@ -203,17 +247,17 @@
                 } else { isGrabbing = false; grabTimer = 0; if(isPalm) modeEl.innerText = "BIO_LINK: SCANNING"; }
             }
 
+            // --- 邏輯右手：建造與刪除 ---
             if (rHand) {
                 const thumbTip = rHand[4], indexTip = rHand[8], midTip = rHand[12];
                 const pinchingNow = getDist(thumbTip, indexTip) < pinchThreshold;
                 const pointingNow = indexTip.y < rHand[6].y && midTip.y > rHand[10].y;
                 const palmOpen = rHand[8].y < rHand[6].y && rHand[12].y < rHand[10].y && rHand[20].y < rHand[18].y;
-
                 const px = indexTip.x * bioCanvas.width, py = indexTip.y * bioCanvas.height;
                 const worldPos = new THREE.Vector3((0.5 - indexTip.x) * 25, (0.5 - indexTip.y) * 18, -indexTip.z * 25);
                 const localPos = voxelGroup.worldToLocal(worldPos.clone());
                 const gx = Math.round(localPos.x / gridSize) * gridSize, gy = Math.round(localPos.y / gridSize) * gridSize, gz = Math.round(localPos.z / gridSize) * gridSize;
-
+                
                 if (lPinching && pointingNow && !palmOpen) {
                     buildTimer = 0;
                     if (eraseTimer < INTENT_HOLD) {
@@ -261,7 +305,6 @@
                         modeEl.innerText = "BIO_LINK: NAVIGATING";
                     }
                 }
-
                 if (isBuilding || buildTimer > 0 || isErasing || eraseTimer > 0) {
                     crosshair.visible = true;
                     crosshair.position.copy(voxelGroup.localToWorld(new THREE.Vector3(gx, gy, gz)));
@@ -303,9 +346,24 @@
         const hands = new Hands({locateFile: (f) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${f}`});
         hands.setOptions({ maxNumHands: 2, modelComplexity: 1, minDetectionConfidence: 0.8, minTrackingConfidence: 0.8 });
         hands.onResults(onResults);
-        new Camera(videoElement, { onFrame: async () => { bioCanvas.width = videoElement.videoWidth; bioCanvas.height = videoElement.videoHeight; await hands.send({image: videoElement}); }, width: 1280, height: 720 }).start();
+
+        new Camera(videoElement, { 
+            onFrame: async () => { 
+                bioCanvas.width = videoElement.videoWidth; 
+                bioCanvas.height = videoElement.videoHeight; 
+                await hands.send({image: videoElement}); 
+            }, 
+            width: 1280, height: 720 
+        }).start();
+
         function animate() { requestAnimationFrame(animate); renderer.render(scene, camera); }
         animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
     </script>
 </body>
 </html>
