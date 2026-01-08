@@ -25,3 +25,7 @@ weight: 2
 {{< card link="3" title="Chrome Dino" icon="game">}}
 {{< /cards >}}
 
+# Other
+{{< cards >}}
+{{< card link="6" title="test" icon="game">}}
+{{< /cards >}}
