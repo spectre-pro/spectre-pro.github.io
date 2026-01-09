@@ -69,7 +69,21 @@ YouTube BiliBili - Published 2026-01-06
 牛頓運動第二定律 物體的加速度 (aaa) 和作用在物體上的淨力 (FFF) 方向相同，並 …
 
 #### ICT
-- [A2 試算表函數](https://www.spectrepro.dev/docs/school/6-ict/1-a2%E8%A9%A6%E7%AE%97%E8%A1%A8%E5%87%BD%E6%95%B8/): 目錄 數學與數值函數 Function 簡介 1. INT 無條件捨去數字的小數部分，傳回整數 2. RAND 產生一個大於或等於 0 且小於 1 的隨機亂數。每次重新計算工作表時，此數值都會變動。 …
+- [A1 數據控制](https://www.spectrepro.dev/docs/school/6-ict/a1-01%E6%95%B8%E6%93%9A%E6%8E%A7%E5%88%B6/): 數據分級 數據庫 \text{數據庫} 數據庫
+↓ \downarrow ↓
+數據表 \text{數據表} 數據表
+↓ \downarrow ↓
+行與列 \text{行與列} 行與列
+↓ …
+- [A1 數據表示](https://www.spectrepro.dev/docs/school/6-ict/a1-02%E6%95%B8%E6%93%9A%E8%A1%A8%E7%A4%BA/): 數據單位 位元(bit/b) 數值：數據的基本單位。它可以是 0 或 1。 字節/位元組(B) 數值：1 B = 8 bits 千字節(KB) 數值：1 KB = 2¹⁰ B = 1024 B = …
+- [A1 多媒體](https://www.spectrepro.dev/docs/school/6-ict/a1-03%E5%A4%9A%E5%AA%92%E9%AB%94/): 文本 純文字 格式化文本(word) 純文字檔案大小計算： 每個字符的大小×字符數 \text{每個字符的大小} \times \text{字符數} 每個字符的大小×字符數文本檔案格式 TXT 類型： …
+- [A2 試算表函數](https://www.spectrepro.dev/docs/school/6-ict/a2-01%E8%A9%A6%E7%AE%97%E8%A1%A8%E5%87%BD%E6%95%B8/): 目錄 數學與數值函數 Function 簡介 1. INT 無條件捨去數字的小數部分，傳回整數 2. RAND 產生一個大於或等於 0 且小於 1 的隨機亂數。每次重新計算工作表時，此數值都會變動。 …
+- [A2 數據庫](https://www.spectrepro.dev/docs/school/6-ict/a2-02%E6%95%B8%E6%93%9A%E5%BA%AB/): 數據庫結構 數據庫 \text{數據庫} 數據庫
+↓ \downarrow ↓
+數據表 \text{數據表} 數據表
+↓ \downarrow ↓
+行與列 \text{行與列} 行與列
+↓ …
 
 ## Game
 
@@ -86,5 +100,5 @@ YouTube BiliBili - Published 2026-01-06
 一、隱私權保護政策的適用 … - Published 2026-01-06
 
 ---
-Generated on 2026-01-08 22:40:56 UTC
+Generated on 2026-01-09 20:33:52 UTC
 Site: https://www.spectrepro.dev/

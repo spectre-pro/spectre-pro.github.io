@@ -8,30 +8,84 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="shortcut icon" href="/favicon.ico" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="manifest" href="/site.webmanifest" /><title>Python – SPECTRE NOTE</title>
-  <meta name="description" content='' /><link rel="canonical" href="https://www.spectrepro.dev/docs/tech/python/" itemprop="url" />
+<link rel="manifest" href="/site.webmanifest" /><title>A2 數據庫 – SPECTRE NOTE</title>
+  <meta name="description" content='數據庫結構 數據庫 \text{數據庫} 數據庫
+↓ \downarrow ↓
+數據表 \text{數據表} 數據表
+↓ \downarrow ↓
+行與列 \text{行與列} 行與列
+↓ \downarrow ↓
+欄位 \text{欄位} 欄位數據類型 文字 數字 日期 貨幣 自動編號 布爾值 SQL 指令 1. 常數 (Constants) 用於邏輯判斷的布林值：
+TRUE：真（邏輯正確） FALSE：假（邏輯錯誤） 2. 運算符 (Operators) 這些符號用於數學計算、比較和邏輯組合：' /><link rel="canonical" href="https://www.spectrepro.dev/docs/school/6-ict/a2-02%E6%95%B8%E6%93%9A%E5%BA%AB/" itemprop="url" />
 
-<meta property="og:title" content="Python">
+<meta property="og:title" content="A2 數據庫">
 <meta
   property="og:description"
   content="
     
-      
+      數據庫結構
+    數據庫 \text{數據庫} 數據庫
+
+↓ \downarrow ↓
+
+數據表 \text{數據表} 數據表
+
+↓ \downarrow ↓
+
+行與列 \text{行與列} 行與列
+
+↓ \downarrow ↓
+
+欄位 \text{欄位} 欄位數據類型
+    
+文字
+數字
+日期
+貨幣
+自動編號
+布爾值
+
+SQL 指令
+    1. 常數 (Constants)
+    用於邏輯判斷的布林值：
+
+TRUE：真（邏輯正確）
+FALSE：假（邏輯錯誤）
+
+2. 運算符 (Operators)
+    這些符號用於數學計算、比較和邏輯組合：
     
   ">
 <meta
   property="og:type"
   content="
-    website
+    article
   ">
-<meta property="og:url" content="https://www.spectrepro.dev/docs/tech/python/">
+<meta property="og:url" content="https://www.spectrepro.dev/docs/school/6-ict/a2-02%E6%95%B8%E6%93%9A%E5%BA%AB/"><meta property="article:section" content="docs">
 
 
-  <meta itemprop="name" content="Python">
-  <meta itemprop="datePublished" content="2025-12-27T01:15:06+08:00">
-  <meta itemprop="dateModified" content="2025-12-27T01:15:06+08:00">
+
+
+  <meta itemprop="name" content="A2 數據庫">
+  <meta itemprop="description" content="數據庫結構 數據庫 \text{數據庫} 數據庫
+↓ \downarrow ↓
+數據表 \text{數據表} 數據表
+↓ \downarrow ↓
+行與列 \text{行與列} 行與列
+↓ \downarrow ↓
+欄位 \text{欄位} 欄位數據類型 文字 數字 日期 貨幣 自動編號 布爾值 SQL 指令 1. 常數 (Constants) 用於邏輯判斷的布林值：
+TRUE：真（邏輯正確） FALSE：假（邏輯錯誤） 2. 運算符 (Operators) 這些符號用於數學計算、比較和邏輯組合：">
+  <meta itemprop="wordCount" content="164">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Python">
+  <meta name="twitter:title" content="A2 數據庫">
+  <meta name="twitter:description" content="數據庫結構 數據庫 \text{數據庫} 數據庫
+↓ \downarrow ↓
+數據表 \text{數據表} 數據表
+↓ \downarrow ↓
+行與列 \text{行與列} 行與列
+↓ \downarrow ↓
+欄位 \text{欄位} 欄位數據類型 文字 數字 日期 貨幣 自動編號 布爾值 SQL 指令 1. 常數 (Constants) 用於邏輯判斷的布林值：
+TRUE：真（邏輯正確） FALSE：假（邏輯錯誤） 2. 運算符 (Operators) 這些符號用於數學計算、比較和邏輯組合：">
 
     <link rel="preload" href="/css/compiled/main.min.f1286e08894e4edb7578e277f8af9252465cacf0a6e1ffc14d2218d4b5f80571.css" as="style" integrity="sha256-8ShuCIlOTtt1eOJ3&#43;K&#43;SUkZcrPCm4f/BTSIY1LX4BXE=" />
     <link href="/css/compiled/main.min.f1286e08894e4edb7578e277f8af9252465cacf0a6e1ffc14d2218d4b5f80571.css" rel="stylesheet" integrity="sha256-8ShuCIlOTtt1eOJ3&#43;K&#43;SUkZcrPCm4f/BTSIY1LX4BXE=" />
@@ -60,7 +114,7 @@
 <script src="/js/main-head.min.b35edf231d4342eaac536385a0fd7c90bff77c0cb977a194a720ec27a521842d.js" integrity="sha256-s17fIx1DQuqsU2OFoP18kL/3fAy5d6GUpyDsJ6UhhC0="></script>
 
   
-  
+  <link rel="stylesheet" href="/css/katex.min.c33688335955254f00b40950f0e592932e8830d91960c9bc275e03368fc3d1c2322dacbba2e4d11b22affd08bce80ff3de88503dc8b1b0647fe23a19f0b7b49b.css" integrity="sha512-wzaIM1lVJU8AtAlQ8OWSky6IMNkZYMm8J14DNo/D0cIyLay7ouTRGyKv/Qi86A/z3ohQPcixsGR/4joZ8Le0mw==" />
   </head>
 <body><div class="hextra-nav-container hx:sticky hx:top-0 hx:z-20 hx:w-full hx:bg-transparent hx:print:hidden">
   <div
@@ -206,7 +260,7 @@
   >Note
         <span class="hextra-sidebar-collapsible-button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hx:h-[18px] hx:min-w-[18px] hx:rounded-xs hx:p-0.5 hx:hover:bg-gray-800/5 hx:dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx:origin-center hx:transition-transform hx:rtl:-rotate-180"></path></svg></span>
     </a><div class="hx:ltr:pr-0 hx:overflow-hidden">
-        <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'><li class="hx:flex hx:flex-col open"><a
+        <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'><li class="hx:flex hx:flex-col "><a
     class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
       hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
     href="/docs/tech/"
@@ -239,15 +293,14 @@
   >Git &amp; Github
     </a>
               
-            </li><li class="hx:flex hx:flex-col open"><a
+            </li><li class="hx:flex hx:flex-col "><a
     class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      hextra-sidebar-active-item hx:bg-primary-100 hx:font-semibold hx:text-primary-800 hx:contrast-more:border hx:contrast-more:border-primary-500 hx:dark:bg-primary-400/10 hx:dark:text-primary-600 hx:contrast-more:dark:border-primary-500"
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
     href="/docs/tech/python/"
     
   >Python
         <span class="hextra-sidebar-collapsible-button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hx:h-[18px] hx:min-w-[18px] hx:rounded-xs hx:p-0.5 hx:hover:bg-gray-800/5 hx:dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx:origin-center hx:transition-transform hx:rtl:-rotate-180"></path></svg></span>
     </a>
-  
               <div class="hx:ltr:pr-0 hx:overflow-hidden">
         <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'><li class="hx:flex hx:flex-col "><a
     class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
@@ -312,7 +365,7 @@
       </div>
             </li></ul>
       </div>
-            </li><li class="hx:flex hx:flex-col "><a
+            </li><li class="hx:flex hx:flex-col open"><a
     class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
       hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
     href="/docs/school/"
@@ -480,7 +533,7 @@
               
             </li></ul>
       </div>
-            </li><li class="hx:flex hx:flex-col "><a
+            </li><li class="hx:flex hx:flex-col open"><a
     class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
       hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
     href="/docs/school/6-ict/"
@@ -521,13 +574,28 @@
   >A2 試算表函數
     </a>
               
-            </li><li class="hx:flex hx:flex-col "><a
+            </li><li class="hx:flex hx:flex-col open"><a
     class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      hextra-sidebar-active-item hx:bg-primary-100 hx:font-semibold hx:text-primary-800 hx:contrast-more:border hx:contrast-more:border-primary-500 hx:dark:bg-primary-400/10 hx:dark:text-primary-600 hx:contrast-more:dark:border-primary-500"
     href="/docs/school/6-ict/a2-02%E6%95%B8%E6%93%9A%E5%BA%AB/"
     
   >A2 數據庫
     </a>
+  
+    <ul class='hx:flex hx:flex-col hx:gap-1 hx:relative hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:dark:before:bg-neutral-800 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:pr-3 hx:rtl:before:right-0 hx:ltr:ml-3 hx:rtl:mr-3'><li>
+              <a
+                href="#%e6%95%b8%e6%93%9a%e5%ba%ab%e7%b5%90%e6%a7%8b"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >數據庫結構</a>
+            </li>
+          <li>
+              <a
+                href="#sql-%e6%8c%87%e4%bb%a4"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >SQL 指令</a>
+            </li>
+          </ul>
+  
               
             </li></ul>
       </div>
@@ -595,7 +663,7 @@
 
     <ul class="hx:flex hx:flex-col hx:gap-1 hx:max-md:hidden">
         
-          <li class="open"><a
+          <li class=""><a
     class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
       hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
     href="/docs/tech/"
@@ -627,9 +695,9 @@
   >Git &amp; Github
     </a>
               
-            </li><li class="hx:flex hx:flex-col open"><a
+            </li><li class="hx:flex hx:flex-col "><a
     class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      hextra-sidebar-active-item hx:bg-primary-100 hx:font-semibold hx:text-primary-800 hx:contrast-more:border hx:contrast-more:border-primary-500 hx:dark:bg-primary-400/10 hx:dark:text-primary-600 hx:contrast-more:dark:border-primary-500"
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
     href="/docs/tech/python/"
     
   >Python
@@ -699,7 +767,7 @@
       </div>
             </li></ul>
       </div></li>
-          <li class=""><a
+          <li class="open"><a
     class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
       hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
     href="/docs/school/"
@@ -866,7 +934,7 @@
               
             </li></ul>
       </div>
-            </li><li class="hx:flex hx:flex-col "><a
+            </li><li class="hx:flex hx:flex-col open"><a
     class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
       hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
     href="/docs/school/6-ict/"
@@ -907,9 +975,9 @@
   >A2 試算表函數
     </a>
               
-            </li><li class="hx:flex hx:flex-col "><a
+            </li><li class="hx:flex hx:flex-col open"><a
     class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      hextra-sidebar-active-item hx:bg-primary-100 hx:font-semibold hx:text-primary-800 hx:contrast-more:border hx:contrast-more:border-primary-500 hx:dark:bg-primary-400/10 hx:dark:text-primary-600 hx:contrast-more:dark:border-primary-500"
     href="/docs/school/6-ict/a2-02%E6%95%B8%E6%93%9A%E5%BA%AB/"
     
   >A2 數據庫
@@ -990,8 +1058,32 @@
 </div></div></div></aside>
     
 <nav class="hextra-toc hx:order-last hx:hidden hx:w-64 hx:shrink-0 hx:xl:block hx:print:hidden hx:px-4" aria-label="table of contents">
-    <div class="hextra-scrollbar hx:sticky hx:top-16 hx:overflow-y-auto hx:pr-4 hx:pt-6 hx:text-sm [hyphens:auto] hx:max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] hx:ltr:-mr-4 hx:rtl:-ml-4">
-      <div class=" hx:sticky hx:bottom-0 hx:flex hx:flex-col hx:items-start hx:gap-2 hx:pb-8 hx:border-gray-200 hx:dark:border-neutral-800 hx:contrast-more:border-t hx:contrast-more:border-neutral-400 hx:contrast-more:shadow-none hx:contrast-more:dark:border-neutral-400"><a class="hx:text-xs hx:font-medium hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-100 hx:contrast-more:text-gray-800 hx:contrast-more:dark:text-gray-50" href="https://github.com/spectre-pro/spectre-pro.github.io/blob/main/content/docs/tech/python/_index.md" target="_blank" rel="noreferrer">Edit this page on GitHub →</a>
+    <div class="hextra-scrollbar hx:sticky hx:top-16 hx:overflow-y-auto hx:pr-4 hx:pt-6 hx:text-sm [hyphens:auto] hx:max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] hx:ltr:-mr-4 hx:rtl:-ml-4"><p class="hx:mb-4 hx:font-semibold hx:tracking-tight">On this page</p><ul>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#%e6%95%b8%e6%93%9a%e5%ba%ab%e7%b5%90%e6%a7%8b">數據庫結構
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#%e6%95%b8%e6%93%9a%e9%a1%9e%e5%9e%8b">數據類型
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#sql-%e6%8c%87%e4%bb%a4">SQL 指令
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#1-%e5%b8%b8%e6%95%b8-constants">1. 常數 (Constants)
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#2-%e9%81%8b%e7%ae%97%e7%ac%a6-operators">2. 運算符 (Operators)
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#3-sql-%e9%97%9c%e9%8d%b5%e5%ad%97%e8%88%87%e5%87%bd%e6%95%b8-sql-keywords--functions">3. SQL 關鍵字與函數 (SQL Keywords &amp; Functions)
+        </a>
+      </li></ul>
+      <div class="hx:mt-8 hx:border-t hx:bg-white hx:pt-8 hx:shadow-[0_-12px_16px_white] hx:dark:bg-dark hx:dark:shadow-[0_-12px_16px_#111] hx:sticky hx:bottom-0 hx:flex hx:flex-col hx:items-start hx:gap-2 hx:pb-8 hx:border-gray-200 hx:dark:border-neutral-800 hx:contrast-more:border-t hx:contrast-more:border-neutral-400 hx:contrast-more:shadow-none hx:contrast-more:dark:border-neutral-400"><a class="hx:text-xs hx:font-medium hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-100 hx:contrast-more:text-gray-800 hx:contrast-more:dark:text-gray-50" href="https://github.com/spectre-pro/spectre-pro.github.io/blob/main/content/docs/school/6-ict/A2%2002%E6%95%B8%E6%93%9A%E5%BA%AB.md" target="_blank" rel="noreferrer">Edit this page on GitHub →</a>
         <button aria-hidden="true" id="backToTop" onClick="scrollUp();" class="hx:cursor-pointer hx:transition-all hx:duration-75 hx:opacity-0 hx:text-xs hx:font-medium hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-100 hx:contrast-more:text-gray-800 hx:contrast-more:dark:text-gray-50">
           <span>Scroll to top</span>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hx:inline hx:ltr:ml-1 hx:rtl:mr-1 hx:h-3.5 hx:w-3.5 hx:rounded-full hx:border hx:border-gray-500 hx:hover:border-gray-900 hx:dark:border-gray-400 hx:dark:hover:border-gray-100 hx:contrast-more:border-gray-800 hx:contrast-more:dark:border-gray-50">
@@ -1010,20 +1102,264 @@
           <a href="/docs/">Note</a>
         </div><svg class="hx:w-3.5 hx:shrink-0 hx:rtl:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
         <div class="hx:whitespace-nowrap hx:transition-colors hx:min-w-[24px] hx:overflow-hidden hx:text-ellipsis hx:hover:text-gray-900 hx:dark:hover:text-gray-100">
-          <a href="/docs/tech/">Tech</a>
-        </div><svg class="hx:w-3.5 hx:shrink-0 hx:rtl:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg><div class="hx:whitespace-nowrap hx:transition-colors hx:font-medium hx:text-gray-700 hx:contrast-more:font-bold hx:contrast-more:text-current hx:dark:text-gray-100 hx:contrast-more:dark:text-current">Python</div>
+          <a href="/docs/school/">School</a>
+        </div><svg class="hx:w-3.5 hx:shrink-0 hx:rtl:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        <div class="hx:whitespace-nowrap hx:transition-colors hx:min-w-[24px] hx:overflow-hidden hx:text-ellipsis hx:hover:text-gray-900 hx:dark:hover:text-gray-100">
+          <a href="/docs/school/6-ict/">ICT</a>
+        </div><svg class="hx:w-3.5 hx:shrink-0 hx:rtl:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg><div class="hx:whitespace-nowrap hx:transition-colors hx:font-medium hx:text-gray-700 hx:contrast-more:font-bold hx:contrast-more:text-current hx:dark:text-gray-100 hx:contrast-more:dark:text-current">A2 數據庫</div>
   </div>
 
         <div class="content">
-          <h1>Python</h1>
-          
-        </div>
-        
-    <div class="hx:mt-12 hx:mb-8 hx:block hx:text-xs hx:text-gray-500 hx:ltr:text-right hx:rtl:text-left hx:dark:text-gray-400">Last updated on <time datetime="2025-12-27T01:15:06.000Z">December 27, 2025</time></div>
-        
-        
-  
+          <h1>A2 數據庫</h1>
+          <h2>數據庫結構<span class="hx:absolute hx:-mt-20" id="數據庫結構"></span>
+    <a href="#%e6%95%b8%e6%93%9a%e5%ba%ab%e7%b5%90%e6%a7%8b" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>數據庫</mtext></mrow><annotation encoding="application/x-tex"> \text{數據庫} </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord cjk_fallback">數據庫</span></span></span></span></span></span><p><br>
+</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo>↓</mo></mrow><annotation encoding="application/x-tex"> \downarrow </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mrel">↓</span></span></span></span></span><p><br>
+</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>數據表</mtext></mrow><annotation encoding="application/x-tex"> \text{數據表} </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord cjk_fallback">數據表</span></span></span></span></span></span><p><br>
+</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo>↓</mo></mrow><annotation encoding="application/x-tex"> \downarrow </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mrel">↓</span></span></span></span></span><p><br>
+</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>行與列</mtext></mrow><annotation encoding="application/x-tex"> \text{行與列} </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord cjk_fallback">行與列</span></span></span></span></span></span><p><br>
+</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo>↓</mo></mrow><annotation encoding="application/x-tex"> \downarrow </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mrel">↓</span></span></span></span></span><p><br>
+</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>欄位</mtext></mrow><annotation encoding="application/x-tex"> \text{欄位} </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord cjk_fallback">欄位</span></span></span></span></span></span><h3>數據類型<span class="hx:absolute hx:-mt-20" id="數據類型"></span>
+    <a href="#%e6%95%b8%e6%93%9a%e9%a1%9e%e5%9e%8b" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><ul>
+<li>文字</li>
+<li>數字</li>
+<li>日期</li>
+<li>貨幣</li>
+<li>自動編號</li>
+<li>布爾值</li>
+</ul>
+<h2>SQL 指令<span class="hx:absolute hx:-mt-20" id="sql-指令"></span>
+    <a href="#sql-%e6%8c%87%e4%bb%a4" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><h3>1. 常數 (Constants)<span class="hx:absolute hx:-mt-20" id="1-常數-constants"></span>
+    <a href="#1-%e5%b8%b8%e6%95%b8-constants" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>用於邏輯判斷的布林值：</p>
+<ul>
+<li>TRUE：真（邏輯正確）</li>
+<li>FALSE：假（邏輯錯誤）</li>
+</ul>
+<h3>2. 運算符 (Operators)<span class="hx:absolute hx:-mt-20" id="2-運算符-operators"></span>
+    <a href="#2-%e9%81%8b%e7%ae%97%e7%ac%a6-operators" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>這些符號用於數學計算、比較和邏輯組合：</p>
+<ul>
+<li>算術運算：<code>+</code> (加)、<code>-</code> (減)、<code>*</code> (乘)、<code>/</code> (除)</li>
+<li>比較運算：
+<ul>
+<li><code>&gt;</code> (大於)、<code>&lt;</code> (小於)、<code>=</code> (等於)</li>
+<li><code>&gt;=</code> (大於或等於)、<code>&lt;=</code> (小於或等於)</li>
+<li><code>&lt;&gt;</code> (不等於)</li>
+</ul>
+</li>
+<li>萬用字元與符號：
+<ul>
+<li><code>%</code>：匹配任意數量的字元（常用於 <code>LIKE</code>）</li>
+<li><code>_</code>：匹配單個字元（常用於 <code>LIKE</code>）</li>
+<li><code>'</code>：單引號，用於標註字串常數</li>
+</ul>
+</li>
+<li>邏輯運算：
+<ul>
+<li><code>AND</code>：且（兩者皆須成立）</li>
+<li><code>OR</code>：或（其中之一成立即可）</li>
+<li><code>NOT</code>：非（反轉邏輯狀態）</li>
+</ul>
+</li>
+</ul>
+<h3>3. SQL 關鍵字與函數 (SQL Keywords &amp; Functions)<span class="hx:absolute hx:-mt-20" id="3-sql-關鍵字與函數-sql-keywords--functions"></span>
+    <a href="#3-sql-%e9%97%9c%e9%8d%b5%e5%ad%97%e8%88%87%e5%87%bd%e6%95%b8-sql-keywords--functions" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>用於構建查詢語句的核心指令：</p>
+<ul>
+<li>聚合函數 (Aggregate Functions)：
+<ul>
+<li><code>AVG</code>：計算平均值</li>
+<li><code>MAX</code>：找出最大值</li>
+<li><code>MIN</code>：找出最小值</li>
+<li><code>SUM</code>：計算總和</li>
+<li><code>COUNT</code>：計算特定紀錄的數量</li>
+</ul>
+</li>
+<li>數學函數
+<ul>
+<li><code>INT()</code>：將數字向下捨入至最近的整數。</li>
+<li><code>ABS()</code>：傳回數字的絕對值。</li>
+<li><code>LEN() / CHAR_LENGTH()</code>：傳回字串的字符數。</li>
+<li><code>MID() / SUBSTRING() / SUBSTR()</code>：從字串中間的一個特定位置，傳回一連串字符數。</li>
+<li><code>LOWER()</code>：將字串轉為小寫字母。</li>
+<li><code>UPPER()</code>：將字串轉為大寫字母。</li>
+<li><code>TRIM()</code>：移除字串頭和尾的空格。</li>
+<li><code>SPACE()</code>：傳回一個由若干空格組成的字串。</li>
+</ul>
+</li>
+<li>查詢基礎：
+<ul>
+<li><code>SELECT</code>：選取欄位</li>
+<li><code>FROM</code>：指定資料表</li>
+<li><code>WHERE</code>：設定篩選條件</li>
+<li><code>DISTINCT</code>：去除重複的資料</li>
+<li><code>AS</code>：重新命名欄位或資料表（別名）</li>
+</ul>
+</li>
+<li>條件與搜尋：
+<ul>
+<li><code>BETWEEN</code>：在特定的範圍之內</li>
+<li><code>LIKE</code>：模式搜尋（模糊匹配）</li>
+<li><code>NULL</code>：空值（代表沒有資料）</li>
+<li><code>IN</code>：指定多於一個值(&quot;<code>...</code>&quot;, &ldquo;<code>...</code>&rdquo;)</li>
+</ul>
+</li>
+<li>排序與分組：
+<ul>
+<li><code>ORDER BY</code>：對結果進行排序</li>
+<li><code>ASC</code>：升序排列（由小到大）</li>
+<li><code>DESC</code>：降序排列（由大到小）</li>
+<li><code>GROUP BY</code>：依照欄位進行分組</li>
+<li><code>HAVING</code>：分組後的篩選條件（配合 <code>GROUP BY</code> 使用）</li>
+</ul>
+</li>
+</ul>
+<hr>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">順序</th>
+          <th style="text-align: left">指令</th>
+          <th style="text-align: left">用途說明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>1</strong></td>
+          <td style="text-align: left"><strong>SELECT</strong></td>
+          <td style="text-align: left">我要看什麼？</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>2</strong></td>
+          <td style="text-align: left"><strong>FROM</strong></td>
+          <td style="text-align: left">從哪裡找？</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>3</strong></td>
+          <td style="text-align: left"><strong>WHERE</strong></td>
+          <td style="text-align: left">哪些資料符合條件？（過濾每一列）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>4</strong></td>
+          <td style="text-align: left"><strong>GROUP BY</strong></td>
+          <td style="text-align: left">怎麼分類？（例如按部門、按日期）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>5</strong></td>
+          <td style="text-align: left"><strong>HAVING</strong></td>
+          <td style="text-align: left">分類完後，哪些組要留下來？（過濾組別）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>6</strong></td>
+          <td style="text-align: left"><strong>ORDER BY</strong></td>
+          <td style="text-align: left">最後要怎麼排順序？（由大到小或由小到大）</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>快速語法範例：</strong></p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
+<div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">AVG</span>(<span style="color:#960050;background-color:#1e0010">薪資</span>) <span style="color:#66d9ef">AS</span> <span style="color:#960050;background-color:#1e0010">平均薪資</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> <span style="color:#960050;background-color:#1e0010">員工表</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> <span style="color:#960050;background-color:#1e0010">部門</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;業務部&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> <span style="color:#960050;background-color:#1e0010">職位</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">HAVING</span> <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> <span style="color:#960050;background-color:#1e0010">平均薪資</span> <span style="color:#66d9ef">DESC</span>;</span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+
+        </div>
+        <div class="hx:mt-16"></div>
+        <div class="hx:mb-8 hx:flex hx:items-center hx:border-t hx:pt-8 hx:border-gray-200 hx:dark:border-neutral-800 hx:contrast-more:border-neutral-400 hx:dark:contrast-more:border-neutral-400 hx:print:hidden"><a
+        href="/docs/school/6-ict/a2-01%E8%A9%A6%E7%AE%97%E8%A1%A8%E5%87%BD%E6%95%B8/"
+        title="A2 試算表函數"
+        class="hx:flex hx:max-w-[50%] hx:items-center hx:gap-1 hx:py-4 hx:text-base hx:font-medium hx:text-gray-600 hx:transition-colors [word-break:break-word] hx:hover:text-primary-600 hx:dark:text-gray-300 hx:md:text-lg hx:ltr:pr-4 hx:rtl:pl-4"
+      ><svg class="hx:inline hx:h-5 hx:shrink-0 hx:ltr:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>A2 試算表函數</a></div>
+        <script>
+  function getGiscusTheme() {
+    const giscusTheme = '';
+    if (giscusTheme === 'light' || giscusTheme === 'dark') {
+      return giscusTheme;
+    }
+
+    const hugoTheme = localStorage.getItem("color-theme");
+    if (hugoTheme === 'light' || hugoTheme === 'dark') {
+      return hugoTheme;
+    }
+
+    if (hugoTheme === 'system') {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    const defaultTheme = 'dark';
+    if (defaultTheme === 'light' || defaultTheme === 'dark') {
+      return defaultTheme;
+    }
+
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function setGiscusTheme() {
+    const iframe = document.querySelector('iframe.giscus-frame');
+    if (!iframe) return;
+
+    const msg = {
+      giscus: {
+        setConfig: {
+          theme: getGiscusTheme(),
+        },
+      },
+    }
+
+    iframe.contentWindow.postMessage(msg, 'https://giscus.app');
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const giscusAttributes = {
+      "src": "https://giscus.app/client.js",
+      "data-repo": "spectre-pro\/spectre-pro.github.io",
+      "data-repo-id": "R_kgDOQvTgDA",
+      "data-category": "Announcements",
+      "data-category-id": "DIC_kwDOQvTgDM4C0Q9E",
+      "data-mapping": "pathname",
+      "data-strict": "0",
+      "data-reactions-enabled": "1",
+      "data-emit-metadata": "0",
+      "data-input-position": "top",
+      "data-theme": getGiscusTheme(),
+      "data-lang": "en",
+      "crossorigin": "anonymous",
+      "async": "",
+    };
+
+    
+    const giscusScript = document.createElement("script");
+    Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+    
+    document.getElementById('giscus-hextra-bb112b9f807c37c1752e5da6a1652a29').appendChild(giscusScript);
+
+    
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", setGiscusTheme);
+
+    
+    const themeToggleOptions = document.querySelectorAll(".hextra-theme-toggle-options p");
+    if (themeToggleOptions) {
+      themeToggleOptions.forEach(toggle => toggle.addEventListener('click', setGiscusTheme));
+    }
+  });
+</script>
+
+<div id="giscus-hextra-bb112b9f807c37c1752e5da6a1652a29"></div>
       </main>
     </article>
   </div>

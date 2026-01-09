@@ -8,30 +8,481 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="shortcut icon" href="/favicon.ico" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="manifest" href="/site.webmanifest" /><title>Python – SPECTRE NOTE</title>
-  <meta name="description" content='' /><link rel="canonical" href="https://www.spectrepro.dev/docs/tech/python/" itemprop="url" />
+<link rel="manifest" href="/site.webmanifest" /><title>A2 試算表函數 – SPECTRE NOTE</title>
+  <meta name="description" content='目錄 數學與數值函數 Function 簡介 1. INT 無條件捨去數字的小數部分，傳回整數 2. RAND 產生一個大於或等於 0 且小於 1 的隨機亂數。每次重新計算工作表時，此數值都會變動。 3. SQRT 計算一個數字的正平方根 4. ROUND 將數字四捨五入到指定的位數。 邏輯函數 Function 簡介 5. AND 檢查所有條件是否都為 TRUE。如果所有條件皆為 TRUE，則回傳 TRUE；只要有任一條件為 FALSE，就回傳 FALSE。 6. NOT 將邏輯值反轉。TRUE 變為 FALSE，FALSE 變為 TRUE。 7. OR 檢查是否有任何一個條件為 TRUE。只要有任一條件為 TRUE，就回傳 TRUE；只有當所有條件都為 FALSE 時，才回傳 FALSE。 文字函數 Function 簡介 8. LEFT 從文字字串的左邊（開頭）開始，傳回指定數量的字元。 9. LEN 計算一個文字字串的總長度（字元數）。 10. MID 從文字字串的指定位置開始，傳回指定數量的字元。 11. RIGHT 從文字字串的右邊（結尾）開始，傳回指定數量的字元。 12. FIND 在一個文字字串中尋找另一個文字字串，並回傳其開始的位置編號。此函數有區分英文大小寫。 統計與計算函數 Function 簡介 13. AVERAGE 計算所有參數的算術平均值。 14. COUNT 計算一個範圍內包含「數字」的儲存格數量。 15. COUNTIF 計算一個範圍內符合「單一條件」的儲存格數量。 16. MAX 找出一個範圍內的最大值。 17. MIN 找出一個範圍內的最小值。 18. RANK 傳回一個數字在一組數字清單中的排名。（註：新版 Excel 建議使用 RANK.EQ） 19. SUM 將指定的儲存格或範圍中的所有數字加總。 20. SUMIF 將一個範圍內符合「單一條件」的對應儲存格加總。 查詢與判斷函數 Function 簡介 21. XLOOKUP 一個強大且靈活的查詢函數，用於在一個範圍或陣列中尋找項目，並傳回對應項目。 22. IF 執行邏輯判斷。如果條件為真，則回傳一個值；如果條件為假，則回傳另一個值。 詳細使用方法 數學與數值函數 INT 功能說明：無條件捨去數字的小數部分，傳回整數。 語法：INT(number) 參數說明： number (必要): 您想要無條件捨去的數字或儲存格參照。 範例：=INT(99.9) 將回傳 99。 RAND 功能說明：產生一個大於或等於 0 且小於 1 的隨機亂數。每次重新計算工作表時，此數值都會變動。 語法：RAND() 參數說明： 此函數沒有任何參數。 範例：=RAND()*100 將產生一個 0 到 100 之間的隨機數。 SQRT 功能說明：計算一個數字的正平方根。 語法：SQRT(number) 參數說明： number (必要): 您想要計算平方根的數字。此數字必須為正數。 範例：=SQRT(144) 將回傳 12。 ROUND 功能說明：將數字四捨五入到指定的位數。 語法：ROUND(number, num_digits) 參數說明： number (必要): 您想要進行四捨五入的數字。 num_digits (必要): 您想要四捨五入到的位數。正數代表小數點右側的位數；0 代表整數位；負數代表小數點左側的位數（例如 -1 代表十位數）。 範例： =ROUND(3.14159, 2) 將回傳 3.14。 =ROUND(12345, -2) 將回傳 12300。 邏輯函數 AND 功能說明：檢查所有條件是否都為 TRUE。如果所有條件皆為 TRUE，則回傳 TRUE；只要有任一條件為 FALSE，就回傳 FALSE。 語法：AND(logical1, [logical2], ...) 參數說明： logical1 (必要): 第一個要評估的條件。 logical2 (可選): 第二個及之後要評估的條件，最多可達 255 個。 範例：=AND(A1&gt;60, B1=&#34;男&#34;) 只有當 A1 大於 60 且 B1 是 “男” 時，才會回傳 TRUE。 NOT 功能說明：將邏輯值反轉。TRUE 變為 FALSE，FALSE 變為 TRUE。 語法：NOT(logical) 參數說明： logical (必要): 一個可以評估為 TRUE 或 FALSE 的值或運算式。 範例：=NOT(A1=10) 如果 A1 的值不等於 10，則回傳 TRUE。 OR 功能說明：檢查是否有任何一個條件為 TRUE。只要有任一條件為 TRUE，就回傳 TRUE；只有當所有條件都為 FALSE 時，才回傳 FALSE。 語法：OR(logical1, [logical2], ...) 參數說明： logical1 (必要): 第一個要評估的條件。 logical2 (可選): 第二個及之後要評估的條件，最多可達 255 個。 範例：=OR(A1=&#34;週末&#34;, A1=&#34;國定假日&#34;) 只要 A1 是 “週末” 或 “國定假日”，就會回傳 TRUE。 文字函數 LEFT 功能說明：從文字字串的左邊（開頭）開始，傳回指定數量的字元。 語法：LEFT(text, [num_chars]) 參數說明： text (必要): 包含您想擷取字元的文字字串。 num_chars (可選): 指定要擷取的字元數。如果省略，預設為 1。 範例：=LEFT(&#34;台北101&#34;, 2) 將回傳 台北。 LEN 功能說明：計算一個文字字串的總長度（字元數）。 語法：LEN(text) 參數說明： text (必要): 您想要計算長度的文字。 範例：=LEN(&#34;Hello World&#34;) 將回傳 11 (空格也算一個字元)。 MID 功能說明：從文字字串的指定位置開始，傳回指定數量的字元。 語法：MID(text, start_num, num_chars) 參數說明： text (必要): 包含您想擷取字元的文字字串。 start_num (必要): 您要開始擷取的起始字元位置（從 1 開始算）。 num_chars (必要): 您要擷取的字元數。 範例：=MID(&#34;我是台灣人&#34;, 3, 2) 將回傳 台灣。 RIGHT 功能說明：從文字字串的右邊（結尾）開始，傳回指定數量的字元。 語法：RIGHT(text, [num_chars]) 參數說明： text (必要): 包含您想擷取字元的文字字串。 num_chars (可選): 指定要擷取的字元數。如果省略，預設為 1。 範例：=RIGHT(&#34;產品編號-ABC&#34;, 3) 將回傳 ABC。 FIND 功能說明：在一個文字字串中尋找另一個文字字串，並回傳其開始的位置編號。此函數有區分英文大小寫。 語法：FIND(find_text, within_text, [start_num]) 參數說明： find_text (必要): 您要尋找的文字。 within_text (必要): 包含您要尋找文字的目標字串。 start_num (可選): 指定在 within_text 中從第幾個字元開始搜尋。如果省略，預設為 1。 範例：=FIND(&#34;P&#34;, &#34;Apple iPad&#34;) 將回傳 8。 統計與計算函數 AVERAGE 功能說明：計算所有參數的算術平均值。 語法：AVERAGE(number1, [number2], ...) 參數說明： number1 (必要): 第一個要計算平均的數字、儲存格或範圍。 number2 (可選): 其他要計算平均的數字、儲存格或範圍。 範例：=AVERAGE(A1:A10) 會計算 A1 到 A10 儲存格中所有數字的平均值。 COUNT 功能說明：計算一個範圍內包含「數字」的儲存格數量。 語法：COUNT(value1, [value2], ...) 參數說明： value1 (必要): 第一個要計算的項目、儲存格參照或範圍。 value2 (可選): 其他要計算的項目、儲存格參照或範圍。 範例：若 A1=95, A2=“缺考”, A3=88，則 =COUNT(A1:A3) 會回傳 2。 COUNTIF 功能說明：計算一個範圍內符合「單一條件」的儲存格數量。 語法：COUNTIF(range, criteria) 參數說明： range (必要): 您想要計算的儲存格範圍。 criteria (必要): 用來決定哪些儲存格要被計算的條件（可以是數字、運算式、文字）。 範例：=COUNTIF(B1:B20, &#34;&gt;=60&#34;) 會計算 B1 到 B20 範圍內，數值大於或等於 60 的儲存格數量。 MAX 功能說明：找出一個範圍內的最大值。 語法：MAX(number1, [number2], ...) 參數說明： number1 (必要): 第一個要尋找最大值的數字、儲存格或範圍。 number2 (可選): 其他要比較大小的數字、儲存格或範圍。 範例：=MAX(A1:A10) 會回傳 A1 到 A10 範圍中的最大值。 MIN 功能說明：找出一個範圍內的最小值。 語法：MIN(number1, [number2], ...) 參數說明： number1 (必要): 第一個要尋找最小值的數字、儲存格或範圍。 number2 (可選): 其他要比較大小的數字、儲存格或範圍。 範例：=MIN(A1:A10) 會回傳 A1 到 A10 範圍中的最小值。 RANK 功能說明：傳回一個數字在一組數字清單中的排名。（註：新版 Excel 建議使用 RANK.EQ） 語法：RANK(number, ref, [order]) 參數說明： number (必要): 您想要知道排名的數字。 ref (必要): 包含數字清單的範圍。 order (可選): 指定排名的順序。0 或省略代表遞減（高分是第 1 名）；任何非零值代表遞增（低分是第 1 名）。 範例：=RANK(A1, A1:A20, 0) 會計算 A1 的值在 A1:A20 範圍中的排名（遞減排序）。 SUM 功能說明：將指定的儲存格或範圍中的所有數字加總。 語法：SUM(number1, [number2], ...) 參數說明： number1 (必要): 第一個要加總的數字、儲存格或範圍。 number2 (可選): 其他要加總的數字、儲存格或範圍。 範例：=SUM(A1:A10) 會將 A1 到 A10 的所有數值相加。 SUMIF 功能說明：將一個範圍內符合「單一條件」的對應儲存格加總。 語法：SUMIF(range, criteria, [sum_range]) 參數說明： range (必要): 用於條件判斷的儲存格範圍。 criteria (必要): 決定哪些儲存格要被加總的條件。 sum_range (可選): 實際要進行加總的儲存格範圍。如果省略，則會加總 range 參數中的數字。 範例：=SUMIF(A1:A10, &#34;水果&#34;, B1:B10) 會在 A1:A10 範圍中尋找 “水果”，並將 B1:B10 範圍中對應的數值加總。 查詢與判斷函數 XLOOKUP 功能說明：一個強大且靈活的查詢函數，用於在一個範圍或陣列中尋找項目，並傳回對應項目。 語法：XLOOKUP(lookup_value, lookup_array, return_array, [if_not_found], [match_mode], [search_mode]) 參數說明： lookup_value (必要): 您要尋找的值。 lookup_array (必要): 要在其中搜尋的範圍或陣列。 return_array (必要): 要從中傳回值的範圍或陣列。 if_not_found (可選): 如果找不到相符項目時要傳回的值。若省略，則會回傳 #N/A 錯誤。 match_mode (可選): 指定比對方式。0 (預設)為完全相符；-1 為下一個較小項目；1 為下一個較大項目；2 為萬用字元比對。 search_mode (可選): 指定搜尋模式。1 (預設)從第一個項目開始搜尋；-1 從最後一個項目開始反向搜尋。 範例：=XLOOKUP(&#34;S003&#34;, A1:A100, B1:B100, &#34;查無此員工&#34;) 會在 A 欄中尋找 “S003”，回傳 B 欄對應的姓名，如果找不到則顯示 “查無此員工”。 IF 功能說明：執行邏輯判斷。如果條件為真，則回傳一個值；如果條件為假，則回傳另一個值。 語法：IF(logical_test, value_if_true, [value_if_false]) 參數說明： logical_test (必要): 任何可以評估為 TRUE 或 FALSE 的值或運算式。 value_if_true (必要): 當 logical_test 為 TRUE 時要傳回的值。 value_if_false (可選): 當 logical_test 為 FALSE 時要傳回的值。如果省略，則會回傳 FALSE。 範例：=IF(A1&gt;=60, &#34;及格&#34;, &#34;不及格&#34;) 如果 A1 的分數大於或等於 60，就顯示 “及格”，否則顯示 “不及格”。 ' /><link rel="canonical" href="https://www.spectrepro.dev/docs/school/6-ict/a2-01%E8%A9%A6%E7%AE%97%E8%A1%A8%E5%87%BD%E6%95%B8/" itemprop="url" />
 
-<meta property="og:title" content="Python">
+<meta property="og:title" content="A2 試算表函數">
 <meta
   property="og:description"
   content="
     
+      目錄
+    數學與數值函數
+    
+  
       
+          Function
+          簡介
+      
+  
+  
+      
+          1. INT
+          無條件捨去數字的小數部分，傳回整數
+      
+      
+          2. RAND
+          產生一個大於或等於 0 且小於 1 的隨機亂數。每次重新計算工作表時，此數值都會變動。
+      
+      
+          3. SQRT
+          計算一個數字的正平方根
+      
+      
+          4. ROUND
+          將數字四捨五入到指定的位數。
+      
+  
+
+
+邏輯函數
+    
+  
+      
+          Function
+          簡介
+      
+  
+  
+      
+          5. AND
+          檢查所有條件是否都為 TRUE。如果所有條件皆為 TRUE，則回傳 TRUE；只要有任一條件為 FALSE，就回傳 FALSE。
+      
+      
+          6. NOT
+          將邏輯值反轉。TRUE 變為 FALSE，FALSE 變為 TRUE。
+      
+      
+          7. OR
+          檢查是否有任何一個條件為 TRUE。只要有任一條件為 TRUE，就回傳 TRUE；只有當所有條件都為 FALSE 時，才回傳 FALSE。
+      
+  
+
+
+文字函數
+    
+  
+      
+          Function
+          簡介
+      
+  
+  
+      
+          8. LEFT
+          從文字字串的左邊（開頭）開始，傳回指定數量的字元。
+      
+      
+          9. LEN
+          計算一個文字字串的總長度（字元數）。
+      
+      
+          10. MID
+          從文字字串的指定位置開始，傳回指定數量的字元。
+      
+      
+          11. RIGHT
+          從文字字串的右邊（結尾）開始，傳回指定數量的字元。
+      
+      
+          12. FIND
+          在一個文字字串中尋找另一個文字字串，並回傳其開始的位置編號。此函數有區分英文大小寫。
+      
+  
+
+
+統計與計算函數
+    
+  
+      
+          Function
+          簡介
+      
+  
+  
+      
+          13. AVERAGE
+          計算所有參數的算術平均值。
+      
+      
+          14. COUNT
+          計算一個範圍內包含「數字」的儲存格數量。
+      
+      
+          15. COUNTIF
+          計算一個範圍內符合「單一條件」的儲存格數量。
+      
+      
+          16. MAX
+          找出一個範圍內的最大值。
+      
+      
+          17. MIN
+          找出一個範圍內的最小值。
+      
+      
+          18. RANK
+          傳回一個數字在一組數字清單中的排名。（註：新版 Excel 建議使用 RANK.EQ）
+      
+      
+          19. SUM
+          將指定的儲存格或範圍中的所有數字加總。
+      
+      
+          20. SUMIF
+          將一個範圍內符合「單一條件」的對應儲存格加總。
+      
+  
+
+
+查詢與判斷函數
+    
+  
+      
+          Function
+          簡介
+      
+  
+  
+      
+          21. XLOOKUP
+          一個強大且靈活的查詢函數，用於在一個範圍或陣列中尋找項目，並傳回對應項目。
+      
+      
+          22. IF
+          執行邏輯判斷。如果條件為真，則回傳一個值；如果條件為假，則回傳另一個值。
+      
+  
+
+
+詳細使用方法
+    數學與數值函數
+    INT
+    
+功能說明：無條件捨去數字的小數部分，傳回整數。
+語法：INT(number)
+參數說明：
+
+number (必要): 您想要無條件捨去的數字或儲存格參照。
+
+
+範例：=INT(99.9) 將回傳 99。
+
+
+RAND
+    
+功能說明：產生一個大於或等於 0 且小於 1 的隨機亂數。每次重新計算工作表時，此數值都會變動。
+語法：RAND()
+參數說明：
+
+此函數沒有任何參數。
+
+
+範例：=RAND()*100 將產生一個 0 到 100 之間的隨機數。
+
+
+SQRT
+    
+功能說明：計算一個數字的正平方根。
+語法：SQRT(number)
+參數說明：
+
+number (必要): 您想要計算平方根的數字。此數字必須為正數。
+
+
+範例：=SQRT(144) 將回傳 12。
+
+
+ROUND
+    
+功能說明：將數字四捨五入到指定的位數。
+語法：ROUND(number, num_digits)
+參數說明：
+
+number (必要): 您想要進行四捨五入的數字。
+num_digits (必要): 您想要四捨五入到的位數。正數代表小數點右側的位數；0 代表整數位；負數代表小數點左側的位數（例如 -1 代表十位數）。
+
+
+範例：
+
+=ROUND(3.14159, 2) 將回傳 3.14。
+=ROUND(12345, -2) 將回傳 12300。
+
+
+
+
+邏輯函數
+    AND
+    
+功能說明：檢查所有條件是否都為 TRUE。如果所有條件皆為 TRUE，則回傳 TRUE；只要有任一條件為 FALSE，就回傳 FALSE。
+語法：AND(logical1, [logical2], ...)
+參數說明：
+
+logical1 (必要): 第一個要評估的條件。
+logical2 (可選): 第二個及之後要評估的條件，最多可達 255 個。
+
+
+範例：=AND(A1&gt;60, B1=&quot;男&quot;) 只有當 A1 大於 60 且 B1 是 &ldquo;男&rdquo; 時，才會回傳 TRUE。
+
+
+NOT
+    
+功能說明：將邏輯值反轉。TRUE 變為 FALSE，FALSE 變為 TRUE。
+語法：NOT(logical)
+參數說明：
+
+logical (必要): 一個可以評估為 TRUE 或 FALSE 的值或運算式。
+
+
+範例：=NOT(A1=10) 如果 A1 的值不等於 10，則回傳 TRUE。
+
+
+OR
+    
+功能說明：檢查是否有任何一個條件為 TRUE。只要有任一條件為 TRUE，就回傳 TRUE；只有當所有條件都為 FALSE 時，才回傳 FALSE。
+語法：OR(logical1, [logical2], ...)
+參數說明：
+
+logical1 (必要): 第一個要評估的條件。
+logical2 (可選): 第二個及之後要評估的條件，最多可達 255 個。
+
+
+範例：=OR(A1=&quot;週末&quot;, A1=&quot;國定假日&quot;) 只要 A1 是 &ldquo;週末&rdquo; 或 &ldquo;國定假日&rdquo;，就會回傳 TRUE。
+
+
+文字函數
+    LEFT
+    
+功能說明：從文字字串的左邊（開頭）開始，傳回指定數量的字元。
+語法：LEFT(text, [num_chars])
+參數說明：
+
+text (必要): 包含您想擷取字元的文字字串。
+num_chars (可選): 指定要擷取的字元數。如果省略，預設為 1。
+
+
+範例：=LEFT(&quot;台北101&quot;, 2) 將回傳 台北。
+
+
+LEN
+    
+功能說明：計算一個文字字串的總長度（字元數）。
+語法：LEN(text)
+參數說明：
+
+text (必要): 您想要計算長度的文字。
+
+
+範例：=LEN(&quot;Hello World&quot;) 將回傳 11 (空格也算一個字元)。
+
+
+MID
+    
+功能說明：從文字字串的指定位置開始，傳回指定數量的字元。
+語法：MID(text, start_num, num_chars)
+參數說明：
+
+text (必要): 包含您想擷取字元的文字字串。
+start_num (必要): 您要開始擷取的起始字元位置（從 1 開始算）。
+num_chars (必要): 您要擷取的字元數。
+
+
+範例：=MID(&quot;我是台灣人&quot;, 3, 2) 將回傳 台灣。
+
+
+RIGHT
+    
+功能說明：從文字字串的右邊（結尾）開始，傳回指定數量的字元。
+語法：RIGHT(text, [num_chars])
+參數說明：
+
+text (必要): 包含您想擷取字元的文字字串。
+num_chars (可選): 指定要擷取的字元數。如果省略，預設為 1。
+
+
+範例：=RIGHT(&quot;產品編號-ABC&quot;, 3) 將回傳 ABC。
+
+
+FIND
+    
+功能說明：在一個文字字串中尋找另一個文字字串，並回傳其開始的位置編號。此函數有區分英文大小寫。
+語法：FIND(find_text, within_text, [start_num])
+參數說明：
+
+find_text (必要): 您要尋找的文字。
+within_text (必要): 包含您要尋找文字的目標字串。
+start_num (可選): 指定在 within_text 中從第幾個字元開始搜尋。如果省略，預設為 1。
+
+
+範例：=FIND(&quot;P&quot;, &quot;Apple iPad&quot;) 將回傳 8。
+
+
+統計與計算函數
+    AVERAGE
+    
+功能說明：計算所有參數的算術平均值。
+語法：AVERAGE(number1, [number2], ...)
+參數說明：
+
+number1 (必要): 第一個要計算平均的數字、儲存格或範圍。
+number2 (可選): 其他要計算平均的數字、儲存格或範圍。
+
+
+範例：=AVERAGE(A1:A10) 會計算 A1 到 A10 儲存格中所有數字的平均值。
+
+
+COUNT
+    
+功能說明：計算一個範圍內包含「數字」的儲存格數量。
+語法：COUNT(value1, [value2], ...)
+參數說明：
+
+value1 (必要): 第一個要計算的項目、儲存格參照或範圍。
+value2 (可選): 其他要計算的項目、儲存格參照或範圍。
+
+
+範例：若 A1=95, A2=&ldquo;缺考&rdquo;, A3=88，則 =COUNT(A1:A3) 會回傳 2。
+
+
+COUNTIF
+    
+功能說明：計算一個範圍內符合「單一條件」的儲存格數量。
+語法：COUNTIF(range, criteria)
+參數說明：
+
+range (必要): 您想要計算的儲存格範圍。
+criteria (必要): 用來決定哪些儲存格要被計算的條件（可以是數字、運算式、文字）。
+
+
+範例：=COUNTIF(B1:B20, &quot;&gt;=60&quot;) 會計算 B1 到 B20 範圍內，數值大於或等於 60 的儲存格數量。
+
+
+MAX
+    
+功能說明：找出一個範圍內的最大值。
+語法：MAX(number1, [number2], ...)
+參數說明：
+
+number1 (必要): 第一個要尋找最大值的數字、儲存格或範圍。
+number2 (可選): 其他要比較大小的數字、儲存格或範圍。
+
+
+範例：=MAX(A1:A10) 會回傳 A1 到 A10 範圍中的最大值。
+
+
+MIN
+    
+功能說明：找出一個範圍內的最小值。
+語法：MIN(number1, [number2], ...)
+參數說明：
+
+number1 (必要): 第一個要尋找最小值的數字、儲存格或範圍。
+number2 (可選): 其他要比較大小的數字、儲存格或範圍。
+
+
+範例：=MIN(A1:A10) 會回傳 A1 到 A10 範圍中的最小值。
+
+
+RANK
+    
+功能說明：傳回一個數字在一組數字清單中的排名。（註：新版 Excel 建議使用 RANK.EQ）
+語法：RANK(number, ref, [order])
+參數說明：
+
+number (必要): 您想要知道排名的數字。
+ref (必要): 包含數字清單的範圍。
+order (可選): 指定排名的順序。0 或省略代表遞減（高分是第 1 名）；任何非零值代表遞增（低分是第 1 名）。
+
+
+範例：=RANK(A1, A1:A20, 0) 會計算 A1 的值在 A1:A20 範圍中的排名（遞減排序）。
+
+
+SUM
+    
+功能說明：將指定的儲存格或範圍中的所有數字加總。
+語法：SUM(number1, [number2], ...)
+參數說明：
+
+number1 (必要): 第一個要加總的數字、儲存格或範圍。
+number2 (可選): 其他要加總的數字、儲存格或範圍。
+
+
+範例：=SUM(A1:A10) 會將 A1 到 A10 的所有數值相加。
+
+
+SUMIF
+    
+功能說明：將一個範圍內符合「單一條件」的對應儲存格加總。
+語法：SUMIF(range, criteria, [sum_range])
+參數說明：
+
+range (必要): 用於條件判斷的儲存格範圍。
+criteria (必要): 決定哪些儲存格要被加總的條件。
+sum_range (可選): 實際要進行加總的儲存格範圍。如果省略，則會加總 range 參數中的數字。
+
+
+範例：=SUMIF(A1:A10, &quot;水果&quot;, B1:B10) 會在 A1:A10 範圍中尋找 &ldquo;水果&rdquo;，並將 B1:B10 範圍中對應的數值加總。
+
+
+查詢與判斷函數
+    XLOOKUP
+    
+功能說明：一個強大且靈活的查詢函數，用於在一個範圍或陣列中尋找項目，並傳回對應項目。
+語法：XLOOKUP(lookup_value, lookup_array, return_array, [if_not_found], [match_mode], [search_mode])
+參數說明：
+
+lookup_value (必要): 您要尋找的值。
+lookup_array (必要): 要在其中搜尋的範圍或陣列。
+return_array (必要): 要從中傳回值的範圍或陣列。
+if_not_found (可選): 如果找不到相符項目時要傳回的值。若省略，則會回傳 #N/A 錯誤。
+match_mode (可選): 指定比對方式。0 (預設)為完全相符；-1 為下一個較小項目；1 為下一個較大項目；2 為萬用字元比對。
+search_mode (可選): 指定搜尋模式。1 (預設)從第一個項目開始搜尋；-1 從最後一個項目開始反向搜尋。
+
+
+範例：=XLOOKUP(&quot;S003&quot;, A1:A100, B1:B100, &quot;查無此員工&quot;) 會在 A 欄中尋找 &ldquo;S003&rdquo;，回傳 B 欄對應的姓名，如果找不到則顯示 &ldquo;查無此員工&rdquo;。
+
+
+IF
+    
+功能說明：執行邏輯判斷。如果條件為真，則回傳一個值；如果條件為假，則回傳另一個值。
+語法：IF(logical_test, value_if_true, [value_if_false])
+參數說明：
+
+logical_test (必要): 任何可以評估為 TRUE 或 FALSE 的值或運算式。
+value_if_true (必要): 當 logical_test 為 TRUE 時要傳回的值。
+value_if_false (可選): 當 logical_test 為 FALSE 時要傳回的值。如果省略，則會回傳 FALSE。
+
+
+範例：=IF(A1&gt;=60, &quot;及格&quot;, &quot;不及格&quot;) 如果 A1 的分數大於或等於 60，就顯示 &ldquo;及格&rdquo;，否則顯示 &ldquo;不及格&rdquo;。
+
     
   ">
 <meta
   property="og:type"
   content="
-    website
+    article
   ">
-<meta property="og:url" content="https://www.spectrepro.dev/docs/tech/python/">
+<meta property="og:url" content="https://www.spectrepro.dev/docs/school/6-ict/a2-01%E8%A9%A6%E7%AE%97%E8%A1%A8%E5%87%BD%E6%95%B8/"><meta property="article:section" content="docs">
 
 
-  <meta itemprop="name" content="Python">
-  <meta itemprop="datePublished" content="2025-12-27T01:15:06+08:00">
-  <meta itemprop="dateModified" content="2025-12-27T01:15:06+08:00">
+
+
+  <meta itemprop="name" content="A2 試算表函數">
+  <meta itemprop="description" content="目錄 數學與數值函數 Function 簡介 1. INT 無條件捨去數字的小數部分，傳回整數 2. RAND 產生一個大於或等於 0 且小於 1 的隨機亂數。每次重新計算工作表時，此數值都會變動。 3. SQRT 計算一個數字的正平方根 4. ROUND 將數字四捨五入到指定的位數。 邏輯函數 Function 簡介 5. AND 檢查所有條件是否都為 TRUE。如果所有條件皆為 TRUE，則回傳 TRUE；只要有任一條件為 FALSE，就回傳 FALSE。 6. NOT 將邏輯值反轉。TRUE 變為 FALSE，FALSE 變為 TRUE。 7. OR 檢查是否有任何一個條件為 TRUE。只要有任一條件為 TRUE，就回傳 TRUE；只有當所有條件都為 FALSE 時，才回傳 FALSE。 文字函數 Function 簡介 8. LEFT 從文字字串的左邊（開頭）開始，傳回指定數量的字元。 9. LEN 計算一個文字字串的總長度（字元數）。 10. MID 從文字字串的指定位置開始，傳回指定數量的字元。 11. RIGHT 從文字字串的右邊（結尾）開始，傳回指定數量的字元。 12. FIND 在一個文字字串中尋找另一個文字字串，並回傳其開始的位置編號。此函數有區分英文大小寫。 統計與計算函數 Function 簡介 13. AVERAGE 計算所有參數的算術平均值。 14. COUNT 計算一個範圍內包含「數字」的儲存格數量。 15. COUNTIF 計算一個範圍內符合「單一條件」的儲存格數量。 16. MAX 找出一個範圍內的最大值。 17. MIN 找出一個範圍內的最小值。 18. RANK 傳回一個數字在一組數字清單中的排名。（註：新版 Excel 建議使用 RANK.EQ） 19. SUM 將指定的儲存格或範圍中的所有數字加總。 20. SUMIF 將一個範圍內符合「單一條件」的對應儲存格加總。 查詢與判斷函數 Function 簡介 21. XLOOKUP 一個強大且靈活的查詢函數，用於在一個範圍或陣列中尋找項目，並傳回對應項目。 22. IF 執行邏輯判斷。如果條件為真，則回傳一個值；如果條件為假，則回傳另一個值。 詳細使用方法 數學與數值函數 INT 功能說明：無條件捨去數字的小數部分，傳回整數。 語法：INT(number) 參數說明： number (必要): 您想要無條件捨去的數字或儲存格參照。 範例：=INT(99.9) 將回傳 99。 RAND 功能說明：產生一個大於或等於 0 且小於 1 的隨機亂數。每次重新計算工作表時，此數值都會變動。 語法：RAND() 參數說明： 此函數沒有任何參數。 範例：=RAND()*100 將產生一個 0 到 100 之間的隨機數。 SQRT 功能說明：計算一個數字的正平方根。 語法：SQRT(number) 參數說明： number (必要): 您想要計算平方根的數字。此數字必須為正數。 範例：=SQRT(144) 將回傳 12。 ROUND 功能說明：將數字四捨五入到指定的位數。 語法：ROUND(number, num_digits) 參數說明： number (必要): 您想要進行四捨五入的數字。 num_digits (必要): 您想要四捨五入到的位數。正數代表小數點右側的位數；0 代表整數位；負數代表小數點左側的位數（例如 -1 代表十位數）。 範例： =ROUND(3.14159, 2) 將回傳 3.14。 =ROUND(12345, -2) 將回傳 12300。 邏輯函數 AND 功能說明：檢查所有條件是否都為 TRUE。如果所有條件皆為 TRUE，則回傳 TRUE；只要有任一條件為 FALSE，就回傳 FALSE。 語法：AND(logical1, [logical2], ...) 參數說明： logical1 (必要): 第一個要評估的條件。 logical2 (可選): 第二個及之後要評估的條件，最多可達 255 個。 範例：=AND(A1&gt;60, B1=&#34;男&#34;) 只有當 A1 大於 60 且 B1 是 “男” 時，才會回傳 TRUE。 NOT 功能說明：將邏輯值反轉。TRUE 變為 FALSE，FALSE 變為 TRUE。 語法：NOT(logical) 參數說明： logical (必要): 一個可以評估為 TRUE 或 FALSE 的值或運算式。 範例：=NOT(A1=10) 如果 A1 的值不等於 10，則回傳 TRUE。 OR 功能說明：檢查是否有任何一個條件為 TRUE。只要有任一條件為 TRUE，就回傳 TRUE；只有當所有條件都為 FALSE 時，才回傳 FALSE。 語法：OR(logical1, [logical2], ...) 參數說明： logical1 (必要): 第一個要評估的條件。 logical2 (可選): 第二個及之後要評估的條件，最多可達 255 個。 範例：=OR(A1=&#34;週末&#34;, A1=&#34;國定假日&#34;) 只要 A1 是 “週末” 或 “國定假日”，就會回傳 TRUE。 文字函數 LEFT 功能說明：從文字字串的左邊（開頭）開始，傳回指定數量的字元。 語法：LEFT(text, [num_chars]) 參數說明： text (必要): 包含您想擷取字元的文字字串。 num_chars (可選): 指定要擷取的字元數。如果省略，預設為 1。 範例：=LEFT(&#34;台北101&#34;, 2) 將回傳 台北。 LEN 功能說明：計算一個文字字串的總長度（字元數）。 語法：LEN(text) 參數說明： text (必要): 您想要計算長度的文字。 範例：=LEN(&#34;Hello World&#34;) 將回傳 11 (空格也算一個字元)。 MID 功能說明：從文字字串的指定位置開始，傳回指定數量的字元。 語法：MID(text, start_num, num_chars) 參數說明： text (必要): 包含您想擷取字元的文字字串。 start_num (必要): 您要開始擷取的起始字元位置（從 1 開始算）。 num_chars (必要): 您要擷取的字元數。 範例：=MID(&#34;我是台灣人&#34;, 3, 2) 將回傳 台灣。 RIGHT 功能說明：從文字字串的右邊（結尾）開始，傳回指定數量的字元。 語法：RIGHT(text, [num_chars]) 參數說明： text (必要): 包含您想擷取字元的文字字串。 num_chars (可選): 指定要擷取的字元數。如果省略，預設為 1。 範例：=RIGHT(&#34;產品編號-ABC&#34;, 3) 將回傳 ABC。 FIND 功能說明：在一個文字字串中尋找另一個文字字串，並回傳其開始的位置編號。此函數有區分英文大小寫。 語法：FIND(find_text, within_text, [start_num]) 參數說明： find_text (必要): 您要尋找的文字。 within_text (必要): 包含您要尋找文字的目標字串。 start_num (可選): 指定在 within_text 中從第幾個字元開始搜尋。如果省略，預設為 1。 範例：=FIND(&#34;P&#34;, &#34;Apple iPad&#34;) 將回傳 8。 統計與計算函數 AVERAGE 功能說明：計算所有參數的算術平均值。 語法：AVERAGE(number1, [number2], ...) 參數說明： number1 (必要): 第一個要計算平均的數字、儲存格或範圍。 number2 (可選): 其他要計算平均的數字、儲存格或範圍。 範例：=AVERAGE(A1:A10) 會計算 A1 到 A10 儲存格中所有數字的平均值。 COUNT 功能說明：計算一個範圍內包含「數字」的儲存格數量。 語法：COUNT(value1, [value2], ...) 參數說明： value1 (必要): 第一個要計算的項目、儲存格參照或範圍。 value2 (可選): 其他要計算的項目、儲存格參照或範圍。 範例：若 A1=95, A2=“缺考”, A3=88，則 =COUNT(A1:A3) 會回傳 2。 COUNTIF 功能說明：計算一個範圍內符合「單一條件」的儲存格數量。 語法：COUNTIF(range, criteria) 參數說明： range (必要): 您想要計算的儲存格範圍。 criteria (必要): 用來決定哪些儲存格要被計算的條件（可以是數字、運算式、文字）。 範例：=COUNTIF(B1:B20, &#34;&gt;=60&#34;) 會計算 B1 到 B20 範圍內，數值大於或等於 60 的儲存格數量。 MAX 功能說明：找出一個範圍內的最大值。 語法：MAX(number1, [number2], ...) 參數說明： number1 (必要): 第一個要尋找最大值的數字、儲存格或範圍。 number2 (可選): 其他要比較大小的數字、儲存格或範圍。 範例：=MAX(A1:A10) 會回傳 A1 到 A10 範圍中的最大值。 MIN 功能說明：找出一個範圍內的最小值。 語法：MIN(number1, [number2], ...) 參數說明： number1 (必要): 第一個要尋找最小值的數字、儲存格或範圍。 number2 (可選): 其他要比較大小的數字、儲存格或範圍。 範例：=MIN(A1:A10) 會回傳 A1 到 A10 範圍中的最小值。 RANK 功能說明：傳回一個數字在一組數字清單中的排名。（註：新版 Excel 建議使用 RANK.EQ） 語法：RANK(number, ref, [order]) 參數說明： number (必要): 您想要知道排名的數字。 ref (必要): 包含數字清單的範圍。 order (可選): 指定排名的順序。0 或省略代表遞減（高分是第 1 名）；任何非零值代表遞增（低分是第 1 名）。 範例：=RANK(A1, A1:A20, 0) 會計算 A1 的值在 A1:A20 範圍中的排名（遞減排序）。 SUM 功能說明：將指定的儲存格或範圍中的所有數字加總。 語法：SUM(number1, [number2], ...) 參數說明： number1 (必要): 第一個要加總的數字、儲存格或範圍。 number2 (可選): 其他要加總的數字、儲存格或範圍。 範例：=SUM(A1:A10) 會將 A1 到 A10 的所有數值相加。 SUMIF 功能說明：將一個範圍內符合「單一條件」的對應儲存格加總。 語法：SUMIF(range, criteria, [sum_range]) 參數說明： range (必要): 用於條件判斷的儲存格範圍。 criteria (必要): 決定哪些儲存格要被加總的條件。 sum_range (可選): 實際要進行加總的儲存格範圍。如果省略，則會加總 range 參數中的數字。 範例：=SUMIF(A1:A10, &#34;水果&#34;, B1:B10) 會在 A1:A10 範圍中尋找 “水果”，並將 B1:B10 範圍中對應的數值加總。 查詢與判斷函數 XLOOKUP 功能說明：一個強大且靈活的查詢函數，用於在一個範圍或陣列中尋找項目，並傳回對應項目。 語法：XLOOKUP(lookup_value, lookup_array, return_array, [if_not_found], [match_mode], [search_mode]) 參數說明： lookup_value (必要): 您要尋找的值。 lookup_array (必要): 要在其中搜尋的範圍或陣列。 return_array (必要): 要從中傳回值的範圍或陣列。 if_not_found (可選): 如果找不到相符項目時要傳回的值。若省略，則會回傳 #N/A 錯誤。 match_mode (可選): 指定比對方式。0 (預設)為完全相符；-1 為下一個較小項目；1 為下一個較大項目；2 為萬用字元比對。 search_mode (可選): 指定搜尋模式。1 (預設)從第一個項目開始搜尋；-1 從最後一個項目開始反向搜尋。 範例：=XLOOKUP(&#34;S003&#34;, A1:A100, B1:B100, &#34;查無此員工&#34;) 會在 A 欄中尋找 “S003”，回傳 B 欄對應的姓名，如果找不到則顯示 “查無此員工”。 IF 功能說明：執行邏輯判斷。如果條件為真，則回傳一個值；如果條件為假，則回傳另一個值。 語法：IF(logical_test, value_if_true, [value_if_false]) 參數說明： logical_test (必要): 任何可以評估為 TRUE 或 FALSE 的值或運算式。 value_if_true (必要): 當 logical_test 為 TRUE 時要傳回的值。 value_if_false (可選): 當 logical_test 為 FALSE 時要傳回的值。如果省略，則會回傳 FALSE。 範例：=IF(A1&gt;=60, &#34;及格&#34;, &#34;不及格&#34;) 如果 A1 的分數大於或等於 60，就顯示 “及格”，否則顯示 “不及格”。">
+  <meta itemprop="wordCount" content="589">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Python">
+  <meta name="twitter:title" content="A2 試算表函數">
+  <meta name="twitter:description" content="目錄 數學與數值函數 Function 簡介 1. INT 無條件捨去數字的小數部分，傳回整數 2. RAND 產生一個大於或等於 0 且小於 1 的隨機亂數。每次重新計算工作表時，此數值都會變動。 3. SQRT 計算一個數字的正平方根 4. ROUND 將數字四捨五入到指定的位數。 邏輯函數 Function 簡介 5. AND 檢查所有條件是否都為 TRUE。如果所有條件皆為 TRUE，則回傳 TRUE；只要有任一條件為 FALSE，就回傳 FALSE。 6. NOT 將邏輯值反轉。TRUE 變為 FALSE，FALSE 變為 TRUE。 7. OR 檢查是否有任何一個條件為 TRUE。只要有任一條件為 TRUE，就回傳 TRUE；只有當所有條件都為 FALSE 時，才回傳 FALSE。 文字函數 Function 簡介 8. LEFT 從文字字串的左邊（開頭）開始，傳回指定數量的字元。 9. LEN 計算一個文字字串的總長度（字元數）。 10. MID 從文字字串的指定位置開始，傳回指定數量的字元。 11. RIGHT 從文字字串的右邊（結尾）開始，傳回指定數量的字元。 12. FIND 在一個文字字串中尋找另一個文字字串，並回傳其開始的位置編號。此函數有區分英文大小寫。 統計與計算函數 Function 簡介 13. AVERAGE 計算所有參數的算術平均值。 14. COUNT 計算一個範圍內包含「數字」的儲存格數量。 15. COUNTIF 計算一個範圍內符合「單一條件」的儲存格數量。 16. MAX 找出一個範圍內的最大值。 17. MIN 找出一個範圍內的最小值。 18. RANK 傳回一個數字在一組數字清單中的排名。（註：新版 Excel 建議使用 RANK.EQ） 19. SUM 將指定的儲存格或範圍中的所有數字加總。 20. SUMIF 將一個範圍內符合「單一條件」的對應儲存格加總。 查詢與判斷函數 Function 簡介 21. XLOOKUP 一個強大且靈活的查詢函數，用於在一個範圍或陣列中尋找項目，並傳回對應項目。 22. IF 執行邏輯判斷。如果條件為真，則回傳一個值；如果條件為假，則回傳另一個值。 詳細使用方法 數學與數值函數 INT 功能說明：無條件捨去數字的小數部分，傳回整數。 語法：INT(number) 參數說明： number (必要): 您想要無條件捨去的數字或儲存格參照。 範例：=INT(99.9) 將回傳 99。 RAND 功能說明：產生一個大於或等於 0 且小於 1 的隨機亂數。每次重新計算工作表時，此數值都會變動。 語法：RAND() 參數說明： 此函數沒有任何參數。 範例：=RAND()*100 將產生一個 0 到 100 之間的隨機數。 SQRT 功能說明：計算一個數字的正平方根。 語法：SQRT(number) 參數說明： number (必要): 您想要計算平方根的數字。此數字必須為正數。 範例：=SQRT(144) 將回傳 12。 ROUND 功能說明：將數字四捨五入到指定的位數。 語法：ROUND(number, num_digits) 參數說明： number (必要): 您想要進行四捨五入的數字。 num_digits (必要): 您想要四捨五入到的位數。正數代表小數點右側的位數；0 代表整數位；負數代表小數點左側的位數（例如 -1 代表十位數）。 範例： =ROUND(3.14159, 2) 將回傳 3.14。 =ROUND(12345, -2) 將回傳 12300。 邏輯函數 AND 功能說明：檢查所有條件是否都為 TRUE。如果所有條件皆為 TRUE，則回傳 TRUE；只要有任一條件為 FALSE，就回傳 FALSE。 語法：AND(logical1, [logical2], ...) 參數說明： logical1 (必要): 第一個要評估的條件。 logical2 (可選): 第二個及之後要評估的條件，最多可達 255 個。 範例：=AND(A1&gt;60, B1=&#34;男&#34;) 只有當 A1 大於 60 且 B1 是 “男” 時，才會回傳 TRUE。 NOT 功能說明：將邏輯值反轉。TRUE 變為 FALSE，FALSE 變為 TRUE。 語法：NOT(logical) 參數說明： logical (必要): 一個可以評估為 TRUE 或 FALSE 的值或運算式。 範例：=NOT(A1=10) 如果 A1 的值不等於 10，則回傳 TRUE。 OR 功能說明：檢查是否有任何一個條件為 TRUE。只要有任一條件為 TRUE，就回傳 TRUE；只有當所有條件都為 FALSE 時，才回傳 FALSE。 語法：OR(logical1, [logical2], ...) 參數說明： logical1 (必要): 第一個要評估的條件。 logical2 (可選): 第二個及之後要評估的條件，最多可達 255 個。 範例：=OR(A1=&#34;週末&#34;, A1=&#34;國定假日&#34;) 只要 A1 是 “週末” 或 “國定假日”，就會回傳 TRUE。 文字函數 LEFT 功能說明：從文字字串的左邊（開頭）開始，傳回指定數量的字元。 語法：LEFT(text, [num_chars]) 參數說明： text (必要): 包含您想擷取字元的文字字串。 num_chars (可選): 指定要擷取的字元數。如果省略，預設為 1。 範例：=LEFT(&#34;台北101&#34;, 2) 將回傳 台北。 LEN 功能說明：計算一個文字字串的總長度（字元數）。 語法：LEN(text) 參數說明： text (必要): 您想要計算長度的文字。 範例：=LEN(&#34;Hello World&#34;) 將回傳 11 (空格也算一個字元)。 MID 功能說明：從文字字串的指定位置開始，傳回指定數量的字元。 語法：MID(text, start_num, num_chars) 參數說明： text (必要): 包含您想擷取字元的文字字串。 start_num (必要): 您要開始擷取的起始字元位置（從 1 開始算）。 num_chars (必要): 您要擷取的字元數。 範例：=MID(&#34;我是台灣人&#34;, 3, 2) 將回傳 台灣。 RIGHT 功能說明：從文字字串的右邊（結尾）開始，傳回指定數量的字元。 語法：RIGHT(text, [num_chars]) 參數說明： text (必要): 包含您想擷取字元的文字字串。 num_chars (可選): 指定要擷取的字元數。如果省略，預設為 1。 範例：=RIGHT(&#34;產品編號-ABC&#34;, 3) 將回傳 ABC。 FIND 功能說明：在一個文字字串中尋找另一個文字字串，並回傳其開始的位置編號。此函數有區分英文大小寫。 語法：FIND(find_text, within_text, [start_num]) 參數說明： find_text (必要): 您要尋找的文字。 within_text (必要): 包含您要尋找文字的目標字串。 start_num (可選): 指定在 within_text 中從第幾個字元開始搜尋。如果省略，預設為 1。 範例：=FIND(&#34;P&#34;, &#34;Apple iPad&#34;) 將回傳 8。 統計與計算函數 AVERAGE 功能說明：計算所有參數的算術平均值。 語法：AVERAGE(number1, [number2], ...) 參數說明： number1 (必要): 第一個要計算平均的數字、儲存格或範圍。 number2 (可選): 其他要計算平均的數字、儲存格或範圍。 範例：=AVERAGE(A1:A10) 會計算 A1 到 A10 儲存格中所有數字的平均值。 COUNT 功能說明：計算一個範圍內包含「數字」的儲存格數量。 語法：COUNT(value1, [value2], ...) 參數說明： value1 (必要): 第一個要計算的項目、儲存格參照或範圍。 value2 (可選): 其他要計算的項目、儲存格參照或範圍。 範例：若 A1=95, A2=“缺考”, A3=88，則 =COUNT(A1:A3) 會回傳 2。 COUNTIF 功能說明：計算一個範圍內符合「單一條件」的儲存格數量。 語法：COUNTIF(range, criteria) 參數說明： range (必要): 您想要計算的儲存格範圍。 criteria (必要): 用來決定哪些儲存格要被計算的條件（可以是數字、運算式、文字）。 範例：=COUNTIF(B1:B20, &#34;&gt;=60&#34;) 會計算 B1 到 B20 範圍內，數值大於或等於 60 的儲存格數量。 MAX 功能說明：找出一個範圍內的最大值。 語法：MAX(number1, [number2], ...) 參數說明： number1 (必要): 第一個要尋找最大值的數字、儲存格或範圍。 number2 (可選): 其他要比較大小的數字、儲存格或範圍。 範例：=MAX(A1:A10) 會回傳 A1 到 A10 範圍中的最大值。 MIN 功能說明：找出一個範圍內的最小值。 語法：MIN(number1, [number2], ...) 參數說明： number1 (必要): 第一個要尋找最小值的數字、儲存格或範圍。 number2 (可選): 其他要比較大小的數字、儲存格或範圍。 範例：=MIN(A1:A10) 會回傳 A1 到 A10 範圍中的最小值。 RANK 功能說明：傳回一個數字在一組數字清單中的排名。（註：新版 Excel 建議使用 RANK.EQ） 語法：RANK(number, ref, [order]) 參數說明： number (必要): 您想要知道排名的數字。 ref (必要): 包含數字清單的範圍。 order (可選): 指定排名的順序。0 或省略代表遞減（高分是第 1 名）；任何非零值代表遞增（低分是第 1 名）。 範例：=RANK(A1, A1:A20, 0) 會計算 A1 的值在 A1:A20 範圍中的排名（遞減排序）。 SUM 功能說明：將指定的儲存格或範圍中的所有數字加總。 語法：SUM(number1, [number2], ...) 參數說明： number1 (必要): 第一個要加總的數字、儲存格或範圍。 number2 (可選): 其他要加總的數字、儲存格或範圍。 範例：=SUM(A1:A10) 會將 A1 到 A10 的所有數值相加。 SUMIF 功能說明：將一個範圍內符合「單一條件」的對應儲存格加總。 語法：SUMIF(range, criteria, [sum_range]) 參數說明： range (必要): 用於條件判斷的儲存格範圍。 criteria (必要): 決定哪些儲存格要被加總的條件。 sum_range (可選): 實際要進行加總的儲存格範圍。如果省略，則會加總 range 參數中的數字。 範例：=SUMIF(A1:A10, &#34;水果&#34;, B1:B10) 會在 A1:A10 範圍中尋找 “水果”，並將 B1:B10 範圍中對應的數值加總。 查詢與判斷函數 XLOOKUP 功能說明：一個強大且靈活的查詢函數，用於在一個範圍或陣列中尋找項目，並傳回對應項目。 語法：XLOOKUP(lookup_value, lookup_array, return_array, [if_not_found], [match_mode], [search_mode]) 參數說明： lookup_value (必要): 您要尋找的值。 lookup_array (必要): 要在其中搜尋的範圍或陣列。 return_array (必要): 要從中傳回值的範圍或陣列。 if_not_found (可選): 如果找不到相符項目時要傳回的值。若省略，則會回傳 #N/A 錯誤。 match_mode (可選): 指定比對方式。0 (預設)為完全相符；-1 為下一個較小項目；1 為下一個較大項目；2 為萬用字元比對。 search_mode (可選): 指定搜尋模式。1 (預設)從第一個項目開始搜尋；-1 從最後一個項目開始反向搜尋。 範例：=XLOOKUP(&#34;S003&#34;, A1:A100, B1:B100, &#34;查無此員工&#34;) 會在 A 欄中尋找 “S003”，回傳 B 欄對應的姓名，如果找不到則顯示 “查無此員工”。 IF 功能說明：執行邏輯判斷。如果條件為真，則回傳一個值；如果條件為假，則回傳另一個值。 語法：IF(logical_test, value_if_true, [value_if_false]) 參數說明： logical_test (必要): 任何可以評估為 TRUE 或 FALSE 的值或運算式。 value_if_true (必要): 當 logical_test 為 TRUE 時要傳回的值。 value_if_false (可選): 當 logical_test 為 FALSE 時要傳回的值。如果省略，則會回傳 FALSE。 範例：=IF(A1&gt;=60, &#34;及格&#34;, &#34;不及格&#34;) 如果 A1 的分數大於或等於 60，就顯示 “及格”，否則顯示 “不及格”。">
 
     <link rel="preload" href="/css/compiled/main.min.f1286e08894e4edb7578e277f8af9252465cacf0a6e1ffc14d2218d4b5f80571.css" as="style" integrity="sha256-8ShuCIlOTtt1eOJ3&#43;K&#43;SUkZcrPCm4f/BTSIY1LX4BXE=" />
     <link href="/css/compiled/main.min.f1286e08894e4edb7578e277f8af9252465cacf0a6e1ffc14d2218d4b5f80571.css" rel="stylesheet" integrity="sha256-8ShuCIlOTtt1eOJ3&#43;K&#43;SUkZcrPCm4f/BTSIY1LX4BXE=" />
@@ -206,7 +657,7 @@
   >Note
         <span class="hextra-sidebar-collapsible-button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hx:h-[18px] hx:min-w-[18px] hx:rounded-xs hx:p-0.5 hx:hover:bg-gray-800/5 hx:dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx:origin-center hx:transition-transform hx:rtl:-rotate-180"></path></svg></span>
     </a><div class="hx:ltr:pr-0 hx:overflow-hidden">
-        <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'><li class="hx:flex hx:flex-col open"><a
+        <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'><li class="hx:flex hx:flex-col "><a
     class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
       hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
     href="/docs/tech/"
@@ -239,15 +690,14 @@
   >Git &amp; Github
     </a>
               
-            </li><li class="hx:flex hx:flex-col open"><a
+            </li><li class="hx:flex hx:flex-col "><a
     class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      hextra-sidebar-active-item hx:bg-primary-100 hx:font-semibold hx:text-primary-800 hx:contrast-more:border hx:contrast-more:border-primary-500 hx:dark:bg-primary-400/10 hx:dark:text-primary-600 hx:contrast-more:dark:border-primary-500"
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
     href="/docs/tech/python/"
     
   >Python
         <span class="hextra-sidebar-collapsible-button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hx:h-[18px] hx:min-w-[18px] hx:rounded-xs hx:p-0.5 hx:hover:bg-gray-800/5 hx:dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx:origin-center hx:transition-transform hx:rtl:-rotate-180"></path></svg></span>
     </a>
-  
               <div class="hx:ltr:pr-0 hx:overflow-hidden">
         <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'><li class="hx:flex hx:flex-col "><a
     class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
@@ -312,7 +762,7 @@
       </div>
             </li></ul>
       </div>
-            </li><li class="hx:flex hx:flex-col "><a
+            </li><li class="hx:flex hx:flex-col open"><a
     class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
       hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
     href="/docs/school/"
@@ -480,7 +930,7 @@
               
             </li></ul>
       </div>
-            </li><li class="hx:flex hx:flex-col "><a
+            </li><li class="hx:flex hx:flex-col open"><a
     class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
       hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
     href="/docs/school/6-ict/"
@@ -513,13 +963,28 @@
   >A1 多媒體
     </a>
               
-            </li><li class="hx:flex hx:flex-col "><a
+            </li><li class="hx:flex hx:flex-col open"><a
     class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      hextra-sidebar-active-item hx:bg-primary-100 hx:font-semibold hx:text-primary-800 hx:contrast-more:border hx:contrast-more:border-primary-500 hx:dark:bg-primary-400/10 hx:dark:text-primary-600 hx:contrast-more:dark:border-primary-500"
     href="/docs/school/6-ict/a2-01%E8%A9%A6%E7%AE%97%E8%A1%A8%E5%87%BD%E6%95%B8/"
     
   >A2 試算表函數
     </a>
+  
+    <ul class='hx:flex hx:flex-col hx:gap-1 hx:relative hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:dark:before:bg-neutral-800 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:pr-3 hx:rtl:before:right-0 hx:ltr:ml-3 hx:rtl:mr-3'><li>
+              <a
+                href="#%e7%9b%ae%e9%8c%84"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >目錄</a>
+            </li>
+          <li>
+              <a
+                href="#%e8%a9%b3%e7%b4%b0%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >詳細使用方法</a>
+            </li>
+          </ul>
+  
               
             </li><li class="hx:flex hx:flex-col "><a
     class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
@@ -595,7 +1060,7 @@
 
     <ul class="hx:flex hx:flex-col hx:gap-1 hx:max-md:hidden">
         
-          <li class="open"><a
+          <li class=""><a
     class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
       hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
     href="/docs/tech/"
@@ -627,9 +1092,9 @@
   >Git &amp; Github
     </a>
               
-            </li><li class="hx:flex hx:flex-col open"><a
+            </li><li class="hx:flex hx:flex-col "><a
     class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      hextra-sidebar-active-item hx:bg-primary-100 hx:font-semibold hx:text-primary-800 hx:contrast-more:border hx:contrast-more:border-primary-500 hx:dark:bg-primary-400/10 hx:dark:text-primary-600 hx:contrast-more:dark:border-primary-500"
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
     href="/docs/tech/python/"
     
   >Python
@@ -699,7 +1164,7 @@
       </div>
             </li></ul>
       </div></li>
-          <li class=""><a
+          <li class="open"><a
     class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
       hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
     href="/docs/school/"
@@ -866,7 +1331,7 @@
               
             </li></ul>
       </div>
-            </li><li class="hx:flex hx:flex-col "><a
+            </li><li class="hx:flex hx:flex-col open"><a
     class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
       hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
     href="/docs/school/6-ict/"
@@ -899,9 +1364,9 @@
   >A1 多媒體
     </a>
               
-            </li><li class="hx:flex hx:flex-col "><a
+            </li><li class="hx:flex hx:flex-col open"><a
     class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      hextra-sidebar-active-item hx:bg-primary-100 hx:font-semibold hx:text-primary-800 hx:contrast-more:border hx:contrast-more:border-primary-500 hx:dark:bg-primary-400/10 hx:dark:text-primary-600 hx:contrast-more:dark:border-primary-500"
     href="/docs/school/6-ict/a2-01%E8%A9%A6%E7%AE%97%E8%A1%A8%E5%87%BD%E6%95%B8/"
     
   >A2 試算表函數
@@ -990,8 +1455,144 @@
 </div></div></div></aside>
     
 <nav class="hextra-toc hx:order-last hx:hidden hx:w-64 hx:shrink-0 hx:xl:block hx:print:hidden hx:px-4" aria-label="table of contents">
-    <div class="hextra-scrollbar hx:sticky hx:top-16 hx:overflow-y-auto hx:pr-4 hx:pt-6 hx:text-sm [hyphens:auto] hx:max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] hx:ltr:-mr-4 hx:rtl:-ml-4">
-      <div class=" hx:sticky hx:bottom-0 hx:flex hx:flex-col hx:items-start hx:gap-2 hx:pb-8 hx:border-gray-200 hx:dark:border-neutral-800 hx:contrast-more:border-t hx:contrast-more:border-neutral-400 hx:contrast-more:shadow-none hx:contrast-more:dark:border-neutral-400"><a class="hx:text-xs hx:font-medium hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-100 hx:contrast-more:text-gray-800 hx:contrast-more:dark:text-gray-50" href="https://github.com/spectre-pro/spectre-pro.github.io/blob/main/content/docs/tech/python/_index.md" target="_blank" rel="noreferrer">Edit this page on GitHub →</a>
+    <div class="hextra-scrollbar hx:sticky hx:top-16 hx:overflow-y-auto hx:pr-4 hx:pt-6 hx:text-sm [hyphens:auto] hx:max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] hx:ltr:-mr-4 hx:rtl:-ml-4"><p class="hx:mb-4 hx:font-semibold hx:tracking-tight">On this page</p><ul>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#%e7%9b%ae%e9%8c%84">目錄
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#%e6%95%b8%e5%ad%b8%e8%88%87%e6%95%b8%e5%80%bc%e5%87%bd%e6%95%b8">數學與數值函數
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#%e9%82%8f%e8%bc%af%e5%87%bd%e6%95%b8">邏輯函數
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#%e6%96%87%e5%ad%97%e5%87%bd%e6%95%b8">文字函數
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#%e7%b5%b1%e8%a8%88%e8%88%87%e8%a8%88%e7%ae%97%e5%87%bd%e6%95%b8">統計與計算函數
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#%e6%9f%a5%e8%a9%a2%e8%88%87%e5%88%a4%e6%96%b7%e5%87%bd%e6%95%b8">查詢與判斷函數
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#%e8%a9%b3%e7%b4%b0%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95">詳細使用方法
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#%e6%95%b8%e5%ad%b8%e8%88%87%e6%95%b8%e5%80%bc%e5%87%bd%e6%95%b8-1">數學與數值函數
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#int">INT
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#rand">RAND
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#sqrt">SQRT
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#round">ROUND
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#%e9%82%8f%e8%bc%af%e5%87%bd%e6%95%b8-1">邏輯函數
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#and">AND
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#not">NOT
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#or">OR
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#%e6%96%87%e5%ad%97%e5%87%bd%e6%95%b8-1">文字函數
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#left">LEFT
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#len">LEN
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#mid">MID
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#right">RIGHT
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#find">FIND
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#%e7%b5%b1%e8%a8%88%e8%88%87%e8%a8%88%e7%ae%97%e5%87%bd%e6%95%b8-1">統計與計算函數
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#average">AVERAGE
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#count">COUNT
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#countif">COUNTIF
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#max">MAX
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#min">MIN
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#rank">RANK
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#sum">SUM
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#sumif">SUMIF
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#%e6%9f%a5%e8%a9%a2%e8%88%87%e5%88%a4%e6%96%b7%e5%87%bd%e6%95%b8-1">查詢與判斷函數
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#xlookup">XLOOKUP
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#if">IF
+        </a>
+      </li></ul>
+      <div class="hx:mt-8 hx:border-t hx:bg-white hx:pt-8 hx:shadow-[0_-12px_16px_white] hx:dark:bg-dark hx:dark:shadow-[0_-12px_16px_#111] hx:sticky hx:bottom-0 hx:flex hx:flex-col hx:items-start hx:gap-2 hx:pb-8 hx:border-gray-200 hx:dark:border-neutral-800 hx:contrast-more:border-t hx:contrast-more:border-neutral-400 hx:contrast-more:shadow-none hx:contrast-more:dark:border-neutral-400"><a class="hx:text-xs hx:font-medium hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-100 hx:contrast-more:text-gray-800 hx:contrast-more:dark:text-gray-50" href="https://github.com/spectre-pro/spectre-pro.github.io/blob/main/content/docs/school/6-ict/A2%2001%E8%A9%A6%E7%AE%97%E8%A1%A8%E5%87%BD%E6%95%B8.md" target="_blank" rel="noreferrer">Edit this page on GitHub →</a>
         <button aria-hidden="true" id="backToTop" onClick="scrollUp();" class="hx:cursor-pointer hx:transition-all hx:duration-75 hx:opacity-0 hx:text-xs hx:font-medium hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-100 hx:contrast-more:text-gray-800 hx:contrast-more:dark:text-gray-50">
           <span>Scroll to top</span>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hx:inline hx:ltr:ml-1 hx:rtl:mr-1 hx:h-3.5 hx:w-3.5 hx:rounded-full hx:border hx:border-gray-500 hx:hover:border-gray-900 hx:dark:border-gray-400 hx:dark:hover:border-gray-100 hx:contrast-more:border-gray-800 hx:contrast-more:dark:border-gray-50">
@@ -1010,20 +1611,551 @@
           <a href="/docs/">Note</a>
         </div><svg class="hx:w-3.5 hx:shrink-0 hx:rtl:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
         <div class="hx:whitespace-nowrap hx:transition-colors hx:min-w-[24px] hx:overflow-hidden hx:text-ellipsis hx:hover:text-gray-900 hx:dark:hover:text-gray-100">
-          <a href="/docs/tech/">Tech</a>
-        </div><svg class="hx:w-3.5 hx:shrink-0 hx:rtl:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg><div class="hx:whitespace-nowrap hx:transition-colors hx:font-medium hx:text-gray-700 hx:contrast-more:font-bold hx:contrast-more:text-current hx:dark:text-gray-100 hx:contrast-more:dark:text-current">Python</div>
+          <a href="/docs/school/">School</a>
+        </div><svg class="hx:w-3.5 hx:shrink-0 hx:rtl:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        <div class="hx:whitespace-nowrap hx:transition-colors hx:min-w-[24px] hx:overflow-hidden hx:text-ellipsis hx:hover:text-gray-900 hx:dark:hover:text-gray-100">
+          <a href="/docs/school/6-ict/">ICT</a>
+        </div><svg class="hx:w-3.5 hx:shrink-0 hx:rtl:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg><div class="hx:whitespace-nowrap hx:transition-colors hx:font-medium hx:text-gray-700 hx:contrast-more:font-bold hx:contrast-more:text-current hx:dark:text-gray-100 hx:contrast-more:dark:text-current">A2 試算表函數</div>
   </div>
 
         <div class="content">
-          <h1>Python</h1>
-          
-        </div>
-        
-    <div class="hx:mt-12 hx:mb-8 hx:block hx:text-xs hx:text-gray-500 hx:ltr:text-right hx:rtl:text-left hx:dark:text-gray-400">Last updated on <time datetime="2025-12-27T01:15:06.000Z">December 27, 2025</time></div>
-        
-        
-  
+          <h1>A2 試算表函數</h1>
+          <h2>目錄<span class="hx:absolute hx:-mt-20" id="目錄"></span>
+    <a href="#%e7%9b%ae%e9%8c%84" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><h3>數學與數值函數<span class="hx:absolute hx:-mt-20" id="數學與數值函數"></span>
+    <a href="#%e6%95%b8%e5%ad%b8%e8%88%87%e6%95%b8%e5%80%bc%e5%87%bd%e6%95%b8" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><table>
+  <thead>
+      <tr>
+          <th>Function</th>
+          <th>簡介</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1. <a href="#int">INT</a></td>
+          <td>無條件捨去數字的小數部分，傳回整數</td>
+      </tr>
+      <tr>
+          <td>2. <a href="#rand">RAND</a></td>
+          <td>產生一個大於或等於 0 且小於 1 的隨機亂數。每次重新計算工作表時，此數值都會變動。</td>
+      </tr>
+      <tr>
+          <td>3. <a href="#sqrt">SQRT</a></td>
+          <td>計算一個數字的正平方根</td>
+      </tr>
+      <tr>
+          <td>4. <a href="#round">ROUND</a></td>
+          <td>將數字四捨五入到指定的位數。</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3>邏輯函數<span class="hx:absolute hx:-mt-20" id="邏輯函數"></span>
+    <a href="#%e9%82%8f%e8%bc%af%e5%87%bd%e6%95%b8" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><table>
+  <thead>
+      <tr>
+          <th>Function</th>
+          <th>簡介</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>5. <a href="#and">AND</a></td>
+          <td>檢查所有條件是否都為 TRUE。如果所有條件皆為 TRUE，則回傳 TRUE；只要有任一條件為 FALSE，就回傳 FALSE。</td>
+      </tr>
+      <tr>
+          <td>6. <a href="#not">NOT</a></td>
+          <td>將邏輯值反轉。TRUE 變為 FALSE，FALSE 變為 TRUE。</td>
+      </tr>
+      <tr>
+          <td>7. <a href="#or">OR</a></td>
+          <td>檢查是否有任何一個條件為 TRUE。只要有任一條件為 TRUE，就回傳 TRUE；只有當所有條件都為 FALSE 時，才回傳 FALSE。</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3>文字函數<span class="hx:absolute hx:-mt-20" id="文字函數"></span>
+    <a href="#%e6%96%87%e5%ad%97%e5%87%bd%e6%95%b8" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><table>
+  <thead>
+      <tr>
+          <th>Function</th>
+          <th>簡介</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>8. <a href="#left">LEFT</a></td>
+          <td>從文字字串的左邊（開頭）開始，傳回指定數量的字元。</td>
+      </tr>
+      <tr>
+          <td>9. <a href="#len">LEN</a></td>
+          <td>計算一個文字字串的總長度（字元數）。</td>
+      </tr>
+      <tr>
+          <td>10. <a href="#mid">MID</a></td>
+          <td>從文字字串的指定位置開始，傳回指定數量的字元。</td>
+      </tr>
+      <tr>
+          <td>11. <a href="#right">RIGHT</a></td>
+          <td>從文字字串的右邊（結尾）開始，傳回指定數量的字元。</td>
+      </tr>
+      <tr>
+          <td>12. <a href="#find">FIND</a></td>
+          <td>在一個文字字串中尋找另一個文字字串，並回傳其開始的位置編號。此函數<strong>有區分</strong>英文大小寫。</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3>統計與計算函數<span class="hx:absolute hx:-mt-20" id="統計與計算函數"></span>
+    <a href="#%e7%b5%b1%e8%a8%88%e8%88%87%e8%a8%88%e7%ae%97%e5%87%bd%e6%95%b8" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><table>
+  <thead>
+      <tr>
+          <th>Function</th>
+          <th>簡介</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>13. <a href="#average">AVERAGE</a></td>
+          <td>計算所有參數的算術平均值。</td>
+      </tr>
+      <tr>
+          <td>14. <a href="#count">COUNT</a></td>
+          <td>計算一個範圍內包含「數字」的儲存格數量。</td>
+      </tr>
+      <tr>
+          <td>15. <a href="#countif">COUNTIF</a></td>
+          <td>計算一個範圍內符合「單一條件」的儲存格數量。</td>
+      </tr>
+      <tr>
+          <td>16. <a href="#max">MAX</a></td>
+          <td>找出一個範圍內的最大值。</td>
+      </tr>
+      <tr>
+          <td>17. <a href="#min">MIN</a></td>
+          <td>找出一個範圍內的最小值。</td>
+      </tr>
+      <tr>
+          <td>18. <a href="#rank">RANK</a></td>
+          <td>傳回一個數字在一組數字清單中的排名。（註：新版 Excel 建議使用 <code>RANK.EQ</code>）</td>
+      </tr>
+      <tr>
+          <td>19. <a href="#sum">SUM</a></td>
+          <td>將指定的儲存格或範圍中的所有數字加總。</td>
+      </tr>
+      <tr>
+          <td>20. <a href="#sumif">SUMIF</a></td>
+          <td>將一個範圍內符合「單一條件」的對應儲存格加總。</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3>查詢與判斷函數<span class="hx:absolute hx:-mt-20" id="查詢與判斷函數"></span>
+    <a href="#%e6%9f%a5%e8%a9%a2%e8%88%87%e5%88%a4%e6%96%b7%e5%87%bd%e6%95%b8" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><table>
+  <thead>
+      <tr>
+          <th>Function</th>
+          <th>簡介</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>21. <a href="#xlookup">XLOOKUP</a></td>
+          <td>一個強大且靈活的查詢函數，用於在一個範圍或陣列中尋找項目，並傳回對應項目。</td>
+      </tr>
+      <tr>
+          <td>22. <a href="#if">IF</a></td>
+          <td>執行邏輯判斷。如果條件為真，則回傳一個值；如果條件為假，則回傳另一個值。</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2>詳細使用方法<span class="hx:absolute hx:-mt-20" id="詳細使用方法"></span>
+    <a href="#%e8%a9%b3%e7%b4%b0%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><h3>數學與數值函數<span class="hx:absolute hx:-mt-20" id="數學與數值函數-1"></span>
+    <a href="#%e6%95%b8%e5%ad%b8%e8%88%87%e6%95%b8%e5%80%bc%e5%87%bd%e6%95%b8-1" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><h4>INT<span class="hx:absolute hx:-mt-20" id="int"></span>
+    <a href="#int" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li>功能說明：無條件捨去數字的小數部分，傳回整數。</li>
+<li>語法：<code>INT(number)</code></li>
+<li>參數說明：
+<ul>
+<li><code>number</code> (<strong>必要</strong>): 您想要無條件捨去的數字或儲存格參照。</li>
+</ul>
+</li>
+<li>範例：<code>=INT(99.9)</code> 將回傳 <code>99</code>。</li>
+</ul>
+<hr>
+<h4>RAND<span class="hx:absolute hx:-mt-20" id="rand"></span>
+    <a href="#rand" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li>功能說明：產生一個大於或等於 0 且小於 1 的隨機亂數。每次重新計算工作表時，此數值都會變動。</li>
+<li>語法：<code>RAND()</code></li>
+<li>參數說明：
+<ul>
+<li>此函數沒有任何參數。</li>
+</ul>
+</li>
+<li>範例：<code>=RAND()*100</code> 將產生一個 0 到 100 之間的隨機數。</li>
+</ul>
+<hr>
+<h4>SQRT<span class="hx:absolute hx:-mt-20" id="sqrt"></span>
+    <a href="#sqrt" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li>功能說明：計算一個數字的正平方根。</li>
+<li>語法：<code>SQRT(number)</code></li>
+<li>參數說明：
+<ul>
+<li><code>number</code> (<strong>必要</strong>): 您想要計算平方根的數字。此數字必須為正數。</li>
+</ul>
+</li>
+<li>範例：<code>=SQRT(144)</code> 將回傳 <code>12</code>。</li>
+</ul>
+<hr>
+<h4>ROUND<span class="hx:absolute hx:-mt-20" id="round"></span>
+    <a href="#round" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li>功能說明：將數字四捨五入到指定的位數。</li>
+<li>語法：<code>ROUND(number, num_digits)</code></li>
+<li>參數說明：
+<ul>
+<li><code>number</code> (<strong>必要</strong>): 您想要進行四捨五入的數字。</li>
+<li><code>num_digits</code> (<strong>必要</strong>): 您想要四捨五入到的位數。正數代表小數點右側的位數；0 代表整數位；負數代表小數點左側的位數（例如 -1 代表十位數）。</li>
+</ul>
+</li>
+<li>範例：
+<ul>
+<li><code>=ROUND(3.14159, 2)</code> 將回傳 <code>3.14</code>。</li>
+<li><code>=ROUND(12345, -2)</code> 將回傳 <code>12300</code>。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>邏輯函數<span class="hx:absolute hx:-mt-20" id="邏輯函數-1"></span>
+    <a href="#%e9%82%8f%e8%bc%af%e5%87%bd%e6%95%b8-1" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><h4>AND<span class="hx:absolute hx:-mt-20" id="and"></span>
+    <a href="#and" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li>功能說明：檢查所有條件是否都為 TRUE。如果所有條件皆為 TRUE，則回傳 TRUE；只要有任一條件為 FALSE，就回傳 FALSE。</li>
+<li>語法：<code>AND(logical1, [logical2], ...)</code></li>
+<li>參數說明：
+<ul>
+<li><code>logical1</code> (<strong>必要</strong>): 第一個要評估的條件。</li>
+<li><code>logical2</code> (<strong>可選</strong>): 第二個及之後要評估的條件，最多可達 255 個。</li>
+</ul>
+</li>
+<li>範例：<code>=AND(A1&gt;60, B1=&quot;男&quot;)</code> 只有當 A1 大於 60 <strong>且</strong> B1 是 &ldquo;男&rdquo; 時，才會回傳 TRUE。</li>
+</ul>
+<hr>
+<h4>NOT<span class="hx:absolute hx:-mt-20" id="not"></span>
+    <a href="#not" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li>功能說明：將邏輯值反轉。TRUE 變為 FALSE，FALSE 變為 TRUE。</li>
+<li>語法：<code>NOT(logical)</code></li>
+<li>參數說明：
+<ul>
+<li><code>logical</code> (<strong>必要</strong>): 一個可以評估為 TRUE 或 FALSE 的值或運算式。</li>
+</ul>
+</li>
+<li>範例：<code>=NOT(A1=10)</code> 如果 A1 的值<strong>不等於</strong> 10，則回傳 TRUE。</li>
+</ul>
+<hr>
+<h4>OR<span class="hx:absolute hx:-mt-20" id="or"></span>
+    <a href="#or" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li>功能說明：檢查是否有任何一個條件為 TRUE。只要有任一條件為 TRUE，就回傳 TRUE；只有當所有條件都為 FALSE 時，才回傳 FALSE。</li>
+<li>語法：<code>OR(logical1, [logical2], ...)</code></li>
+<li>參數說明：
+<ul>
+<li><code>logical1</code> (<strong>必要</strong>): 第一個要評估的條件。</li>
+<li><code>logical2</code> (<strong>可選</strong>): 第二個及之後要評估的條件，最多可達 255 個。</li>
+</ul>
+</li>
+<li>範例：<code>=OR(A1=&quot;週末&quot;, A1=&quot;國定假日&quot;)</code> 只要 A1 是 &ldquo;週末&rdquo; <strong>或</strong> &ldquo;國定假日&rdquo;，就會回傳 TRUE。</li>
+</ul>
+<hr>
+<h3>文字函數<span class="hx:absolute hx:-mt-20" id="文字函數-1"></span>
+    <a href="#%e6%96%87%e5%ad%97%e5%87%bd%e6%95%b8-1" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><h4>LEFT<span class="hx:absolute hx:-mt-20" id="left"></span>
+    <a href="#left" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li>功能說明：從文字字串的左邊（開頭）開始，傳回指定數量的字元。</li>
+<li>語法：<code>LEFT(text, [num_chars])</code></li>
+<li>參數說明：
+<ul>
+<li><code>text</code> (<strong>必要</strong>): 包含您想擷取字元的文字字串。</li>
+<li><code>num_chars</code> (<strong>可選</strong>): 指定要擷取的字元數。如果省略，預設為 1。</li>
+</ul>
+</li>
+<li>範例：<code>=LEFT(&quot;台北101&quot;, 2)</code> 將回傳 <code>台北</code>。</li>
+</ul>
+<hr>
+<h4>LEN<span class="hx:absolute hx:-mt-20" id="len"></span>
+    <a href="#len" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li>功能說明：計算一個文字字串的總長度（字元數）。</li>
+<li>語法：<code>LEN(text)</code></li>
+<li>參數說明：
+<ul>
+<li><code>text</code> (<strong>必要</strong>): 您想要計算長度的文字。</li>
+</ul>
+</li>
+<li>範例：<code>=LEN(&quot;Hello World&quot;)</code> 將回傳 <code>11</code> (空格也算一個字元)。</li>
+</ul>
+<hr>
+<h4>MID<span class="hx:absolute hx:-mt-20" id="mid"></span>
+    <a href="#mid" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li>功能說明：從文字字串的指定位置開始，傳回指定數量的字元。</li>
+<li>語法：<code>MID(text, start_num, num_chars)</code></li>
+<li>參數說明：
+<ul>
+<li><code>text</code> (<strong>必要</strong>): 包含您想擷取字元的文字字串。</li>
+<li><code>start_num</code> (<strong>必要</strong>): 您要開始擷取的起始字元位置（從 1 開始算）。</li>
+<li><code>num_chars</code> (<strong>必要</strong>): 您要擷取的字元數。</li>
+</ul>
+</li>
+<li>範例：<code>=MID(&quot;我是台灣人&quot;, 3, 2)</code> 將回傳 <code>台灣</code>。</li>
+</ul>
+<hr>
+<h4>RIGHT<span class="hx:absolute hx:-mt-20" id="right"></span>
+    <a href="#right" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li>功能說明：從文字字串的右邊（結尾）開始，傳回指定數量的字元。</li>
+<li>語法：<code>RIGHT(text, [num_chars])</code></li>
+<li>參數說明：
+<ul>
+<li><code>text</code> (<strong>必要</strong>): 包含您想擷取字元的文字字串。</li>
+<li><code>num_chars</code> (<strong>可選</strong>): 指定要擷取的字元數。如果省略，預設為 1。</li>
+</ul>
+</li>
+<li>範例：<code>=RIGHT(&quot;產品編號-ABC&quot;, 3)</code> 將回傳 <code>ABC</code>。</li>
+</ul>
+<hr>
+<h4>FIND<span class="hx:absolute hx:-mt-20" id="find"></span>
+    <a href="#find" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li>功能說明：在一個文字字串中尋找另一個文字字串，並回傳其開始的位置編號。此函數<strong>有區分</strong>英文大小寫。</li>
+<li>語法：<code>FIND(find_text, within_text, [start_num])</code></li>
+<li>參數說明：
+<ul>
+<li><code>find_text</code> (<strong>必要</strong>): 您要尋找的文字。</li>
+<li><code>within_text</code> (<strong>必要</strong>): 包含您要尋找文字的目標字串。</li>
+<li><code>start_num</code> (<strong>可選</strong>): 指定在 <code>within_text</code> 中從第幾個字元開始搜尋。如果省略，預設為 1。</li>
+</ul>
+</li>
+<li>範例：<code>=FIND(&quot;P&quot;, &quot;Apple iPad&quot;)</code> 將回傳 <code>8</code>。</li>
+</ul>
+<hr>
+<h3>統計與計算函數<span class="hx:absolute hx:-mt-20" id="統計與計算函數-1"></span>
+    <a href="#%e7%b5%b1%e8%a8%88%e8%88%87%e8%a8%88%e7%ae%97%e5%87%bd%e6%95%b8-1" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><h4>AVERAGE<span class="hx:absolute hx:-mt-20" id="average"></span>
+    <a href="#average" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li>功能說明：計算所有參數的算術平均值。</li>
+<li>語法：<code>AVERAGE(number1, [number2], ...)</code></li>
+<li>參數說明：
+<ul>
+<li><code>number1</code> (<strong>必要</strong>): 第一個要計算平均的數字、儲存格或範圍。</li>
+<li><code>number2</code> (<strong>可選</strong>): 其他要計算平均的數字、儲存格或範圍。</li>
+</ul>
+</li>
+<li>範例：<code>=AVERAGE(A1:A10)</code> 會計算 A1 到 A10 儲存格中所有數字的平均值。</li>
+</ul>
+<hr>
+<h4>COUNT<span class="hx:absolute hx:-mt-20" id="count"></span>
+    <a href="#count" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li>功能說明：計算一個範圍內包含「數字」的儲存格數量。</li>
+<li>語法：<code>COUNT(value1, [value2], ...)</code></li>
+<li>參數說明：
+<ul>
+<li><code>value1</code> (<strong>必要</strong>): 第一個要計算的項目、儲存格參照或範圍。</li>
+<li><code>value2</code> (<strong>可選</strong>): 其他要計算的項目、儲存格參照或範圍。</li>
+</ul>
+</li>
+<li>範例：若 A1=95, A2=&ldquo;缺考&rdquo;, A3=88，則 <code>=COUNT(A1:A3)</code> 會回傳 <code>2</code>。</li>
+</ul>
+<hr>
+<h4>COUNTIF<span class="hx:absolute hx:-mt-20" id="countif"></span>
+    <a href="#countif" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li>功能說明：計算一個範圍內符合「單一條件」的儲存格數量。</li>
+<li>語法：<code>COUNTIF(range, criteria)</code></li>
+<li>參數說明：
+<ul>
+<li><code>range</code> (<strong>必要</strong>): 您想要計算的儲存格範圍。</li>
+<li><code>criteria</code> (<strong>必要</strong>): 用來決定哪些儲存格要被計算的條件（可以是數字、運算式、文字）。</li>
+</ul>
+</li>
+<li>範例：<code>=COUNTIF(B1:B20, &quot;&gt;=60&quot;)</code> 會計算 B1 到 B20 範圍內，數值大於或等於 60 的儲存格數量。</li>
+</ul>
+<hr>
+<h4>MAX<span class="hx:absolute hx:-mt-20" id="max"></span>
+    <a href="#max" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li>功能說明：找出一個範圍內的最大值。</li>
+<li>語法：<code>MAX(number1, [number2], ...)</code></li>
+<li>參數說明：
+<ul>
+<li><code>number1</code> (<strong>必要</strong>): 第一個要尋找最大值的數字、儲存格或範圍。</li>
+<li><code>number2</code> (<strong>可選</strong>): 其他要比較大小的數字、儲存格或範圍。</li>
+</ul>
+</li>
+<li>範例：<code>=MAX(A1:A10)</code> 會回傳 A1 到 A10 範圍中的最大值。</li>
+</ul>
+<hr>
+<h4>MIN<span class="hx:absolute hx:-mt-20" id="min"></span>
+    <a href="#min" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li>功能說明：找出一個範圍內的最小值。</li>
+<li>語法：<code>MIN(number1, [number2], ...)</code></li>
+<li>參數說明：
+<ul>
+<li><code>number1</code> (<strong>必要</strong>): 第一個要尋找最小值的數字、儲存格或範圍。</li>
+<li><code>number2</code> (<strong>可選</strong>): 其他要比較大小的數字、儲存格或範圍。</li>
+</ul>
+</li>
+<li>範例：<code>=MIN(A1:A10)</code> 會回傳 A1 到 A10 範圍中的最小值。</li>
+</ul>
+<hr>
+<h4>RANK<span class="hx:absolute hx:-mt-20" id="rank"></span>
+    <a href="#rank" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li>功能說明：傳回一個數字在一組數字清單中的排名。（註：新版 Excel 建議使用 <code>RANK.EQ</code>）</li>
+<li>語法：<code>RANK(number, ref, [order])</code></li>
+<li>參數說明：
+<ul>
+<li><code>number</code> (<strong>必要</strong>): 您想要知道排名的數字。</li>
+<li><code>ref</code> (<strong>必要</strong>): 包含數字清單的範圍。</li>
+<li><code>order</code> (<strong>可選</strong>): 指定排名的順序。<code>0</code> 或省略代表遞減（高分是第 1 名）；任何非零值代表遞增（低分是第 1 名）。</li>
+</ul>
+</li>
+<li>範例：<code>=RANK(A1, A1:A20, 0)</code> 會計算 A1 的值在 A1:A20 範圍中的排名（遞減排序）。</li>
+</ul>
+<hr>
+<h4>SUM<span class="hx:absolute hx:-mt-20" id="sum"></span>
+    <a href="#sum" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li>功能說明：將指定的儲存格或範圍中的所有數字加總。</li>
+<li>語法：<code>SUM(number1, [number2], ...)</code></li>
+<li>參數說明：
+<ul>
+<li><code>number1</code> (<strong>必要</strong>): 第一個要加總的數字、儲存格或範圍。</li>
+<li><code>number2</code> (<strong>可選</strong>): 其他要加總的數字、儲存格或範圍。</li>
+</ul>
+</li>
+<li>範例：<code>=SUM(A1:A10)</code> 會將 A1 到 A10 的所有數值相加。</li>
+</ul>
+<hr>
+<h4>SUMIF<span class="hx:absolute hx:-mt-20" id="sumif"></span>
+    <a href="#sumif" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li>功能說明：將一個範圍內符合「單一條件」的對應儲存格加總。</li>
+<li>語法：<code>SUMIF(range, criteria, [sum_range])</code></li>
+<li>參數說明：
+<ul>
+<li><code>range</code> (<strong>必要</strong>): 用於條件判斷的儲存格範圍。</li>
+<li><code>criteria</code> (<strong>必要</strong>): 決定哪些儲存格要被加總的條件。</li>
+<li><code>sum_range</code> (<strong>可選</strong>): 實際要進行加總的儲存格範圍。如果省略，則會加總 <code>range</code> 參數中的數字。</li>
+</ul>
+</li>
+<li>範例：<code>=SUMIF(A1:A10, &quot;水果&quot;, B1:B10)</code> 會在 A1:A10 範圍中尋找 &ldquo;水果&rdquo;，並將 B1:B10 範圍中對應的數值加總。</li>
+</ul>
+<hr>
+<h3>查詢與判斷函數<span class="hx:absolute hx:-mt-20" id="查詢與判斷函數-1"></span>
+    <a href="#%e6%9f%a5%e8%a9%a2%e8%88%87%e5%88%a4%e6%96%b7%e5%87%bd%e6%95%b8-1" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><h4>XLOOKUP<span class="hx:absolute hx:-mt-20" id="xlookup"></span>
+    <a href="#xlookup" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li>功能說明：一個強大且靈活的查詢函數，用於在一個範圍或陣列中尋找項目，並傳回對應項目。</li>
+<li>語法：<code>XLOOKUP(lookup_value, lookup_array, return_array, [if_not_found], [match_mode], [search_mode])</code></li>
+<li>參數說明：
+<ul>
+<li><code>lookup_value</code> (<strong>必要</strong>): 您要尋找的值。</li>
+<li><code>lookup_array</code> (<strong>必要</strong>): 要在其中搜尋的範圍或陣列。</li>
+<li><code>return_array</code> (<strong>必要</strong>): 要從中傳回值的範圍或陣列。</li>
+<li><code>if_not_found</code> (<strong>可選</strong>): 如果找不到相符項目時要傳回的值。若省略，則會回傳 #N/A 錯誤。</li>
+<li><code>match_mode</code> (<strong>可選</strong>): 指定比對方式。<code>0</code> (預設)為完全相符；<code>-1</code> 為下一個較小項目；<code>1</code> 為下一個較大項目；<code>2</code> 為萬用字元比對。</li>
+<li><code>search_mode</code> (<strong>可選</strong>): 指定搜尋模式。<code>1</code> (預設)從第一個項目開始搜尋；<code>-1</code> 從最後一個項目開始反向搜尋。</li>
+</ul>
+</li>
+<li>範例：<code>=XLOOKUP(&quot;S003&quot;, A1:A100, B1:B100, &quot;查無此員工&quot;)</code> 會在 A 欄中尋找 &ldquo;S003&rdquo;，回傳 B 欄對應的姓名，如果找不到則顯示 &ldquo;查無此員工&rdquo;。</li>
+</ul>
+<hr>
+<h4>IF<span class="hx:absolute hx:-mt-20" id="if"></span>
+    <a href="#if" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ul>
+<li>功能說明：執行邏輯判斷。如果條件為真，則回傳一個值；如果條件為假，則回傳另一個值。</li>
+<li>語法：<code>IF(logical_test, value_if_true, [value_if_false])</code></li>
+<li>參數說明：
+<ul>
+<li><code>logical_test</code> (<strong>必要</strong>): 任何可以評估為 TRUE 或 FALSE 的值或運算式。</li>
+<li><code>value_if_true</code> (<strong>必要</strong>): 當 <code>logical_test</code> 為 TRUE 時要傳回的值。</li>
+<li><code>value_if_false</code> (<strong>可選</strong>): 當 <code>logical_test</code> 為 FALSE 時要傳回的值。如果省略，則會回傳 <code>FALSE</code>。</li>
+</ul>
+</li>
+<li>範例：<code>=IF(A1&gt;=60, &quot;及格&quot;, &quot;不及格&quot;)</code> 如果 A1 的分數大於或等於 60，就顯示 &ldquo;及格&rdquo;，否則顯示 &ldquo;不及格&rdquo;。</li>
+</ul>
 
+        </div>
+        <div class="hx:mt-16"></div>
+        <div class="hx:mb-8 hx:flex hx:items-center hx:border-t hx:pt-8 hx:border-gray-200 hx:dark:border-neutral-800 hx:contrast-more:border-neutral-400 hx:dark:contrast-more:border-neutral-400 hx:print:hidden"><a
+        href="/docs/school/6-ict/a1-03%E5%A4%9A%E5%AA%92%E9%AB%94/"
+        title="A1 多媒體"
+        class="hx:flex hx:max-w-[50%] hx:items-center hx:gap-1 hx:py-4 hx:text-base hx:font-medium hx:text-gray-600 hx:transition-colors [word-break:break-word] hx:hover:text-primary-600 hx:dark:text-gray-300 hx:md:text-lg hx:ltr:pr-4 hx:rtl:pl-4"
+      ><svg class="hx:inline hx:h-5 hx:shrink-0 hx:ltr:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>A1 多媒體</a><a
+        href="/docs/school/6-ict/a2-02%E6%95%B8%E6%93%9A%E5%BA%AB/"
+        title="A2 數據庫"
+        class="hx:flex hx:max-w-[50%] hx:items-center hx:gap-1 hx:py-4 hx:text-base hx:font-medium hx:text-gray-600 hx:transition-colors [word-break:break-word] hx:hover:text-primary-600 hx:dark:text-gray-300 hx:md:text-lg hx:ltr:ml-auto hx:ltr:pl-4 hx:ltr:text-right hx:rtl:mr-auto hx:rtl:pr-4 hx:rtl:text-left"
+      >A2 數據庫<svg class="hx:inline hx:h-5 hx:shrink-0 hx:rtl:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a></div>
+        <script>
+  function getGiscusTheme() {
+    const giscusTheme = '';
+    if (giscusTheme === 'light' || giscusTheme === 'dark') {
+      return giscusTheme;
+    }
+
+    const hugoTheme = localStorage.getItem("color-theme");
+    if (hugoTheme === 'light' || hugoTheme === 'dark') {
+      return hugoTheme;
+    }
+
+    if (hugoTheme === 'system') {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    const defaultTheme = 'dark';
+    if (defaultTheme === 'light' || defaultTheme === 'dark') {
+      return defaultTheme;
+    }
+
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function setGiscusTheme() {
+    const iframe = document.querySelector('iframe.giscus-frame');
+    if (!iframe) return;
+
+    const msg = {
+      giscus: {
+        setConfig: {
+          theme: getGiscusTheme(),
+        },
+      },
+    }
+
+    iframe.contentWindow.postMessage(msg, 'https://giscus.app');
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const giscusAttributes = {
+      "src": "https://giscus.app/client.js",
+      "data-repo": "spectre-pro\/spectre-pro.github.io",
+      "data-repo-id": "R_kgDOQvTgDA",
+      "data-category": "Announcements",
+      "data-category-id": "DIC_kwDOQvTgDM4C0Q9E",
+      "data-mapping": "pathname",
+      "data-strict": "0",
+      "data-reactions-enabled": "1",
+      "data-emit-metadata": "0",
+      "data-input-position": "top",
+      "data-theme": getGiscusTheme(),
+      "data-lang": "en",
+      "crossorigin": "anonymous",
+      "async": "",
+    };
+
+    
+    const giscusScript = document.createElement("script");
+    Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+    
+    document.getElementById('giscus-hextra-bb112b9f807c37c1752e5da6a1652a29').appendChild(giscusScript);
+
+    
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", setGiscusTheme);
+
+    
+    const themeToggleOptions = document.querySelectorAll(".hextra-theme-toggle-options p");
+    if (themeToggleOptions) {
+      themeToggleOptions.forEach(toggle => toggle.addEventListener('click', setGiscusTheme));
+    }
+  });
+</script>
+
+<div id="giscus-hextra-bb112b9f807c37c1752e5da6a1652a29"></div>
       </main>
     </article>
   </div>
