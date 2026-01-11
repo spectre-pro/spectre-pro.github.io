@@ -25,7 +25,7 @@ weight: 2
 {{< card link="3" title="Chrome Dino" icon="game">}}
 {{< /cards >}}
 
-# Other
+## Other
 {{< cards >}}
 {{< card link="6" title="Voxel Architect Pro - 空間手繪設計師" icon="game">}}
 {{< /cards >}}
