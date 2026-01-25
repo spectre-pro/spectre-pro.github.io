@@ -42,6 +42,11 @@ YouTube BiliBili - Published 2026-01-06
 描寫山間秋夜雨後清幽的景色，流露對山居生活的喜愛，並抒發厭倦官場、樂意歸隱的高潔情懷。
 體裁： 五言律詩
 段落分析： 首聯： 總寫山景，點明時間與季節。 頷聯： 描寫自然景物（松林、明月、清泉 …
+- [月下獨酌](https://www.spectrepro.dev/docs/school/1-chinese/5-%E6%9C%88%E4%B8%8B%E7%8D%A8%E9%85%8C/): 花間一壺酒，獨酌無相親。
+在花叢中擺放了一壺美酒，我獨自一人自斟自飲，沒有親近的人陪伴。
+舉杯邀明月，對影成三人。
+我舉起酒杯邀請天上的明月，對著自己在月光下的影子，便湊成了三個人。
+月既不解飲，影徒 …
 
 #### English
 - [Tenses](https://www.spectrepro.dev/docs/school/2-english/1-tenses/): 理解英文時態的關鍵在於掌握兩個核心概念：
@@ -107,5 +112,5 @@ W=Fs W = Fs W=Fs 力 (FFF) 位移 (sss) 所作的功 (WWW) 動能 …
 一、隱私權保護政策的適用 … - Published 2026-01-06
 
 ---
-Generated on 2026-01-13 20:03:07 UTC
+Generated on 2026-01-25 13:07:36 UTC
 Site: https://www.spectrepro.dev/
