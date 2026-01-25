@@ -1,0 +1,19 @@
+backToTop: "Scroll to top"
+changeLanguage: "Change language"
+changeTheme: "Change theme"
+copyCode: "Copy code"
+copyright: |
+  <p>&copy;<script>document.write(new Date().getFullYear())</script>&nbsp;SPECTRE All rights reserved.&nbsp;<br>|&nbsp;<a href="/privacy-policy" style="color: inherit;">Privacy Policy</a></p>|&nbsp;<a href="/contact" style="color: inherit;">Contact Us</a></p>
+dark: "Dark"
+editThisPage: "Edit this page on GitHub →"
+lastUpdated: "Last updated on"
+light: "Light"
+next: "Next"
+noResultsFound: "No results found."
+onThisPage: "On this page"
+previous: "Prev"
+readMore: "Read more →"
+searchPlaceholder: "Search..."
+system: "System"
+tags: "Tags"
+poweredBy: '<a href="https://github.com/spectre-pro" target="_blank" rel="noopener noreferrer">Powered by SPECTRE</a>'
