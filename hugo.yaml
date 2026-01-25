@@ -92,3 +92,7 @@ enableGitInfo: true
 frontmatter:
   date: [":git", "date", "publishDate", "lastmod"]
   lastmod: [":git", "lastmod", "date", "publishDate"]
+
+caches:
+  images:
+    dir: :cacheDir/images
