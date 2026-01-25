@@ -1,5 +1,6 @@
 baseURL: https://www.spectrepro.dev/
 languageCode: zh-tw
+defaultContentLanguage: zh-tw
 title: SPECTRE NOTE
 theme: hextra
 
