@@ -27,6 +27,7 @@ params:
       repoId: R_kgDOQvTgDA
       category: Announcements
       categoryId: DIC_kwDOQvTgDM4C0Q9E
+      lang: en
   editURL:
     enable: true
     base: "https://github.com/spectre-pro/spectre-pro.github.io/blob/main/content"
