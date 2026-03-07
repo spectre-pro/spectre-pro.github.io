@@ -10,7 +10,7 @@ weight: 2
 | **[Type 2](#type-2)** | 現在/未來 | 與事實相反 (幻想) | 過去簡單式 | would + 原型動詞 |
 | **[Type 3](#type-3)** | 過去 | 與事實相反 (後悔) | 過去完成式 (had V3) | would have + V3 |
 
-# Type 0
+## Type 0
 *   **用法：** 表達**事實、科學真理、習慣**或必然的結果。
 *   **公式：** `If + 現在簡單式, 現在簡單式`
 *   **範例：**
@@ -18,7 +18,7 @@ weight: 2
     *   If it **rains**, the ground **gets** wet. (如果下雨，地面會變濕。)
 
 
-# Type 1
+## Type 1
 *   **用法：** 表達**未來可能發生**的情況及其結果。這是有可能成真的。
 *   **公式：** `If + 現在簡單式, will / can / may / must + 原型動詞`
 *   **範例：**
@@ -26,7 +26,7 @@ weight: 2
     *   If you **study** hard, you **will pass** the exam. (如果你努力讀書，你就會通過考試。)
 
 
-# Type 2
+## Type 2
 *   **用法：** 表達**與現在事實相反**的假設，或是**極不可能發生**的想像。
 *   **公式：** `If + 過去簡單式, would / could / might + 原型動詞`
 *   **注意：** 在 If 子句中，若動詞是 be 動詞，無論主詞是誰，通常都使用 **were**（較正式）。
@@ -35,7 +35,7 @@ weight: 2
     *   If I **won** the lottery, I **would travel** around the world. (如果我中了樂透，我就會環遊世界。但機率極低。)
 
 
-# Type 3
+## Type 3
 *   **用法：** 表達**與過去事實相反**的假設。通常帶有「後悔」或「早知道就...」的情緒。
 *   **公式：** `If + 過去完成式 (had + p.p.), would / could / might + have + 過去分詞 (p.p.)`
 *   **範例：**
@@ -43,7 +43,7 @@ weight: 2
     *   If we **had left** earlier, we **wouldn't have missed** the train. (如果我們早點出發，就不會錯過火車了。)
 
 
-# 💡 小撇步：
+## 💡 小撇步：
 1.  **逗號用法：** 如果 `If` 在句首，中間要加逗號；如果 `If` 在句中，則不需要逗號。
     *   *If I am tired, I will sleep.*
     *   *I will sleep if I am tired.*
