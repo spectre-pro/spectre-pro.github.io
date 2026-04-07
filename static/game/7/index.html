@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Draw</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+TC:wght@400;500;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -16,28 +19,32 @@
             --bg-input: #0f131a;
             --border-subtle: rgba(255, 255, 255, 0.06);
             --border-active: rgba(56, 189, 248, 0.3);
-            
+
             /* 主色調：Neon Cyan */
             --primary: #22d3ee;
             --primary-dim: rgba(34, 211, 238, 0.1);
             --primary-glow: rgba(34, 211, 238, 0.4);
-            
+
             /* 文字 */
             --text-main: #e2e8f0;
             --text-muted: #64748b;
-            
+
             /* 狀態色 */
             --success: #10b981;
             --warning: #f59e0b;
             --danger: #ef4444;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             background-color: var(--bg-deep);
             /* 科技感網格背景 */
-            background-image: 
+            background-image:
                 linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
             background-size: 40px 40px;
@@ -53,11 +60,13 @@
         .app-container {
             width: 100%;
             max-width: 1100px;
-            height: 85vh; /* 固定高度以容納滾動 */
+            height: 85vh;
+            /* 固定高度以容納滾動 */
             background: var(--bg-panel);
             border: 1px solid var(--border-subtle);
-            border-radius: 16px; /* 稍微方形的角 */
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border-radius: 16px;
+            /* 稍微方形的角 */
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
             display: grid;
             grid-template-columns: 320px 1fr;
             overflow: hidden;
@@ -66,7 +75,7 @@
         /* 左側欄 */
         .sidebar {
             padding: 30px;
-            background: rgba(0,0,0,0.2);
+            background: rgba(0, 0, 0, 0.2);
             border-right: 1px solid var(--border-subtle);
             display: flex;
             flex-direction: column;
@@ -83,10 +92,17 @@
             gap: 10px;
             margin-bottom: 10px;
         }
-        .brand i { color: var(--primary); }
 
-        .control-group { display: flex; flex-direction: column; gap: 8px; }
-        
+        .brand i {
+            color: var(--primary);
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
         .label {
             font-size: 0.75rem;
             text-transform: uppercase;
@@ -96,9 +112,14 @@
         }
 
         /* 輸入框樣式 - 極簡風 */
-        .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        
-        input[type="number"], input[type="text"] {
+        .input-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        input[type="number"],
+        input[type="text"] {
             width: 100%;
             background: var(--bg-input);
             border: 1px solid var(--border-subtle);
@@ -124,7 +145,10 @@
             transition: height 0.2s;
             margin-top: -4px;
         }
-        .error-msg.visible { height: 20px; }
+
+        .error-msg.visible {
+            height: 20px;
+        }
 
         /* 開關樣式 */
         .toggle-wrapper {
@@ -136,24 +160,55 @@
             border-radius: 8px;
             border: 1px solid var(--border-subtle);
         }
-        .toggle-label { font-size: 0.9rem; }
+
+        .toggle-label {
+            font-size: 0.9rem;
+        }
 
         .switch {
-            position: relative; display: inline-block; width: 40px; height: 22px;
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 22px;
         }
-        .switch input { opacity: 0; width: 0; height: 0; }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
         .slider {
-            position: absolute; cursor: pointer;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: #334155; transition: .3s; border-radius: 4px;
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #334155;
+            transition: .3s;
+            border-radius: 4px;
         }
+
         .slider:before {
-            position: absolute; content: "";
-            height: 16px; width: 16px; left: 3px; bottom: 3px;
-            background-color: white; transition: .3s; border-radius: 3px;
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 3px;
         }
-        input:checked + .slider { background-color: var(--primary); }
-        input:checked + .slider:before { transform: translateX(18px); }
+
+        input:checked+.slider {
+            background-color: var(--primary);
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(18px);
+        }
 
         /* 主顯示區 */
         .main-display {
@@ -181,17 +236,43 @@
             position: relative;
             overflow: hidden;
         }
-        .stat-card::after {
-            content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%;
-        }
-        .stat-card.drawn::after { background: var(--success); }
-        .stat-card.remaining::after { background: var(--warning); }
 
-        .stat-value { font-size: 2rem; font-weight: 800; font-family: 'Inter', sans-serif; }
-        .stat-label { font-size: 0.85rem; color: var(--text-muted); margin-top: 5px; }
-        
-        .stat-card.drawn .stat-value { color: var(--success); }
-        .stat-card.remaining .stat-value { color: var(--warning); }
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+        }
+
+        .stat-card.drawn::after {
+            background: var(--success);
+        }
+
+        .stat-card.remaining::after {
+            background: var(--warning);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+
+        .stat-card.drawn .stat-value {
+            color: var(--success);
+        }
+
+        .stat-card.remaining .stat-value {
+            color: var(--warning);
+        }
 
         /* 主要按鈕 */
         .draw-btn {
@@ -213,9 +294,16 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        .draw-btn:hover { background: #67e8f9; transform: translateY(-1px); }
-        .draw-btn:active { transform: translateY(0); }
-        
+
+        .draw-btn:hover {
+            background: #67e8f9;
+            transform: translateY(-1px);
+        }
+
+        .draw-btn:active {
+            transform: translateY(0);
+        }
+
         .draw-btn:disabled {
             background: #334155;
             color: #64748b;
@@ -270,8 +358,15 @@
         }
 
         @keyframes popIn {
-            from { opacity: 0; transform: scale(0.5) translateY(20px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
+            from {
+                opacity: 0;
+                transform: scale(0.5) translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
         }
 
         /* 歷史區域 */
@@ -305,8 +400,16 @@
             transition: all 0.2s;
             margin-left: 8px;
         }
-        .icon-btn:hover { background: var(--border-subtle); color: var(--text-main); }
-        .icon-btn.danger:hover { border-color: var(--danger); color: var(--danger); }
+
+        .icon-btn:hover {
+            background: var(--border-subtle);
+            color: var(--text-main);
+        }
+
+        .icon-btn.danger:hover {
+            border-color: var(--danger);
+            color: var(--danger);
+        }
 
         .tags-scroll {
             display: flex;
@@ -316,11 +419,20 @@
             overflow-y: auto;
             padding-right: 5px;
         }
-        
+
         /* 滾動條樣式 */
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 2px; }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 2px;
+        }
 
         .tag {
             background: rgba(16, 185, 129, 0.1);
@@ -336,8 +448,11 @@
         .remaining-section {
             margin-top: 20px;
         }
-        .remaining-section.hidden { display: none; }
-        
+
+        .remaining-section.hidden {
+            display: none;
+        }
+
         .remaining-tags .tag {
             background: rgba(245, 158, 11, 0.1);
             color: var(--warning);
@@ -346,13 +461,23 @@
 
         /* 彈窗 */
         .modal-overlay {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background: rgba(0, 0, 0, 0.8);
-            display: none; justify-content: center; align-items: center; z-index: 1000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
             backdrop-filter: blur(4px);
         }
-        .modal-overlay.active { display: flex; }
-        
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
         .modal {
             background: var(--bg-panel);
             border: 1px solid var(--border-subtle);
@@ -361,350 +486,418 @@
             width: 90%;
             max-width: 360px;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
         }
-        .modal h3 { color: var(--danger); margin-bottom: 15px; font-size: 1.2rem; }
-        .modal p { color: var(--text-muted); margin-bottom: 25px; line-height: 1.5; font-size: 0.95rem; }
-        
-        .modal-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+
+        .modal h3 {
+            color: var(--danger);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .modal p {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        .modal-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
         .btn {
-            padding: 12px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 0.9rem;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.9rem;
             transition: opacity 0.2s;
         }
-        .btn-primary { background: var(--primary); color: #000; }
-        .btn-secondary { background: var(--bg-input); color: var(--text-main); border: 1px solid var(--border-subtle); }
-        .btn:hover { opacity: 0.9; }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #000;
+        }
+
+        .btn-secondary {
+            background: var(--bg-input);
+            color: var(--text-main);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
 
         @media (max-width: 768px) {
-            .app-container { grid-template-columns: 1fr; height: auto; min-height: 100vh; border-radius: 0; }
-            .sidebar { padding: 20px; border-right: none; border-bottom: 1px solid var(--border-subtle); }
-            .main-display { padding: 20px; }
-            .number-chip { width: 60px; height: 60px; font-size: 1.5rem; }
+            .app-container {
+                grid-template-columns: 1fr;
+                height: auto;
+                min-height: 100vh;
+                border-radius: 0;
+            }
+
+            .sidebar {
+                padding: 20px;
+                border-right: none;
+                border-bottom: 1px solid var(--border-subtle);
+            }
+
+            .main-display {
+                padding: 20px;
+            }
+
+            .number-chip {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
+
 <body>
-
-<div class="app-container">
-    <!-- 左側設定 -->
-    <aside class="sidebar">
-        <div class="brand">
-            <i class="fas fa-bolt"></i>DRAW
-        </div>
-
-        <div class="control-group">
-            <label class="label">數字範圍</label>
-            <div class="input-row">
-                <input type="number" id="minVal" value="1" placeholder="Min">
-                <input type="number" id="maxVal" value="100" placeholder="Max">
+    <div class="app-container">
+        <!-- 左側設定 -->
+        <aside class="sidebar">
+            <div class="brand">
+                <i class="fas fa-bolt"></i>DRAW
             </div>
-            <div id="rangeError" class="error-msg">⚠ 最小值必須小於最大值</div>
-        </div>
-
-        <div class="control-group">
-            <label class="label">每次抽取數量</label>
-            <input type="number" id="drawCount" value="1" min="1">
-            <div id="countError" class="error-msg">⚠ 數量超出剩餘範圍</div>
-        </div>
-
-        <div class="control-group">
-            <label class="label">排除數字 (用逗號分隔)</label>
-            <input type="text" id="excludeList" placeholder="例如: 1, 13, 50">
-            <div id="excludeError" class="error-msg">⚠ 排除數字超出範圍</div>
-        </div>
-
-        <div class="toggle-wrapper">
-            <span class="toggle-label">不重複模式</span>
-            <label class="switch">
-                <input type="checkbox" id="removeMode" checked>
-                <span class="slider"></span>
-            </label>
-        </div>
-        
-        <div style="margin-top: auto; font-size: 0.75rem; color: var(--text-muted); text-align: center;">
-            
-        </div>
-    </aside>
-
-    <!-- 右側顯示 -->
-    <main class="main-display">
-        
-        <!-- 統計 -->
-        <div class="stats-bar">
-            <div class="stat-card drawn">
-                <div class="stat-value" id="drawnCount">0</div>
-                <div class="stat-label">已抽取總數</div>
+            <div class="control-group">
+                <label class="label">數字範圍</label>
+                <div class="input-row">
+                    <input type="number" id="minVal" value="1" placeholder="Min">
+                    <input type="number" id="maxVal" value="100" placeholder="Max">
+                </div>
+                <div id="rangeError" class="error-msg">⚠ 請輸入有效的數字範圍</div>
             </div>
-            <div class="stat-card remaining">
-                <div class="stat-value" id="remainingCount">100</div>
-                <div class="stat-label">剩餘可抽取</div>
+            <div class="control-group">
+                <label class="label">每次抽取數量</label>
+                <input type="number" id="drawCount" value="1" min="1">
+                <div id="countError" class="error-msg">⚠ 數量必須大於 0</div>
             </div>
-        </div>
+            <div class="control-group">
+                <label class="label">排除數字 (用逗號分隔)</label>
+                <input type="text" id="excludeList" placeholder="例如: 1, 13, 50">
+                <div id="excludeError" class="error-msg">⚠ 排除數字超出範圍</div>
+            </div>
+            <div class="toggle-wrapper">
+                <span class="toggle-label">不重複模式</span>
+                <label class="switch">
+                    <input type="checkbox" id="removeMode" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
 
-        <!-- 按鈕 -->
-        <button class="draw-btn" id="drawBtn">
-            <i class="fas fa-play"></i> 開始抽取
-        </button>
+            <div style="margin-top: auto; font-size: 0.75rem; color: var(--text-muted); text-align: center;">
 
-        <!-- 結果顯示 -->
-        <div class="result-area">
-            <div id="welcomeMsg" class="welcome-text">系統就緒，等待指令輸入...</div>
-            <div class="number-grid" id="numberGrid"></div>
-        </div>
+            </div>
+        </aside>
+        <!-- 右側顯示 -->
+        <main class="main-display">
 
-        <!-- 歷史 -->
-        <div class="history-section">
-            <div class="section-header">
-                <span class="section-title">已抽取歷史</span>
-                <div>
-                    <button class="icon-btn" id="copyBtn" title="複製歷史"><i class="fas fa-copy"></i></button>
-                    <button class="icon-btn danger" id="clearBtn" title="重置系統"><i class="fas fa-trash"></i></button>
+            <!-- 統計 -->
+            <div class="stats-bar">
+                <div class="stat-card drawn">
+                    <div class="stat-value" id="drawnCount">0</div>
+                    <div class="stat-label">已抽取總數</div>
+                </div>
+                <div class="stat-card remaining">
+                    <div class="stat-value" id="remainingCount">100</div>
+                    <div class="stat-label">剩餘可抽取</div>
                 </div>
             </div>
-            <div class="tags-scroll" id="historyTags">
-                <span class="welcome-text" style="font-size: 0.85rem;">尚無記錄</span>
+            <!-- 按鈕 -->
+            <button class="draw-btn" id="drawBtn">
+                <i class="fas fa-play"></i> 開始抽取
+            </button>
+            <!-- 結果顯示 -->
+            <div class="result-area">
+                <div id="welcomeMsg" class="welcome-text">系統就緒，等待指令輸入...</div>
+                <div class="number-grid" id="numberGrid"></div>
             </div>
-        </div>
-
-        <!-- 剩餘名單 -->
-        <div class="remaining-section hidden" id="remainingSection">
-            <div class="section-header">
-                <span class="section-title">可抽取名單 (池)</span>
+            <!-- 歷史 -->
+            <div class="history-section">
+                <div class="section-header">
+                    <span class="section-title">已抽取歷史</span>
+                    <div>
+                        <button class="icon-btn" id="copyBtn" title="複製歷史"><i class="fas fa-copy"></i></button>
+                        <button class="icon-btn danger" id="clearBtn" title="重置系統"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+                <div class="tags-scroll" id="historyTags">
+                    <span class="welcome-text" style="font-size: 0.85rem;">尚無記錄</span>
+                </div>
             </div>
-            <div class="tags-scroll remaining-tags" id="remainingTags"></div>
-        </div>
-    </main>
-</div>
-
-<!-- 彈窗 -->
-<div class="modal-overlay" id="modalOverlay">
-    <div class="modal">
-        <h3><i class="fas fa-exclamation-triangle"></i> 數量不足</h3>
-        <p id="modalMsg">剩餘可抽取數字為 <strong style="color:var(--warning)">0</strong> 個，無法滿足當前設定。</p>
-        <div class="modal-actions">
-            <button class="btn btn-secondary" id="modalLater">取消</button>
-            <button class="btn btn-primary" id="modalReset">重置系統</button>
+            <!-- 剩餘名單 -->
+            <div class="remaining-section hidden" id="remainingSection">
+                <div class="section-header">
+                    <span class="section-title">可抽取名單 (池)</span>
+                </div>
+                <div class="tags-scroll remaining-tags" id="remainingTags"></div>
+            </div>
+        </main>
+    </div>
+    <!-- 彈窗 -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <h3><i class="fas fa-exclamation-triangle"></i> 數量不足</h3>
+            <p id="modalMsg">剩餘可抽取數字為 <strong style="color:var(--warning)">0</strong> 個，無法滿足當前設定。</p>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" id="modalLater">取消</button>
+                <button class="btn btn-primary" id="modalReset">重置系統</button>
+            </div>
         </div>
     </div>
-</div>
+    <script>
+        // 狀態管理
+        let drawnHistory = [];
+        let currentPool = [];
 
-<script>
-    // 狀態管理
-    let drawnHistory = [];
-    let currentPool = [];
-    
-    // DOM 元素
-    const els = {
-        min: document.getElementById('minVal'),
-        max: document.getElementById('maxVal'),
-        count: document.getElementById('drawCount'),
-        exclude: document.getElementById('excludeList'),
-        removeMode: document.getElementById('removeMode'),
-        drawBtn: document.getElementById('drawBtn'),
-        clearBtn: document.getElementById('clearBtn'),
-        copyBtn: document.getElementById('copyBtn'),
-        grid: document.getElementById('numberGrid'),
-        history: document.getElementById('historyTags'),
-        welcome: document.getElementById('welcomeMsg'),
-        remainingSection: document.getElementById('remainingSection'),
-        remainingTags: document.getElementById('remainingTags'),
-        drawnCount: document.getElementById('drawnCount'),
-        remainingCount: document.getElementById('remainingCount'),
-        rangeErr: document.getElementById('rangeError'),
-        countErr: document.getElementById('countError'),
-        excludeErr: document.getElementById('excludeError'),
-        modal: document.getElementById('modalOverlay'),
-        modalMsg: document.getElementById('modalMsg'),
-        modalReset: document.getElementById('modalReset'),
-        modalLater: document.getElementById('modalLater')
-    };
+        // DOM 元素
+        const els = {
+            min: document.getElementById('minVal'),
+            max: document.getElementById('maxVal'),
+            count: document.getElementById('drawCount'),
+            exclude: document.getElementById('excludeList'),
+            removeMode: document.getElementById('removeMode'),
+            drawBtn: document.getElementById('drawBtn'),
+            clearBtn: document.getElementById('clearBtn'),
+            copyBtn: document.getElementById('copyBtn'),
+            grid: document.getElementById('numberGrid'),
+            history: document.getElementById('historyTags'),
+            welcome: document.getElementById('welcomeMsg'),
+            remainingSection: document.getElementById('remainingSection'),
+            remainingTags: document.getElementById('remainingTags'),
+            drawnCount: document.getElementById('drawnCount'),
+            remainingCount: document.getElementById('remainingCount'),
+            rangeErr: document.getElementById('rangeError'),
+            countErr: document.getElementById('countError'),
+            excludeErr: document.getElementById('excludeError'),
+            modal: document.getElementById('modalOverlay'),
+            modalMsg: document.getElementById('modalMsg'),
+            modalReset: document.getElementById('modalReset'),
+            modalLater: document.getElementById('modalLater')
+        };
 
-    // 解析排除列表
-    function parseExcludes() {
-        if (!els.exclude.value.trim()) return [];
-        return els.exclude.value.split(',')
-            .map(n => parseInt(n.trim()))
-            .filter(n => !isNaN(n));
-    }
-
-    // 核心計算邏輯
-    function calculatePool() {
-        const min = parseInt(els.min.value) || 1;
-        const max = parseInt(els.max.value) || 100;
-        const excludes = parseExcludes();
-        
-        let pool = [];
-        // 生成範圍內數字
-        for (let i = min; i <= max; i++) {
-            // 排除列表檢查
-            if (excludes.includes(i)) continue;
-            // 不重複模式檢查
-            if (els.removeMode.checked && drawnHistory.includes(i)) continue;
-            pool.push(i);
-        }
-        return pool;
-    }
-
-    // 更新統計與按鈕狀態
-    function updateStats() {
-        const pool = calculatePool();
-        currentPool = pool; // 緩存當前池
-        
-        const totalDrawn = drawnHistory.length;
-        const remaining = pool.length;
-        
-        els.drawnCount.textContent = totalDrawn;
-        els.remainingCount.textContent = remaining;
-        
-        // UI 狀態：顯示/隱藏剩餘名單
-        if (els.removeMode.checked) {
-            els.remainingSection.classList.remove('hidden');
-            els.remainingTags.innerHTML = remaining > 0 
-                ? pool.map(n => `<span class="tag">${n}</span>`).join('')
-                : '<span class="welcome-text" style="font-size:0.8rem;">名單已空</span>';
-        } else {
-            els.remainingSection.classList.add('hidden');
+        // 解析排除列表
+        function parseExcludes() {
+            if (!els.exclude.value.trim()) return [];
+            return els.exclude.value.split(',')
+                .map(n => parseInt(n.trim()))
+                .filter(n => !isNaN(n));
         }
 
-        // 即時驗證：數量輸入
-        const countVal = parseInt(els.count.value) || 1;
-        if (countVal > remaining && els.removeMode.checked) {
-            els.countErr.textContent = `⚠ 數量不足 (僅剩 ${remaining})`;
-            els.countErr.classList.add('visible');
-            els.drawBtn.disabled = true;
-            els.drawBtn.innerHTML = `<i class="fas fa-lock"></i> 數量不足`;
-        } else {
-            els.countErr.classList.remove('visible');
-            els.drawBtn.disabled = false;
-            els.drawBtn.innerHTML = `<i class="fas fa-play"></i> 開始抽取`;
-        }
-    }
+        // 核心計算邏輯
+        function calculatePool() {
+            const min = parseInt(els.min.value) || 1;
+            const max = parseInt(els.max.value) || 100;
+            const excludes = parseExcludes();
 
-    // 驗證函數
-    function validateInputs() {
-        let isValid = true;
-        const min = parseInt(els.min.value);
-        const max = parseInt(els.max.value);
-
-        // 範圍
-        if (min >= max) {
-            els.rangeErr.classList.add('visible');
-            isValid = false;
-        } else {
-            els.rangeErr.classList.remove('visible');
+            let pool = [];
+            // 生成範圍內數字
+            for (let i = min; i <= max; i++) {
+                // 排除列表檢查
+                if (excludes.includes(i)) continue;
+                // 不重複模式檢查
+                if (els.removeMode.checked && drawnHistory.includes(i)) continue;
+                pool.push(i);
+            }
+            return pool;
         }
 
-        // 排除
-        const excludes = parseExcludes();
-        const invalid = excludes.filter(n => n < min || n > max);
-        if (invalid.length > 0) {
-            els.excludeErr.classList.add('visible');
-            isValid = false;
-        } else {
-            els.excludeErr.classList.remove('visible');
+        // 更新統計與按鈕狀態
+        function updateStats() {
+            const pool = calculatePool();
+            currentPool = pool; // 緩存當前池
+
+            const totalDrawn = drawnHistory.length;
+            const remaining = pool.length;
+
+            els.drawnCount.textContent = totalDrawn;
+            els.remainingCount.textContent = remaining;
+
+            // UI 狀態：顯示/隱藏剩餘名單
+            if (els.removeMode.checked) {
+                els.remainingSection.classList.remove('hidden');
+                els.remainingTags.innerHTML = remaining > 0
+                    ? pool.map(n => `<span class="tag">${n}</span>`).join('')
+                    : '<span class="welcome-text" style="font-size:0.8rem;">名單已空</span>';
+            } else {
+                els.remainingSection.classList.add('hidden');
+            }
+
+            // 即時驗證：數量輸入
+            const countVal = parseInt(els.count.value) || 0;
+
+            // 檢查數量是否有效
+            if (countVal <= 0) {
+                els.countErr.textContent = `⚠ 數量必須大於 0`;
+                els.countErr.classList.add('visible');
+                els.drawBtn.disabled = true;
+                els.drawBtn.innerHTML = `<i class="fas fa-lock"></i> 數量無效`;
+            } else if (countVal > remaining && els.removeMode.checked) {
+                els.countErr.textContent = `⚠ 數量不足 (僅剩 ${remaining})`;
+                els.countErr.classList.add('visible');
+                els.drawBtn.disabled = true;
+                els.drawBtn.innerHTML = `<i class="fas fa-lock"></i> 數量不足`;
+            } else {
+                els.countErr.classList.remove('visible');
+                els.drawBtn.disabled = false;
+                els.drawBtn.innerHTML = `<i class="fas fa-play"></i> 開始抽取`;
+            }
         }
 
-        return isValid;
-    }
+        // 驗證函數
+        function validateInputs() {
+            let isValid = true;
+            const min = parseInt(els.min.value);
+            const max = parseInt(els.max.value);
 
-    // 執行抽籤
-    function performDraw() {
-        if (!validateInputs()) return;
-        
-        const count = Math.min(parseInt(els.count.value), currentPool.length);
-        
-        if (currentPool.length === 0 && els.removeMode.checked) {
-            // 觸發彈窗
-            els.modalMsg.innerHTML = `剩餘可抽取數字為 <strong style="color:var(--warning)">0</strong> 個，請重置系統。`;
-            els.modal.classList.add('active');
-            return;
+            // 檢查是否為有效數字
+            if (isNaN(min) || isNaN(max)) {
+                els.rangeErr.textContent = `⚠ 請輸入有效的數字`;
+                els.rangeErr.classList.add('visible');
+                isValid = false;
+            }
+            // 範圍檢查
+            else if (min >= max) {
+                els.rangeErr.textContent = `⚠ 最小值必須小於最大值`;
+                els.rangeErr.classList.add('visible');
+                isValid = false;
+            } else {
+                els.rangeErr.classList.remove('visible');
+            }
+
+            // 排除
+            const excludes = parseExcludes();
+            if (excludes.length > 0 && !isNaN(min) && !isNaN(max)) {
+                const invalid = excludes.filter(n => n < min || n > max);
+                if (invalid.length > 0) {
+                    els.excludeErr.classList.add('visible');
+                    isValid = false;
+                } else {
+                    els.excludeErr.classList.remove('visible');
+                }
+            } else {
+                els.excludeErr.classList.remove('visible');
+            }
+
+            return isValid;
         }
 
-        const results = [];
-        const tempPool = [...currentPool]; // 拷貝當前池
+        // 執行抽籤
+        function performDraw() {
+            if (!validateInputs()) return;
 
-        for (let i = 0; i < count; i++) {
-            if (tempPool.length === 0) break;
-            const idx = Math.floor(Math.random() * tempPool.length);
-            const picked = tempPool.splice(idx, 1)[0];
-            results.push(picked);
-            drawnHistory.push(picked); // 添加到歷史
-        }
+            const count = Math.min(parseInt(els.count.value), currentPool.length);
 
-        renderResults(results);
-        updateStats();
-        updateHistory();
-    }
+            if (currentPool.length === 0 && els.removeMode.checked) {
+                // 觸發彈窗
+                els.modalMsg.innerHTML = `剩餘可抽取數字為 <strong style="color:var(--warning)">0</strong> 個，請重置系統。`;
+                els.modal.classList.add('active');
+                return;
+            }
 
-    // 渲染結果動畫
-    function renderResults(numbers) {
-        els.welcome.style.display = 'none';
-        els.grid.innerHTML = '';
-        
-        numbers.forEach((num, index) => {
-            const div = document.createElement('div');
-            div.className = 'number-chip';
-            div.textContent = num;
-            div.style.animationDelay = `${index * 0.1}s`; // 順序動畫
-            els.grid.appendChild(div);
-        });
-    }
+            if (count <= 0) return;
 
-    // 更新歷史記錄
-    function updateHistory() {
-        if (drawnHistory.length === 0) {
-            els.history.innerHTML = '<span class="welcome-text" style="font-size: 0.85rem;">尚無記錄</span>';
-            return;
-        }
-        // 顯示最新 50 筆，避免 DOM 過大
-        const recent = drawnHistory.slice().reverse(); 
-        els.history.innerHTML = recent.map(n => `<span class="tag">${n}</span>`).join('');
-    }
-
-    // 複製歷史
-    function copyHistory() {
-        if (drawnHistory.length === 0) return;
-        const text = drawnHistory.reverse().join(', ');
-        navigator.clipboard.writeText(text).then(() => {
-            const original = els.copyBtn.innerHTML;
-            els.copyBtn.innerHTML = '<i class="fas fa-check"></i>';
-            setTimeout(() => els.copyBtn.innerHTML = original, 1500);
-        });
-    }
-
-    // 重置系統
-    function resetSystem() {
-        drawnHistory = [];
-        els.grid.innerHTML = '';
-        els.welcome.style.display = 'block';
-        els.modal.classList.remove('active');
-        
-        // 清除所有錯誤
-        document.querySelectorAll('.error-msg').forEach(el => el.classList.remove('visible'));
-        
-        updateStats();
-        updateHistory();
-    }
-
-    // 事件監聽
-    els.drawBtn.addEventListener('click', performDraw);
-    els.clearBtn.addEventListener('click', resetSystem);
-    els.copyBtn.addEventListener('click', copyHistory);
-    
-    els.modalReset.addEventListener('click', resetSystem);
-    els.modalLater.addEventListener('click', () => els.modal.classList.remove('active'));
-
-    // 監聽設定變更
-    [els.min, els.max, els.exclude, els.removeMode].forEach(el => {
-        el.addEventListener('change', () => {
+            const results = [];
+            const tempPool = [...currentPool]; // 拷貝當前池
+            for (let i = 0; i < count; i++) {
+                if (tempPool.length === 0) break;
+                const idx = Math.floor(Math.random() * tempPool.length);
+                const picked = tempPool.splice(idx, 1)[0];
+                results.push(picked);
+                drawnHistory.push(picked); // 添加到歷史
+            }
+            renderResults(results);
             updateStats();
-            validateInputs();
-        });
-        el.addEventListener('input', updateStats); // 即時反饋
-    });
+            updateHistory();
+        }
 
-    // 初始化
-    updateStats();
-</script>
+        // 渲染結果動畫
+        function renderResults(numbers) {
+            els.welcome.style.display = 'none';
+            els.grid.innerHTML = '';
+
+            numbers.forEach((num, index) => {
+                const div = document.createElement('div');
+                div.className = 'number-chip';
+                div.textContent = num;
+                div.style.animationDelay = `${index * 0.1}s`; // 順序動畫
+                els.grid.appendChild(div);
+            });
+        }
+
+        // 更新歷史記錄
+        function updateHistory() {
+            if (drawnHistory.length === 0) {
+                els.history.innerHTML = '<span class="welcome-text" style="font-size: 0.85rem;">尚無記錄</span>';
+                return;
+            }
+            // 顯示最新在前
+            const recent = drawnHistory.slice().reverse();
+            els.history.innerHTML = recent.map(n => `<span class="tag">${n}</span>`).join('');
+        }
+
+        // 複製歷史
+        function copyHistory() {
+            if (drawnHistory.length === 0) return;
+            // 使用 [...drawnHistory] 拷貝避免影響原始陣列
+            const text = [...drawnHistory].reverse().join(', ');
+            navigator.clipboard.writeText(text).then(() => {
+                const original = els.copyBtn.innerHTML;
+                els.copyBtn.innerHTML = '<i class="fas fa-check"></i>';
+                setTimeout(() => els.copyBtn.innerHTML = original, 1500);
+            });
+        }
+
+        // 重置系統
+        function resetSystem() {
+            drawnHistory = [];
+            els.grid.innerHTML = '';
+            els.welcome.style.display = 'block';
+            els.modal.classList.remove('active');
+
+            // 清除所有錯誤
+            document.querySelectorAll('.error-msg').forEach(el => el.classList.remove('visible'));
+
+            updateStats();
+            updateHistory();
+        }
+
+        // 事件監聽
+        els.drawBtn.addEventListener('click', performDraw);
+        els.clearBtn.addEventListener('click', resetSystem);
+        els.copyBtn.addEventListener('click', copyHistory);
+
+        els.modalReset.addEventListener('click', resetSystem);
+        els.modalLater.addEventListener('click', () => els.modal.classList.remove('active'));
+
+        // 監聽範圍設定變更
+        [els.min, els.max, els.exclude, els.removeMode].forEach(el => {
+            el.addEventListener('change', () => {
+                updateStats();
+                validateInputs();
+            });
+            el.addEventListener('input', () => {
+                updateStats();
+                validateInputs();
+            });
+        });
+
+        // 🔑 監聽抽籤數量變更 - 即時檢查數量是否足夠
+        els.count.addEventListener('input', updateStats);
+        els.count.addEventListener('change', updateStats);
+
+        // 初始化
+        updateStats();
+        validateInputs();
+    </script>
 </body>
+
 </html>
