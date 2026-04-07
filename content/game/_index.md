@@ -6,6 +6,11 @@ weight: 2
 > [!Caution]
 > Use a computer to play
 
+## 抽籤
+{{< cards >}}
+{{< card link="7" title="抽籤" icon="game">}}
+{{< /cards >}}
+
 ## 太空射擊
 
 {{< cards >}}
