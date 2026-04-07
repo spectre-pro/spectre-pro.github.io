@@ -54,7 +54,7 @@ menu:
       params:
         type: search
     - name: "About ME"
-      url: "https://260410.xyz"
+      url: "https://spexva.com"
       weight: 4
     - name: Theme Toggle
       weight: 5
@@ -70,7 +70,7 @@ menu:
       url: "https://github.com/spectre-pro/spectre-pro.github.io"
       weight: 2
     - name: "About ME"
-      url: "https://260410.xyz"
+      url: "https://spexva.com"
       weight: 3
 
 markup:

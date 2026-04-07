@@ -11,6 +11,6 @@ comments: false
 *   **電子郵件：** <website@spectrepro.dev>
 *   **官方網站：** [spectrepro.dev](https://spectrepro.dev)
 
-您也可以[點擊這裏](https://260410.xyz)尋找其他方法聯繫我們
+您也可以[點擊這裏](https://spexva.com)尋找其他方法聯繫我們
 
 我們非常重視每一位讀者的意見，謝謝您的支持！
