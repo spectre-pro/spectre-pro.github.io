@@ -4,7 +4,7 @@ weight: 2
 ---
 
 > [!Caution]
-> Use a computer to play
+> 建議使用電腦
 
 ## 抽籤
 {{< cards >}}
