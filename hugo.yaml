@@ -1,7 +1,7 @@
-baseURL: https://www.spectrepro.dev/
+baseURL: https://notes.spexva.com/
 languageCode: zh-tw
 defaultContentLanguage: zh-tw
-title: SPECTRE NOTE
+title: SPEXVA NOTES
 theme: hextra
 
 enableInlineShortcodes: true

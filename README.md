@@ -1,4 +1,4 @@
 >[!NOTE]
->This is my website [spectrepro.dev](https://www.spectrepro.dev)
+>This is my website [notes.spexva.com](https://notes.spexva.com)
 
 themes form [hextra](https://github.com/imfing/hextra)
