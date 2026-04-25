@@ -1,3 +1,20 @@
 {{ define "main" }}
+  {{/* 保留 book-page wrap，讓主題的佈局結構完整 */}}
+  <div class="book-page" style="padding:0; max-width:100%; background:#050505 !important;">
     {{ partial "landing-page.html" . }}
+  </div>
+
+  {{/* 提供一個 invisible 的 sidebar 給主題 JS，避免 null 錯誤 */}}
+  <aside id="menu" class="book-menu" style="display:none; visibility:hidden; width:0; height:0; overflow:hidden;" aria-hidden="true"></aside>
 {{ end }}
+
+{{ define "book-header" }}
+  {{/* 保留 header，但可選擇隱藏不需要的按鈕 */}}
+  {{ partial "docs/header" . }}
+{{ end }}
+
+{{ define "book-footer" }}
+  {{/* 不輸出預設 footer，避免衝突 */}}
+{{ end }}
+
+{{ define "book-body-class" }}landing-body{{ end }}

@@ -1,9 +1,5 @@
 ---
-title: SPECTRE NOTE
+title: SPEXVA NOTE
 layout: landing
 comments: false
 ---
-
-{{ define "main" }}
-{{ partial "landing-page.html" . }}
-{{ end }}
