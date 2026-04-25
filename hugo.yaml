@@ -43,7 +43,7 @@ services:
 
 menu:
   main:
-    - name: Note
+    - name: Notes
       pageRef: /docs
       weight: 1
     - name: Game
@@ -56,10 +56,6 @@ menu:
     - name: "About ME"
       url: "https://spexva.com"
       weight: 4
-    - name: Theme Toggle
-      weight: 5
-      params:
-        type: theme-toggle
 
   sidebar:
     - name: 更多
