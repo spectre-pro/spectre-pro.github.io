@@ -1,7 +1,7 @@
 baseURL: https://notes.spexva.com/
 languageCode: zh-tw
 defaultContentLanguage: zh-tw
-title: SPEXVA NOTES
+title: spexva notes
 theme: hextra
 
 enableInlineShortcodes: true
