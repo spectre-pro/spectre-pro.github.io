@@ -17,7 +17,7 @@ params:
       width: 40
       height: 20
   theme:
-    default: dark
+    default: system
     displayToggle: true
   comments:
     enable: true
