@@ -129,7 +129,7 @@ graph TD
     B -->|True| D["「則」部分 2"]
     B -->|False| E["「否則」部分 2"]
 
-    C --> F[結束]
+    C --> F([結束])
     D --> F
     E --> F
 
@@ -165,7 +165,7 @@ graph TD
     A -->|False| C{條件 3}
 
     B -->|True| D["「則」部分 2"]
-    B -->|False| F[結束]
+    B -->|False| F([結束])
 
     C -->|True| E["「則」部分 3"]
     C -->|False| F
