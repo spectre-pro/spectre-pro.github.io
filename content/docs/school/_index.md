@@ -4,4 +4,4 @@ weight: 2
 comments: false
 ---
 
-These are my DSE notes.
+電腦在左邊打開目錄, 手機在右上角三打開目錄

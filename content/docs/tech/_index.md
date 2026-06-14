@@ -4,4 +4,4 @@ weight: 1
 comments: false
 ---
 
-I will share some Note about my coding or play the home lab
+電腦在左邊打開目錄, 手機在右上角三打開目錄
