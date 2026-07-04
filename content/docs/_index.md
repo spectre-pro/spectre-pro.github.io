@@ -11,7 +11,7 @@ comments: false
 {{< card link="school" title="School" icon="school">}}
 {{< /cards >}}
 
-## Other
+## Others
 
 {{< cards >}}
 {{< card link="/game" title="Game" icon="game">}}
