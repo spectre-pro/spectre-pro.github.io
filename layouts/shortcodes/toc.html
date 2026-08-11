@@ -1,0 +1,22 @@
+{{- /* Inline 目錄 (table of contents) for notes */ -}}
+{{- $headings := .Page.Fragments.Headings -}}
+{{- if $headings -}}
+<nav class="hx:my-4 hx:rounded-xl hx:border hx:border-gray-200 hx:bg-gray-50 hx:p-4 hx:dark:border-neutral-800 hx:dark:bg-neutral-900">
+  <ul class="hx:list-none hx:space-y-1">
+    {{- range $headings -}}
+      {{- if ne .Title "目錄" -}}
+      <li class="hx:text-sm">
+        <a href="#{{ .ID }}" class="hx:text-gray-700 hx:dark:text-gray-300 hover:hx:text-primary-500">{{ .Title }}</a>
+      </li>
+      {{- end -}}
+      {{- range .Headings -}}
+        {{- if ne .Title "目錄" -}}
+        <li class="hx:text-sm" style="padding-left: 16px">
+          <a href="#{{ .ID }}" class="hx:text-gray-700 hx:dark:text-gray-300 hover:hx:text-primary-500">{{ .Title }}</a>
+        </li>
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  </ul>
+</nav>
+{{- end -}}
