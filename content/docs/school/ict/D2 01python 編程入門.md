@@ -3,6 +3,10 @@ title: "D2 python 編程入門"
 weight: 9
 ---
 
+## 目錄
+
+{{< toc >}}
+
 ## 變量
 
 - 整數 (int)
