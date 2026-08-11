@@ -28,13 +28,7 @@
   var el = document.getElementById("sv-cursor-circle");
   if (!el) return;
   if (window.matchMedia("(pointer: coarse)").matches) return;
-  el.style.display = "block";
-  var x = -200, y = -200, tx = -200, ty = -200, raf = null;
-  document.addEventListener("mousemove", function (e) {
-    tx = e.clientX;
-    ty = e.clientY;
-    if (!raf) raf = requestAnimationFrame(loop);
-  }, { passive: true });
+  var x = -200, y = -200, tx = -200, ty = -200, raf = null, shown = false;
   function loop() {
     raf = null;
     var dx = tx - x, dy = ty - y;
@@ -43,6 +37,13 @@
     el.style.transform = "translate3d(" + x + "px," + y + "px,0)";
     if (Math.abs(dx) > 0.5 || Math.abs(dy) > 0.5) raf = requestAnimationFrame(loop);
   }
+  /* 未定位鼠標前唔顯示 (第一次 mousemove 先現身) */
+  document.addEventListener("mousemove", function (e) {
+    if (!shown) { shown = true; el.style.display = "block"; }
+    tx = e.clientX;
+    ty = e.clientY;
+    if (!raf) raf = requestAnimationFrame(loop);
+  }, { passive: true });
 })();
 </script>
 {{- end -}}

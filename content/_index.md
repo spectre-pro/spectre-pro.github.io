@@ -141,6 +141,17 @@ layout: hextra-home
     font-size: 1.35rem;
     font-weight: 700;
   }
+
+  /* 手機適配 */
+  @media (max-width: 640px) {
+    .sv-home { padding: 1.2rem 0 0.5rem; }
+    .sv-hero { padding: 1rem 0 1.5rem; }
+    .sv-hero-title { font-size: clamp(1.9rem, 9vw, 2.6rem); }
+    .sv-hero-sub { font-size: 0.95rem; line-height: 1.7; }
+    .sv-btn { padding: 0.6rem 1.3rem; font-size: 0.9rem; }
+    .sv-section-head { margin-top: 1.8rem; }
+    .sv-section-head h2 { font-size: 1.2rem; }
+  }
 </style>
 
 <div class="sv-home">
