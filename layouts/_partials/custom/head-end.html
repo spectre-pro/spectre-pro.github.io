@@ -5,13 +5,17 @@
 (function () {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   function run() {
-    var hero = document.querySelector("h1.not-prose");
-    if (hero) {
-      gsap.from(hero, {
-        y: 32,
+    var heroEls = document.querySelectorAll(
+      ".sv-hero-badge, .sv-hero-title, .sv-hero-sub, .sv-hero-actions, .sv-section-head"
+    );
+    if (heroEls.length) {
+      gsap.from(heroEls, {
+        y: 28,
         autoAlpha: 0,
-        duration: 0.9,
-        ease: "power3.out"
+        duration: 0.8,
+        ease: "power3.out",
+        stagger: 0.12,
+        clearProps: "all"
       });
     }
     var cards = document.querySelectorAll("a.hextra-card");
@@ -22,7 +26,7 @@
         duration: 0.7,
         ease: "power2.out",
         stagger: 0.08,
-        delay: 0.35,
+        delay: 0.45,
         clearProps: "all"
       });
     }
@@ -35,3 +39,8 @@
 })();
 </script>
 {{- end -}}
+<style>
+  /* Footer 微調 (全站): 縮細空白 + 分隔點 */
+  footer.hextra-footer .hx\:py-12 { padding-block: 2rem; }
+  footer.hextra-footer .hextra-custom-footer { padding-top: 0.75rem; }
+</style>
