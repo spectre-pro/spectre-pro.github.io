@@ -1,0 +1,46 @@
+{{- /* 鼠標反色圓圈 — 全站 (Hextra custom content-begin hook)
+       mix-blend-mode 要喺被 transform 嘅元素本身 (child 會被 parent 嘅
+       stacking context 隔離, 導致 blend 失效) — 2026-08-12 實戰修正 */ -}}
+<div id="sv-cursor-circle" aria-hidden="true"></div>
+<style>
+  #sv-cursor-circle {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 96px;
+    height: 96px;
+    margin: -48px 0 0 -48px;
+    border-radius: 50%;
+    background: #fff;
+    mix-blend-mode: difference;
+    border: 1.5px solid rgb(128, 128, 128);
+    pointer-events: none;
+    z-index: 9999;
+    display: none;
+  }
+  @media (pointer: coarse) {
+    #sv-cursor-circle { display: none !important; }
+  }
+</style>
+<script>
+(function () {
+  var el = document.getElementById("sv-cursor-circle");
+  if (!el) return;
+  if (window.matchMedia("(pointer: coarse)").matches) return;
+  el.style.display = "block";
+  var x = -200, y = -200, tx = -200, ty = -200, raf = null;
+  document.addEventListener("mousemove", function (e) {
+    tx = e.clientX;
+    ty = e.clientY;
+    if (!raf) raf = requestAnimationFrame(loop);
+  }, { passive: true });
+  function loop() {
+    raf = null;
+    var dx = tx - x, dy = ty - y;
+    x += dx * 0.35;
+    y += dy * 0.35;
+    el.style.transform = "translate3d(" + x + "px," + y + "px,0)";
+    if (Math.abs(dx) > 0.5 || Math.abs(dy) > 0.5) raf = requestAnimationFrame(loop);
+  }
+})();
+</script>
