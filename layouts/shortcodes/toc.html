@@ -1,22 +1,26 @@
-{{- /* Inline 目錄 (table of contents) for notes */ -}}
-{{- $headings := .Page.Fragments.Headings -}}
-{{- if $headings -}}
-<nav class="hx:my-4 hx:rounded-xl hx:border hx:border-gray-200 hx:bg-gray-50 hx:p-4 hx:dark:border-neutral-800 hx:dark:bg-neutral-900">
-  <ul class="hx:list-none hx:space-y-1">
-    {{- range $headings -}}
-      {{- if ne .Title "目錄" -}}
-      <li class="hx:text-sm">
-        <a href="#{{ .ID }}" class="hx:text-gray-700 hx:dark:text-gray-300 hover:hx:text-primary-500">{{ .Title }}</a>
-      </li>
-      {{- end -}}
-      {{- range .Headings -}}
+{{- /* Inline 目錄 (table of contents) — Joplin [toc] style: plain nested list, no box.
+       Hugo wraps all page headings in a synthetic root (Level 0, empty Title) —
+       unwrap it, then render headings with one level of children. */ -}}
+{{- $top := .Page.Fragments.Headings -}}
+{{- if $top -}}
+  {{- if eq (index $top 0).Title "" -}}
+    {{- $top = (index $top 0).Headings -}}
+  {{- end -}}
+  <nav class="toc-inline hx:my-4">
+    <ul>
+      {{- range $top -}}
         {{- if ne .Title "目錄" -}}
-        <li class="hx:text-sm" style="padding-left: 16px">
-          <a href="#{{ .ID }}" class="hx:text-gray-700 hx:dark:text-gray-300 hover:hx:text-primary-500">{{ .Title }}</a>
+        <li><a href="#{{ .ID }}">{{ .Title }}</a>
+          {{- with .Headings -}}
+          <ul>
+            {{- range . -}}
+            <li><a href="#{{ .ID }}">{{ .Title }}</a></li>
+            {{- end -}}
+          </ul>
+          {{- end -}}
         </li>
         {{- end -}}
       {{- end -}}
-    {{- end -}}
-  </ul>
-</nav>
+    </ul>
+  </nav>
 {{- end -}}
