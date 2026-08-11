@@ -3,13 +3,15 @@ title: "Contact Us"
 weight: 3
 comments: false
 ---
-感謝您造訪 **SPECTRE NOTE**！
+
+感謝您造訪 **spexva notes**！
 
 如果您對本站的內容有任何建議、合作洽談，或是發現網站內容有任何錯誤，歡迎隨時與我們聯繫。我們通常會在 2-3 個工作天內回覆您的郵件。
 
 ### 聯絡方式
-*   **電子郵件：** <website@spexva.com>
-*   **官方網站：** [spexva.com](https://notes.spexva.com)
+
+- **電子郵件：** <website@spexva.com>
+- **官方網站：** [spexva.com](https://notes.spexva.com)
 
 您也可以[點擊這裏](https://spexva.com)尋找其他方法聯繫我們
 
