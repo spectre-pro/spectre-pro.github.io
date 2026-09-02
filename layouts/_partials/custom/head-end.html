@@ -38,6 +38,154 @@
   }
 })();
 </script>
+<script>
+/* 標題鼠標光暈 + 尾跡 — 只喺首頁 (Hextra custom head hook)
+   - 光暈: 一大個 radial-gradient 跟隨鼠標（lerp 平滑），mix-blend-mode: screen
+     令標題文字在鼠標接近時「發光」；離開時 scrim 讓衰減。
+   - 尾跡: 一串小圓點沿鼠標路徑鏈式追隨（每點追上一點），越大越疏=越尾越慢，
+     形成流動拖尾。速度越快尾越長。
+   - 全部 pointer-events:none，唔阻互動；觸屏 / reduce-motion 直接唔載入。 */
+(function () {
+  if (window.matchMedia("(pointer: coarse)").matches) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  function init() {
+    /* 光暈層：蓋住整頁但只喺 hero 範圍內可見 */
+    var glow = document.createElement("div");
+    glow.id = "sv-hero-glow";
+    glow.setAttribute("aria-hidden", "true");
+    document.body.appendChild(glow);
+
+    var trailWrap = document.createElement("div");
+    trailWrap.id = "sv-cursor-trail";
+    trailWrap.setAttribute("aria-hidden", "true");
+    document.body.appendChild(trailWrap);
+
+    /* 尾跡點：14 粒，半徑/透明度由頭到尾遞減 */
+    var COUNT = 14;
+    var dots = [];
+    for (var i = 0; i < COUNT; i++) {
+      var d = document.createElement("span");
+      d.className = "sv-trail-dot";
+      trailWrap.appendChild(d);
+      dots.push(d);
+    }
+
+    /* 追蹤狀態：mouse 目標 + 每點位置 */
+    var mx = -9999, my = -9999;
+    var pos = [];
+    for (var i = 0; i < COUNT; i++) pos.push({ x: -9999, y: -9999 });
+    var raf = null;
+    var shown = false;
+    var prevLastX = -9999, prevLastY = -9999;
+
+    function frame() {
+      /* 鏈式：第 0 點追鼠標，其餘追上一點 */
+      var px = mx, py = my;
+      for (var i = 0; i < COUNT; i++) {
+        var p = pos[i];
+        /* 每點 lerp 到自己嘅上一點；越尾 lerp 越慢（拖尾感） */
+        var k = 0.62 - i * 0.03;
+        if (k < 0.18) k = 0.18;
+        p.x += (px - p.x) * k;
+        p.y += (py - p.y) * k;
+        var s = 26 - i * 1.3;            /* 頭大尾細 */
+        var o = 0.55 - i * 0.035;        /* 頭實尾淡 */
+        if (o < 0.04) o = 0.04;
+        dots[i].style.width = s + "px";
+        dots[i].style.height = s + "px";
+        dots[i].style.marginLeft = (-s / 2) + "px";
+        dots[i].style.marginTop = (-s / 2) + "px";
+        dots[i].style.opacity = o;
+        dots[i].style.transform = "translate3d(" + p.x + "px," + p.y + "px,0)";
+        px = p.x; py = p.y;
+      }
+      /* 光暈 lerp 到鼠標（慢少少，營造掃過感覺） */
+      glow.style.transform =
+        "translate3d(" + (mx - 220) + "px," + (my - 220) + "px,0)";
+      /* 尾端未收斂就繼續排下一幀：鼠標停下時拖尾平滑縮回 */
+      var last = pos[COUNT - 1];
+      var moved = Math.abs(last.x - prevLastX) + Math.abs(last.y - prevLastY) > 0.6;
+      prevLastX = last.x; prevLastY = last.y;
+      raf = moved ? requestAnimationFrame(frame) : null;
+    }
+    document.addEventListener("mousemove", function (e) {
+      mx = e.clientX;
+      my = e.clientY;
+      if (!shown) { shown = true; glow.style.opacity = "1"; }
+      if (!raf) raf = requestAnimationFrame(frame);
+    }, { passive: true });
+
+    /* 鼠標離開視窗時淡走（避免停喺角落） */
+    document.documentElement.addEventListener("mouseleave", function () {
+      trailWrap.style.opacity = "0";
+      glow.style.opacity = "0";
+      shown = false;
+      mx = -9999; my = -9999;
+    });
+    document.documentElement.addEventListener("mouseenter", function () {
+      trailWrap.style.opacity = "1";
+      glow.style.opacity = "1";
+    });
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
+</script>
+<style>
+  /* 標題光暈 — 半透明彩色徑向漸變跟隨鼠標 (唔用 screen blend,
+     淺色主題下 screen 會消失; 直接 alpha 喺黑白兩主題都可見) */
+  #sv-hero-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 440px;
+    height: 440px;
+    border-radius: 50%;
+    background: radial-gradient(circle,
+      rgba(232, 168, 124, 0.55) 0%,
+      rgba(67, 56, 202, 0.22) 38%,
+      transparent 70%);
+    filter: blur(30px);
+    pointer-events: none;
+    z-index: 3;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    will-change: transform;
+  }
+  html.dark #sv-hero-glow {
+    background: radial-gradient(circle,
+      rgba(165, 180, 252, 0.40) 0%,
+      rgba(232, 168, 124, 0.22) 38%,
+      transparent 70%);
+  }
+  /* 尾跡點 — 圓點流動拖尾 */
+  #sv-cursor-trail {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 4;
+    transition: opacity 0.4s ease;
+  }
+  .sv-trail-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    background: #e8a87c;
+    box-shadow: 0 0 12px rgba(232, 168, 124, 0.7);
+    pointer-events: none;
+    will-change: transform, width, height, opacity;
+  }
+  html.dark .sv-trail-dot { background: #a5b4fc; box-shadow: 0 0 12px rgba(165, 180, 252, 0.6); }
+  /* 光暈只喺 hero 段落有意義 — 滾離 hero 後淡走 */
+  @media (prefers-reduced-motion: reduce), (pointer: coarse) {
+    #sv-hero-glow, #sv-cursor-trail { display: none !important; }
+  }
+</style>
 {{- end -}}
 <style>
   /* Footer 微調 (全站): 縮細空白 + 分隔點 */
