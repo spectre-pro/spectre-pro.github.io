@@ -39,92 +39,24 @@
 })();
 </script>
 <script>
-/* 標題鼠標光暈 + 尾跡 — 只喺首頁 (Hextra custom head hook)
-   - 光暈: 一大個 radial-gradient 跟隨鼠標（lerp 平滑），mix-blend-mode: screen
-     令標題文字在鼠標接近時「發光」；離開時 scrim 讓衰減。
-   - 尾跡: 一串小圓點沿鼠標路徑鏈式追隨（每點追上一點），越大越疏=越尾越慢，
-     形成流動拖尾。速度越快尾越長。
-   - 全部 pointer-events:none，唔阻互動；觸屏 / reduce-motion 直接唔載入。 */
+/* 滾動 reveal — 只喺首頁 (Hextra custom head hook)
+   內容滾入視窗時淡入 + 上浮 (IntersectionObserver), 同 student-union 嘅
+   reveal 效果一致; reduce-motion / 縮細動畫模式直接跳過。 */
 (function () {
-  if (window.matchMedia("(pointer: coarse)").matches) return;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   function init() {
-    /* 光暈層：蓋住整頁但只喺 hero 範圍內可見 */
-    var glow = document.createElement("div");
-    glow.id = "sv-hero-glow";
-    glow.setAttribute("aria-hidden", "true");
-    document.body.appendChild(glow);
-
-    var trailWrap = document.createElement("div");
-    trailWrap.id = "sv-cursor-trail";
-    trailWrap.setAttribute("aria-hidden", "true");
-    document.body.appendChild(trailWrap);
-
-    /* 尾跡點：14 粒，半徑/透明度由頭到尾遞減 */
-    var COUNT = 14;
-    var dots = [];
-    for (var i = 0; i < COUNT; i++) {
-      var d = document.createElement("span");
-      d.className = "sv-trail-dot";
-      trailWrap.appendChild(d);
-      dots.push(d);
-    }
-
-    /* 追蹤狀態：mouse 目標 + 每點位置 */
-    var mx = -9999, my = -9999;
-    var pos = [];
-    for (var i = 0; i < COUNT; i++) pos.push({ x: -9999, y: -9999 });
-    var raf = null;
-    var shown = false;
-    var prevLastX = -9999, prevLastY = -9999;
-
-    function frame() {
-      /* 鏈式：第 0 點追鼠標，其餘追上一點 */
-      var px = mx, py = my;
-      for (var i = 0; i < COUNT; i++) {
-        var p = pos[i];
-        /* 每點 lerp 到自己嘅上一點；越尾 lerp 越慢（拖尾感） */
-        var k = 0.62 - i * 0.03;
-        if (k < 0.18) k = 0.18;
-        p.x += (px - p.x) * k;
-        p.y += (py - p.y) * k;
-        var s = 26 - i * 1.3;            /* 頭大尾細 */
-        var o = 0.55 - i * 0.035;        /* 頭實尾淡 */
-        if (o < 0.04) o = 0.04;
-        dots[i].style.width = s + "px";
-        dots[i].style.height = s + "px";
-        dots[i].style.marginLeft = (-s / 2) + "px";
-        dots[i].style.marginTop = (-s / 2) + "px";
-        dots[i].style.opacity = o;
-        dots[i].style.transform = "translate3d(" + p.x + "px," + p.y + "px,0)";
-        px = p.x; py = p.y;
-      }
-      /* 光暈 lerp 到鼠標（慢少少，營造掃過感覺） */
-      glow.style.transform =
-        "translate3d(" + (mx - 220) + "px," + (my - 220) + "px,0)";
-      /* 尾端未收斂就繼續排下一幀：鼠標停下時拖尾平滑縮回 */
-      var last = pos[COUNT - 1];
-      var moved = Math.abs(last.x - prevLastX) + Math.abs(last.y - prevLastY) > 0.6;
-      prevLastX = last.x; prevLastY = last.y;
-      raf = moved ? requestAnimationFrame(frame) : null;
-    }
-    document.addEventListener("mousemove", function (e) {
-      mx = e.clientX;
-      my = e.clientY;
-      if (!shown) { shown = true; glow.style.opacity = "1"; }
-      if (!raf) raf = requestAnimationFrame(frame);
-    }, { passive: true });
-
-    /* 鼠標離開視窗時淡走（避免停喺角落） */
-    document.documentElement.addEventListener("mouseleave", function () {
-      trailWrap.style.opacity = "0";
-      glow.style.opacity = "0";
-      shown = false;
-      mx = -9999; my = -9999;
-    });
-    document.documentElement.addEventListener("mouseenter", function () {
-      trailWrap.style.opacity = "1";
-      glow.style.opacity = "1";
+    var els = document.querySelectorAll(".sv-reveal");
+    if (!els.length) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        en.target.classList.add("sv-reveal-in");
+        io.unobserve(en.target);
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -48px 0px" });
+    els.forEach(function (el, i) {
+      if (i > 0) el.style.transitionDelay = "120ms";
+      io.observe(el);
     });
   }
   if (document.readyState === "loading") {
@@ -134,56 +66,289 @@
   }
 })();
 </script>
+<script>
+/* 星塵網格 — 只喺首頁 (Hextra custom head hook)
+   參考 student-union 首頁 hero-mesh: 光點漂浮 + 相鄰連線 + 鼠標拉線
+   (點與點距離 < 130px 連線, 鼠標 180px 內嘅點拉線到游標)。
+   容器 mask 向下漸隱; 顏色跟主題: 淺色=靛藍, 深色=淺靛 (同尾跡色調)。 */
+(function () {
+  if (window.matchMedia("(pointer: coarse)").matches) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  function init() {
+    var canvas = document.querySelector(".sv-mesh canvas");
+    if (!canvas) return;
+    var ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    var fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var w = 0, h = 0;
+    var pts = [];
+    var mx = -9999, my = -9999;
+    var raf = 0;
+
+    /* 每 frame 檢查主題, 切換深/淺色即時生效 */
+    function colors() {
+      return document.documentElement.classList.contains("dark")
+        ? { dot: "205,225,250,0.8", link: "165,180,252", linkA: 0.36, cursor: "190,215,250", cursorA: 0.55 }
+        : { dot: "49,46,129,0.5", link: "67,56,202", linkA: 0.22, cursor: "99,102,241", cursorA: 0.4 };
+    }
+
+    function resize() {
+      var parent = canvas.parentElement;
+      if (!parent) return;
+      var rect = parent.getBoundingClientRect();
+      w = rect.width;
+      h = rect.height;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width = w + "px";
+      canvas.style.height = h + "px";
+      var n = Math.max(26, Math.min(72, Math.round(w / 24)));
+      pts = [];
+      for (var i = 0; i < n; i++) {
+        pts.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.32,
+          vy: (Math.random() - 0.5) * 0.32,
+          r: 0.7 + Math.random() * 1.3
+        });
+      }
+    }
+
+    var onMove = function (e) {
+      mx = e.clientX;
+      my = e.clientY;
+    };
+
+    var LINK = 130;
+    function tick() {
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, w, h);
+      var c = colors();
+      var rect = canvas.getBoundingClientRect();
+      var lmx = mx - rect.left;
+      var lmy = my - rect.top;
+
+      var i, j;
+      for (i = 0; i < pts.length; i++) {
+        var p = pts[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < -20) p.x = w + 20;
+        if (p.x > w + 20) p.x = -20;
+        if (p.y < -20) p.y = h + 20;
+        if (p.y > h + 20) p.y = -20;
+      }
+
+      /* 點與點之間的連線 */
+      ctx.lineWidth = 1;
+      for (i = 0; i < pts.length; i++) {
+        var a = pts[i];
+        for (j = i + 1; j < pts.length; j++) {
+          var b = pts[j];
+          var dx = a.x - b.x;
+          var dy = a.y - b.y;
+          var d = Math.hypot(dx, dy);
+          if (d < LINK) {
+            ctx.strokeStyle = "rgba(" + c.link + "," + ((1 - d / LINK) * c.linkA) + ")";
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+        /* 鼠標附近的點拉到游標 */
+        var dxm = a.x - lmx;
+        var dym = a.y - lmy;
+        var dm = Math.hypot(dxm, dym);
+        if (fine && dm < 180) {
+          ctx.strokeStyle = "rgba(" + c.cursor + "," + ((1 - dm / 180) * c.cursorA) + ")";
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(lmx + (a.x - lmx) * 0.25, lmy + (a.y - lmy) * 0.25);
+          ctx.stroke();
+        }
+      }
+
+      ctx.fillStyle = "rgba(" + c.dot + ")";
+      for (i = 0; i < pts.length; i++) {
+        var p = pts[i];
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      raf = requestAnimationFrame(tick);
+    }
+
+    resize();
+    var ro = new ResizeObserver(resize);
+    ro.observe(canvas.parentElement || canvas);
+    window.addEventListener("pointermove", onMove);
+    raf = requestAnimationFrame(tick);
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
+</script>
+<script>
+/* 標題鼠標尾跡 — 只喺首頁 (Hextra custom head hook)
+   參考 student-union 首頁 — 少啲細啲跟手啲: 8 粒細圓點鏈式追隨
+   (頭點 lerp 0.46, 越尾越慢但最低 0.3), 滑得快自然拖長, 停低快速收返。
+   pointer-events:none, 唔阻互動; 觸屏 / reduce-motion 直接唔載入。 */
+(function () {
+  if (window.matchMedia("(pointer: coarse)").matches) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  function init() {
+    var trailWrap = document.createElement("div");
+    trailWrap.id = "sv-cursor-trail";
+    trailWrap.setAttribute("aria-hidden", "true");
+    document.body.appendChild(trailWrap);
+
+    /* 尾跡點：8 粒，半徑/透明度由頭到尾遞減 */
+    var COUNT = 8;
+    var dots = [];
+    for (var i = 0; i < COUNT; i++) {
+      var d = document.createElement("span");
+      d.className = "sv-trail-dot";
+      trailWrap.appendChild(d);
+      dots.push(d);
+    }
+
+    /* 追蹤狀態：mouse 目標 + 每點位置 */
+    var hero = document.querySelector(".sv-hero");
+    var mx = -9999, my = -9999;
+    var pos = [];
+    for (var i = 0; i < COUNT; i++) pos.push({ x: -9999, y: -9999 });
+    var raf = null;
+    var visible = false;
+    var prevLastX = -9999, prevLastY = -9999;
+
+    /* 只喺 hero 大框框 (標題+副標題+按鈕) 範圍內顯示, 離開即淡出 */
+    function inHero() {
+      if (!hero) return false;
+      var r = hero.getBoundingClientRect();
+      return mx >= r.left && mx <= r.right && my >= r.top && my <= r.bottom;
+    }
+
+    function frame() {
+      /* 鏈式：第 0 點追鼠標，其餘追上一點；跟手: 頭點 0.46, 尾點最低 0.3 */
+      var px = mx, py = my;
+      for (var i = 0; i < COUNT; i++) {
+        var p = pos[i];
+        var k = 0.46 - i * 0.02;
+        if (k < 0.3) k = 0.3;
+        p.x += (px - p.x) * k;
+        p.y += (py - p.y) * k;
+        var s = 9 - i * 0.7;            /* 頭大尾細 (9px -> 4.1px) */
+        var o = 0.5 - i * 0.05;         /* 頭實尾淡 (0.5 -> 0.15) */
+        if (o < 0.12) o = 0.12;
+        dots[i].style.width = s + "px";
+        dots[i].style.height = s + "px";
+        dots[i].style.marginLeft = (-s / 2) + "px";
+        dots[i].style.marginTop = (-s / 2) + "px";
+        dots[i].style.opacity = o;
+        dots[i].style.transform = "translate3d(" + p.x + "px," + p.y + "px,0)";
+        px = p.x; py = p.y;
+      }
+      /* 尾端未收斂就繼續排下一幀：鼠標停下時拖尾平滑縮回 */
+      var last = pos[COUNT - 1];
+      var moved = Math.abs(last.x - prevLastX) + Math.abs(last.y - prevLastY) > 0.6;
+      prevLastX = last.x; prevLastY = last.y;
+      raf = moved ? requestAnimationFrame(frame) : null;
+    }
+
+    function onMove(e) {
+      mx = e.clientX;
+      my = e.clientY;
+      var next = inHero();
+      if (next && !visible) {
+        /* 重新進入 hero 時整串吸到鼠標, 避免從舊位置飛過來 */
+        for (var i = 0; i < COUNT; i++) {
+          pos[i].x = mx;
+          pos[i].y = my;
+        }
+      }
+      if (next !== visible) {
+        visible = next;
+        trailWrap.classList.toggle("is-on", visible);
+      }
+      if (!raf) raf = requestAnimationFrame(frame);
+    }
+
+    /* 滾動時 hero 會移走, 要重新檢查範圍 */
+    function onScroll() {
+      var next = inHero();
+      if (next !== visible) {
+        visible = next;
+        trailWrap.classList.toggle("is-on", visible);
+      }
+    }
+
+    document.addEventListener("mousemove", onMove, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
+</script>
 <style>
-  /* 標題光暈 — 半透明彩色徑向漸變跟隨鼠標 (唔用 screen blend,
-     淺色主題下 screen 會消失; 直接 alpha 喺黑白兩主題都可見) */
-  #sv-hero-glow {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 440px;
-    height: 440px;
-    border-radius: 50%;
-    background: radial-gradient(circle,
-      rgba(232, 168, 124, 0.55) 0%,
-      rgba(67, 56, 202, 0.22) 38%,
-      transparent 70%);
-    filter: blur(30px);
-    pointer-events: none;
-    z-index: 3;
-    opacity: 0;
-    transition: opacity 0.6s ease;
-    will-change: transform;
-  }
-  html.dark #sv-hero-glow {
-    background: radial-gradient(circle,
-      rgba(165, 180, 252, 0.40) 0%,
-      rgba(232, 168, 124, 0.22) 38%,
-      transparent 70%);
-  }
-  /* 尾跡點 — 圓點流動拖尾 */
+  /* 尾跡點 — 細圓點流動拖尾 (參考 student-union: 8 粒, 9px 起, 微光)
+     只喺 hero 大框框範圍內顯示 (is-on), 離開即淡出 */
   #sv-cursor-trail {
     position: fixed;
     top: 0;
     left: 0;
     pointer-events: none;
     z-index: 4;
-    transition: opacity 0.4s ease;
+    opacity: 0;
+    transition: opacity 0.35s ease;
   }
+  #sv-cursor-trail.is-on { opacity: 1; }
   .sv-trail-dot {
     position: fixed;
     top: 0;
     left: 0;
     border-radius: 50%;
     background: #e8a87c;
-    box-shadow: 0 0 12px rgba(232, 168, 124, 0.7);
+    box-shadow: 0 0 5px rgba(232, 168, 124, 0.55);
     pointer-events: none;
     will-change: transform, width, height, opacity;
   }
-  html.dark .sv-trail-dot { background: #a5b4fc; box-shadow: 0 0 12px rgba(165, 180, 252, 0.6); }
-  /* 光暈只喺 hero 段落有意義 — 滾離 hero 後淡走 */
+  html.dark .sv-trail-dot { background: #a5b4fc; box-shadow: 0 0 5px rgba(165, 180, 252, 0.5); }
+  /* 滾動 reveal — 內容滾入淡入上浮 */
+  .sv-reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  .sv-reveal.sv-reveal-in {
+    opacity: 1;
+    transform: none;
+  }
+  /* 最新筆記卡片 hover 浮起 (參考 student-union 活動卡片) */
+  a.hextra-card {
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+  }
+  a.hextra-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(30, 27, 75, 0.10);
+  }
+  html.dark a.hextra-card:hover {
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  }
   @media (prefers-reduced-motion: reduce), (pointer: coarse) {
-    #sv-hero-glow, #sv-cursor-trail { display: none !important; }
+    #sv-cursor-trail { display: none !important; }
+    .sv-reveal { opacity: 1; transform: none; transition: none; }
   }
 </style>
 {{- end -}}

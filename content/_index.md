@@ -10,6 +10,20 @@ layout: hextra-home
     padding: 2.5rem 0 1rem;
     overflow: hidden;
   }
+  /* 星塵網格容器 (向下漸隱, 參考 student-union hero-mesh) */
+  .sv-mesh {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, rgba(0, 0, 0, 0.9) 25%, transparent 66%);
+    mask-image: linear-gradient(to bottom, black 0%, rgba(0, 0, 0, 0.9) 25%, transparent 66%);
+  }
+  .sv-mesh canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
   .sv-home::before,
   .sv-home::after {
     content: "";
@@ -155,6 +169,9 @@ layout: hextra-home
 </style>
 
 <div class="sv-home">
+  <div class="sv-mesh" aria-hidden="true">
+    <canvas></canvas>
+  </div>
   <div class="sv-hero">
     <span class="sv-hero-badge">SPEXVA NOTES</span>
     <h1 class="sv-hero-title">筆記・技術・遊戲</h1>
@@ -171,5 +188,7 @@ layout: hextra-home
     <h2>最新筆記</h2>
   </div>
 
-  {{< latest-docs limit="6" >}}
+  <div class="sv-reveal">
+    {{< latest-docs limit="6" >}}
+  </div>
 </div>

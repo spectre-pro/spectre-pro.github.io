@@ -1,6 +1,7 @@
-{{- /* 鼠標反色圓圈 — 只喺主畫面生效 (Hextra custom content-begin hook)
-       mix-blend-mode 要喺被 transform 嘅元素本身 (child 會被 parent 嘅
-       stacking context 隔離, 導致 blend 失效) — 2026-08-12 實戰修正 */ -}}
+{{- /* 鼠標圓環 — 只喺主畫面生效 (Hextra custom content-begin hook)
+       參考 student-union 首頁風格: 細圓環跟手 (lerp 0.4), 懸停互動元素時
+       擴張 + 輕微填色; 只喺 hero 大框框範圍內顯示 (is-on), 離開即淡出。
+       圓環色跟主題: 淺色=靛藍, 深色=淺靛。 */ -}}
 {{- if .IsHome -}}
 <div id="sv-cursor-circle" aria-hidden="true"></div>
 <style>
@@ -8,18 +9,42 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 96px;
-    height: 96px;
-    margin: -48px 0 0 -48px;
+    width: 32px;
+    height: 32px;
+    margin: -16px 0 0 -16px;
     border-radius: 50%;
-    background: #fff;
-    mix-blend-mode: difference;
-    border: 1.5px solid rgb(128, 128, 128);
+    border: 1.5px solid rgba(30, 27, 75, 0.45);
+    background: transparent;
+    opacity: 0;
+    transition:
+      opacity 0.35s ease,
+      width 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+      height 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+      margin 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.2s ease,
+      background-color 0.2s ease;
     pointer-events: none;
     z-index: 9999;
-    display: none;
+  }
+  #sv-cursor-circle.is-on { opacity: 1; }
+  html.dark #sv-cursor-circle {
+    border-color: rgba(165, 180, 252, 0.85);
+  }
+  #sv-cursor-circle.is-hover {
+    width: 56px;
+    height: 56px;
+    margin: -28px 0 0 -28px;
+    border-color: rgba(30, 27, 75, 0.65);
+    background: rgba(30, 27, 75, 0.06);
+  }
+  html.dark #sv-cursor-circle.is-hover {
+    border-color: rgba(165, 180, 252, 0.95);
+    background: rgba(165, 180, 252, 0.10);
   }
   @media (pointer: coarse) {
+    #sv-cursor-circle { display: none !important; }
+  }
+  @media (prefers-reduced-motion: reduce) {
     #sv-cursor-circle { display: none !important; }
   }
 </style>
@@ -28,22 +53,62 @@
   var el = document.getElementById("sv-cursor-circle");
   if (!el) return;
   if (window.matchMedia("(pointer: coarse)").matches) return;
-  var x = -200, y = -200, tx = -200, ty = -200, raf = null, shown = false;
-  function loop() {
-    raf = null;
-    var dx = tx - x, dy = ty - y;
-    x += dx * 0.35;
-    y += dy * 0.35;
-    el.style.transform = "translate3d(" + x + "px," + y + "px,0)";
-    if (Math.abs(dx) > 0.5 || Math.abs(dy) > 0.5) raf = requestAnimationFrame(loop);
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  function init() {
+    /* .sv-hero 要等 DOMContentLoaded 先存在 (content-begin 喺 body 開頭) */
+    var hero = document.querySelector(".sv-hero") || document.body;
+    var x = -200, y = -200, tx = -200, ty = -200, raf = null, visible = false;
+    function loop() {
+      raf = null;
+      var dx = tx - x, dy = ty - y;
+      x += dx * 0.4;
+      y += dy * 0.4;
+      el.style.transform = "translate3d(" + x + "px," + y + "px,0)";
+      if (Math.abs(dx) > 0.5 || Math.abs(dy) > 0.5) raf = requestAnimationFrame(loop);
+    }
+    /* 只喺 hero 大框框範圍內顯示 */
+    function inHero() {
+      var r = hero.getBoundingClientRect();
+      return tx >= r.left && tx <= r.right && ty >= r.top && ty <= r.bottom;
+    }
+    function onMove(e) {
+      tx = e.clientX;
+      ty = e.clientY;
+      var next = inHero();
+      if (next && !visible) {
+        /* 進入 hero: 直接顯示喺鼠標位置, 唔使由舊位置飄 */
+        x = tx;
+        y = ty;
+      }
+      if (next !== visible) {
+        visible = next;
+        el.classList.toggle("is-on", visible);
+      }
+      if (!raf) raf = requestAnimationFrame(loop);
+    }
+    /* 滾動時 hero 會移走, 要重新檢查範圍 */
+    function onScroll() {
+      var next = inHero();
+      if (next !== visible) {
+        visible = next;
+        el.classList.toggle("is-on", visible);
+      }
+    }
+    /* 懸停互動元素時擴張 (參考 student-union 嘅 is-blend 擴張效果) */
+    document.addEventListener("pointerover", function (e) {
+      var t = e.target;
+      var hit = t && t.closest &&
+        t.closest("a, button, [role=button], input, select, textarea, label");
+      el.classList.toggle("is-hover", !!hit);
+    }, true);
+    document.addEventListener("mousemove", onMove, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
   }
-  /* 未定位鼠標前唔顯示 (第一次 mousemove 先現身) */
-  document.addEventListener("mousemove", function (e) {
-    if (!shown) { shown = true; el.style.display = "block"; }
-    tx = e.clientX;
-    ty = e.clientY;
-    if (!raf) raf = requestAnimationFrame(loop);
-  }, { passive: true });
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
 })();
 </script>
 {{- end -}}
